@@ -1,5 +1,8 @@
 <% layout('layouts/boilerplate')%>
+
+</script>
     <link rel="stylesheet" href="/stylesheets/stars.css">
+    <link rel="stylesheet" href="/stylesheets/show.css">
 
     <div class="row">
         <div class="col-6">
@@ -15,11 +18,11 @@
                 <% if(campground.images.length> 1) {%>
                     <a class="carousel-control-prev" href="#campgroundCarousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
+                        <span class="sr-only">上</span>
                     </a>
                     <a class="carousel-control-next" href="#campgroundCarousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
+                        <span class="sr-only">下</span>
                     </a>
                     <% } %>
             </div>
@@ -37,21 +40,27 @@
                     <li class="list-group-item text-muted">
                         <%= campground.location%>
                     </li>
-                    <li class="list-group-item">Submitted by <%= campground.author.username%>
+                    <li class="list-group-item">提交:  <%= campground.author.username%>
                     </li>
-                    <li class="list-group-item">$<%= campground.price%>/night</li>
+                    <li class="list-group-item">
+                        <% if (campground.price===0) { %>
+                         <span class="text-muted">免費</span> 
+                        <% } else{ %>
+                            <span class="text-muted">$<%= campground.price%>/日</span> 
+                        <% }  %>
+                    </li>
                 </ul>
                 <% if( currentUser && campground.author.equals(currentUser._id)) {%>
                     <div class="card-body">
-                        <a class="card-link btn btn-info" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
+                        <a class="card-link btn btn-info" href="/campgrounds/<%=campground._id%>/edit">修改</a>
                         <form class="d-inline" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST">
-                            <button class="btn btn-danger">Delete</button>
+                            <button class="btn btn-danger">刪除</button>
                         </form>
                     </div>
                     <% } %>
-                        <div class="card-footer text-muted">
+                        <!-- <div class="card-footer text-muted">
                             2 days ago
-                        </div>
+                        </div> -->
             </div>
 
         </div>
@@ -59,7 +68,7 @@
             <div class="mb-3" id='map' ></div>
 
             <% if(currentUser){ %>
-                <h2>Leave a Review</h2>
+                <h2>留言</h2>
                 <form action="/campgrounds/<%=campground._id%>/reviews" method="POST" class="mb-3 validated-form"
                     novalidate>
                     <!-- <div class="mb-3">
@@ -81,14 +90,14 @@
                         <label for="first-rate5" title="Amazing">5 stars</label>
                     </fieldset>
                     <div class="mb-3">
-                        <label class="form-label" for="body">Review Text</label>
+                        <label class="form-label" for="body">留言文字</label>
                         <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"
                             required></textarea>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                     </div>
-                    <button class="btn btn-success">Submit</button>
+                    <button class="btn btn-success">提交</button>
                 </form>
                 <% } %>
                     <% for(let review of campground.reviews) { %>
@@ -101,13 +110,13 @@
                                     Rated: <%= review.rating %> stars
                                 </p>
                                 <!-- <h6 class="card-subtitle mb-2 text-muted">By <%= review.author.username%></h6> -->
-                                <p class="card-text">Review: <%= review.body %>
+                                <p class="card-text"> <%= review.body %>
                                 </p>
                                 <% if( currentUser && review.author.equals(currentUser._id)) {%>
                                     <form
                                         action="/campgrounds/<%=campground._id%>/reviews/<%=review._id%>?_method=DELETE"
                                         method="POST">
-                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                        <button class="btn btn-sm btn-danger">刪除</button>
                                     </form>
                                     <% } %>
                             </div>
@@ -115,8 +124,14 @@
                         <% } %>
         </div>
     </div>
+    <style>
+        body{
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(<%= campground.images[0].url%>);
+        }
+        </style>
     <script> 
         const mapToken = '<%- process.env.MAPBOX_TOKEN%>'; 
         const campground = <%- JSON.stringify(campground) %>;
+        
     </script>
     <script src="/javascripts/showPageMap.js"></script>

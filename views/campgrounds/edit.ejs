@@ -5,7 +5,7 @@
         <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST" novalidate class="validated-form"
             enctype="multipart/form-data">
             <div class="mb-3">
-                <label class="form-label" for="title">Title</label>
+                <label class="form-label" for="title">營地名稱</label>
                 <input class="form-control" type="text" id="title" name="campground[title]"
                     value="<%=campground.title %>" required>
                 <div class="valid-feedback">
@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="location">Location</label>
+                <label class="form-label" for="location">地點</label>
                 <input class="form-control" type="text" id="location" name="campground[location]"
                     value="<%=campground.location %>" required>
                 <div class="valid-feedback">
@@ -22,7 +22,7 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label" for="price">Campground Price</label>
+                <label class="form-label" for="price">價錢</label>
                 <div class="input-group">
                     <span class="input-group-text" id="price-label">$</span>
                     <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
@@ -34,7 +34,7 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label" for="description">Description</label>
+                <label class="form-label" for="description">簡介</label>
                 <textarea class="form-control" type="text" id="description" name="campground[description]"
                     required><%= campground.description%></textarea>
                 <div class="valid-feedback">
@@ -45,8 +45,8 @@
                 <div class="form-file custom-file">
                     <input type="file" class="form-file-input" id="image" name="image" multiple>
                     <label class="form-file-label" for="image">
-                        <span class="form-file-text custom-file-label">Add more image(s)...</span>
-                        <span class="form-file-button">Browse</span>
+                        <span class="form-file-text custom-file-label">加入更多圖片...</span>
+                        <span class="form-file-button">打開</span>
                     </label>
                 </div>
             </div>
@@ -61,10 +61,10 @@
                 <% })%>
             </div>
             <div class="mb-3">
-                <button class="btn btn-info">Update Campground</button>
+                <button class="btn btn-info">確認更新</button>
             </div>
         </form>
-        <a href="/campgrounds/<%= campground._id%>">Back To Campground</a>
+        <a class="btn" href="/campgrounds/<%= campground._id%>">返回</a>
 
     </div>
 </div>
