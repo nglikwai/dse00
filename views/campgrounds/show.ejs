@@ -5,50 +5,23 @@
     <link rel="stylesheet" href="/stylesheets/show.css">
 
     <div class="row">
-        <div class="col-6">
-            <div id="campgroundCarousel" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <% campground.images.forEach((img, i)=> { %>
-                        <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
-                            <img src="<%= img.url%>" class="d-block w-100" alt="">
-                        </div>
-                        ƒ <% }) %>
+        <div class="col-8">
 
-                </div>
-                <% if(campground.images.length> 1) {%>
-                    <a class="carousel-control-prev" href="#campgroundCarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">上</span>
-                    </a>
-                    <a class="carousel-control-next" href="#campgroundCarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">下</span>
-                    </a>
-                    <% } %>
-            </div>
 
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">
+                    <h5 class="card-title m-3">
                         <%= campground.title%>
                     </h5>
-                    <p class="card-text">
+                    <p class="card-text m-3 mb-5 mt-5">
                         <%= campground.description%>
                     </p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-muted">
-                        <%= campground.location%>
+
+                    <li class="list-group-item">樓主:  <%= campground.author.username%>
                     </li>
-                    <li class="list-group-item">提交:  <%= campground.author.username%>
-                    </li>
-                    <li class="list-group-item">
-                        <% if (campground.price===0) { %>
-                         <span class="text-muted">免費</span> 
-                        <% } else{ %>
-                            <span class="text-muted">$<%= campground.price%>/日</span> 
-                        <% }  %>
-                    </li>
+
                 </ul>
                 <% if( currentUser && campground.author.equals(currentUser._id)) {%>
                     <div class="card-body">
@@ -63,9 +36,8 @@
                         </div> -->
             </div>
 
-        </div>
-        <div class="col-6">
-            <div class="mb-3" id='map' ></div>
+
+
             <h2>留言</h2>
             <% if(currentUser){ %>
                 
@@ -75,22 +47,9 @@
                 <label class="form-label" for="rating">Rating</label>
                 <input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating">
             </div> -->
-                    <fieldset class="starability-basic">
-                        <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
-                            aria-label="No rating." />
-                        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-                        <label for="first-rate1" title="Terrible">1 star</label>
-                        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-                        <label for="first-rate2" title="Not good">2 stars</label>
-                        <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-                        <label for="first-rate3" title="Average">3 stars</label>
-                        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-                        <label for="first-rate4" title="Very good">4 stars</label>
-                        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-                        <label for="first-rate5" title="Amazing">5 stars</label>
-                    </fieldset>
+                    
                     <div class="mb-3">
-                        <label class="form-label" for="body">留言文字</label>
+                        <label class="form-label mt-4 mb-4" for="body">留言文字</label>
                         <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"
                             required></textarea>
                         <div class="valid-feedback">
@@ -110,9 +69,6 @@
                                 <h5 class="card-title">
                                     <%= review.author.username%>
                                 </h5>
-                                <p class="starability-result" data-rating="<%=review.rating%>">
-                                    Rated: <%= review.rating %> stars
-                                </p>
                                 <!-- <h6 class="card-subtitle mb-2 text-muted">By <%= review.author.username%></h6> -->
                                 <p class="card-text"> <%= review.body %>
                                 </p>
@@ -127,12 +83,8 @@
                         </div>
                         <% } %>
         </div>
-    </div>
-    <style>
-        body{
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(<%= campground.images[0].url%>);
-        }
-        </style>
+        <div class="col-4">hihihi</div>
+
     <script> 
         const mapToken = '<%- process.env.MAPBOX_TOKEN%>'; 
         const campground = <%- JSON.stringify(campground) %>;

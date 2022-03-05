@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOYO CAMP</title>
+    <title>DSE00＋</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
         integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/home.css">
@@ -13,11 +13,14 @@
 <body class="d-flex text-center text-white bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="mb-auto">
-            <div>
-                <h3 class="float-md-left mb-0">YOYO CAMP</h3>
+            <div class="mt-3">
+                <h3 class="float-md-left  mr-3">DSE00+</h3>
+                <a class="float-md-left nav-link active" aria-current="page" href="#">首頁</a>
+                <a class="float-md-left nav-link" href="/campgrounds">話題</a>
+                <a class="float-md-left nav-link" href="/campgrounds/new">建立話題</a>
+                
                 <nav class="nav nav-masthead justify-content-center float-md-right">
-                    <a class="nav-link active" aria-current="page" href="#">首頁</a>
-                    <a class="nav-link" href="/campgrounds">營地</a>
+
                     <% if(!currentUser) { %>
                     <a class="nav-link" href="/login">登入</a>
                     <a class="nav-link" href="/register">注冊</a>
@@ -28,11 +31,11 @@
             </div>
         </header>
         <main class="px-3">
-            <h1>YOYO CAMP</h1><br>
-            <p class="lead"> 歡迎來到 YOYO CAMP <br>  
-                分享你地的營地</p><br>
+            <h1>DSE00＋</h1><br>
+            <p class="lead"> 歡迎來到 DSE00+ <br>  
+                分享你地的話題</p><br>
             <a href="/campgrounds" class="btn btn-lg btn-secondary border-white bg-white" id="main_button">
-                進入營地</a>
+                進入 DSE00＋</a>
         </main>
 
         <footer class="mt-auto text-white-50">

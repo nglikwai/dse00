@@ -3,7 +3,7 @@ const cities = require('./cities');
 const { places, descriptors } = require('./seedHelpers');
 const Campground = require('../models/campground');
 
-mongoose.connect('mongodb://localhost:27017/yelp-camp', {
+mongoose.connect('mongodb://localhost:27017/dse00', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
@@ -26,8 +26,8 @@ const seedDB = async () => {
         const price = Math.floor(Math.random() * 20) + 10;
         const camp = new Campground({
             // macbook 13 author: '621efd0b623f08b7fd86da8d',
-            // macbook 16 author: '621ce7b96e8087aeaf42c77e',
-            author: '621efd0b623f08b7fd86da8d',
+            // macbook 16 author: '621ce7b96e8087aeaf42c77e',6223b40c4f89092a145498a6
+            author: '6223b40c4f89092a145498a6',
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
             description: 'sicing elit. Quibusdam dolores vero perferendis laudantium, consequuntur voluptatibus nulla architecto Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam dolores vero perferendis laudantium, consequuntur voluptatibus nulla architecto, sit soluta esse iure sed labore ipsam a cum nihil atque molestiae deserunt!',
