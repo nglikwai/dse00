@@ -2,17 +2,17 @@
 <a class="btn btn-info mb-3" href="/campgrounds/new" target="_blank">新 POST</a>
     
 <div style="display:flex; justify-content:center; flex-direction: column; width:800px;">
-    <% for (let campground of campgrounds){%>
+    <% for (let i = campgrounds.length-1 ;  i>0 ; i--){%>
         <div class="card mb-3">
             <div class="row">
-                <a href="/campgrounds/<%=campground._id%>">
+                <a href="/campgrounds/<%=campgrounds[i]._id%>">
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <%= campground.title %>  <small class="text-muted"> - <%= campground.author.username%></small>
+                            <%= campgrounds[i].title %>  <small class="text-muted"> - <%= campgrounds[i].author.username%></small>
                         </h5>
                         <p class="card-text text-muted">
-                            <%= campground.description.substring(0,50) %>
+                            <%= campgrounds[i].description[i].substring(0,50) %>
                         </p>
                     </div>
                 </div></a>

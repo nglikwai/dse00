@@ -22,7 +22,7 @@ module.exports.createCampground = async (req, res, next) => {
     campground.images = req.files.map(f=>({url: f.path, filename: f.filename}));
     campground.author = req.user._id;
     await campground.save();
-    req.flash('success', '成功建立話題');
+    req.flash('success', '成功建立POST');
     res.redirect(`/campgrounds/${campground._id}`)
 }
 
@@ -34,7 +34,7 @@ module.exports.showCampground = async (req, res,) => {
         }
     }).populate('author');
     if (!campground) {
-        req.flash('error', 'Cannot find that campground!');
+        req.flash('error', 'Cannot find that POST!');
         return res.redirect('/campgrounds');
     }
     res.render('campgrounds/show', { campground });
@@ -44,7 +44,7 @@ module.exports.renderEditForm = async (req, res) => {
     const { id } = req.params;
     const campground = await Campground.findById(id)
     if (!campground) {
-        req.flash('error', '收不到話題');
+        req.flash('error', '收不到POST');
         return res.redirect('/campgrounds');
     }
     res.render('campgrounds/edit', { campground });
