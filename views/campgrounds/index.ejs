@@ -1,7 +1,5 @@
 <% layout('layouts/boilerplate')%>
-    <div class="mb-0">
-        <!-- <h1>所有話題</h1> -->
-    </div>
+<a class="btn btn-info mb-3" href="/campgrounds/new">新 POST</a>
     
 <div style="display:flex; justify-content:center; flex-direction: column; width:800px;">
     <% for (let campground of campgrounds){%>
@@ -22,3 +20,4 @@
         </div>
         <% }%>
     </div>
+    <a class="btn btn-info mb-3" href="/campgrounds/new">新 POST</a>
