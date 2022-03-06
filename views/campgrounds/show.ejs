@@ -60,7 +60,7 @@
                 </form>
                 <% }else{ %>
                 <div class="mb-4">
-                    <a href="/login" class="btn btn-info mb-3 mt-3">請先登入</a>
+                    <a href="/login" class="btn btn-info mb-3 mt-3" target="_blank">請先登入</a>
                 </div>
                 <% } %> 
                     <% for(let review of campground.reviews) { %>
@@ -83,7 +83,7 @@
                         </div>
                         <% } %>
         </div>
-        <div class="col-4">hihihi</div>
+        <!-- <div class="col-4">hihihi</div> -->
 
     <script> 
         const mapToken = '<%- process.env.MAPBOX_TOKEN%>'; 
