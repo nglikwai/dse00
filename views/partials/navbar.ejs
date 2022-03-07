@@ -17,6 +17,7 @@
                 <a class="nav-link mr-3" href="/login">登入</a>
                 <a class="nav-link mr-3" href="/register">注冊</a>
                 <% } else {%>
+                <a class="nav-link mr-5" href="/user/<%=currentUser._id  %> "><%= currentUser.username.toUpperCase() %> </a>
                 <a class="nav-link mr-5" href="/logout">登出</a>
                 <% } %>
             </div>

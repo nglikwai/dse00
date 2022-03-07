@@ -2,18 +2,19 @@
 <a class="btn btn-info mb-3" href="/campgrounds/new" target="_blank">新 POST</a>
     
 <div style="display:flex; justify-content:center; flex-direction: column; width:800px;">
-    <% for (let i = campgrounds.length-1 ;  i>0 ; i--){%>
+    <% for (let i = 0 ; i<campgrounds.length-1  ; i++){%>
         <div class="card mb-3">
             <div class="row">
                 <a href="/campgrounds/<%=campgrounds[i]._id%>">
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">
-                            <%= campgrounds[i].title %>  <small class="text-muted"> - <%= campgrounds[i].author.username%></small>
-                        </h5>
-                        <p class="card-text text-muted">
-                            <%= campgrounds[i].description.substring(0,50) %>
-                        </p>
+                        <h5 class="card-title"><%= campgrounds[i].title %>  <small class="text-muted"> - <%= campgrounds[i].author.username%></small></h5>
+                        <p class=" text-muted index-text" style="font-size:14px;"><%= campgrounds[i].description.substring(0,40) %> </p>
+                        <p style="position: absolute; top:5px ; right:10px; color:#bbb"><% const r = campgrounds[i].reviews.length-1 %>  <%= r+1 %> </p>
+                            <% if (campgrounds[i].reviews[0]) { %>                              
+                                <p style="font-size:14px; color:#aaa">留言：<%= campgrounds[i].reviews[r].body %></p>
+                            <% } %> 
+                            
                     </div>
                 </div></a>
             </div>

@@ -9,7 +9,7 @@ module.exports.index = async (req, res) => {
         populate: {
             path: 'author'
         }
-    }).populate('author');;
+    }).populate('author').sort({updatedAt:-1});;
     res.render('campgrounds/index', { campgrounds })
 }
 
