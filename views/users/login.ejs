@@ -8,6 +8,7 @@
                 <img src="https://lh3.googleusercontent.com/-Ve9bspLwIyI/YcWDABcAcMI/AAAAAAAA2Ig/sKB4a4T0bUs_CevmgUkZtGffdCRDFjHUgCNcBGAsYHQ/w165-h165/dse00%2Bicon.png"
                     alt=""  /></div>
                 <div class="card-body">
+                    <% if(!currentUser) {%>                  
                     <h5 class="card-title">登入</h5>
                     <form action="/login" method="POST" class="validated-form" novalidate>
                         <div class="mb-3">
@@ -27,6 +28,9 @@
                         </div>
                         <button class="btn btn-success btn-block">登入</button>
                     </form>
+                    <% } else {%>
+                      <a href="/campgrounds" class="btn btn-info"><%= currentUser.username %> 歡迎回來</a>
+                    <% } %>
                 </div>
             </div>
         </div>
