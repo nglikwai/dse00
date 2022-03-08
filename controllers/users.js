@@ -44,7 +44,7 @@ module.exports.loadUser = async(req, res) => {
         return res.redirect('/campgrounds');
     }
     console.log(user);
-    if (user.coin < 10) { user.grade = 2 } else if (user.coin < 20) { user.grade = 3 } else if (user.coin < 30) { user.grade = 4 } else if (user.coin > 40) { user.grade = 5 };
+    if (user.coin < 10) { user.grade = 2 } else if (user.coin < 20) { user.grade = 3 } else if (user.coin < 60) { user.grade = 4 } else if (user.coin > 100) { user.grade = 5 };
     await user.save()
     res.render('users/user', { user });
 }

@@ -1,27 +1,61 @@
 <% layout('layouts/boilerplate')%>
 
+    <div class="inner-container">
+        <div class='index-loop'>
+            <a class="btn btn-info mb-3" href="/campgrounds/new" target="_blank" style="width:100px">新 POST</a>
+            <% for (let i = 0 ; i<campgrounds.length-1  ; i++){%>
+                <div class="card mb-3">
+                    <div class="row">
+                        <a href="/campgrounds/<%=campgrounds[i]._id%>">
+                            <div>
+                                <div class="card-body" style="padding-bottom: 10px;">
+                                    <h5 class="card-title">
+                                        <%= campgrounds[i].title %> <small class="text-muted" style="font-size:14px; font-weight:200"> - <%= campgrounds[i].author.username%></small></h5>
+                                    <!-- <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span> -->
+                                    <span style="position: absolute; top:5px ; right:10px; color:#bbb"><% const r = campgrounds[i].reviews.length-1 %> <%= r+1 %> 💬</span>
+                                    <% if (campgrounds[i].reviews[0]) { %>
+                                        <span style="font-size:14px; color:#bbb">  ➥ <%= campgrounds[i].reviews[r].body %></span>
+                                        <% } %>
 
-    <div class='index-loop'>
-        <a class="btn btn-info mb-3" href="/campgrounds/new" target="_blank" style="width:100px">新 POST</a>
-        <% for (let i = 0 ; i<campgrounds.length-1  ; i++){%>
-            <div class="card mb-3">
-                <div class="row">
-                    <a href="/campgrounds/<%=campgrounds[i]._id%>">
-                        <div>
-                            <div class="card-body" style="padding-bottom: 10px;">
-                                <h5 class="card-title">
-                                    <%= campgrounds[i].title %> <small class="text-muted" style="font-size:14px; font-weight:200"> - <%= campgrounds[i].author.username%></small></h5>
-                                <!-- <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span> -->
-                                <span style="position: absolute; top:5px ; right:10px; color:#bbb"><% const r = campgrounds[i].reviews.length-1 %> <%= r+1 %> 💬</span>
-                                <% if (campgrounds[i].reviews[0]) { %>
-                                    <span style="font-size:14px; color:#bbb">  ➥ <%= campgrounds[i].reviews[r].body %></span>
-                                    <% } %>
-
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <% }%>
-                <a class="btn btn-info mb-3" href="/campgrounds/new" target="_blank" style="width:100px">新 POST</a>
+                <% }%>
+                    <a class="btn btn-info mb-3" href="/campgrounds/new" target="_blank" style="width:100px">新 POST</a>
+        </div>
+
+        <div class="user-info">
+            <% if(!currentUser)  {%>
+                <span style="color:#aaa; font-size: 16px;"> 用戶名稱 - </span>
+                <% } %>
+                    <% if(currentUser)  {%>
+                        <h3>
+                            <a href="/user/<%= currentUser._id %> ">
+                                <%= currentUser.username.toUpperCase() %>
+                            </a>
+                        </h3>
+                        <% } %>
+
+                            <hr>
+
+                            <h5>Lv.
+                                <% if(currentUser)  {%>
+                                    <%= currentUser.grade %>
+                                        <% } %>
+                            </h5>
+                            <a href="/dse00coin">
+                                <h5>🪙 ×
+                                    <% if(currentUser)  {%>
+                                        <%= currentUser.coin %>
+                                            <% } %>
+                                </h5>
+                            </a>
+                            <% if (!currentUser) { %>
+                                <a class="btn btn-info" href="/login" style="margin-left: 40%">Login</a>
+
+                                <% } %>
+
+        </div>
     </div>
