@@ -23,8 +23,13 @@ const UserSchema = new Schema({
     grade: {
         type: Number,
         default: 1
+    },
+    identity: {
+        type: String,
+        default: 'member'
     }
-});
+
+}, { timestamps: true });
 
 UserSchema.plugin(passportLocalMongoose);
 

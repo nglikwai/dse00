@@ -32,6 +32,14 @@ module.exports.isAuthor = async(req, res, next) => {
     next();
 }
 
+module.exports.isAdmin = async(req, res, next) => {
+    if (req.user.identity !== 'admin') {
+        req.flash('error', 'ADMIN ONLY')
+        return res.redirect(`/campgrounds`);
+    }
+    next();
+}
+
 module.exports.isReviewAuthor = async(req, res, next) => {
     const { id, reviewId } = req.params;
     const review = await Review.findById(reviewId);
