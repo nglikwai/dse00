@@ -26,3 +26,7 @@ if (currentTime > 23 || currentTime < 7) {
 
 
 }
+script
+if (currentTime > 23 || currentTime < 7) {
+    document.querySelector('#header-wrap').style.display = 'none'
+}

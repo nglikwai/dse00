@@ -1,10 +1,10 @@
 body {
     background-color: rgb(255, 252, 248);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100%;
 }
 
-ffe0ae div {
+div {
     background-color: transparent;
 }
 
