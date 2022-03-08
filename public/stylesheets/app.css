@@ -11,6 +11,24 @@ a {
     text-decoration: none;
 }
 
+.dse00btn {
+    background-color: transparent;
+    border: #cc0000 solid 1px;
+    border-radius: 5px;
+    color: #cc0000;
+    padding: 8px 20px;
+    margin: 10px 0px;
+}
+
+.dse00btn:hover {
+    background-color: #cc0000;
+    color: white;
+}
+
+.post-title:hover {
+    color: #cc0000;
+}
+
 #logo {
     font-weight: 500;
     font-size: 28px;
@@ -55,12 +73,12 @@ nav a:hover {
 
 .user-info {
     width: 300px;
-    height: 200px;
+    height: 220px;
     padding: 20px;
-    border: #ddd solid 1px;
+    border: #cc0000 solid 1px;
     border-radius: 6px;
     margin-left: 3%;
-    margin-top: 54px;
+    margin-top: 60px;
 }
 
 .post-body {
