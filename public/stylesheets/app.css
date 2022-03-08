@@ -98,3 +98,7 @@ nav a:hover {
         width: 100%;
     }
 }
+
+.grey {
+    display: none
+}
