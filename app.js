@@ -18,9 +18,8 @@ const mongoSanitize = require('express-mongo-sanitize');
 const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
-
-const catchAsync = require('./utils/catchAsync');
-const user = require('./controllers/users');
+const dayjs = require('dayjs');
+dayjs().format();
 
 const MongoDBStore = require('connect-mongo');
 
