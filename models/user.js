@@ -18,11 +18,11 @@ const UserSchema = new Schema({
     }],
     coin: {
         type: Number,
-        default: 0
+        default: 1
     },
     grade: {
         type: Number,
-        default: 3
+        default: 1
     }
 });
 

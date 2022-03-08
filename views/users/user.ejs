@@ -23,12 +23,13 @@
     </style>
 
     <div class="review-body">
+        <button onclick="history.back()" id="backButton" class="btn btn-danger mb-3">Back</button>
         <div class="user-info">
             <h5> <a href="/dse00coin">DSE00 🪙 :</a>
                 <span id="coin"><%= user.coin %></span>
             </h5>
             <h5> <a href="#">Grade  :</a> Lv.
-                <span id="grade"></span>
+                <%= user.grade %>
             </h5>
         </div>
 
@@ -61,5 +62,3 @@
                             <% }} %>
 
     </div>
-
-    <script src="/javascripts/grade.js"></script>

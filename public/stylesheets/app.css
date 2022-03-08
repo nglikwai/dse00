@@ -46,3 +46,8 @@ nav a:hover {
         padding: 0 10px;
     }
 }
+
+.grade {
+    font-size: 14px;
+    color: #aaa;
+}

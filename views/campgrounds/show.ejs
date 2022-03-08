@@ -7,7 +7,7 @@
 
     <div class="index-loop">
         <div>
-            <a href="/campgrounds" class="btn btn-danger mb-3">Back</a>
+            <button onclick="history.back()" id="backButton" class="btn btn-danger mb-3">Back</button>
 
             <div class="card mb-3">
                 <div class="card-body">
@@ -22,7 +22,8 @@
 
                     <li class="list-group-item">樓主:
                         <a href="/user/<%= campground.author._id %> ">
-                            <%= campground.author.username%>
+                            <b><%= campground.author.username.toUpperCase()%></b>
+                            <span class="grade">- Lv <%=campground.author.grade  %></span>
                         </a>
                     </li>
 
@@ -71,6 +72,7 @@
                                     <h5 class="card-title">
                                         <a href="/user/<%= review.author._id %> ">
                                             <%= review.author.username%>
+                                                <span class="grade">- Lv <%= review.author.grade %></span>
                                         </a>
                                     </h5>
                                     <!-- <h6 class="card-subtitle mb-2 text-muted">By <%= review.author.username%></h6> -->

@@ -19,6 +19,9 @@ const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
 
+const catchAsync = require('./utils/catchAsync');
+const user = require('./controllers/users');
+
 const MongoDBStore = require('connect-mongo');
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/dse00';
