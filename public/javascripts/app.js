@@ -5,3 +5,13 @@ for (let button of buttons) {
         button.classList.add('grey')
     })
 }
+
+var currentTime = new Date().getHours();
+
+if (currentTime > 23 || currentTime < 7) {
+    var lnk = document.createElement('link');
+    lnk.type = 'text/css';
+    lnk.href = '/stylesheets/app-night.css';
+    lnk.rel = 'stylesheet';
+    document.getElementsByTagName('head')[0].appendChild(lnk);
+}
