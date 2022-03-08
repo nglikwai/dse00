@@ -10,15 +10,17 @@
     </style>
     <div class='index-loop'>
         <button onclick="history.back()" id="backButton" class="btn btn-danger mb-3">Back</button>
-        <br>
-        <h1>DSE00 coin 🪙 ×
-            <% if (currentUser) { %>
-                <%= currentUser.coin %>
-                    <% } %>
+        <div class="card" style="padding:20px 30px 50px 30px;">
+            <br>
+            <h3>DSE00 coin 🪙 ×
+                <% if (currentUser) { %>
+                    <%= currentUser.coin %>
+                        <% } %>
 
-        </h1><br>
-        <p>每留言 +1 DSE00 coin</p>
-        <p>coin 越多，Grade 愈高</p>
-        <p> Grade 是拉 curve 的</p>
-        <p>獲得 5 以上的同學能從 <a href="https://dse00shop.blogspot.com">DSE00 Shop</a> 換取禮物</p>
+            </h3><br>
+            <p>每留言 +1 DSE00 coin</p>
+            <p>coin 越多，Grade 愈高</p>
+            <p> Grade 是拉 curve 的</p>
+            <p>獲得 5 以上的同學能從 <a href="https://dse00shop.blogspot.com">DSE00 Shop</a> 換取禮物</p>
+        </div>
     </div>
