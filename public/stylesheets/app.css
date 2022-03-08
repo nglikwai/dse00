@@ -58,6 +58,7 @@ nav a:hover {
     width: auto;
     max-width: 1150px;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .index-loop {
