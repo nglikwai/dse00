@@ -15,10 +15,7 @@ router.route('/login')
     .post(passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), users.login)
 
 router.route('/user/:id')
-    .get(async(req,res)=>{
-        const user = await User.findById(req.params.id);
-        res.render('users/user' , {user})
-    })
+    .get(catchAsync(users.loadUser))
 
 router.get('/logout', users.logout)
 

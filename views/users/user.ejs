@@ -1,2 +1,65 @@
 <% layout('layouts/boilerplate')%>
-<h1><%= currentUser.username %></h1>
+    <h1>
+        <%= user.username.toUpperCase() %>
+    </h1>
+    <style>
+        .review-body {
+            width: 600px;
+            margin: 20px;
+        }
+        
+        h3 {
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        
+        .user-info {
+            margin: 20px 0 50px 0;
+        }
+    </style>
+
+    <div class="review-body">
+        <div class="user-info">
+            <h5> <a href="/dse00coin">DSE00 🪙 :</a>
+                <span id="coin"><%= user.coin %></span>
+            </h5>
+            <h5> <a href="#">Grade  :</a> Lv.
+                <span id="grade"></span>
+            </h5>
+        </div>
+
+        <h3>Posts</h3>
+        <% for(let post of user.posts){ %>
+            <li>
+                <a href="/campgrounds/<%=post._id %> ">
+                    <%= post.title %>
+                </a>
+
+            </li>
+            <% } %>
+
+                <br>
+                <hr><br>
+                <h3>Reviews</h3>
+                <% for(let review of user.reviews){ %>
+                    <% if (review.post) { %>
+                        <p>
+                            <a href="/campgrounds/<%= review.post %> ">
+                                - <%= review.body %>
+                            </a>
+                        </p>
+                        <% }else{ %>
+                            <p>
+                                <a href="/campgrounds/<%= review.post %> ">
+                                   - <%= review.body %>
+                                </a>
+                            </p>
+                            <% }} %>
+
+    </div>
+
+    <script src="/javascripts/grade.js"></script>

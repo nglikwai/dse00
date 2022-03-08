@@ -2,16 +2,16 @@ const mongoose = require('mongoose');
 const Review = require('./review')
 const Schema = mongoose.Schema;
 
-const imageSchema = new Schema ({
+const imageSchema = new Schema({
     url: String,
     filename: String
 })
 
-imageSchema.virtual('thumbnail').get(function(){
-    return this.url.replace('/upload' , '/upload/w_200');
+imageSchema.virtual('thumbnail').get(function() {
+    return this.url.replace('/upload', '/upload/w_200');
 })
 
-const opts = { toJSON: {virtuals: true}}
+const opts = { toJSON: { virtuals: true } }
 
 const CampgroundSchema = new Schema({
     title: String,
@@ -23,16 +23,14 @@ const CampgroundSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    reviews: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Review'
-        }
-    ]
-}, { timestamps: true } ,opts);
+    reviews: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Review'
+    }]
+}, { timestamps: true }, opts);
 
 
-CampgroundSchema.post('findOneAndDelete', async function (doc) {
+CampgroundSchema.post('findOneAndDelete', async function(doc) {
     if (doc) {
         await Review.deleteMany({
             _id: {

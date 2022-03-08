@@ -7,6 +7,22 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         unique: true
+    },
+    reviews: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Review'
+    }],
+    posts: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Campground'
+    }],
+    coin: {
+        type: Number,
+        default: 0
+    },
+    grade: {
+        type: Number,
+        default: 3
     }
 });
 

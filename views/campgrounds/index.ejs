@@ -1,24 +1,27 @@
 <% layout('layouts/boilerplate')%>
-<a class="btn btn-info mb-3" href="/campgrounds/new" target="_blank" style="width:100px">新 POST</a>
-    
-<div style="display:flex; justify-content:center; flex-direction: column; width:100%;">
-    <% for (let i = 0 ; i<campgrounds.length-1  ; i++){%>
-        <div class="card mb-3" >
-            <div class="row">
-                <a href="/campgrounds/<%=campgrounds[i]._id%>">
-                <div>
-                    <div class="card-body" style="padding-bottom: 10px;">
-                        <h5 class="card-title"><%= campgrounds[i].title %>  <small class="text-muted" style="font-size:14px; font-weight:200"> - <%= campgrounds[i].author.username%></small></h5>
-                        <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span>
-                        <span style="position: absolute; top:5px ; right:10px; color:#bbb"><% const r = campgrounds[i].reviews.length-1 %> <%= r+1 %> 💬</span>
-                            <% if (campgrounds[i].reviews[0]) { %>                              
-                                <span style="font-size:14px; color:#bbb">    ｜  <%= campgrounds[i].reviews[r].body %></span>
-                            <% } %> 
-                            
-                    </div>
-                </div></a>
+
+
+    <div class='index-loop'>
+        <a class="btn btn-info mb-3" href="/campgrounds/new" target="_blank" style="width:100px">新 POST</a>
+        <% for (let i = 0 ; i<campgrounds.length-1  ; i++){%>
+            <div class="card mb-3">
+                <div class="row">
+                    <a href="/campgrounds/<%=campgrounds[i]._id%>">
+                        <div>
+                            <div class="card-body" style="padding-bottom: 10px;">
+                                <h5 class="card-title">
+                                    <%= campgrounds[i].title %> <small class="text-muted" style="font-size:14px; font-weight:200"> - <%= campgrounds[i].author.username%></small></h5>
+                                <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span>
+                                <span style="position: absolute; top:5px ; right:10px; color:#bbb"><% const r = campgrounds[i].reviews.length-1 %> <%= r+1 %> 💬</span>
+                                <% if (campgrounds[i].reviews[0]) { %>
+                                    <span style="font-size:14px; color:#bbb">    ｜  <%= campgrounds[i].reviews[r].body %></span>
+                                    <% } %>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
-        </div>
-        <% }%>
+            <% }%>
+                <a class="btn btn-info mb-3" href="/campgrounds/new" target="_blank" style="width:100px">新 POST</a>
     </div>
-    <a class="btn btn-info mb-3" href="/campgrounds/new" target="_blank" style="width:100px">新 POST</a>

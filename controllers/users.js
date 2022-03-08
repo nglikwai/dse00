@@ -4,7 +4,7 @@ module.exports.renderRegister = (req, res) => {
     res.render('users/register');
 }
 
-module.exports.register = async (req, res, next) => {
+module.exports.register = async(req, res, next) => {
     try {
         const { email, username, password } = req.body;
         const user = new User({ email, username });
@@ -35,4 +35,13 @@ module.exports.logout = (req, res) => {
     req.logout();
     req.flash('success', "Goodbye!");
     res.redirect('/campgrounds');
+}
+
+module.exports.loadUser = async(req, res) => {
+    const user = await User.findById(req.params.id).populate('reviews').populate('posts');
+    if (!user) {
+        req.flash('error', 'User not found');
+        return res.redirect('/campgrounds');
+    }
+    res.render('users/user', { user });
 }

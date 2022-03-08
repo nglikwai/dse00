@@ -49,21 +49,21 @@ app.use(mongoSanitize({
     replaceWith: '_'
 }))
 
-const secret = process.env.SECRET || 'thisshouldbeabettersecret!' ;
+const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 
-const store =  MongoDBStore.create({
+const store = MongoDBStore.create({
     mongoUrl: dbUrl,
     secret,
-    touchAfter: 24*60*60
+    touchAfter: 24 * 60 * 60
 });
 
-store.on("error", function(e){
-    console.log("SESSION STORE ERROR" , e)
+store.on("error", function(e) {
+    console.log("SESSION STORE ERROR", e)
 })
 
 const sessionConfig = {
     store,
-    name:'session',
+    name: 'session',
     secret,
     resave: false,
     saveUninitialized: true,
@@ -101,6 +101,9 @@ app.get('/', (req, res) => {
     res.render('home')
 });
 
+app.get('/dse00coin', (req, res) => {
+    res.render('users/dse00coin')
+});
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404))
@@ -112,8 +115,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err })
 })
 
-const port = process.env.PORT || 3000 ;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Serving on port ${port}`)
 })
-

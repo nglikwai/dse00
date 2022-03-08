@@ -1,25 +1,26 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color:#cc0000; ">
     <div class="container-fluid">
-        <a class="navbar-brand ml-5" href="https://dse00.blogspot.com" style="font-weight:500; font-size:28px">DSE00</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand ml-5" href="https://dse00.blogspot.com" id="logo">DSE00</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link ml-3" href="https://dse00.blogspot.com/p/test_8.html">資源區</a>
-                <a class="nav-link ml-3" href="http://dse00.blogspot.com/p/core-cutoff.html">2021 Cut-off</a>
-                <a class="nav-link ml-3" href="http://dse00.blogspot.com/search/label/Tips">Tips</a>
-                <a class="nav-link ml-3" href="/campgrounds/new">新 POST</a>
+                <a href="https://dse00.blogspot.com/p/test_8.html">資源區</a>
+                <a href="http://dse00.blogspot.com/p/core-cutoff.html">2021 Cut-off</a>
+                <a href="http://dse00.blogspot.com/search/label/Tips">Tips</a>
+                <a href="/campgrounds/new">新 POST</a>
             </div>
             <div class="navbar-nav ml-auto">
                 <% if(!currentUser) {%>
-                <a class="nav-link mr-3" href="/login">登入</a>
-                <a class="nav-link mr-3" href="/register">注冊</a>
-                <% } else {%>
-                <a class="nav-link mr-5" href="/user/<%=currentUser._id  %> "><%= currentUser.username.toUpperCase() %> </a>
-                <a class="nav-link mr-5" href="/logout">登出</a>
-                <% } %>
+                    <a href="/login">登入</a>
+                    <a href="/register">注冊</a>
+                    <% } else {%>
+                        <a href="/user/<%=currentUser._id  %> ">
+                            <%= currentUser.username.toUpperCase() %>
+                        </a>
+                        <a href="/logout">登出</a>
+                        <% } %>
             </div>
         </div>
     </div>
