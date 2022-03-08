@@ -4,7 +4,7 @@
         <div class='index-loop'>
             <a class="btn btn-info mb-3" href="/campgrounds/new" target="_blank" style="width:100px">新 POST</a>
             <% for (let i = 0 ; i<campgrounds.length-1  ; i++){%>
-                <div class="card mb-3">
+                <div class="card mb-2">
                     <div class="row">
                         <a href="/campgrounds/<%=campgrounds[i]._id%>">
                             <div>
@@ -58,4 +58,5 @@
                                 <% } %>
 
         </div>
+
     </div>

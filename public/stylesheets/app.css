@@ -36,16 +36,16 @@ nav a:hover {
     margin-top: 10px;
 }
 
+.inner-container {
+    width: auto;
+    max-width: 1150px;
+    display: flex;
+}
+
 .index-loop {
     width: 550px;
     max-width: 700px;
     min-width: 400px;
-}
-
-.inner-container {
-    width: auto;
-    max-width: 1000px;
-    display: flex;
 }
 
 .grade {
