@@ -1,6 +1,7 @@
 body {
     background-color: rgb(255, 252, 248);
     background-repeat: no-repeat;
+    background-size: contain;
 }
 
 ffe0ae div {

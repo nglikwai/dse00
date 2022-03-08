@@ -13,8 +13,8 @@
             </div>
             <div class="navbar-nav ml-auto">
                 <% if(!currentUser) {%>
-                    <a href="/login">登入</a>
-                    <a href="/register">注冊</a>
+                    <a href="/login" target="_blank">登入</a>
+                    <a href="/register" target="_blank">注冊</a>
                     <% } else {%>
                         <a href="/dse00coin">
                             🪙 <b><%=currentUser.coin  %></b>

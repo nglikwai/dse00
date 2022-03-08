@@ -16,13 +16,13 @@ if (currentTime > 23 || currentTime < 7) {
     document.querySelector('nav').style.backgroundColor = 'transparent';
     const cards = document.querySelectorAll('.card');
     for (let card of cards) {
-        card.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+        card.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
     }
     const texts = document.querySelectorAll('.night-text');
     for (let text of texts) {
         text.style.color = '#888';
     }
-    document.querySelector('.user-info').style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+    document.querySelector('.user-info').style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
 
 
 }
