@@ -16,6 +16,13 @@
                     <a href="/login">登入</a>
                     <a href="/register">注冊</a>
                     <% } else {%>
+                        <a href="#">
+                            🪙 <b><%=currentUser.coin  %></b>
+                       </a>
+                        <a href="#">
+                            Lv. <%=currentUser.grade  %>
+                        </a>
+
                         <a href="/user/<%=currentUser._id  %> ">
                             <%= currentUser.username.toUpperCase() %>
                         </a>

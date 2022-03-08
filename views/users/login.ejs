@@ -1,42 +1,42 @@
 <% layout('layouts/boilerplate')%>
 
-<div class="container d-flex justify-content-center align-items-center mt-5">
-    <div class="row">
-        <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
-            <% if(!currentUser) {%>  
-            <div class="card shadow" >
-                <div class="p-5" style="display:flex; justify-content: center; align-items: center;">
-                <img src="https://lh3.googleusercontent.com/-Ve9bspLwIyI/YcWDABcAcMI/AAAAAAAA2Ig/sKB4a4T0bUs_CevmgUkZtGffdCRDFjHUgCNcBGAsYHQ/w165-h165/dse00%2Bicon.png"
-                    alt=""  /></div>
-                <div class="card-body">
-                                    
-                    <h5 class="card-title">登入</h5>
-                    <form action="/login" method="POST" class="validated-form" novalidate>
-                        <div class="mb-3">
-                            <label class="form-label" for="username">用戶名稱</label>
-                            <input class="form-control" type="text" id="username" name="username" autofocus required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
+    <div class="container d-flex justify-content-center align-items-center mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+                <% if(!currentUser) {%>
+                    <div class="card shadow">
+                        <div class="p-5" style="display:flex; justify-content: center; align-items: center;">
+                            <img src="https://lh3.googleusercontent.com/-Ve9bspLwIyI/YcWDABcAcMI/AAAAAAAA2Ig/sKB4a4T0bUs_CevmgUkZtGffdCRDFjHUgCNcBGAsYHQ/w165-h165/dse00%2Bicon.png" alt="" /></div>
+                        <div class="card-body">
+                            <form action="/login" method="POST" class="validated-form" novalidate>
+                                <div class="mb-3">
+                                    <label class="form-label" for="username">用戶名稱</label>
+                                    <input class="form-control" type="text" id="username" name="username" autofocus required>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                </div>
 
-                        <div class="mb-3">
-                            <label class="form-label" for="password">密碼</label>
-                            <input class="form-control" type="password" id="password" name="password" required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="password">密碼</label>
+                                    <input class="form-control" type="password" id="password" name="password" required>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                </div>
+                                <button class="btn btn-success btn-block">登入</button>
+                            </form>
+                            <a class="btn btn-info mt-3" href="/register">注冊</a>
+
+
                         </div>
-                        <button class="btn btn-success btn-block">登入</button>
-                    </form>
-                    
-                   
-                </div>
+                    </div>
+                    <% } else {%>
+                        <h1>
+                            <%= currentUser.username %>
+                        </h1>
+                        <a href="/campgrounds" class="btn btn-info">歡迎回來</a>
+                        <% } %>
             </div>
-            <% } else {%>
-                <h1><%= currentUser.username %> </h1>
-                <a href="/campgrounds" class="btn btn-info">歡迎回來</a>
-            <% } %>
         </div>
     </div>
-</div>
