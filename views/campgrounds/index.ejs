@@ -40,7 +40,7 @@
                         <div class="valid-feedback">
                             Looks good!
                         </div>
-                        <button class="btn dse00btn">送出！</button>
+                        <button class="btn dse00btn" id="sendbtn">送出！</button>
                     </div>
                     <div style="opacity: 0; position: absolute; top:0">
                         <textarea type="text" style="height:25px;color:#bbb" id="description" name="campground[description]">如題</textarea>
@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class='index-loop'>
-            <a class="btn dse00btn" href="/campgrounds/new">新 POST</a>
+            <a class="btn dse00btn" id="newpost" href="/campgrounds/new">新 POST</a>
             <% for (let i=0 ; i<campgrounds.length-1 ; i++){%>
                 <div class="card mb-2">
                     <div class="row">

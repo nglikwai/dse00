@@ -85,6 +85,10 @@ nav a:hover {
     margin-top: 40px;
 }
 
+#sendbtn {
+    float: right;
+}
+
 #level {
     color: rgb(255, 172, 172);
     padding: 0 9px;
@@ -131,6 +135,9 @@ nav a:hover {
     }
     .post-body {
         width: 100%;
+    }
+    #newpost {
+        display: none;
     }
 }
 
