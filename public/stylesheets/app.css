@@ -15,6 +15,11 @@ div {
 a {
     color: black;
     text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+a:hover {
+    color: #cc0000;
 }
 
 .dse00btn {
