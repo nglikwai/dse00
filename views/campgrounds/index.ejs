@@ -57,10 +57,10 @@
                         <a href="/campgrounds/<%=campgrounds[i]._id%>">
                             <div>
                                 <div class="card-body" style="padding-bottom: 10px;">
-                                    <h5 class="post-title">
+                                    <h6 class="post-title">
                                         <%= campgrounds[i].title %> <small class="text-muted" style="font-size:14px; font-weight:200"> - <%=
                                                     campgrounds[i].author.username%></small>
-                                    </h5>
+                                    </h6>
                                     <!-- <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span> -->
                                     <span style="position: absolute; top:5px ; right:10px; color:#bbb">
                                         <% const r=campgrounds[i].reviews.length-1 %>
