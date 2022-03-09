@@ -139,6 +139,9 @@ nav a:hover {
     #newpost {
         display: none;
     }
+    nav a {
+        line-height: 2.5rem;
+    }
 }
 
 .grey {
