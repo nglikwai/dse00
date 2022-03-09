@@ -18,3 +18,12 @@ if (currentTime > 23 || currentTime < 7) {
     lnk.rel = 'stylesheet';
     document.getElementsByTagName('head')[0].appendChild(lnk);
 }
+
+const darkmode = document.querySelector('#darkmode');
+
+
+darkmode.addEventListener('click', function() {
+    document.querySelector('body').style.backgroundColor = '#fffcf8'
+    document.querySelector('body').style.backgroundImage = 'url()'
+    document.querySelector('nav').style.backgroundColor = '#cc0000'
+})

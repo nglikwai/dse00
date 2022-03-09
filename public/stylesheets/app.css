@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(255, 252, 248);
+    background-color: #fffcf8;
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -107,4 +107,9 @@ nav a:hover {
 
 .grey {
     display: none
+}
+
+#darkmode {
+    font-size: 20px;
+    margin-right: 30px;
 }

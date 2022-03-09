@@ -24,41 +24,43 @@
 
     <div class='index-loop'>
         <button onclick="history.back()" id="backButton" class="btn btn-danger mb-3">Back</button>
-        <div class="user-info">
-            <h5> <a href="/dse00coin"> 🪙 :</a>
-                <span id="coin"><%= user.coin %></span>
-            </h5>
-            <h5> <a href="#">Grade  :</a> Lv.
-                <%= user.grade %>
-            </h5>
-        </div>
+        <div class="card p-3">
+            <div class="user-info" style="background-color:transparent; border:none">
+                <h5> <a href="/dse00coin"> 🪙 :</a>
+                    <span id="coin"><%= user.coin %></span>
+                </h5>
+                <h5> <a href="#">Grade  :</a> Lv.
+                    <%= user.grade %>
+                </h5>
+            </div>
 
-        <h3>Posts</h3>
-        <% for(let post of user.posts){ %>
-            <li>
-                <a href="/campgrounds/<%=post._id %> ">
-                    <%= post.title %>
-                </a>
+            <h3>Posts</h3>
+            <% for(let post of user.posts){ %>
+                <li>
+                    <a href="/campgrounds/<%=post._id %> ">
+                        <%= post.title %>
+                    </a>
 
-            </li>
-            <% } %>
+                </li>
+                <% } %>
 
-                <br>
-                <hr><br>
-                <h3>Reviews</h3>
-                <% for(let review of user.reviews){ %>
-                    <% if (review.post) { %>
-                        <p>
-                            <a href="/campgrounds/<%= review.post %> ">
-                                - <%= review.body %>
-                            </a>
-                        </p>
-                        <% }else{ %>
+                    <br>
+                    <hr><br>
+                    <h3>Reviews</h3>
+                    <% for(let review of user.reviews){ %>
+                        <% if (review.post) { %>
                             <p>
                                 <a href="/campgrounds/<%= review.post %> ">
+                                - <%= review.body %>
+                            </a>
+                            </p>
+                            <% }else{ %>
+                                <p>
+                                    <a href="/campgrounds/<%= review.post %> ">
                                    - <%= review.body %>
                                 </a>
-                            </p>
-                            <% }} %>
+                                </p>
+                                <% }} %>
 
+        </div>
     </div>
