@@ -27,7 +27,12 @@ const UserSchema = new Schema({
     identity: {
         type: String,
         default: 'member'
+    },
+    username:{
+        type:String,
+        default:'DSEJJ'
     }
+
 
 }, { timestamps: true });
 

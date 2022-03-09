@@ -80,13 +80,23 @@ nav a:hover {
 
 .user-info {
     width: 300px;
-    height: 220px;
+    height: 350px;
     padding: 20px;
-    border: #cc0000 solid 1px;
+
     border-radius: 6px;
     margin-left: 3%;
     margin-top: 60px;
 }
+#userbar{
+    background-color: #cc0000;
+    color: #fff;
+    padding:6px 10px;
+    border-radius: 5px;
+}
+#userbar a{
+    color:#fff;
+}
+
 
 .post-body {
     width: 1000px;
@@ -96,9 +106,6 @@ nav a:hover {
     .index-loop {
         width: 100%;
         padding: 0 10px;
-    }
-    .inner-container {
-        flex-direction: column;
     }
     .post-body {
         width: 100%;

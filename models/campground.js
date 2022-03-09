@@ -17,11 +17,14 @@ const CampgroundSchema = new Schema({
     title: String,
     images: [imageSchema],
     price: Number,
-    description: String,
-    location: String,
+    description: {
+        type: String,
+        default: '如題'
+    },
     author: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        default:'622874ccc8ed254d82edf591'
     },
     reviews: [{
         type: Schema.Types.ObjectId,
