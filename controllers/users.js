@@ -43,8 +43,16 @@ module.exports.loadUser = async(req, res) => {
         req.flash('error', 'User not found');
         return res.redirect('/campgrounds');
     }
-    console.log(user);
-    if (user.coin < 10) { user.grade = 2 } else if (user.coin < 20) { user.grade = 3 } else if (user.coin < 60) { user.grade = 4 } else if (user.coin > 100) { user.grade = 5 };
-    await user.save()
     res.render('users/user', { user });
+}
+
+module.exports.updateUser = async(req, res, next) => {
+    if (!req.user) {
+        return next()
+    }
+    const user = req.user;
+    if (user.coin < 2) { user.grade = 1 } else if (user.coin < 2) { user.grade = 2 } else if (user.coin < 20) { user.grade = 3 } else if (user.coin < 60) { user.grade = 4 } else if (user.coin < 100) { user.grade = 5 } else if (user.coin < 150) { user.grade = '5*' } else if (user.coin > 250) { user.grade = '5**' };
+    user.save();
+    console.log(user)
+    next();
 }

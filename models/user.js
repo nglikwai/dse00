@@ -21,16 +21,16 @@ const UserSchema = new Schema({
         default: 1
     },
     grade: {
-        type: Number,
+        type: String,
         default: 1
     },
     identity: {
         type: String,
         default: 'member'
     },
-    username:{
-        type:String,
-        default:'DSEJJ'
+    username: {
+        type: String,
+        default: 'DSEJJ'
     }
 
 

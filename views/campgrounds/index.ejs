@@ -5,8 +5,9 @@
         <div class="user-info">
             <div id="userbar">
                 <% if(!currentUser) {%>
-                    <b><a href="/login" target="_blank" style="margin:0 18%" 
-                                    id="loginbtn"><span id="loginbtn2">登入 - </span><span>DSEJJ</span></a></b>
+                    <b><a href="/login" target="_blank">
+                        <span style="margin:0 10px">DSEJJ</span>｜<span id="level" style="margin:0 10px">Lv.1</span>｜ <span> 🪙 × 0 </span></a></b>
+
                     <% } %>
                         <% if(currentUser) {%>
                             <b>
@@ -15,13 +16,13 @@
                                 <%= currentUser.username.toUpperCase() %>
                             </a>
                         </span>｜
-                        <span>Lv.
+                        <span id="level">Lv.
                             <% if(currentUser) {%>
                                 <%= currentUser.grade %>
                                     <% } %>
                         </span>｜
                         <a href="/dse00coin">
-                            <span>🪙 ×
+                            <span>🪙×
                                 <% if(currentUser) {%>
                                     <%= currentUser.coin %>
                                         <% } %>
@@ -33,7 +34,7 @@
 
             <div>
                 <form action="/campgrounds" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
-                    <div class="mb-3">
+                    <div>
                         <label class="form-label" for="title"><b>QUICK TALK</b></label>
                         <input style="height:60px;" class="form-control" type="text" id="title" name="campground[title]" required>
                         <div class="valid-feedback">
@@ -41,16 +42,8 @@
                         </div>
                         <button class="btn dse00btn">送出！</button>
                     </div>
-
-
-
-
-                    <div class="mb-3" style="opacity: 0;">
-
-                        <textarea class="form-control" type="text" style="height:25px;color:#bbb" id="description" name="campground[description]">如題</textarea>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
+                    <div style="opacity: 0; position: absolute; top:0">
+                        <textarea type="text" style="height:25px;color:#bbb" id="description" name="campground[description]">如題</textarea>
                     </div>
 
                 </form>
