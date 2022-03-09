@@ -22,7 +22,7 @@ a {
     border: #cc0000 solid 1px;
     border-radius: 5px;
     color: #cc0000;
-    padding: 8px 20px;
+    padding: 4px 16px;
     margin: 10px 0px;
 }
 
@@ -81,21 +81,30 @@ nav a:hover {
     width: 300px;
     height: 350px;
     padding: 20px;
-
     border-radius: 6px;
     margin-left: 3%;
-    margin-top: 60px;
-}
-#userbar{
-    background-color: #cc0000;
-    color: #fff;
-    padding:6px 10px;
-    border-radius: 5px;
-}
-#userbar a{
-    color:#fff;
+    margin-top: 40px;
 }
 
+#loginbtn2 {
+    opacity: 0;
+    transition-duration: 0.5s;
+}
+
+#loginbtn2:hover {
+    opacity: 1;
+}
+
+#userbar {
+    background-color: #cc0000;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 5px;
+}
+
+#userbar a {
+    color: #fff;
+}
 
 .post-body {
     width: 1000px;
@@ -106,13 +115,13 @@ nav a:hover {
         width: auto;
         padding: 0 10px;
     }
-
-    .index-loop{
-        width:100%;
+    .index-loop {
+        width: 100%;
         padding: 0 10px;
     }
-    .user-info{
-        width:100%;
+    .user-info {
+        width: 100%;
+        margin-top: 0;
     }
     .post-body {
         width: 100%;
