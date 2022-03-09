@@ -1,6 +1,63 @@
 <% layout('layouts/boilerplate')%>
 
     <div class="inner-container">
+        
+        <div class="user-info">
+            <div id="userbar">
+            <% if(!currentUser) {%>
+                <b><a href="/login" target="_blank" style="margin:0 30%" 
+                                    id="loginbtn">DSEJJ</a></b>
+                <% } %>
+                    <% if(currentUser) {%>
+                        <b>
+                        <span>
+                            <a href="/user/<%= currentUser._id %> ">
+                                <%= currentUser.username.toUpperCase() %>
+                            </a>
+                        </span>｜
+                        <span>Lv.
+                            <% if(currentUser) {%>
+                                <%= currentUser.grade %>
+                                    <% } %>
+                        </span>｜
+                        <a href="/dse00coin">
+                            <span>🪙 ×
+                                <% if(currentUser) {%>
+                                    <%= currentUser.coin %>
+                                        <% } %>
+                            </span>
+                        </a></b>
+                        <% } %>
+                    </div><br>
+                            
+
+                                    <div>
+                                        <form action="/campgrounds" method="POST" novalidate class="validated-form"
+                                            enctype="multipart/form-data">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="title">快速POST</label>
+                                                <input style="height:60px;" class="form-control" type="text" id="title"
+                                                    name="campground[title]" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                            </div>
+
+
+                                            <div class="mb-3">
+
+                                                <textarea class="form-control" type="text" style="height:25px;color:#bbb"
+                                                    id="description" name="campground[description]" >如題</textarea>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <button class="btn dse00btn">提交</button>
+                                            </div>
+                                        </form>
+                                    </div>
+        </div>
         <div class='index-loop'>
             <a class="btn dse00btn" href="/campgrounds/new">新 POST</a>
             <% for (let i=0 ; i<campgrounds.length-1 ; i++){%>
@@ -33,63 +90,9 @@
                     <a class="btn dse00btn" href="/campgrounds/new" target="_blank">新 POST</a>
         </div>
 
-        <div class="user-info">
-            <div id="userbar">
-            <% if(!currentUser) {%>
-                <a href="/login" target="_blank" style="margin:0 30%" 
-                                    id="loginbtn">未登入</a>
-                <% } %>
-                    <% if(currentUser) {%>
-                        <span>
-                            <a href="/user/<%= currentUser._id %> ">
-                                <%= currentUser.username.toUpperCase() %>
-                            </a>
-                        </span>｜
-                        <span>Lv.
-                            <% if(currentUser) {%>
-                                <%= currentUser.grade %>
-                                    <% } %>
-                        </span>｜
-                        <a href="/dse00coin">
-                            <span>🪙 ×
-                                <% if(currentUser) {%>
-                                    <%= currentUser.coin %>
-                                        <% } %>
-                            </span>
-                        </a>
-                        <% } %>
-                    </div><br>
-                            
-
-                                    <div>
-                                        <form action="/campgrounds" method="POST" novalidate class="validated-form"
-                                            enctype="multipart/form-data">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="title">快速POST</label>
-                                                <input style="height:60px;" class="form-control" type="text" id="title"
-                                                    name="campground[title]" required>
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                            </div>
-
-
-                                            <div class="mb-3">
-
-                                                <textarea class="form-control" type="text" style="height:25px;color:#bbb"
-                                                    id="description" name="campground[description]" >如題</textarea>
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <button class="btn dse00btn">提交</button>
-                                            </div>
-                                        </form>
-                                    </div>
-        </div>
+  
 
 
 
-        <div style="font-size:30px; color:transparent">dse00dse00dse00dse00</div>
+        
     </div>
