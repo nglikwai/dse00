@@ -48,11 +48,13 @@ a:hover {
     color: #cc0000;
     padding: 4px 16px;
     margin: 10px 0px;
+    opacity: 0.5;
 }
 
 .dse00btn:hover {
     background-color: #cc0000;
     color: white;
+    opacity: 1;
 }
 
 .dse00btn2 {
@@ -147,16 +149,16 @@ nav a:hover {
 .category2 {
     font-size: 14px;
     color: #d01717;
-    border: #d01717 1px solid;
     padding: 3px;
     border-radius: 3px;
-    opacity: 0.7;
+    opacity: 0.9;
     transition-duration: 0.5s;
 }
 
 .category2:hover {
     opacity: 1;
     color: #d01717;
+    border: #d01717 1px solid;
 }
 
 #sendbtn {
