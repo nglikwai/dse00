@@ -5,6 +5,14 @@ body {
     width:100%
 }
 
+.card{
+    background-color: transparent;
+    border:none;
+    border-bottom: #ddd solid 1px;
+    transition-duration: 0.5s;
+}
+
+
 nav {
     background-color: #cc0000;
 }
@@ -23,7 +31,7 @@ p{
 }
 
 a:hover {
-    color: #cc0000;
+    color: black;
 }
 
 .dse00btn {
@@ -41,7 +49,7 @@ a:hover {
 }
 
 .post-title:hover {
-    color: #cc0000;
+    color: black;
 }
 
 #logo {
@@ -112,6 +120,12 @@ nav a:hover {
     opacity: 1;
 }
 
+.userbar {
+    background-color: #cc0000;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 5px;
+}
 #userbar {
     background-color: #cc0000;
     color: #fff;
