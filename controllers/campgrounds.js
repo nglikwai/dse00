@@ -16,6 +16,19 @@ module.exports.index = async(req, res) => {
     res.render("campgrounds/index", { campgrounds });
 };
 
+module.exports.iframe = async(req, res) => {
+    const campgrounds = await Campground.find({})
+        .populate({
+            path: "reviews",
+            populate: {
+                path: "author",
+            },
+        })
+        .populate("author")
+        .sort({ updatedAt: -1 });
+    res.render("campgrounds/iframe", { campgrounds });
+};
+
 module.exports.renderNewForm = (req, res) => {
     res.render("campgrounds/new");
 };
@@ -36,6 +49,24 @@ module.exports.createCampground = async(req, res, next) => {
     await campground.save();
     req.flash("success", "成功建立POST");
     res.redirect(`/campgrounds/${campground._id}`);
+};
+
+module.exports.createCampgroundForIframe = async(req, res, next) => {
+    const campground = new Campground(req.body.campground);
+    campground.images = req.files.map((f) => ({
+        url: f.path,
+        filename: f.filename,
+    }));
+    if (req.user) {
+        campground.author = req.user._id;
+        const user = await User.findById(req.user._id);
+        user.posts.push(campground);
+        user.coin += 1;
+        await user.save();
+    }
+    await campground.save();
+    req.flash("success", "成功建立POST");
+    res.redirect(`/campgrounds/iframe`);
 };
 
 module.exports.showCampground = async(req, res) => {

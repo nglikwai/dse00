@@ -15,6 +15,10 @@ router.route('/')
     .post(upload.array('image'), validateCampground, user.updateUser, catchAsync(campgrounds.createCampground))
 
 
+router.route('/iframe')
+    .get(catchAsync(campgrounds.iframe))
+    .post(upload.array('image'), validateCampground, user.updateUser, catchAsync(campgrounds.createCampgroundForIframe))
+
 router.get('/new', campgrounds.renderNewForm)
 
 router.route('/:id')
