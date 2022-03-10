@@ -144,6 +144,21 @@ nav a:hover {
     color: #d01717;
 }
 
+.category2 {
+    font-size: 14px;
+    color: #d01717;
+    border: #d01717 1px solid;
+    padding: 3px;
+    border-radius: 3px;
+    opacity: 0.7;
+    transition-duration: 0.5s;
+}
+
+.category2:hover {
+    opacity: 1;
+    color: #d01717;
+}
+
 #sendbtn {
     float: right;
 }
