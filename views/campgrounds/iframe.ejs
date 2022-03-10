@@ -1,52 +1,78 @@
 <% layout('layouts/boilerplate')%>
 
     <style>
-        .navbar{
-            display:none;
+        .navbar {
+            display: none;
         }
-        .user-info{
-            position:fixed;
+
+        .user-info {
+            position: fixed;
             bottom: 0;
-            right:0;
-            width:100%;
+            right: 0;
+            width: 100%;
             background-color: #fffcf8;
             border-top: #ccc solid 1px;
-            padding: 10px 0 0 0 ;
+            padding: 10px 0 0 0;
         }
-        .dse00btn{
-            font-size: 14px;
-            padding:2px 5px;
+
+        .dse00btn {
+            font-size: 10px;
+            padding: 2px 5px;
             margin-top: 6px;
         }
-        .index-loop{
-            padding: 0;    
+
+        .index-loop {
+            padding: 0;
+           
         }
-        body{
-            padding:0;
+
+        body {
+            padding: 0;
         }
-        .post-title2{
-            font-size:14px;
-            margin: 5px 0px 15px 15px;
-            color: #555;
-            font-weight: 300;
+
+        .post-title2 {
+            font-size: 14px;
+            margin: 5px 15px 15px 15px;
+            color: #666;
+            font-weight: normal;
 
         }
-        .night-text{
-            margin:0 10px;
-            font-size:14px; 
-            color:#bbb
+
+        .night-text {
+            font-size: 14px;
+            color: #bbb;
+            padding-left: 15px;
         }
-        .card{
+
+        .card {
             background-color: transparent;
         }
 
+        .card{
+            border:none;
+            border-bottom: #ddd solid 1px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.0);
+            border-radius: 2px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
 
     </style>
     <div class="inner-container">
 
 
         <div class='index-loop'>
-            <div id="userbar">
+            <!-- <div id="userbar">
                 <% if(!currentUser) {%>
                     <b><a href="/login" target="_blank">
                         <span style="margin:0 10px;">DSEJJ</span>｜<span id="level" style="margin:0 10px">Lv.1</span>｜ <span> 🪙 × 0 </span></a></b>
@@ -72,28 +98,31 @@
                             </span>
                         </a></b>
                             <% } %>
-            </div><br>
+            </div><br> -->
             <a class="btn dse00btn" id="newpost" href="/campgrounds/new">新 POST</a>
             <% for (let i=0 ; i<campgrounds.length ; i++){%>
                 <div class="card mb-1">
                     <div>
                         <a href="/campgrounds/<%=campgrounds[i]._id  %> ">
                             <div>
-                                <div class="card-body2">
-                                    <span style="color:#bbb">
+                                <div>
+                                    <span style="color:#bbb; position: absolute; right:0">
                                         <% const r=campgrounds[i].reviews.length-1 %>
-                                         <span> 💬 <%= r+1 %> </span>
-                                    </span><span style="font-size:14px; font-weight:500; color:#a00000"> - <%=
-                                        campgrounds[i].author.username%></span>
+                                            <span> 💬 <%= r+1 %> </span>
+                                    </span>
                                     <div class="post-title2">
-                                        <%= campgrounds[i].title %> 
+                                        <p style="font-size:14px; font-weight:500; color:#a00000 ; margin-bottom: 4px;"><%=
+                                            campgrounds[i].author.username%>
+                                        </p>
+                                        <%= campgrounds[i].title %>
+                                        <% if (campgrounds[i].reviews[0]) { %>
+                                            <div class="night-text">➥<%=
+                                                    campgrounds[i].reviews[r].body %></div>
+                                            <% } %>
                                     </div>
                                     <!-- <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span> -->
 
-                                    <!-- <% if (campgrounds[i].reviews[0]) { %>
-                                        <div class="night-text"> ➥ <%=
-                                                campgrounds[i].reviews[r].body %></div>
-                                        <% } %> -->
+
 
                                 </div>
                             </div>
@@ -106,17 +135,20 @@
 
         <div class="user-info">
             <div>
-                <form action="/campgrounds/iframe" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <form action="/campgrounds/iframe" method="POST" novalidate class="validated-form"
+                    enctype="multipart/form-data">
                     <div>
 
-                        <input style="height:60px;" class="form-control" type="text" id="title" name="campground[title]" required>
+                        <textarea style="height:60px;" class="form-control" type="text"  id="title" name="campground[title]"
+                            required> </textarea>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
-                        <button class="btn dse00btn" id="sendbtn">送出！</button>
+                        <button class="btn dse00btn" id="sendbtn">send</button>
                     </div>
                     <div style="opacity: 0; position: absolute; top:0">
-                        <textarea type="text" style="height:25px;color:#bbb" id="description" name="campground[description]">如題</textarea>
+                        <textarea type="text" style="height:25px;color:#bbb" id="description"
+                            name="campground[description]">如題</textarea>
                     </div>
 
                 </form>
