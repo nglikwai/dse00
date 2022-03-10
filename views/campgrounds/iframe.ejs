@@ -9,13 +9,33 @@
             bottom: 0;
             background-color: #fffcf8;
             border-top: #ddd solid 1px;
-            padding: 10px;
+            padding: 10px 0 ;
         }
         .dse00btn{
             font-size: 14px;
             padding:2px 5px;
             margin-top: 6px;
         }
+        .index-loop{
+            padding: 0;    
+        }
+        body{
+            padding:0;
+        }
+        .post-title2{
+            font-size:14px;
+            margin: 5px 0px 10px 15px;
+            color: #444;
+            font-weight: 300;
+
+        }
+        .night-text{
+            margin:0 10px;
+            font-size:14px; 
+            color:#bbb
+        }
+
+
     </style>
     <div class="inner-container">
 
@@ -24,7 +44,7 @@
             <div id="userbar">
                 <% if(!currentUser) {%>
                     <b><a href="/login" target="_blank">
-                        <span style="margin:0 10px">DSEJJ</span>｜<span id="level" style="margin:0 10px">Lv.1</span>｜ <span> 🪙 × 0 </span></a></b>
+                        <span style="margin:0 10px;">DSEJJ</span>｜<span id="level" style="margin:0 10px">Lv.1</span>｜ <span> 🪙 × 0 </span></a></b>
 
                     <% } %>
                         <% if(currentUser) {%>
@@ -50,24 +70,25 @@
             </div><br>
             <a class="btn dse00btn" id="newpost" href="/campgrounds/new">新 POST</a>
             <% for (let i=0 ; i<campgrounds.length ; i++){%>
-                <div class="card mb-2">
+                <div class="card mb-1">
                     <div>
-                        <a href="/campgrounds/<%=campgrounds[i]._id%>">
+                        <a href="/campgrounds/<%=campgrounds[i]._id  %> ">
                             <div>
-                                <div class="card-body" style="padding-bottom: 10px;">
-                                    <h6 class="post-title">
-                                        <%= campgrounds[i].title %> <small class="text-muted" style="font-size:14px; font-weight:200"> - <%=
-                                                    campgrounds[i].author.username%></small>
-                                    </h6>
-                                    <!-- <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span> -->
-                                    <span style="position: absolute; top:5px ; right:10px; color:#bbb">
+                                <div class="card-body2">
+                                    <span style="color:#bbb">
                                         <% const r=campgrounds[i].reviews.length-1 %>
                                             <%= r+1 %> 💬
-                                    </span>
-                                    <% if (campgrounds[i].reviews[0]) { %>
-                                        <span style="font-size:14px; color:#bbb" class="night-text"> ➥ <%=
-                                                campgrounds[i].reviews[r].body %></span>
-                                        <% } %>
+                                    </span><small class="text-muted" style="font-size:14px; font-weight:200; color:#cc0000"> - <%=
+                                        campgrounds[i].author.username%></small>
+                                    <div class="post-title2">
+                                        <%= campgrounds[i].title %> 
+                                    </div>
+                                    <!-- <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span> -->
+
+                                    <!-- <% if (campgrounds[i].reviews[0]) { %>
+                                        <div class="night-text"> ➥ <%=
+                                                campgrounds[i].reviews[r].body %></div>
+                                        <% } %> -->
 
                                 </div>
                             </div>
