@@ -26,8 +26,8 @@
         }
         .post-title2{
             font-size:14px;
-            margin: 5px 0px 10px 15px;
-            color: #444;
+            margin: 5px 0px 15px 15px;
+            color: #555;
             font-weight: 300;
 
         }
@@ -82,9 +82,9 @@
                                 <div class="card-body2">
                                     <span style="color:#bbb">
                                         <% const r=campgrounds[i].reviews.length-1 %>
-                                        💬 <%= r+1 %> 
-                                    </span><small class="text-muted" style="font-size:14px; font-weight:200; color:#cc0000"> - <%=
-                                        campgrounds[i].author.username%></small>
+                                         <span> 💬 <%= r+1 %> </span>
+                                    </span><span style="font-size:14px; font-weight:500; color:#a00000"> - <%=
+                                        campgrounds[i].author.username%></span>
                                     <div class="post-title2">
                                         <%= campgrounds[i].title %> 
                                     </div>
