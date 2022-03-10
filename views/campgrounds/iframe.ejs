@@ -7,9 +7,10 @@
         .user-info{
             position:fixed;
             bottom: 0;
+            width:100%;
             background-color: #fffcf8;
             border-top: #ddd solid 1px;
-            padding: 10px 0 ;
+            padding: 10px 0 0 0 ;
         }
         .dse00btn{
             font-size: 14px;
@@ -33,6 +34,9 @@
             margin:0 10px;
             font-size:14px; 
             color:#bbb
+        }
+        .card{
+            background-color: transparent;
         }
 
 
@@ -77,7 +81,7 @@
                                 <div class="card-body2">
                                     <span style="color:#bbb">
                                         <% const r=campgrounds[i].reviews.length-1 %>
-                                            <%= r+1 %> 💬
+                                        💬 <%= r+1 %> 
                                     </span><small class="text-muted" style="font-size:14px; font-weight:200; color:#cc0000"> - <%=
                                         campgrounds[i].author.username%></small>
                                     <div class="post-title2">
