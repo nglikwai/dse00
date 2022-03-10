@@ -19,6 +19,11 @@ router.route('/iframe')
     .get(catchAsync(campgrounds.iframe))
     .post(upload.array('image'), validateCampground, user.updateUser, catchAsync(campgrounds.createCampgroundForIframe))
 
+router.route('/iframe/:id')
+    .get(catchAsync(campgrounds.showIframeCampground))
+    .put(isLoggedIn, isAuthor, upload.array('image'), validateCampground, user.updateUser, catchAsync(campgrounds.updateIframeCampground))
+    .delete(isLoggedIn, isAuthor, catchAsync(campgrounds.deleteIframeCampground));
+
 router.get('/new', campgrounds.renderNewForm)
 
 router.route('/:id')

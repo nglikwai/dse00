@@ -85,16 +85,16 @@
             </form>
 
             <% for(let review of campground.reviews) { %>
-                <div class="card mb-3 card2">
+                <div class="mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">
+                        <h5>
                             <a href="/user/<%= review.author._id %> ">
                                 <%= review.author.username%>
                                     <span class="grade">- Lv <%= review.author.grade %></span>
                             </a>
                         </h5>
                         <!-- <h6 class="card-subtitle mb-2 text-muted">By <%= review.author.username%></h6> -->
-                        <p class="card-text">
+                        <p>
                             <%= review.body %>
                         </p>
                         <% if(currentUser) {%>

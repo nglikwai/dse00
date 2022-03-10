@@ -85,6 +85,22 @@ module.exports.showCampground = async(req, res) => {
     res.render("campgrounds/show", { campground });
 };
 
+module.exports.showIframeCampground = async(req, res) => {
+    const campground = await Campground.findById(req.params.id)
+        .populate({
+            path: "reviews",
+            populate: {
+                path: "author",
+            },
+        })
+        .populate("author");
+    if (!campground) {
+        req.flash("error", "Cannot find that POST!");
+        return res.redirect("/campgrounds");
+    }
+    res.render("campgrounds/showIframe", { campground });
+};
+
 module.exports.renderEditForm = async(req, res) => {
     const { id } = req.params;
     const campground = await Campground.findById(id);
@@ -112,7 +128,27 @@ module.exports.updateCampground = async(req, res) => {
         });
     }
     req.flash("success", "成功更新");
-    res.redirect(`/campgrounds/${campground._id}`);
+    res.redirect(`/campgrounds/iframe/${campground._id}`);
+};
+
+module.exports.updateIframeCampground = async(req, res) => {
+    const { id } = req.params;
+    const campground = await Campground.findByIdAndUpdate(id, {
+        ...req.body.campground,
+    });
+    const imgs = req.files.map((f) => ({ url: f.path, filename: f.filename }));
+    campground.images.push(...imgs);
+    await campground.save();
+    if (req.body.deleteImages) {
+        for (let filename of req.body.deleteImages) {
+            cloudinary.uploader.destroy(filename);
+        }
+        await campground.updateOne({
+            $pull: { images: { filename: { $in: req.body.deleteImages } } },
+        });
+    }
+    req.flash("success", "成功更新");
+    res.redirect(`/campgrounds/iframe/${campground._id}`);
 };
 
 module.exports.deleteCampground = async(req, res) => {
@@ -123,4 +159,14 @@ module.exports.deleteCampground = async(req, res) => {
     await Campground.findByIdAndDelete(id);
     req.flash("success", "成功刪除");
     res.redirect("/campgrounds");
+};
+
+module.exports.deleteIframeCampground = async(req, res) => {
+    const { id } = req.params;
+    const user = await User.findById(req.user._id);
+    user.coin -= 1;
+    await user.save();
+    await Campground.findByIdAndDelete(id);
+    req.flash("success", "成功刪除");
+    res.redirect("/campgrounds/iframe");
 };

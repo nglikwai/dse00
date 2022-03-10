@@ -18,6 +18,9 @@ a {
     text-decoration: none;
     transition-duration: 0.5s;
 }
+p{
+    color:#555
+}
 
 a:hover {
     color: #cc0000;

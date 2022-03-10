@@ -10,6 +10,10 @@ const catchAsync = require('../utils/catchAsync');
 
 router.post('/', validateReview, user.updateUser, catchAsync(reviews.createReview))
 
-router.delete('/:reviewId', isLoggedIn, isReviewAuthor, user.updateUser, catchAsync(reviews.deleteReview))
+router.post('/iframe', validateReview, user.updateUser, catchAsync(reviews.createIframeReview))
+
+router.delete('/', isLoggedIn, isReviewAuthor, user.updateUser, catchAsync(reviews.deleteReview))
+
+router.delete('/iframe/:reviewId', isLoggedIn, isReviewAuthor, user.updateUser, catchAsync(reviews.deleteIframeReview))
 
 module.exports = router;
