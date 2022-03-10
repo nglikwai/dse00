@@ -1,4 +1,5 @@
 <% layout('layouts/boilerplate')%>
+    <button onclick="history.back()" id="backButton" class="btn dse00btn mb-3">Back</button>
     <h1 class="mt-3">
         <%= user.username.toUpperCase() %>
     </h1>
@@ -23,7 +24,7 @@
     </style>
 
     <div class='index-loop'>
-        <button onclick="history.back()" id="backButton" class="btn btn-danger mb-3">Back</button>
+
         <div>
             <div class="userpage">
                 <span style="font-size: 20px;"> Grade : Lv.</span>
@@ -38,7 +39,7 @@
 
 
 
-                <h3>Posts</h3>
+                <h4>Posts</h4>
                 <% for(let post of user.posts){ %>
                     <li>
                         <a href="/campgrounds/<%=post._id %> ">
@@ -50,7 +51,7 @@
 
                         <br>
                         <hr><br>
-                        <h3>Reviews</h3>
+                        <h4>Reviews</h4>
                         <% for(let review of user.reviews){ %>
                             <% if (review.post) { %>
                                 <p>

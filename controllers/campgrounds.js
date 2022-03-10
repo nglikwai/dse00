@@ -4,34 +4,66 @@ const User = require("../models/user");
 const { cloudinary } = require("../cloudinary");
 
 module.exports.index = async(req, res) => {
-    const campgrounds = await Campground.find({})
-        .populate({
-            path: "reviews",
-            populate: {
-                path: "author",
-            },
-        })
-        .populate("author")
-        .sort({ updatedAt: -1 });
+    const limit = req.query.limit || 50;
+    const page = req.query.page || 1;
+    const options = {
+        sort: { updatedAt: -1 },
+        populate: ['author', 'reviews'],
+        limit,
+        page,
+    }
+    const data = await Campground.paginate({}, options);
+    const campgrounds = data.docs;
     res.render("campgrounds/index", { campgrounds });
 };
 
+module.exports.indexSearch = async(req, res) => {
+    const limit = req.query.limit || 50;
+    const page = req.query.page || 1;
+    const category = req.query.category;
+    const options = {
+        sort: { updatedAt: -1 },
+        populate: ['author', 'reviews'],
+        limit,
+        page,
+    }
+    const data = await Campground.paginate({ category }, options);
+    const campgrounds = data.docs;
+    res.render("campgrounds/index", { campgrounds });
+};
+
+
+// module.exports.index = async(req, res) => {
+//     const campgrounds = await Campground.find({})
+//         .populate({
+//             path: "reviews",
+//             populate: {
+//                 path: "author",
+//             },
+//         })
+//         .populate("author")
+//         .sort({ updatedAt: -1 });
+//     res.render("campgrounds/index", { campgrounds });
+// };
+
 module.exports.iframe = async(req, res) => {
-    const campgrounds = await Campground.find({})
-        .populate({
-            path: "reviews",
-            populate: {
-                path: "author",
-            },
-        })
-        .populate("author")
-        .sort({ updatedAt: -1 });
+    const limit = req.query.limit || 50;
+    const page = req.query.page || 1;
+    const options = {
+        sort: { updatedAt: -1 },
+        populate: ['author', 'reviews'],
+        limit,
+        page,
+    }
+    const data = await Campground.paginate({}, options);
+    const campgrounds = data.docs;
     res.render("campgrounds/iframe", { campgrounds });
 };
 
 module.exports.renderNewForm = (req, res) => {
     res.render("campgrounds/new");
 };
+
 
 module.exports.createCampground = async(req, res, next) => {
     const campground = new Campground(req.body.campground);
@@ -47,6 +79,7 @@ module.exports.createCampground = async(req, res, next) => {
         await user.save();
     }
     await campground.save();
+    console.log(campground)
     req.flash("success", "成功建立POST");
     res.redirect(`/campgrounds/${campground._id}`);
 };

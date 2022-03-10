@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Review = require('./review')
 const Schema = mongoose.Schema;
+const mongoosePaginate = require('mongoose-paginate-v2')
 
 const imageSchema = new Schema({
     url: String,
@@ -24,7 +25,11 @@ const CampgroundSchema = new Schema({
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        default:'622874ccc8ed254d82edf591'
+        default: '622874ccc8ed254d82edf591'
+    },
+    category: {
+        type: String,
+        default: '吹水'
     },
     reviews: [{
         type: Schema.Types.ObjectId,
@@ -42,6 +47,8 @@ CampgroundSchema.post('findOneAndDelete', async function(doc) {
         })
     }
 })
+
+CampgroundSchema.plugin(mongoosePaginate);
 
 
 

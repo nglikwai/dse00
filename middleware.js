@@ -44,6 +44,14 @@ module.exports.isAdmin = async(req, res, next) => {
     next();
 }
 
+module.exports.checkLogin = async(req, res, next) => {
+    if (!req.user) {
+        req.flash("success", "登入DSE00以保存積分");
+        return next()
+    }
+    next();
+}
+
 module.exports.isReviewAuthor = async(req, res, next) => {
     const { id, reviewId } = req.params;
     const review = await Review.findById(reviewId);

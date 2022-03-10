@@ -2,16 +2,15 @@ body {
     background-color: #fffcf8;
     background-repeat: no-repeat;
     background-size: 100%;
-    width:100%
+    width: 100%
 }
 
-.card{
+.card {
     background-color: transparent;
-    border:none;
+    border: none;
     border-bottom: #ddd solid 1px;
     transition-duration: 0.5s;
 }
-
 
 nav {
     background-color: #cc0000;
@@ -26,12 +25,20 @@ a {
     text-decoration: none;
     transition-duration: 0.5s;
 }
-p{
-    color:#555
+
+p {
+    color: #555
 }
 
 a:hover {
     color: black;
+}
+
+.muted {
+    font-size: 13px;
+    color: #ccc;
+    float: right;
+    margin-bottom: 10px;
 }
 
 .dse00btn {
@@ -46,6 +53,24 @@ a:hover {
 .dse00btn:hover {
     background-color: #cc0000;
     color: white;
+}
+
+.dse00btn2 {
+    background-color: #cc0000;
+    color: white;
+    border: #cc0000 solid 1px;
+    border-radius: 5px;
+    padding: 4px 16px;
+    margin: 10px 0px;
+}
+
+.dse00btn2:hover {
+    background-color: transparent;
+    color: #cc0000;
+}
+
+.post-title {
+    font-size: 16.5px;
 }
 
 .post-title:hover {
@@ -87,6 +112,7 @@ nav a:hover {
 .index-loop {
     width: auto;
     max-width: 500px;
+    min-width: 500px;
 }
 
 .grade {
@@ -100,6 +126,22 @@ nav a:hover {
     border-radius: 6px;
     margin-left: 3%;
     margin-top: 34px;
+}
+
+.category {
+    font-size: 14px;
+    color: #d01717;
+    margin-left: 20px;
+    border: #d01717 1px solid;
+    padding: 3px;
+    border-radius: 3px;
+    opacity: 0.7;
+    transition-duration: 0.5s;
+}
+
+.category:hover {
+    opacity: 1;
+    color: #d01717;
 }
 
 #sendbtn {
@@ -126,6 +168,7 @@ nav a:hover {
     padding: 6px 10px;
     border-radius: 5px;
 }
+
 #userbar {
     background-color: #cc0000;
     color: #fff;
@@ -148,12 +191,12 @@ nav a:hover {
     .index-loop {
         width: 100%;
         max-width: 1000px;
+        min-width: 0;
         padding: 0 10px;
     }
     .card-body {
-        width:100%;
+        width: 100%;
     }
-
     .user-info {
         width: 100%;
         margin-top: 0;
@@ -169,7 +212,6 @@ nav a:hover {
     nav a {
         line-height: 2.5rem;
     }
-
 }
 
 .grey {
@@ -182,9 +224,7 @@ nav a:hover {
 }
 
 .userpage {
-    background-color: white;
     padding: 30px;
-    border: #eee 1px solid;
     border-radius: 5px;
     width: auto;
 }
