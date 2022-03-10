@@ -20,7 +20,7 @@
         .user-info:hover {
             opacity: 1;
         }
-    
+
 
         .dse00btn {
             font-size: 10px;
@@ -30,7 +30,7 @@
 
         .index-loop {
             padding: 0;
-           
+
         }
 
         body {
@@ -55,8 +55,8 @@
             background-color: transparent;
         }
 
-        .card{
-            border:none;
+        .card {
+            border: none;
             border-bottom: #ddd solid 1px;
         }
 
@@ -74,6 +74,13 @@
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         }
 
+        .move {
+            transition-duration: 0.3s;
+        }
+
+        .move:active {
+            background-color: #ddd;
+        }
     </style>
     <div class="inner-container">
 
@@ -109,7 +116,7 @@
             <a class="btn dse00btn" id="newpost" href="/campgrounds/new">新 POST</a>
             <% for (let i=0 ; i<campgrounds.length ; i++){%>
                 <div class="card mb-1">
-                    <div>
+                    <div class="move">
                         <a href="/campgrounds/iframe/<%=campgrounds[i]._id  %> ">
                             <div>
                                 <div>
@@ -118,14 +125,14 @@
                                             <span> 💬 <%= r+1 %> </span>
                                     </span>
                                     <div class="post-title2">
-                                        <p style="font-size:14px; font-weight:500; color:#a00000 ; margin-bottom: 4px;"><%=
-                                            campgrounds[i].author.username%>
+                                        <p style="font-size:14px; font-weight:500; color:#a00000 ; margin-bottom: 4px;">
+                                            <%= campgrounds[i].author.username%>
                                         </p>
                                         <%= campgrounds[i].title %>
-                                        <% if (campgrounds[i].reviews[0]) { %>
-                                            <div class="night-text">➥<%=
-                                                    campgrounds[i].reviews[r].body %></div>
-                                            <% } %>
+                                            <% if (campgrounds[i].reviews[0]) { %>
+                                                <div class="night-text">➥<%= campgrounds[i].reviews[r].body %>
+                                                </div>
+                                                <% } %>
                                     </div>
                                     <!-- <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span> -->
 
@@ -145,8 +152,8 @@
                     enctype="multipart/form-data">
                     <div>
 
-                        <textarea style="height:65px;" class="form-control" type="text"  id="title" name="campground[title]"
-                            required> </textarea>
+                        <textarea style="height:65px;" class="form-control" type="text" id="title"
+                            name="campground[title]" required> </textarea>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
