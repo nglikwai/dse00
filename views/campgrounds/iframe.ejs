@@ -13,7 +13,14 @@
             background-color: #fffcf8;
             border-top: #ccc solid 1px;
             padding: 10px 0 0 0;
+            opacity: 0.8;
+            transition-duration: 0.6s;
         }
+
+        .user-info:hover {
+            opacity: 1;
+        }
+    
 
         .dse00btn {
             font-size: 10px;
@@ -130,7 +137,6 @@
                     </div>
                 </div>
                 <% }%>
-                    <a class="btn dse00btn" href="/campgrounds/new" target="_blank">新 POST</a>
         </div>
 
         <div class="user-info">
@@ -139,7 +145,7 @@
                     enctype="multipart/form-data">
                     <div>
 
-                        <textarea style="height:60px;" class="form-control" type="text"  id="title" name="campground[title]"
+                        <textarea style="height:65px;" class="form-control" type="text"  id="title" name="campground[title]"
                             required> </textarea>
                         <div class="valid-feedback">
                             Looks good!
