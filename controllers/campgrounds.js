@@ -73,12 +73,12 @@ module.exports.createCampground = async (req, res, next) => {
     campground.author = req.user._id;
     const user = await User.findById(req.user._id);
     user.posts.push(campground);
-    user.coin += 1;
+    user.coin += 2;
     await user.save();
   }
   await campground.save();
   console.log(campground);
-  req.flash("success", "成功建立POST");
+  req.flash("success", "成功建立POST，🪙 + 2 ");
   res.redirect(`/campgrounds/${campground._id}`);
 };
 
@@ -92,7 +92,7 @@ module.exports.createCampgroundForIframe = async (req, res, next) => {
     campground.author = req.user._id;
     const user = await User.findById(req.user._id);
     user.posts.push(campground);
-    user.coin += 1;
+    user.coin += 2;
     await user.save();
   }
   await campground.save();
@@ -185,7 +185,7 @@ module.exports.updateIframeCampground = async (req, res) => {
 module.exports.deleteCampground = async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(req.user._id);
-  user.coin -= 1;
+  user.coin -= 2;
   await user.save();
   await Campground.findByIdAndDelete(id);
   req.flash("success", "成功刪除");
@@ -195,7 +195,7 @@ module.exports.deleteCampground = async (req, res) => {
 module.exports.deleteIframeCampground = async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(req.user._id);
-  user.coin -= 1;
+  user.coin -= 2;
   await user.save();
   await Campground.findByIdAndDelete(id);
   req.flash("success", "成功刪除");

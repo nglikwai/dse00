@@ -20,7 +20,6 @@ const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
 
-
 const dayjs = require('dayjs');
 dayjs().format();
 

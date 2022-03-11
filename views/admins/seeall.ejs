@@ -1,74 +1,42 @@
 <% layout('layouts/boilerplate')%>
-
-    <style>
-        td {
-            width: auto;
-            padding: 3px 10px;
-            border-bottom: 1px solid;
-            border-color: #ddd;
-        }
-    </style>
-    <table>
-        <tr>
-            <td>identity</td>
-            <td>user</td>
-            <td>posts</td>
-            <td>reviews</td>
-            <td>grade</td>
-            <td>coins</td>
-            <td>posts</td>
-            <td>reviews</td>
-            <td>createdAt</td>
-        </tr>
-        <% for(let user of users) { %>
-            <tr>
-                <td>
-                    <%= user.identity.substring(0,1).toUpperCase() %>
-                </td>
-                <td>
-                    <a href="/user/<%= user._id %>">
-                        <%= user.username %>
-                    </a>
-                </td>
-                <td>
-                    <%= user.posts.length %>
-                </td>
-                <td>
-                    <%= user.reviews.length %>
-                </td>
-                <td>
-                    Lv
-                    <%= user.grade %>
-                </td>
-                <td> 🪙
-                    <%= user.coin %>
-                </td>
-                <td>
-                    <% for( let post of user.posts ) { %>
-                        <p>
-                            -
-                            <a href="/campgrounds/<%= post._id %> ">
-                                <%= post.title %>
-                            </a>
-                        </p>
-                        <% } %>
-                </td>
-                <td>
-
-                    <% for( let review of user.reviews ) { %>
-                        <p>
-                            -
-                            <%= review.body %>
-                        </p>
-                        <% } %>
-                </td>
-                <td>
-                    <%= user.createdAt %>
-                </td>
-            </tr>
+<link rel="stylesheet" href="/stylesheets/admin.css">
 
 
 
-            </li>
-            <% } %>
-    </table>
+<div class="user-container">
+    <% for(let user of users) { %>
+        <div class="user-box">
+            <div><b><a href="/user/<%= user._id %>"><%= user.username %></a></b></div>
+            <div><%= user.identity %></div>
+            <div>Lv. <%= user.grade %> ｜ 🪙 <%= user.coin %></div>
+            <div>Post: <%= user.posts.length %></div>
+            <div>Reviews: <%= user.reviews.length %></div>
+            <div>
+                <% if (user.createdAt) { %>
+                <div>注冊日期：<%= user.createdAt.toLocaleString() %></div>
+                <% } %>
+            </div>
+            <div>
+                <% if (user.updatedAt) { %>
+                <div>最後活動：<%= user.updatedAt.toLocaleString() %> </div>
+                <% } %>
+            </div>
+            <div><b>Post</b>
+                <% for( let post of user.posts ) { %>
+                    <div><a href="/campgrounds/<%= post._id %> ">
+                        - <%= post.title %>
+                    </a></div>
+                    <% } %> 
+            </div>
+            <div><b>Reviews</b>
+                <% for( let review of user.reviews ) { %>
+                    <div><a href="/campgrounds/<%= review.post %> ">
+                        - <%= review.body %>
+                    </a></div>
+                    <% } %> 
+
+            </div>
+
+        </div>
+    <% } %>
+</div>

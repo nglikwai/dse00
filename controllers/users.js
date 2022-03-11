@@ -51,8 +51,13 @@ module.exports.updateUser = async(req, res, next) => {
         return next()
     }
     const user = req.user;
+    const a = user.grade;
     if (user.coin < 2) { user.grade = 1 } else if (user.coin < 5) { user.grade = 2 } else if (user.coin < 20) { user.grade = 3 } else if (user.coin < 60) { user.grade = 4 } else if (user.coin < 100) { user.grade = 5 } else if (user.coin < 150) { user.grade = '5*' } else if (user.coin > 250) { user.grade = '5**' };
     user.save();
+    const b = user.grade;
+    if(a !== b){
+        req.flash('success' , `恭喜你，升到 Lv. ${b} 了！`)
+    }
     console.log(user)
     next();
 }
