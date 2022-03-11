@@ -1,0 +1,126 @@
+<% layout('layouts/boilerplate')%>
+
+    </script>
+    <!-- <link rel="stylesheet" href="/stylesheets/stars.css"> -->
+    <link rel="stylesheet" href="/stylesheets/show.css">
+    <style>
+        .navbar {
+            display: none;
+        }
+    </style>
+
+    <div class="index-loop">
+        <div>
+            <a href="/campgrounds/iframe" class="btn dse00btn">Back</a>
+
+            <div id="campgroundCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <% campground.images.forEach((img, i)=> { %>
+                        <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
+                            <img src="<%= img.url%>" class="d-block w-100" alt="">
+                        </div>
+                        ƒ
+                        <% }) %>
+                </div>
+                <% if(campground.images.length> 1) {%>
+                    <a class="carousel-control-prev" href="#campgroundCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">上</span>
+                    </a>
+                    <a class="carousel-control-next" href="#campgroundCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">下</span>
+                    </a>
+                    <% } %>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title m-3">
+                        <%= campground.title%>
+                    </h5>
+                    <p class="card-text m-3 mb-5 mt-5">
+                        <%= campground.description%>
+                    </p>
+                </div>
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item">樓主:
+                        <a href="/user/<%= campground.author._id %> ">
+                            <b>
+                                <%= campground.author.username.toUpperCase()%>
+                            </b>
+                            <span class="grade">- Lv <%=campground.author.grade %></span>
+                        </a>
+                    </li>
+
+                </ul>
+                <% if(currentUser) {%>
+                    <% if (campground.author.equals(currentUser._id) || currentUser.identity=='admin' ) { %>
+                        <div class="card-body">
+                            <a class="card-link btn btn-info" href="/campgrounds/<%=campground._id%>/edit">修改</a>
+                            <form class="d-inline" action="/campgrounds/iframe/<%=campground._id%>?_method=DELETE"
+                                method="POST">
+                                <button class="btn btn-danger">刪除</button>
+                            </form>
+                        </div>
+                        <% } %>
+                            <% } %>
+                                <!-- <div class="card-footer text-muted">
+                            2 days ago
+                        </div> -->
+            </div>
+
+
+
+            <h2>留言</h2>
+
+
+            <form action="/campgrounds/<%=campground._id%>/reviews/iframe" method="POST" class="mb-3 validated-form"
+                novalidate>
+                <!-- <div class="mb-3">
+                <label class="form-label" for="rating">Rating</label>
+                <input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating">
+            </div> -->
+
+                <div class="mb-3">
+                    <label class="form-label mt-4 mb-4" for="body">留言文字</label>
+                    <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <button class="btn btn-success">提交</button>
+            </form>
+
+            <% for(let review of campground.reviews) { %>
+                <div class="mb-3">
+                    <div class="card-body">
+                        <h5>
+                            <a href="/user/<%= review.author._id %> ">
+                                <%= review.author.username%>
+                                    <span class="grade">- Lv <%= review.author.grade %></span>
+                            </a>
+                        </h5>
+                        <!-- <h6 class="card-subtitle mb-2 text-muted">By <%= review.author.username%></h6> -->
+                        <p>
+                            <%= review.body %>
+                        </p>
+                        <% if(currentUser) {%>
+                            <% if (review.author.equals(currentUser._id) || currentUser.identity=='admin' ) { %>
+                                <form
+                                    action="/campgrounds/<%=campground._id%>/reviews/iframe/<%=review._id%>?_method=DELETE"
+                                    method="POST">
+                                    <button class="btn btn-sm btn-danger">刪除</button>
+                                </form>
+                                <% } %>
+                                    <% } %>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+        <!-- <div class="col-4">hihihi</div> -->
+
+        <script>
+            const mapToken = '<%- process.env.MAPBOX_TOKEN%>';
+            const campground = <% - JSON.stringify(campground) %>;
+        </script>

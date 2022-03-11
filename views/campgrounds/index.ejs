@@ -6,11 +6,11 @@
             border-bottom: #ddd solid 1px;
             transition-duration: 0.5s;
         }
-        
+
         .card:hover {
             background-color: rgb(245, 245, 245);
         }
-        
+
         .card:active {
             background-color: #eee;
         }
@@ -21,8 +21,9 @@
             <div class="userbar" id="userbar">
                 <% if(!currentUser) {%>
                     <b><a href="/login" target="_blank">
-                            <span style="margin:0 10px">DSEJJ</span>｜<span id="level" style="margin:0 10px">Lv.1</span>｜
-                            <span> 🪙 × 0 </span></a></b>
+                            <span class="level" style="margin:0 5px">login</span>｜<span id="level"
+                                style="margin:0 10px">Lv.<span class="level">-</span></span>｜
+                            <span> 🪙 × <span class="level">-</span> </span></a></b>
 
                     <% } %>
                         <% if(currentUser) {%>
@@ -32,7 +33,7 @@
                                         <%= currentUser.username.toUpperCase() %>
                                     </a>
                                 </span>｜
-                                <span id="level">Lv.
+                                <span class="level">Lv.
                                     <% if(currentUser) {%>
                                         <%= currentUser.grade %>
                                             <% } %>
@@ -49,17 +50,20 @@
 
 
             <div>
-                <form action="/campgrounds" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <form action="/campgrounds" method="POST" novalidate class="validated-form"
+                    enctype="multipart/form-data">
                     <div>
                         <label class="form-label" for="title"><b>QUICK TALK</b></label>
-                        <textarea style="height:60px;" class="form-control" type="text" id="title" name="campground[title]" required></textarea>
+                        <textarea style="height:60px;" class="form-control" type="text" id="title"
+                            name="campground[title]" required></textarea>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                         <button class="btn dse00btn" id="sendbtn">送出！</button>
                     </div>
                     <div style="opacity: 0; position: absolute; top:0">
-                        <textarea type="text" style="height:25px;color:#bbb" id="description" name="campground[description]">如題</textarea>
+                        <textarea type="text" style="height:25px;color:#bbb" id="description"
+                            name="campground[description]">如題</textarea>
                     </div>
 
                 </form>
@@ -77,10 +81,13 @@
                             <div>
                                 <div class="card-body" style="padding-bottom: 10px;">
                                     <h6 class="post-title">
-                                        <%= campgrounds[i].title %> <small class="text-muted" style="font-size:14px; font-weight:200"> - <%=
+                                        <%= campgrounds[i].title %> <small class="text-muted"
+                                                style="font-size:14px; font-weight:200"> - <%=
                                                     campgrounds[i].author.username%></small>
-                                            <% if (campgrounds[i].category !=='吹水') { %>
-                                                <span class="category"><%= campgrounds[i].category %> </span>
+                                            <% if (campgrounds[i].category !=='吹水' ) { %>
+                                                <span class="category">
+                                                    <%= campgrounds[i].category %>
+                                                </span>
                                                 <% } %>
                                     </h6>
                                     <!-- <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span> -->
