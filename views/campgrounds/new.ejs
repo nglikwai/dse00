@@ -4,6 +4,13 @@
         <div class="col-md-6 offset-md-3">
             <form action="/campgrounds" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
                 <div class="mb-3">
+                    <label class="form-label" for="category">類別</label>
+                    <select class="form-select" style="width:100px" name="campground[category]" id="category">
+                        <option value="吹水">吹水</option>
+                        <option value="功課">功課</option>
+                      </select>
+                </div>
+                <div class="mb-3">
                     <label class="form-label" for="title">標題</label>
                     <input class="form-control" type="text" id="title" name="campground[title]" required>
                     <div class="valid-feedback">
@@ -28,18 +35,12 @@
                     </label>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label" for="category">類別</label>
-                    <select class="form-select" style="width:100px" name="campground[category]" id="category">
-                        <option value="吹水">吹水</option>
-                        <option value="功課">功課</option>
-                      </select>
-                </div>
-                <a class="btn btn-good" href="/campgrounds" style="float:right">返回</a>
+
+               
                 <div class="mb-3">
                     <button class="btn btn-success" style="float:right">提交</button>
                 </div>
-
+                <a class="btn btn-good" href="/campgrounds">返回</a>
             </form>
 
         </div>
