@@ -20,3 +20,12 @@
 .review-title {
     font-weight: 500;
 }
+
+.card-body{
+    border-bottom: solid #eee 1px;
+    border-radius: 5px;
+}
+
+/* img{
+    width:30px;
+} */

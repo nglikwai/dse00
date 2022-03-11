@@ -49,17 +49,20 @@
 
                     <li id="userbar">樓主 ：
                         <a href="/user/<%= campground.author._id %> ">
-                            <b><%= campground.author.username.toUpperCase()%></b>
-                            <span class="grade"> - Lv <%=campground.author.grade  %></span>
+                            <b>
+                                <%= campground.author.username.toUpperCase()%>
+                            </b>
+                            <span class="grade"> - Lv <%=campground.author.grade %></span>
                         </a>
                     </li>
 
                 </ul>
                 <% if(currentUser) {%>
-                    <% if (campground.author.equals(currentUser._id) || currentUser.identity=='admin') { %>
+                    <% if (campground.author.equals(currentUser._id) || currentUser.identity=='admin' ) { %>
                         <div class="mt-3 mb-2">
                             <a class="btn dse00btn" href="/campgrounds/<%=campground._id%>/edit">修改</a>
-                            <form class="d-inline" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST">
+                            <form class="d-inline" action="/campgrounds/<%=campground._id%>?_method=DELETE"
+                                method="POST">
                                 <button class="btn dse00btn">刪除</button>
                             </form>
                         </div>
@@ -70,7 +73,8 @@
                         </div> -->
             </div>
 
-            <form action="/campgrounds/<%=campground._id%>/reviews" method="POST" class="mb-3 validated-form" novalidate>
+            <form action="/campgrounds/<%=campground._id%>/reviews" method="POST" class="mb-3 validated-form"
+                novalidate>
                 <!-- <div class="mb-3">
                 <label class="form-label" for="rating">Rating</label>
                 <input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating">
@@ -85,39 +89,47 @@
                 </div>
                 <button class="btn btn-success" style="float:right">提交</button>
             </form>
-            <h4 style="margin-top:60px">留言</h4>
-            <% for(let review of campground.reviews) { %>
-                <div class="mb-3">
-                    <div class="card-body">
-                        <div>
-                            <a class="review-title" href="/user/<%= review.author._id %> "></h6>
-                                <%= review.author.username%>
-                                    <span class="grade">- Lv <%= review.author.grade %></span>
-                                    <span class="muted">
-                                        <%= campground.createdAt.toLocaleString().substring(0,9) %>
-                                    </span>
-                            </a>
-                        </div>
-                        <!-- <h6 class="card-subtitle mb-2 text-muted">By <%= review.author.username%></h6> -->
-                        <p>
-                            <%= review.body %>
-                        </p>
-                        <% if(currentUser) {%>
-                            <% if (review.author.equals(currentUser._id) || currentUser.identity=='admin') { %>
-                                <div style="float: right">
-                                    <form action="/campgrounds/<%=campground._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
-                                        <button class="btn dse00btn">刪除</button>
-                                    </form>
+            <% if (campground.reviews.length==0) { %>
+                <h4 style="margin-top:60px">未有留言</h4>
+                <% } else{%>
+                    <h4 style="margin-top:60px">留言</h4>
+                    <% for(let review of campground.reviews) { %>
+                        <div class="mb-3">
+                            <div class="card-body">
+                                <div>
+                                    <!-- <img src="https://devshift.biz/wp-content/uploads/2017/04/profile-icon-png-898.png"> -->
+                                    <a class="review-title" href="/user/<%= review.author._id %> "></h6>
+                                        <%= review.author.username.toUpperCase()%>
+                                            <span class="grade">- Lv <%= review.author.grade %></span>
+                                            <span class="muted">
+                                                <%= campground.createdAt.toLocaleString().substring(0,9) %>
+                                            </span>
+                                    </a>
                                 </div>
-                                <% } %>
-                                    <% } %>
-                    </div>
-                </div>
-                <% } %>
+                                <!-- <h6 class="card-subtitle mb-2 text-muted">By <%= review.author.username%></h6> -->
+                                <p>
+                                    <%= review.body %>
+                                </p>
+                                <% if(currentUser) {%>
+                                    <% if (review.author.equals(currentUser._id) || currentUser.identity=='admin' ) { %>
+                                        <div style="float: right">
+                                            <form
+                                                action="/campgrounds/<%=campground._id%>/reviews/<%=review._id%>?_method=DELETE"
+                                                method="POST">
+                                                <button class="btn dse00btn">刪除</button>
+                                            </form>
+                                        </div>
+                                        <% } %>
+                                            <% } %>
+                            </div>
+                        </div>
+                        <% } %>
+
+                            <% } %>
         </div>
         <!-- <div class="col-4">hihihi</div> -->
 
         <script>
             const mapToken = '<%- process.env.MAPBOX_TOKEN%>';
-            const campground = <%- JSON.stringify(campground) %>;
+            const campground = <% - JSON.stringify(campground) %>;
         </script>
