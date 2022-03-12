@@ -44,7 +44,7 @@
                 <h4>Posts</h4>
                 <% for(let post of user.posts){ %>
                     <li>
-                        <a href="/campgrounds/<%=post._id %> ">
+                        <a href="/<%=post._id %> ">
                             <%= post.title %>
                         </a>
 
@@ -65,13 +65,13 @@
                                 <% for(let review of user.reviews){ %>
                                     <% if (review.post) { %>
                                         <p>
-                                            <a href="/campgrounds/<%= review.post %> ">
+                                            <a href="/<%= review.post %> ">
                                         - <%= review.body %>
                                     </a>
                                         </p>
                                         <% }else{ %>
                                             <p>
-                                                <a href="/campgrounds/<%= review.post %> ">
+                                                <a href="/<%= review.post %> ">
                                             - <%= review.body %>
                                         </a>
                                             </p>

@@ -1,7 +1,7 @@
 const User = require('../models/user');
 
 module.exports.renderRegister = (req, res) => {
-    res.render('users/register');
+    res.render('/users/register');
 }
 
 module.exports.register = async(req, res, next) => {
@@ -16,7 +16,7 @@ module.exports.register = async(req, res, next) => {
         })
     } catch (e) {
         req.flash('error', e.message);
-        res.redirect('user/register');
+        res.redirect('/users/register');
     }
 }
 
@@ -43,7 +43,7 @@ module.exports.loadUser = async(req, res) => {
         req.flash('error', 'User not found');
         return res.redirect('/');
     }
-    res.render('users/user', { user });
+    res.render('/users/user', { user });
 }
 
 module.exports.updateUser = async(req, res, next) => {
