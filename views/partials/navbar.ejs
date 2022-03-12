@@ -17,8 +17,8 @@
                     <% } %>
 
                         <% if(!currentUser) {%>
-                            <a href="/users/login" target="_blank">登入</a>
-                            <a href="/users/register" target="_blank">注冊</a>
+                            <a href="/users/login">登入</a>
+                            <a href="/users/register">注冊</a>
                             <% } else {%>
                                 <a href="/users/dse00coin">
                             🪙 <b><%=currentUser.coin  %></b>
