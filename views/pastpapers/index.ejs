@@ -1,0 +1,24 @@
+<% layout('layouts/boilerplate')%>
+    <link rel="stylesheet" href="/stylesheets/pastpaper.css">
+
+
+    <div class='index-loop'>
+        <button onclick="history.back()" id="backButton" class="btn btn-danger mb-3">Back</button>
+        <div class="card" style="padding:20px 30px 50px 30px;">
+            <h3>
+                Pastpaper
+            </h3>
+
+            <div class="container">
+                <% for( let i = 0; i < pastpapers.length; i++ ) { %>
+
+
+                    <a href="/pastpapers/<%= pastpapers[i].title %>">
+                        <div class="box">
+                            <%= pastpapers[i].title %>
+                        </div>
+                    </a>
+                    <% } %>
+            </div>
+        </div>
+    </div>

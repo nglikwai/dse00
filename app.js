@@ -16,6 +16,7 @@ const User = require('./models/user');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const adminRoutes = require('./routes/admins');
+const pastpaperRoutes = require('./routes/pastpapers');
 const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
@@ -98,6 +99,7 @@ app.use((req, res, next) => {
 
 app.use('/admins', adminRoutes);
 app.use('/users', userRoutes);
+app.use('/pastpapers', pastpaperRoutes);
 app.use('/', campgroundRoutes);
 app.use('/:id/reviews', reviewRoutes);
 

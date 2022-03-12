@@ -1,0 +1,52 @@
+<% layout('layouts/boilerplate')%>
+    <link rel="stylesheet" href="/stylesheets/pastpaper.css">
+
+
+    <div class='index-loop'>
+        <button onclick="history.back()" id="backButton" class="btn btn-danger mb-3">Back</button>
+        <div class="card" style="padding:20px 30px 50px 30px;">
+            <h3>
+                <%= pastpaper.title %>
+            </h3>
+
+            <div class="container">
+                <% for( let i=0 ; i<pastpaper.years.length ; i++ ) { %>
+                    <% if (pastpaper.years[i] == 2000) { %>
+                        <a href="<%= pastpaper.url %>" target="_blank">
+                            <div class="onebox">
+                                One Click
+                            </div>
+                        </a>
+                        <% } else if (pastpaper.years[i] == 2001) {%>
+                            <a href="<%= pastpaper.url %>" target="_blank">
+                                <div class="box">
+                                    Sample Paper
+                                </div>
+                            </a>
+                            <% }else if (pastpaper.years[i] == 2002){ %>
+                                <a href="<%= pastpaper.url %>" target="_blank">
+                                    <div class="box">
+                                        Practice Paper
+                                    </div>
+                                </a>
+                                <% } else if (pastpaper.years[i] == 2003){%>
+
+                                    <a href="<%= pastpaper.url %>" target="_blank">
+                                        <div class="box">
+                                            Sample Paper 2
+                                        </div>
+                                    </a>
+                                    <% }else{ %>
+                                        <a href="<%= pastpaper.url %>" target="_blank">
+                                            <div class="box">
+                                                <%= pastpaper.years[i] %>
+                                            </div>
+                                        </a>
+
+                                        <% } %>
+                                            <% } %>
+
+
+            </div>
+        </div>
+    </div>
