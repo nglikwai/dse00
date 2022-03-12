@@ -36,15 +36,29 @@
                                             Sample Paper 2
                                         </div>
                                     </a>
-                                    <% }else{ %>
+                                    <% } else if (pastpaper.years[i] == 2010){%>
+
                                         <a href="<%= pastpaper.url %>" target="_blank">
                                             <div class="box">
-                                                <%= pastpaper.years[i] %>
+                                                CE
                                             </div>
                                         </a>
+                                        <% } else if (pastpaper.years[i] == 2011){%>
 
-                                        <% } %>
-                                            <% } %>
+                                            <a href="<%= pastpaper.url %>" target="_blank">
+                                                <div class="box">
+                                                    AL
+                                                </div>
+                                            </a>
+                                            <% }else{ %>
+                                                <a href="<%= pastpaper.url %>" target="_blank">
+                                                    <div class="box">
+                                                        <%= pastpaper.years[i] %>
+                                                    </div>
+                                                </a>
+
+                                                <% } %>
+                                                    <% } %>
 
 
             </div>
