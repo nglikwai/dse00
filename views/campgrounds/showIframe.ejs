@@ -11,7 +11,7 @@
 
     <div class="index-loop">
         <div>
-            <a href="/campgrounds/iframe" class="btn dse00btn">Back</a>
+            <a href="/iframe" class="btn dse00btn">Back</a>
 
             <div id="campgroundCarousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
@@ -57,9 +57,8 @@
                 <% if(currentUser) {%>
                     <% if (campground.author.equals(currentUser._id) || currentUser.identity=='admin' ) { %>
                         <div class="card-body">
-                            <a class="card-link btn btn-info" href="/campgrounds/<%=campground._id%>/edit">修改</a>
-                            <form class="d-inline" action="/campgrounds/iframe/<%=campground._id%>?_method=DELETE"
-                                method="POST">
+                            <a class="card-link btn btn-info" href="/<%=campground._id%>/edit">修改</a>
+                            <form class="d-inline" action="/iframe/<%=campground._id%>?_method=DELETE" method="POST">
                                 <button class="btn btn-danger">刪除</button>
                             </form>
                         </div>
@@ -75,8 +74,7 @@
             <h2>留言</h2>
 
 
-            <form action="/campgrounds/<%=campground._id%>/reviews/iframe" method="POST" class="mb-3 validated-form"
-                novalidate>
+            <form action="/<%=campground._id%>/reviews/iframe" method="POST" class="mb-3 validated-form" novalidate>
                 <!-- <div class="mb-3">
                 <label class="form-label" for="rating">Rating</label>
                 <input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating">
@@ -96,7 +94,7 @@
                 <div class="mb-3">
                     <div class="card-body">
                         <h5>
-                            <a href="/user/<%= review.author._id %> ">
+                            <a href="/users/user/<%= review.author._id %> ">
                                 <%= review.author.username%>
                                     <span class="grade">- Lv <%= review.author.grade %></span>
                             </a>
@@ -107,9 +105,7 @@
                         </p>
                         <% if(currentUser) {%>
                             <% if (review.author.equals(currentUser._id) || currentUser.identity=='admin' ) { %>
-                                <form
-                                    action="/campgrounds/<%=campground._id%>/reviews/iframe/<%=review._id%>?_method=DELETE"
-                                    method="POST">
+                                <form action="/<%=campground._id%>/reviews/iframe/<%=review._id%>?_method=DELETE" method="POST">
                                     <button class="btn btn-sm btn-danger">刪除</button>
                                 </form>
                                 <% } %>

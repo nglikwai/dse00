@@ -9,34 +9,34 @@
                 <a href="https://dse00.blogspot.com/p/test_8.html" target="_blank">資源區</a>
                 <a href="http://dse00.blogspot.com/p/core-cutoff.html" target="_blank">2021 Cut-off</a>
                 <a href="http://dse00.blogspot.com/search/label/Tips" target="_blank">Tips</a>
-                <a href="/campgrounds/new" target="_blank">新 POST</a>
+                <a href="/new" target="_blank">新 POST</a>
             </div>
             <div class="navbar-nav ml-auto">
                 <% if (currentUser && currentUser.identity === 'admin') { %>
                     <span id="darkmode">🌤️</span>
-                <% } %>
-                
-                <% if(!currentUser) {%>
-                    <a href="/login" target="_blank">登入</a>
-                    <a href="/register" target="_blank">注冊</a>
-                    <% } else {%>
-                        <a href="/dse00coin">
+                    <% } %>
+
+                        <% if(!currentUser) {%>
+                            <a href="/users/login" target="_blank">登入</a>
+                            <a href="/users/register" target="_blank">注冊</a>
+                            <% } else {%>
+                                <a href="/users/dse00coin">
                             🪙 <b><%=currentUser.coin  %></b>
                        </a>
-                        <a href="#">
+                                <a href="#">
                             Lv. <%=currentUser.grade  %>
                         </a>
-                        <% if (currentUser.identity==='admin') { %>
-                            <a href="/user/<%=currentUser._id  %> " style="background-color:rgb(116, 184, 116); padding:3px 10px; border-radius: 5px;">
-                                <%= currentUser.username.toUpperCase() %>
-                            </a>
-                            <% }else{ %>
-                                <a href="/user/<%=currentUser._id  %> ">
-                                    <%= currentUser.username.toUpperCase() %>
-                                </a>
-                                <% } %>
-                                    <a href="/logout">登出</a>
-                                    <% } %>
+                                <% if (currentUser.identity==='admin') { %>
+                                    <a href="/users/user/<%=currentUser._id  %> " style="background-color:rgb(116, 184, 116); padding:3px 10px; border-radius: 5px;">
+                                        <%= currentUser.username.toUpperCase() %>
+                                    </a>
+                                    <% }else{ %>
+                                        <a href="/user/<%=currentUser._id  %> ">
+                                            <%= currentUser.username.toUpperCase() %>
+                                        </a>
+                                        <% } %>
+                                            <a href="/users//logout">登出</a>
+                                            <% } %>
             </div>
         </div>
     </div>

@@ -19,4 +19,8 @@ router.route('/user/:id')
 
 router.get('/logout', users.logout)
 
+router.get('/dse00coin', (req, res) => {
+    res.render('users/dse00coin')
+});
+
 module.exports = router;

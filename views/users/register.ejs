@@ -9,7 +9,7 @@
                             <img src="https://lh3.googleusercontent.com/-Ve9bspLwIyI/YcWDABcAcMI/AAAAAAAA2Ig/sKB4a4T0bUs_CevmgUkZtGffdCRDFjHUgCNcBGAsYHQ/w165-h165/dse00%2Bicon.png" alt="" /></div>
                         <div class="card-body">
 
-                            <form action="/register" method="POST" class="validated-form" novalidate>
+                            <form action="/users/register" method="POST" class="validated-form" novalidate>
                                 <div class="mb-3">
                                     <label class="form-label" for="username">用戶名稱</label>
                                     <input class="form-control" type="text" id="username" name="username" required autofocus>
@@ -33,16 +33,16 @@
                                 </div>
                                 <button class="btn btn-info btn-block">注冊</button>
                             </form>
-                            <a class="btn dse00btn mt-3" href="/login">登入</a>
+                            <a class="btn dse00btn mt-3" href="users/login">登入</a>
                         </div>
                     </div>
                     <% } else {%>
                         <h1>
                             <%= currentUser.username %>
                         </h1>
-                        <a href="/campgrounds" class="btn dse00btn">歡迎回來</a>
+                        <a href="/" class="btn dse00btn">歡迎回來</a>
                         <% } %>
-                            <a class="btn btn-good mt-3" href="/campgrounds" style="color:#aaa">返回</a>
+                            <a class="btn btn-good mt-3" href="/" style="color:#aaa">返回</a>
             </div>
 
 

@@ -8,7 +8,7 @@ module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
         req.session.returnTo = req.originalUrl
         req.flash('error', 'You must be signed in first!');
-        return res.redirect('/login');
+        return res.redirect('users/login');
     }
     next();
 }
@@ -31,7 +31,7 @@ module.exports.isAuthor = async(req, res, next) => {
             return next()
         }
         req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/campgrounds/${id}`);
+        return res.redirect(`/${id}`);
     }
     next();
 }
@@ -39,7 +39,7 @@ module.exports.isAuthor = async(req, res, next) => {
 module.exports.isAdmin = async(req, res, next) => {
     if (req.user.identity !== 'admin') {
         req.flash('error', 'ADMIN ONLY')
-        return res.redirect(`/campgrounds`);
+        return res.redirect(`/`);
     }
     next();
 }
@@ -60,7 +60,7 @@ module.exports.isReviewAuthor = async(req, res, next) => {
             return next()
         }
         req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/campgrounds/${id}`);
+        return res.redirect(`/${id}`);
     }
     next();
 }

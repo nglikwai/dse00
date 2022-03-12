@@ -8,16 +8,16 @@
             width: 600px;
             margin: 20px;
         }
-
+        
         h3 {
             margin-bottom: 20px;
         }
-
+        
         li {
             margin-top: 10px;
             font-size: 18px;
         }
-
+        
         .user-info {
             margin: 20px 0 50px 0;
         }
@@ -32,7 +32,7 @@
                     <%= user.grade %>
                 </span><br><br>
 
-                <h4> <a href="/dse00coin"> 🪙 : </a>
+                <h4> <a href="/users/dse00coin"> 🪙 : </a>
                     <span id="coin">
                         <%= user.coin %>
                     </span>
@@ -53,31 +53,32 @@
 
                         <br>
                         <hr><br>
-                        
-                        
-                    
-                    <% if (currentUser) { %>
-                     <% if (currentUser.username == user.username || currentUser.identity == 'admin') { %>
-                      
-                     
-                        <h4>Reviews</h4>
-                        <div class="muted" style="float:left">only you can view it</div><br><br>
-                        <% for(let review of user.reviews){ %>
-                            <% if (review.post) { %>
-                                <p>
-                                    <a href="/campgrounds/<%= review.post %> ">
+
+
+
+                        <% if (currentUser) { %>
+                            <% if (currentUser.username == user.username || currentUser.identity == 'admin') { %>
+
+
+                                <h4>Reviews</h4>
+                                <div class="muted" style="float:left">only you can view it</div><br><br>
+                                <% for(let review of user.reviews){ %>
+                                    <% if (review.post) { %>
+                                        <p>
+                                            <a href="/campgrounds/<%= review.post %> ">
                                         - <%= review.body %>
                                     </a>
-                                </p>
-                                <% }else{ %>
-                                    <p>
-                                        <a href="/campgrounds/<%= review.post %> ">
+                                        </p>
+                                        <% }else{ %>
+                                            <p>
+                                                <a href="/campgrounds/<%= review.post %> ">
                                             - <%= review.body %>
                                         </a>
-                                    </p>
-                                    <% }} %>
-                        <% }  %><% } %>
-                     
+                                            </p>
+                                            <% }} %>
+                                                <% }  %>
+                                                    <% } %>
+
 
             </div>
         </div>

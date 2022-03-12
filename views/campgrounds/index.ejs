@@ -6,11 +6,11 @@
             border-bottom: #ddd solid 1px;
             transition-duration: 0.5s;
         }
-
+        
         .card:hover {
             background-color: rgb(245, 245, 245);
         }
-
+        
         .card:active {
             background-color: #eee;
         }
@@ -20,7 +20,7 @@
         <div class="user-info">
             <div class="userbar" id="userbar">
                 <% if(!currentUser) {%>
-                    <b><a href="/login" target="_blank">
+                    <b><a href="/users/login" target="_blank">
                             <span class="level" style="margin:0 5px">login</span>｜<span id="level"
                                 style="margin:0 10px">Lv.<span class="level">-</span></span>｜
                             <span> 🪙 × <span class="level">-</span> </span></a></b>
@@ -29,7 +29,7 @@
                         <% if(currentUser) {%>
                             <b>
                                 <span>
-                                    <a href="/user/<%= currentUser._id %> ">
+                                    <a href="/users/user/<%= currentUser._id %> ">
                                         <%= currentUser.username.toUpperCase() %>
                                     </a>
                                 </span>｜
@@ -38,7 +38,7 @@
                                         <%= currentUser.grade %>
                                             <% } %>
                                 </span>｜
-                                <a href="/dse00coin">
+                                <a href="/users/dse00coin">
                                     <span>🪙×
                                         <% if(currentUser) {%>
                                             <%= currentUser.coin %>
@@ -50,38 +50,34 @@
 
 
             <div>
-                <form action="/campgrounds" method="POST" novalidate class="validated-form"
-                    enctype="multipart/form-data">
+                <form action="/" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
                     <div>
                         <label class="form-label" for="title"><b>QUICK TALK</b></label>
-                        <textarea style="height:60px;" class="form-control" type="text" id="title"
-                            name="campground[title]" required></textarea>
+                        <textarea style="height:60px;" class="form-control" type="text" id="title" name="campground[title]" required></textarea>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                         <button class="btn dse00btn" id="sendbtn">送出</button>
                     </div>
                     <div style="opacity: 0; position: absolute; top:0">
-                        <textarea type="text" style="height:25px;color:#bbb" id="description"
-                            name="campground[description]">如題</textarea>
+                        <textarea type="text" style="height:25px;color:#bbb" id="description" name="campground[description]">如題</textarea>
                     </div>
 
                 </form>
             </div>
         </div>
         <div class='index-loop'>
-            <a class="btn dse00btn" id="newpost" href="/campgrounds/new">新 POST</a>
+            <a class="btn dse00btn" id="newpost" href="/new">新 POST</a>
 
 
             <% for (let i=0 ; i<campgrounds.length ; i++){%>
                 <div class="card mb-2">
                     <div>
-                        <a href="/campgrounds/<%=campgrounds[i]._id%>">
+                        <a href="/<%=campgrounds[i]._id%>">
                             <div>
                                 <div class="card-body" style="padding-bottom: 10px;">
                                     <h6 class="post-title">
-                                        <%= campgrounds[i].title %> <small class="text-muted"
-                                                style="font-size:14px; font-weight:200"> - <%=
+                                        <%= campgrounds[i].title %> <small class="text-muted" style="font-size:14px; font-weight:200"> - <%=
                                                     campgrounds[i].author.username%></small>
                                             <% if (campgrounds[i].category !=='吹水' ) { %>
                                                 <span class="category">
@@ -100,14 +96,14 @@
                                         <% } else if(campgrounds[i].description !== '如題'){ %>
                                             <span style="font-size:14px; color:#bbb" class="night-text"> ➥ <%=
                                                 campgrounds[i].description.substring(0,20) %></span>
-                                            <% } %> 
+                                            <% } %>
                                 </div>
                             </div>
                         </a>
                     </div>
                 </div>
                 <% }%>
-                    <a class="btn dse00btn" href="/campgrounds/new" target="_blank">新 POST</a>
+                    <a class="btn dse00btn" href="/new" target="_blank">新 POST</a>
         </div>
 
 

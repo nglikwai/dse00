@@ -1,42 +1,55 @@
 <% layout('layouts/boilerplate')%>
-<link rel="stylesheet" href="/stylesheets/admin.css">
+    <link rel="stylesheet" href="/stylesheets/admin.css">
 
 
 
-<div class="user-container">
-    <% for(let user of users) { %>
-        <div class="user-box">
-            <div><b><a href="/user/<%= user._id %>"><%= user.username %></a></b></div>
-            <div><%= user.identity %></div>
-            <div>Lv. <%= user.grade %> ｜ 🪙 <%= user.coin %></div>
-            <div>Post: <%= user.posts.length %></div>
-            <div>Reviews: <%= user.reviews.length %></div>
-            <div>
-                <% if (user.createdAt) { %>
-                <div>注冊日期：<%= user.createdAt.toLocaleString() %></div>
-                <% } %>
-            </div>
-            <div>
-                <% if (user.updatedAt) { %>
-                <div>最後活動：<%= user.updatedAt.toLocaleString() %> </div>
-                <% } %>
-            </div>
-            <div><b>Post</b>
-                <% for( let post of user.posts ) { %>
-                    <div><a href="/campgrounds/<%= post._id %> ">
+    <div class="user-container">
+        <% for(let user of users) { %>
+            <div class="user-box">
+                <div><b><a href="/users/user/<%= user._id %>"><%= user.username %></a></b></div>
+                <div>
+                    <%= user.identity %>
+                </div>
+                <div>Lv.
+                    <%= user.grade %> ｜ 🪙
+                        <%= user.coin %>
+                </div>
+                <div>Post:
+                    <%= user.posts.length %>
+                </div>
+                <div>Reviews:
+                    <%= user.reviews.length %>
+                </div>
+                <div>
+                    <% if (user.createdAt) { %>
+                        <div>注冊日期：
+                            <%= user.createdAt.toLocaleString() %>
+                        </div>
+                        <% } %>
+                </div>
+                <div>
+                    <% if (user.updatedAt) { %>
+                        <div>最後活動：
+                            <%= user.updatedAt.toLocaleString() %>
+                        </div>
+                        <% } %>
+                </div>
+                <div><b>Post</b>
+                    <% for( let post of user.posts ) { %>
+                        <div><a href="/<%= post._id %> ">
                         - <%= post.title %>
                     </a></div>
-                    <% } %> 
-            </div>
-            <div><b>Reviews</b>
-                <% for( let review of user.reviews ) { %>
-                    <div><a href="/campgrounds/<%= review.post %> ">
+                        <% } %>
+                </div>
+                <div><b>Reviews</b>
+                    <% for( let review of user.reviews ) { %>
+                        <div><a href="/<%= review.post %> ">
                         - <%= review.body %>
                     </a></div>
-                    <% } %> 
+                        <% } %>
+
+                </div>
 
             </div>
-
-        </div>
-    <% } %>
-</div>
+            <% } %>
+    </div>

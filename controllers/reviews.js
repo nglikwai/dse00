@@ -18,7 +18,7 @@ module.exports.createReview = async(req, res) => {
     await campground.save();
 
     req.flash("success", "成功留言!");
-    res.redirect(`/campgrounds/${campground._id}`);
+    res.redirect(`/${campground._id}`);
 };
 
 module.exports.createIframeReview = async(req, res) => {
@@ -37,7 +37,7 @@ module.exports.createIframeReview = async(req, res) => {
     await campground.save();
 
     req.flash("success", "成功留言!");
-    res.redirect(`/campgrounds/iframe/${campground._id}`);
+    res.redirect(`/iframe/${campground._id}`);
 };
 
 module.exports.deleteReview = async(req, res) => {
@@ -48,7 +48,7 @@ module.exports.deleteReview = async(req, res) => {
     user.coin -= 1;
     await user.save();
     req.flash("success", "成功刪除");
-    res.redirect(`/campgrounds/${id}`);
+    res.redirect(`/${id}`);
 };
 
 module.exports.deleteIframeReview = async(req, res) => {
@@ -59,5 +59,5 @@ module.exports.deleteIframeReview = async(req, res) => {
     user.coin -= 1;
     await user.save();
     req.flash("success", "成功刪除");
-    res.redirect(`/campgrounds/iframe/${id}`);
+    res.redirect(`/iframe/${id}`);
 };

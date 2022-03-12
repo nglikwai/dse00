@@ -96,20 +96,12 @@ app.use((req, res, next) => {
 })
 
 
-app.use('/', userRoutes);
 app.use('/admins', adminRoutes);
-app.use('/campgrounds', campgroundRoutes);
-app.use('/campgrounds/:id/reviews', reviewRoutes);
+app.use('/users', userRoutes);
+app.use('/', campgroundRoutes);
+app.use('/:id/reviews', reviewRoutes);
 
 
-
-app.get('/', (req, res) => {
-    res.redirect('/campgrounds')
-});
-
-app.get('/dse00coin', (req, res) => {
-    res.render('users/dse00coin')
-});
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404))
