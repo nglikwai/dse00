@@ -10,21 +10,29 @@
             <div class="container">
                 <% for( let i=0 ; i<pastpaper.years.length ; i++ ) { %>
                     <% if (pastpaper.years[i] == 'One Click') { %>
-                        <a href="<%= pastpaper.url %>" target="_blank">
-                            <div class="onebox">
-                                <%= pastpaper.years[i] %>
-                            </div>
-                        </a>
-
-
-                        <% }else{ %>
-                            <a href="<%= pastpaper.url %>" target="_blank">
-                                <div class="box">
+                        <% if (!currentUser) { %>
+                            <a onclick="alert('One Click 需要先登入')" class="onebox" target="_blank">
+                                <div>
                                     <%= pastpaper.years[i] %>
                                 </div>
                             </a>
-                            <% } %>
+                            <% }else{ %>
+                                <a href="<%= pastpaper.url %>" target="_blank">
+                                    <div class="onebox">
+                                        <%= pastpaper.years[i] %>
+                                    </div>
+                                </a>
                                 <% } %>
+
+
+                                    <% }else{ %>
+                                        <a href="<%= pastpaper.url %>" target="_blank">
+                                            <div class="box">
+                                                <%= pastpaper.years[i] %>
+                                            </div>
+                                        </a>
+                                        <% } %>
+                                            <% } %>
 
 
             </div>

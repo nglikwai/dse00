@@ -1,11 +1,5 @@
-// 2000 = One Click
-// 2001 = Sample paper
-// 2002 = Pracetice Paper
-// 2003 = Sample Paper
-// 2005 = M1
-// 2006 =M2
-// 2010 = CE
-// 2011 = AL
+// 中英數通 ＝ hkdselibrary@gmail.com
+// 其他 ＝alexsze0128@gmail.com
 
 module.exports = [{
         title: '中國語文',
@@ -78,6 +72,51 @@ module.exports = [{
             'https://drive.google.com/drive/folders/1lG-Jdwxj7AkZKo66MIH47VB2zhY4zJ9d?usp=sharing',
             'https://drive.google.com/drive/folders/1jMyBcds_PtL-cU4pPOnthqk-oTWH9-wL?usp=sharing',
             'https://drive.google.com/drive/folders/1Q543jNl6LecFcg0t0C5iDHjWqk8gKy4Y?usp=sharing'
+        ]
+    },
+    {
+        title: 'Physic',
+        years: ['One Click', 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+        url: ['https://drive.google.com/drive/folders/1mXZ90INAMPZ2Rn7OkemS8LwxpFamqWkr?usp=sharing',
+            'https://drive.google.com/drive/folders/12ZQb2D3qHR1cFQkJ_CL4xeUXaCeIdqKV?usp=sharing',
+            'https://drive.google.com/drive/folders/1u2Lk5UlLRQkaqALNjLycsFXMIBN-1Krj?usp=sharing',
+            'https://drive.google.com/drive/folders/1C4qUeiqYaOfWrihrHHavWRNSfl3ewq8U?usp=sharing',
+            'https://drive.google.com/drive/folders/1_3tlu9FfJIWkwBfmuaJIOvrzi_CmirRQ?usp=sharing',
+            'https://drive.google.com/drive/folders/1baMPkQ0qMQHKWGZSywAlRcbGPsAVo2B_?usp=sharing',
+            'https://drive.google.com/drive/folders/14yAy1by8KkYsK04wxArc8rkbS0dv_Tsl?usp=sharing',
+            'https://drive.google.com/drive/folders/1dVeVU435CMLCfh8cOvfUNlolRj33hjO7?usp=sharing',
+            'https://drive.google.com/drive/folders/1ED7fZkEGFQty2cnzst-C7LclakVp-Z3k?usp=sharing',
+            'https://drive.google.com/drive/folders/1aryWkZHfCKbuIyMl_tvHbYxteoHSHC4W?usp=sharing',
+            'https://drive.google.com/drive/folders/1zvwnFHe2mHk5RZ288XpKLv4b4ZjocZto?usp=sharing'
+        ]
+    },
+    {
+        title: 'Chemistry',
+        years: ['One Click', 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021],
+        url: ['https://drive.google.com/drive/folders/1cy2AU6ThKpB0-Gt4oJAC6YVe8z9Opjsx?usp=sharing',
+            'https://drive.google.com/drive/folders/17hRio3QMO8A0_AwUOmkttlS2hoCE4XoK?usp=sharing',
+            'https://drive.google.com/drive/folders/1ysBA5C78DteaT_npeeHMk4SLOvH-AoEk?usp=sharing',
+            'https://drive.google.com/drive/folders/1VulkaS6OswwB4Q2A9bWUOm_p8t13o2JD?usp=sharing',
+            'https://drive.google.com/drive/folders/11EOOLLS-plzOe7_gLBfLz9XZOGzfBgVZ?usp=sharing',
+            'https://drive.google.com/drive/folders/1r27x2b23GwfcoAMtfR7n_gQbZu6JosyV?usp=sharing',
+            'https://drive.google.com/drive/folders/1fO5eay2OQVZyUTw9uF86zSa5wwaejdlZ?usp=sharing',
+            'https://drive.google.com/drive/folders/1Po4l66gKlJv0cT_isMbrzKQqNdIFqA_s?usp=sharing',
+            'https://drive.google.com/drive/folders/1LujckjmFSQOv2E3ZLRLxJG_XtwbfQYCv?usp=sharing',
+            'https://drive.google.com/drive/folders/1xVXaFLHe_V1xVoCdOerhya_t1ecK9n6v?usp=sharing'
+        ]
+    },
+    {
+        title: 'Biology',
+        years: ['One Click', 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021],
+        url: ['https://drive.google.com/drive/folders/13GeQ-dg2YaU_JkYRFzeWgrt0v1ZMqyCr?usp=sharing',
+            'https://drive.google.com/drive/folders/1HDT8uv5nnFH6b53kKdyczvhV9wvUxF5l?usp=sharing',
+            'https://drive.google.com/drive/folders/16d2tIFhHPTOwlAUwtGJvT0Ni1L50IC08?usp=sharing',
+            'https://drive.google.com/drive/folders/1F_vzKIhdBiDUVYCSjOm6BHBVRdO9bCuk?usp=sharing',
+            'https://drive.google.com/drive/folders/1IXNpbkI7Htk8dyPmsXtKfN7g0YVAVI68?usp=sharing',
+            'https://drive.google.com/drive/folders/1EongY0fUXgNgxfmydUWJ6U5EsFUlYpjZ?usp=sharing',
+            'https://drive.google.com/drive/folders/1yEHBedI1OiVJR8sgW0zWIOXull7C_Dm4?usp=sharing',
+            'https://drive.google.com/drive/folders/1mqSWfzDUZ0-gOnWiMGD89DzIo_pRkeWy?usp=sharing',
+            'https://drive.google.com/drive/folders/1LHelAk3bOb8TXl0GZCUmjiIE6BxFhwaR?usp=sharing'
         ]
     }
 ]
