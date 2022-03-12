@@ -11,54 +11,22 @@
 
             <div class="container">
                 <% for( let i=0 ; i<pastpaper.years.length ; i++ ) { %>
-                    <% if (pastpaper.years[i] == 2000) { %>
+                    <% if (pastpaper.years[i] == 'One Click') { %>
                         <a href="<%= pastpaper.url %>" target="_blank">
                             <div class="onebox">
-                                One Click
+                                <%= pastpaper.years[i] %>
                             </div>
                         </a>
-                        <% } else if (pastpaper.years[i] == 2001) {%>
+
+
+                        <% }else{ %>
                             <a href="<%= pastpaper.url %>" target="_blank">
                                 <div class="box">
-                                    Sample Paper
+                                    <%= pastpaper.years[i] %>
                                 </div>
                             </a>
-                            <% }else if (pastpaper.years[i] == 2002){ %>
-                                <a href="<%= pastpaper.url %>" target="_blank">
-                                    <div class="box">
-                                        Practice Paper
-                                    </div>
-                                </a>
-                                <% } else if (pastpaper.years[i] == 2003){%>
-
-                                    <a href="<%= pastpaper.url %>" target="_blank">
-                                        <div class="box">
-                                            Sample Paper 2
-                                        </div>
-                                    </a>
-                                    <% } else if (pastpaper.years[i] == 2010){%>
-
-                                        <a href="<%= pastpaper.url %>" target="_blank">
-                                            <div class="box">
-                                                CE
-                                            </div>
-                                        </a>
-                                        <% } else if (pastpaper.years[i] == 2011){%>
-
-                                            <a href="<%= pastpaper.url %>" target="_blank">
-                                                <div class="box">
-                                                    AL
-                                                </div>
-                                            </a>
-                                            <% }else{ %>
-                                                <a href="<%= pastpaper.url %>" target="_blank">
-                                                    <div class="box">
-                                                        <%= pastpaper.years[i] %>
-                                                    </div>
-                                                </a>
-
-                                                <% } %>
-                                                    <% } %>
+                            <% } %>
+                                <% } %>
 
 
             </div>

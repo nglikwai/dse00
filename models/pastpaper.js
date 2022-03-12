@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const pastpaperSchema = new Schema({
     title: String,
-    years: [Number],
+    years: [String],
     url: [String]
 }, { timestamps: true });
 

@@ -2,12 +2,14 @@
 // 2001 = Sample paper
 // 2002 = Pracetice Paper
 // 2003 = Sample Paper
+// 2005 = M1
+// 2006 =M2
 // 2010 = CE
 // 2011 = AL
 
 module.exports = [{
         title: '中國語文',
-        years: [2000, 2001, 2002, 2003, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2010],
+        years: ['One Click', 'Sample Paper', 'Practice Paper', 2003, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 'CE'],
         url: ['https://drive.google.com/drive/folders/1A1bIEkOQxtobs-lXbC1yQEtgnwtr2Sqx?usp=sharing',
             'https://drive.google.com/drive/folders/11ZvV83CeGP86KkvUQk2MAaqjnI9GtRwc?usp=sharing',
             'https://drive.google.com/drive/folders/1oXd1VRCumoLG5V6KPImPCoDH9Zm13OT0?usp=sharing',
@@ -25,7 +27,7 @@ module.exports = [{
     },
     {
         title: 'English',
-        years: [2000, 2001, 2002, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2010, 2011],
+        years: ['One Click', 'Sample Paper', 'Practice Paper', 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 'CE', 'AL'],
         url: ['https://drive.google.com/drive/folders/1oWXDvG4FbSoW_nP88R73TKqQivYmzZ1Y?usp=sharing',
             'https://drive.google.com/drive/folders/1sWMNDPDj62gtagMBHsLznLMTHWizemmV?usp=sharing',
             'https://drive.google.com/drive/folders/1o_XSYsA4RwkyCJv1-1HJAGQRjKoHwmAW?usp=sharing',
@@ -46,7 +48,7 @@ module.exports = [{
     },
     {
         title: 'Mathematic',
-        years: [2000, 2001, 2002, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020],
+        years: ['One Click', 'Sample Paper', 'Practice Paper', 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 'M1', 'M2'],
         url: ['https://drive.google.com/drive/folders/13EtyNpaRyFRxdVCI5P5HE6WnHVGY9xIJ?usp=sharing',
             'https://drive.google.com/drive/folders/13L96p6FEEaRaX7LpMaBPGl_FfpPIcK98?usp=sharing',
             'https://drive.google.com/drive/folders/1QC7gNjNv4R8EsVDwBCTogxficdkU-aad?usp=sharing',
@@ -59,11 +61,14 @@ module.exports = [{
             'https://drive.google.com/drive/folders/1D27CIQm2-tonQ_yNXwR_GG0OQ3sMdjKD?usp=sharing',
             'https://drive.google.com/drive/folders/1l5IlfvvzfiRTXvfkzs114zkfCuAHgB3n?usp=sharing',
             'https://drive.google.com/drive/folders/1b6UwbO-YLSE15MqKJOXIivBxYjjNvwzx?usp=sharing',
+            'https://drive.google.com/open?id=1_euKJyWBidnDIDp9lHH7_6solIQhwhd6',
+            'https://drive.google.com/open?id=1TzxwXxkfzzwhjcYpwsZuRYf6l24o7GXP'
+
         ]
     },
     {
         title: '通識',
-        years: [2000, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+        years: ['One Click', 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
         url: ['https://drive.google.com/drive/folders/1RO70hJe1k9ZjgknE677NSVCIzvgvYF--?usp=sharing',
             'https://drive.google.com/drive/folders/1zHCoJnITcO6lvcy2_XUcX9Zt2dSKFvdW?usp=sharing',
             'https://drive.google.com/drive/folders/1HPB9xiWPD-2SJ8EVKqWovFmobxLqZkvl?usp=sharing',
