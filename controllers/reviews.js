@@ -9,7 +9,7 @@ module.exports.createReview = async(req, res) => {
         const user = await User.findById(req.user._id);
         review.author = req.user._id;
         user.reviews.push(review);
-        user.coin += 1;
+        user.coin += 3;
         await user.save();
     }
     review.post = campground;
@@ -28,7 +28,7 @@ module.exports.createIframeReview = async(req, res) => {
         const user = await User.findById(req.user._id);
         review.author = req.user._id;
         user.reviews.push(review);
-        user.coin += 1;
+        user.coin += 3;
         await user.save();
     }
     review.post = campground;
@@ -45,7 +45,7 @@ module.exports.deleteReview = async(req, res) => {
     await Campground.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
     await Review.findByIdAndDelete(reviewId);
     const user = await User.findById(req.user._id);
-    user.coin -= 1;
+    user.coin -= 3;
     await user.save();
     req.flash("success", "成功刪除");
     res.redirect(`/${id}`);
@@ -56,7 +56,7 @@ module.exports.deleteIframeReview = async(req, res) => {
     await Campground.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
     await Review.findByIdAndDelete(reviewId);
     const user = await User.findById(req.user._id);
-    user.coin -= 1;
+    user.coin -= 3;
     await user.save();
     req.flash("success", "成功刪除");
     res.redirect(`/iframe/${id}`);

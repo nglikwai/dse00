@@ -11,7 +11,7 @@ module.exports = [{
     {
         title: '中國語文',
         lang:'ZH',
-        years: ['One Click', 'Sample Paper', 'Practice Paper', 2003, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 'CE'],
+        years: ['One Click', '樣本試卷', '練習試卷', 2003, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 'CE'],
         url: ['https://drive.google.com/drive/folders/1A1bIEkOQxtobs-lXbC1yQEtgnwtr2Sqx?usp=sharing',
             'https://drive.google.com/drive/folders/11ZvV83CeGP86KkvUQk2MAaqjnI9GtRwc?usp=sharing',
             'https://drive.google.com/drive/folders/1oXd1VRCumoLG5V6KPImPCoDH9Zm13OT0?usp=sharing',

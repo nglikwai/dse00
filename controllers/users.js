@@ -53,7 +53,7 @@ module.exports.updateUser = async(req, res, next) => {
     }
     const user = req.user;
     const a = user.grade;
-    if (user.coin > 500) { user.grade = '5**' } else if (user.coin > 200) { user.grade = '5*' } else if (user.coin > 100) { user.grade = 5 } else if (user.coin > 40) { user.grade = 4 } else if (user.coin > 12) { user.grade = 3 } else if (user.coin > 3) { user.grade = 2 } else if (user.coin > 0) { user.grade = 1 };
+    if (user.coin > 1200) { user.grade = '5**' } else if (user.coin > 500) { user.grade = '5*' } else if (user.coin > 250) { user.grade = 5 } else if (user.coin > 100) { user.grade = 4 } else if (user.coin > 36) { user.grade = 3 } else if (user.coin > 10) { user.grade = 2 } else if (user.coin > 0) { user.grade = 1 };
     user.save();
     const b = user.grade;
     if (a !== b) {
