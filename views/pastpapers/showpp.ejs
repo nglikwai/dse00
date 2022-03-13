@@ -1,8 +1,8 @@
 <% layout('layouts/boilerplate')%>
 
-<script>
-    document.querySelector('title').innerText =  '<%= pastpaper.title %>'  ;
-</script>
+    <script>
+        document.querySelector('title').innerText = '<%= pastpaper.title %>';
+    </script>
     <link rel="stylesheet" href="/stylesheets/pastpaper.css">
     <div class='index-loop'>
         <button onclick="history.back()" id="backButton" class="btn btn-danger mb-3">Back</button>
@@ -29,8 +29,8 @@
                                             <%= pastpaper.years[i] %>
                                         </div>
                                     </a>
-                                    <% }else{ %>
-                                        <a href="<%= pastpaper.url %>" target="_blank">
+                                    <% }else { %>
+                                        <a href="<%= pastpaper.url[i] %>" target="_blank">
                                             <div class="onebox">
                                                 <%= pastpaper.years[i] %>
                                             </div>
@@ -39,7 +39,7 @@
 
 
                                             <% }else{ %>
-                                                <a href="<%= pastpaper.url %>" target="_blank">
+                                                <a href="<%= pastpaper.url[i] %>" target="_blank">
                                                     <div class="box">
                                                         <%= pastpaper.years[i] %>
                                                     </div>
