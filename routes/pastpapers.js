@@ -10,7 +10,12 @@ const { findById } = require('../models/user');
 
 
 router.get('/', async(req, res) => {
-    const pastpapers = await Pastpaper.find({});
+    const pastpapers = await Pastpaper.find({lang:'EN'});
+    res.render('pastpapers/index', { pastpapers });
+})
+
+router.get('/ZH', async(req, res) => {
+    const pastpapers = await Pastpaper.find({lang:'ZH'});
     res.render('pastpapers/index', { pastpapers });
 })
 

@@ -8,31 +8,41 @@
             </h3>
 
             <div class="container">
-                <% for( let i=0 ; i<pastpaper.years.length ; i++ ) { %>
-                    <% if (pastpaper.years[i] == 'One Click') { %>
-                        <% if (!currentUser) { %>
-                            <a onclick="alert('One Click 需要先登入')" class="onebox" target="_blank">
-                                <div>
-                                    <%= pastpaper.years[i] %>
-                                </div>
-                            </a>
-                            <% }else{ %>
-                                <a href="<%= pastpaper.url %>" target="_blank">
-                                    <div class="onebox">
-                                        <%= pastpaper.years[i] %>
-                                    </div>
-                                </a>
-                                <% } %>
+                <% if (pastpaper.years[0]=='Upload' ){ %>
+                    <p>網上資源混亂，DSE00 盡力為同學整合所有資源，但仍有很多缺漏，例如部分年份的Marking Scheme，Paper 1/2。如同學們曾經有一刻被DSE00感動 ，希望我們能把你的愛分享給後軰的 DSE 學生，他們日後亦一定十分感激。</p>
+                    <a href="<%= pastpaper.url %>" target="_blank">
+                        <div class="onebox">
+                            <%= pastpaper.years[0] %>
+                        </div>
+                    </a>
+                    <% } else{ %>
 
-
+                        <% for( let i=0 ; i<pastpaper.years.length ; i++ ) { %>
+                            <% if (pastpaper.years[i]=='One Click' ) { %>
+                                <% if (!currentUser) { %>
+                                    <a onclick="alert('One Click 需要先登入')" class="onebox" target="_blank">
+                                        <div>
+                                            <%= pastpaper.years[i] %>
+                                        </div>
+                                    </a>
                                     <% }else{ %>
                                         <a href="<%= pastpaper.url %>" target="_blank">
-                                            <div class="box">
+                                            <div class="onebox">
                                                 <%= pastpaper.years[i] %>
                                             </div>
                                         </a>
                                         <% } %>
-                                            <% } %>
+
+
+                                            <% }else{ %>
+                                                <a href="<%= pastpaper.url %>" target="_blank">
+                                                    <div class="box">
+                                                        <%= pastpaper.years[i] %>
+                                                    </div>
+                                                </a>
+                                                <% } %>
+                                                    <% } %>
+                                                        <% } %>
 
 
             </div>

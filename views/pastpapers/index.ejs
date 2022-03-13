@@ -12,13 +12,21 @@
             <div class="warning">本網站純粹分享連結，連結內之內容非本網站上載及持有(HOST)</div>
             <div class="container">
                 <% for( let i = 0; i < pastpapers.length; i++ ) { %>
+
+                    <% if (i==0) { %>
+                        <a href="/resources/<%= pastpapers[i].title %>">
+                            <div class="onebox">
+                                <%= pastpapers[i].title %>
+                            </div>
+                        </a>
+                    <% } else {  %>
                     <a href="/resources/<%= pastpapers[i].title %>">
                         <div class="box">
                             <%= pastpapers[i].title %>
                         </div>
                     </a>
 
-                    <% } %>
+                    <% } %> <% } %>
             </div>
         </div>
     </div>
