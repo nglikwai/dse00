@@ -13,10 +13,15 @@
             <div class="container">
                 <% for( let i = 0; i < pastpapers.length; i++ ) { %>
 
-                    <% if (i==0) { %>
+                    <% if (pastpapers[i].title == '上載區') { %>
                         <a href="/resources/<%= pastpapers[i].title %>">
                             <div class="onebox">
                                 <%= pastpapers[i].title %>
+                            </div>
+                        </a>
+                        <a href="/resources/ZH">
+                            <div class="onebox">
+                                中文版
                             </div>
                         </a>
                     <% } else {  %>
