@@ -4,6 +4,15 @@
         <div class="col-md-6 offset-md-3">
             <form action="/<%=campground._id%>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
                 <div class="mb-3">
+                    <label class="form-label" for="category">類別</label>
+                    <select class="form-select" style="width:100px" selected="功課" name="campground[category]" id="category">
+                        <option value="吹水">吹水</option>
+                        <option value="功課" <%= campground.category === '功課' ? 'selected' : ''%>> 功課</option>
+                        <option value="消息" <%= campground.category === '消息' ? 'selected' : ''%>>消息</option>
+                        <option value="JUPAS" <%= campground.category === 'JUPAS' ? 'selected' : ''%>>JUPAS</option>
+                      </select>
+                </div>
+                <div class="mb-3">
                     <label class="form-label" for="title">標題</label>
                     <input class="form-control" type="text" id="title" name="campground[title]" value="<%=campground.title %>" required>
                     <div class="valid-feedback">

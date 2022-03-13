@@ -3,11 +3,11 @@
     <!-- <link rel="stylesheet" href="/stylesheets/stars.css"> -->
 
     <script>
-        document.querySelector('title').innerText =  '<%= campground.title %>'  ;
+        document.querySelector('title').innerText = '<%= campground.title %>';
     </script>
     <link rel="stylesheet" href="/stylesheets/show.css">
 
-    
+
     <div class="index-loop">
         <div>
             <a href="/" class="btn dse00btn">Back</a>
@@ -104,7 +104,7 @@
                                         <%= review.author.username.toUpperCase()%>
                                             <span class="grade">- Lv <%= review.author.grade %></span>
                                             <span class="muted">
-                                                <%= campground.createdAt.toLocaleString().substring(0,9) %>
+                                                <%= review.createdAt.toLocaleString().substring(0,9) %>
                                             </span>
                                     </a>
                                 </div>
