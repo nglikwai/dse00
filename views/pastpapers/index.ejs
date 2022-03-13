@@ -9,9 +9,10 @@
                 Pastpaper
             </h3>
 
+            <div class="warning">本網站純粹分享連結，連結內之內容非本網站上載及持有(HOST)</div>
             <div class="container">
                 <% for( let i = 0; i < pastpapers.length; i++ ) { %>
-                    <a href="/pastpapers/<%= pastpapers[i].title %>">
+                    <a href="/resources/<%= pastpapers[i].title %>">
                         <div class="box">
                             <%= pastpapers[i].title %>
                         </div>

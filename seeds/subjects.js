@@ -1,5 +1,6 @@
 // 中英數通 ＝ hkdselibrary@gmail.com
 // 其他 ＝alexsze0128@gmail.com
+// tszwaiwong112@gmail.com
 
 module.exports = [{
         title: '中國語文',
@@ -117,6 +118,80 @@ module.exports = [{
             'https://drive.google.com/drive/folders/1yEHBedI1OiVJR8sgW0zWIOXull7C_Dm4?usp=sharing',
             'https://drive.google.com/drive/folders/1mqSWfzDUZ0-gOnWiMGD89DzIo_pRkeWy?usp=sharing',
             'https://drive.google.com/drive/folders/1LHelAk3bOb8TXl0GZCUmjiIE6BxFhwaR?usp=sharing'
+        ]
+    },
+    {
+        title: 'Economy',
+        years: ['One Click', 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+        url: ['https://drive.google.com/drive/folders/1WIYcByp2qNryub7QOjyHsJEkYUBBqEZU?usp=sharing',
+            'https://drive.google.com/drive/folders/1h-hYTv3qOUXEe-GWSfM8Xx0yxGPCOUN6?usp=sharing',
+            'https://drive.google.com/drive/folders/1UdMBh3d7vv2dE4pGw-YlykM9lE9JDDGf?usp=sharing',
+            'https://drive.google.com/drive/folders/17e4vJwca1R-yozzRNwN7F6gMl-LpwCor?usp=sharing',
+            'https://drive.google.com/drive/folders/1YIB59SIEHmdYJu3MLyXsNnitqVlxteU2?usp=sharing',
+            'https://drive.google.com/drive/folders/1lbFbk_afN9t2EjGZpcRNADoCU__9Knd6?usp=sharing',
+            'https://drive.google.com/drive/folders/1uNhohAHtgs9_xgvYicF709GbjIt2XqYq?usp=sharing',
+            'https://drive.google.com/drive/folders/12lW9TpWjDxAuhtfRrZOZlW-alKmmVqhF?usp=sharing',
+            'https://drive.google.com/drive/folders/1MSMPpiMv0q0UA-TbpNqvtOcHsi0_IMGC?usp=sharing'
+        ]
+    },
+    {
+        title: 'BAFS',
+        years: ['One Click', 'Sample Paper', 'Practice Paper', 2012, 2013, 2014, 2015, 2016, 2017, 2019],
+        url: ['https://drive.google.com/drive/folders/1pq2hcw39yYPMaFvLPiEgGN4lwVgf71ef?usp=sharing', 'https://drive.google.com/drive/folders/1pP2lMcZtqGUPa1EnEk5b6iyJ4HimEx_C?usp=sharing',
+            'https://drive.google.com/drive/folders/1eiU3mGAKgbumDy6JcMFQWN4CRCeMObXD?usp=sharing',
+            'https://drive.google.com/drive/folders/1uGci5cKAG_E7x3YFETSdg7Zj9DRnOi4L?usp=sharing',
+            'https://drive.google.com/drive/folders/1Y7HDJ5FdOq_1WsRoFD-Sj8oJtjD5X9kw?usp=sharing',
+            'https://drive.google.com/drive/folders/14a_L3Y2I0ZrxemnelpSebxa50yLCAu-4?usp=sharing',
+            'https://drive.google.com/drive/folders/1jJMsYGXmFkG4fkFGghJuA88nxjfYvIo0?usp=sharing',
+            'https://drive.google.com/drive/folders/1RFeo1RpiYqISBHDo0CYVEASO8rc836ib?usp=sharing',
+            'https://drive.google.com/drive/folders/1nYueRQMKVwal9ZlncR1ZqyFlIlqQ2ET6?usp=sharing',
+            'https://drive.google.com/drive/folders/1uekDEM00IrgQuq-M4edDTHAGZNArq_Ix?usp=sharing'
+
+        ]
+    },
+    {
+        title: 'BAFS',
+        years: ['One Click', 'Sample Paper', 'Practice Paper', 2012, 2013, 2014, 2015, 2016, 2017, 2019],
+        url: ['https://drive.google.com/drive/folders/1pq2hcw39yYPMaFvLPiEgGN4lwVgf71ef?usp=sharing', 'https://drive.google.com/drive/folders/1pP2lMcZtqGUPa1EnEk5b6iyJ4HimEx_C?usp=sharing',
+            'https://drive.google.com/drive/folders/1eiU3mGAKgbumDy6JcMFQWN4CRCeMObXD?usp=sharing',
+            'https://drive.google.com/drive/folders/1uGci5cKAG_E7x3YFETSdg7Zj9DRnOi4L?usp=sharing',
+            'https://drive.google.com/drive/folders/1Y7HDJ5FdOq_1WsRoFD-Sj8oJtjD5X9kw?usp=sharing',
+            'https://drive.google.com/drive/folders/14a_L3Y2I0ZrxemnelpSebxa50yLCAu-4?usp=sharing',
+            'https://drive.google.com/drive/folders/1jJMsYGXmFkG4fkFGghJuA88nxjfYvIo0?usp=sharing',
+            'https://drive.google.com/drive/folders/1RFeo1RpiYqISBHDo0CYVEASO8rc836ib?usp=sharing',
+            'https://drive.google.com/drive/folders/1nYueRQMKVwal9ZlncR1ZqyFlIlqQ2ET6?usp=sharing',
+            'https://drive.google.com/drive/folders/1uekDEM00IrgQuq-M4edDTHAGZNArq_Ix?usp=sharing'
+
+        ]
+    },
+    {
+        title: 'ICT',
+        years: ['One Click', 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+        url: ['https://drive.google.com/drive/folders/1vB9icXM81Mwi6f1hMZCxzijrAPWGowxp?usp=sharing',
+            'https://drive.google.com/drive/folders/1pwLx1hot9TatpUyeW9fi0iU7iRpwll-_?usp=sharing',
+            'https://drive.google.com/drive/folders/1-iBmWxtFAnlo4pli6B0H3TxRvp__hEil?usp=sharing',
+            'https://drive.google.com/drive/folders/1G8ZOUYZNWOW3fF-8Ds9VGQGH1OgnhgC6?usp=sharing',
+            'https://drive.google.com/drive/folders/18UJENYLe6BuYLWOhmniCQPcI1znNI05z?usp=sharing',
+            'https://drive.google.com/drive/folders/1eEV9YrIeh-droJA_sS0zKaVjlHUhpzZ2?usp=sharing',
+            'https://drive.google.com/drive/folders/1JVGZM2OEsfcgX2mzYauuvlvQhJbYuYyS?usp=sharing',
+            'https://drive.google.com/drive/folders/1oUR5PBsYXpvKTKZOZYHiPA8DjJfLTCJ9?usp=sharing',
+            'https://drive.google.com/drive/folders/1eUayCv211-D1zLwz2YCxHpj22lnPa5mX?usp=sharing'
+        ]
+    },
+    {
+        title: 'Geography',
+        years: ['One Click', 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+        url: ['https://drive.google.com/drive/folders/1qUlwZtOFGZuE3uCWdZi03tj3rDBMd61N?usp=sharing',
+            'https://drive.google.com/drive/folders/1pnkesC_olFF3xeNxaGT1AZl2zacs8h7h?usp=sharing',
+            'https://drive.google.com/drive/folders/1nx9xAR3DaCDJhOfABjagGs-orE2WX5Pi?usp=sharing',
+            'https://drive.google.com/drive/folders/1HzAMFN9jZh49YEVrVS7CtKZGfeeXxakt?usp=sharing',
+            'https://drive.google.com/drive/folders/1QkIKpsNFYIsBItyDvzUPqGxfDCemluTv?usp=sharing',
+            'https://drive.google.com/drive/folders/11UUwPW4LeEE096ipE-ZKuYk4drPoln07?usp=sharing',
+            'https://drive.google.com/drive/folders/1wreRCPL71lY1YQIUQ_e05hPdYlP9nPqu?usp=sharing',
+            'https://drive.google.com/drive/folders/1gNwRgfAAbVJbRve3u8whUwekejR4QV8T?usp=sharing',
+            'https://drive.google.com/drive/folders/1NSw-XXVEoH0ZlWlTJUsQ2Pi9darVYlaP?usp=sharing',
+            'https://drive.google.com/drive/folders/1gQM7MXIz4KF2MKLNBZvWBqhKzP_Ffco0?usp=sharing',
+            'https://drive.google.com/drive/folders/16mR21peDWXpA8I7Pocd737snM8jLqT4k?usp=sharing'
         ]
     }
 ]

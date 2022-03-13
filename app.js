@@ -99,7 +99,7 @@ app.use((req, res, next) => {
 
 app.use('/admins', adminRoutes);
 app.use('/users', userRoutes);
-app.use('/pastpapers', pastpaperRoutes);
+app.use('/resources', pastpaperRoutes);
 app.use('/', campgroundRoutes);
 app.use('/:id/reviews', reviewRoutes);
 
