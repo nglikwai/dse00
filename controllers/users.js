@@ -43,7 +43,8 @@ module.exports.loadUser = async(req, res) => {
         req.flash('error', 'User not found');
         return res.redirect('/');
     }
-    res.render('/users/user', { user });
+    console.log(user);
+    res.render('users/user', { user });
 }
 
 module.exports.updateUser = async(req, res, next) => {
