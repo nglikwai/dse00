@@ -10,11 +10,11 @@
                 <a href="/resources">資源區</a>
                 <a href="http://dse00.blogspot.com/p/core-cutoff.html" target="_blank">2021 Cut-off</a>
                 <a href="http://dse00.blogspot.com/search/label/Tips" target="_blank">Tips</a>
-                
+
             </div>
             <div class="navbar-nav ml-auto">
                 <% if (currentUser && currentUser.identity === 'admin') { %>
-                    <span id="darkmode">🌤️</span>
+                    <a href="/admins">❄️</a>
                     <% } %>
 
                         <% if(!currentUser) {%>

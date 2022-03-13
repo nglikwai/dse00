@@ -54,3 +54,7 @@ h3 {
     font-size: 14px;
     margin: 20px 0 40px 0;
 }
+
+.locked {
+    width: 20px;
+}

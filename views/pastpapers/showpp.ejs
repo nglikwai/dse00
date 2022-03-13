@@ -29,24 +29,21 @@
                                             <%= pastpaper.years[i] %>
                                         </div>
                                     </a>
-                                    <% }else { %>
-                                        <a href="<%= pastpaper.url[i] %>" target="_blank">
+                                    <% continue} %>
+                                        <a href="<%= pastpaper.url %>" target="_blank">
                                             <div class="onebox">
                                                 <%= pastpaper.years[i] %>
                                             </div>
                                         </a>
-                                        <% } %>
-
-
-                                            <% }else{ %>
-                                                <a href="<%= pastpaper.url[i] %>" target="_blank">
-                                                    <div class="box">
-                                                        <%= pastpaper.years[i] %>
-                                                    </div>
-                                                </a>
+                                        <% continue} %>
+                                            <a href="<%= pastpaper.url %>" target="_blank">
+                                                <div class="box">
+                                                    <%= pastpaper.years[i] %>
+                                                </div>
+                                            </a>
+                                            <% } %>
                                                 <% } %>
-                                                    <% } %>
-                                                        <% } %>
+
 
 
             </div>

@@ -1,48 +1,50 @@
 <% layout('layouts/boilerplate')%>
     <link rel="stylesheet" href="/stylesheets/admin.css">
 
-
+    <a href="/admins" class="btn dse00btn">Created At</a>
+    <a href="/admins/activity" class="btn dse00btn">Last Updated</a>
 
     <div class="user-container">
-        <% for(let user of users) { %>
+        <% for( let i = users.length-1; i >=0; i-- ) { %>
             <div class="user-box">
-                <div><b><a href="/users/user/<%= user._id %>"><%= user.username %></a></b></div>
+                <div> <b><a href="/users/user/<%= users[i]._id %>">#
+                    <%= i+1 %> <br><%= users[i].username %></a></b></div>
                 <div>
-                    <%= user.identity %>
+                    <%= users[i].identity %>
                 </div>
                 <div>Lv.
-                    <%= user.grade %> ｜ 🪙
-                        <%= user.coin %>
+                    <%= users[i].grade %> ｜ 🪙
+                        <%= users[i].coin %>
                 </div>
                 <div>Post:
-                    <%= user.posts.length %>
+                    <%= users[i].posts.length %>
                 </div>
                 <div>Reviews:
-                    <%= user.reviews.length %>
+                    <%= users[i].reviews.length %>
                 </div>
                 <div>
-                    <% if (user.createdAt) { %>
+                    <% if (users[i].createdAt) { %>
                         <div>注冊日期：
-                            <%= user.createdAt.toLocaleString() %>
+                            <%= users[i].createdAt.toLocaleString() %>
                         </div>
                         <% } %>
                 </div>
                 <div>
-                    <% if (user.updatedAt) { %>
+                    <% if (users[i].updatedAt) { %>
                         <div>最後活動：
-                            <%= user.updatedAt.toLocaleString() %>
+                            <%= users[i].updatedAt.toLocaleString() %>
                         </div>
                         <% } %>
                 </div>
                 <div><b>Post</b>
-                    <% for( let post of user.posts ) { %>
+                    <% for( let post of users[i].posts ) { %>
                         <div><a href="/<%= post._id %> ">
                         - <%= post.title %>
                     </a></div>
                         <% } %>
                 </div>
                 <div><b>Reviews</b>
-                    <% for( let review of user.reviews ) { %>
+                    <% for( let review of users[i].reviews ) { %>
                         <div><a href="/<%= review.post %> ">
                         - <%= review.body %>
                     </a></div>

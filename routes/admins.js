@@ -10,4 +10,6 @@ const admins = require('../controllers/admins');
 
 router.get('/', isLoggedIn, isAdmin, admins.seeall)
 
+router.get('/activity', isLoggedIn, isAdmin, admins.activity)
+
 module.exports = router;

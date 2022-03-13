@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate')%>
-<script>
-    document.querySelector('title').innerText =  'Resources'  ;
-</script>
+    <script>
+        document.querySelector('title').innerText = 'Resources';
+    </script>
     <link rel="stylesheet" href="/stylesheets/pastpaper.css">
 
 
@@ -14,8 +14,8 @@
 
             <div class="warning">本網站純粹分享連結，連結內之內容非本網站上載及持有(HOST)</div>
             <div class="container">
-                <% for( let i = 0; i < pastpapers.length; i++ ) { %>
 
+                <% for( let i = 0; i < pastpapers.length; i++ ) { %>
                     <% if (pastpapers[i].title == '上載區') { %>
                         <a href="/resources/<%= pastpapers[i].title %>">
                             <div class="onebox">
@@ -27,30 +27,43 @@
                                 中文版
                             </div>
                         </a>
-                        <% }else if (pastpapers[i].title == '中國語文') {%>
-                            <a href="/resources/上載區">
-                                <div class="onebox">
-                                    上載區
-                                </div>
-                            </a> 
-                            <a href="/resources/">
-                                <div class="onebox">
-                                    English Version
-                                </div>
-                            </a>
-                            <a href="/resources/<%= pastpapers[i].title %>">
-                                <div class="box">
-                                    <%= pastpapers[i].title %>
-                                </div>
-                            </a>
-                    <% } else {  %>
-                    <a href="/resources/<%= pastpapers[i].title %>">
-                        <div class="box">
-                            <%= pastpapers[i].title %>
-                        </div>
-                    </a>
+                        <% continue } %>
+                            <% if (pastpapers[i].title =='DSE00 Mock') { %>
+                                <% if (currentUser && currentUser.grade !=1) { %>
+                                    <a href="/resources/<%= pastpapers[i].title %>">
+                                        <div class="box">
+                                            <%= pastpapers[i].title %>
+                                        </div>
+                                    </a>
+                                    <% continue} %>
+                                        <a onclick="alert('Lv2 OPEN')" class="box" href="">
+                                            <div>
 
-                    <% } %> <% } %>
+                                                <%= pastpapers[i].title %>
+                                                    <br><img class='locked' src="https://www.freeiconspng.com/thumbs/lock-icon/lock-icon-11.png" alt="">
+
+                                            </div>
+                                        </a>
+                                        <% continue } %>
+                                            <% if (pastpapers[i].title =='中國語文') { %>
+                                                <a href="/resources/">
+                                                    <div class="onebox">
+                                                        English Version
+                                                    </div>
+                                                </a>
+                                                <a href="/resources/<%= pastpapers[i].title %>">
+                                                    <div class="box">
+                                                        <%= pastpapers[i].title %>
+                                                    </div>
+                                                </a>
+                                                <% continue } %>
+                                                    <a href="/resources/<%= pastpapers[i].title %>">
+                                                        <div class="box">
+                                                            <%= pastpapers[i].title %>
+                                                        </div>
+                                                    </a>
+
+                                                    <% } %>
             </div>
         </div>
     </div>
