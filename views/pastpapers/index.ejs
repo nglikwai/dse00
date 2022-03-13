@@ -24,6 +24,22 @@
                                 中文版
                             </div>
                         </a>
+                        <% }else if (pastpapers[i].title == '中國語文') {%>
+                            <a href="/resources/上載區">
+                                <div class="onebox">
+                                    上載區
+                                </div>
+                            </a> 
+                            <a href="/resources/">
+                                <div class="onebox">
+                                    English Version
+                                </div>
+                            </a>
+                            <a href="/resources/<%= pastpapers[i].title %>">
+                                <div class="box">
+                                    <%= pastpapers[i].title %>
+                                </div>
+                            </a>
                     <% } else {  %>
                     <a href="/resources/<%= pastpapers[i].title %>">
                         <div class="box">
