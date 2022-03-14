@@ -28,18 +28,18 @@
                             </div>
                         </a>
                         <% continue } %>
-                            <% if (pastpapers[i].title =='DSE00 Mock') { %>
+                            <% if (pastpapers[i].title =='DSE00 Mocks') { %>
                                 <% if (currentUser && currentUser.grade !=1) { %>
                                     <a href="/resources/<%= pastpapers[i].title %>">
                                         <div class="box">
-                                            <%= pastpapers[i].title %>
+                                            DSE00 Mock
                                         </div>
                                     </a>
                                     <% continue} %>
                                         <a onclick="alert('Lv2 OPEN')" class="box" href="">
                                             <div>
 
-                                                <%= pastpapers[i].title %>
+                                                DSE00 Mock
                                                     <br><img class='locked' src="https://www.freeiconspng.com/thumbs/lock-icon/lock-icon-11.png" alt="">
 
                                             </div>
