@@ -262,6 +262,21 @@ module.exports = [{
         ]
     },
     {
+        title: '資訊及通訊科技',
+        lang: 'ZH',
+        years: ['One Click', '樣本試卷', '練習試卷', 2012, 2013, 2014, 2015, 2016, 2017],
+        url: ['https://drive.google.com/drive/folders/15bd4CZZGimrGBsDLMs-_bvwo9A1mKqwL?usp=sharing',
+        'https://drive.google.com/drive/folders/1TL6-7qeBeqlDvDku95ggSAVljE4w3_HH?usp=sharing',
+        'https://drive.google.com/drive/folders/19Gie_yjZ1ZB5LdRfUXiSbh6jH6SqnpIx?usp=sharing',
+        'https://drive.google.com/drive/folders/1aCSyirW6oV8lsUuFOLyoG3jFUyd_uTxL?usp=sharing',
+        'https://drive.google.com/drive/folders/1yMihoNvcmn2JVeKiSe49eRgiP6HRQa3_?usp=sharing',
+        'https://drive.google.com/drive/folders/1KRJxgZ5DEczRDAO09uSO_R5CZ9n1SVK5?usp=sharing',
+        'https://drive.google.com/drive/folders/19J3N5h1h7CVoAskpZ_wBkoEkj4oNgLK4?usp=sharing',
+        'https://drive.google.com/drive/folders/12gpCPqAA0Uu7LSC_dEEgEq3ZgdNY6CsT?usp=sharing',
+        'https://drive.google.com/drive/folders/1CKFs6LOD7_0eDEaU-NhOhgBJPcmJL8JI?usp=sharing'
+    ]
+    },
+    {
         title: 'Geography',
         lang: 'EN',
         years: ['One Click', 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
@@ -277,6 +292,21 @@ module.exports = [{
             'https://drive.google.com/drive/folders/1gQM7MXIz4KF2MKLNBZvWBqhKzP_Ffco0?usp=sharing',
             'https://drive.google.com/drive/folders/16mR21peDWXpA8I7Pocd737snM8jLqT4k?usp=sharing'
         ]
+    },
+    {
+        title: '地理',
+        lang: 'ZH',
+        years: ['One Click', '樣本試卷', '練習試卷', 2012, 2013, 2014, 2015, 2016, 2017],
+        url: ['https://drive.google.com/drive/folders/1wbYdkE5iezk6Z9F7DPfxybNt86FPNgDI?usp=sharing',
+            'https://drive.google.com/drive/folders/17Z9T3J69e2HWJYSQRWlw3BS1vS1ZYEu7?usp=sharing',
+            'https://drive.google.com/drive/folders/1uzeWCLGn9Yzq-KdpzrcWO5GCQiVCQqMA?usp=sharing',
+            'https://drive.google.com/drive/folders/1dBCp9zuX0tPTwuNpMCCSUdoszjswKx-4?usp=sharing',
+            'https://drive.google.com/drive/folders/1Bc3wVRNzH-uORLBaZLnYqjvOaBaiCZO-?usp=sharing',
+            'https://drive.google.com/drive/folders/1VKxwXTyXk71utNlFr-2e1zf6h9WAxf0U?usp=sharing',
+            'https://drive.google.com/drive/folders/1qJkW7DdFnlOOtzcX87d6ogRLSvHpIaXZ?usp=sharing',
+            'https://drive.google.com/drive/folders/1-lpP4_IREKZp0D3X3jUjxzuO2-EsQRMO?usp=sharing',
+            'https://drive.google.com/drive/folders/1Vq1OWsGfn88wm1ZYcVcy2-0553MC0XVG?usp=sharing'
+    ]
     },
     {
         title: '中國歷史',
@@ -343,5 +373,4 @@ module.exports = [{
             'https://drive.google.com/drive/folders/1oVg1jOZbQad_Lp8XKcbPNB5WMmMbiokJ?usp=sharing'
         ]
     },
-
 ]

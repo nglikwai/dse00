@@ -92,10 +92,10 @@
                                     </span>
                                     <% if (campgrounds[i].reviews[0]) { %>
                                         <span style="font-size:14px; color:#bbb" class="night-text"> ➥ <%=
-                                                campgrounds[i].reviews[r].body %></span>
+                                                campgrounds[i].reviews[r].body.substring(0,60) %></span>
                                         <% } else if(campgrounds[i].description !== '如題'){ %>
                                             <span style="font-size:14px; color:#bbb" class="night-text"> ➥ <%=
-                                                campgrounds[i].description.substring(0,20) %></span>
+                                                campgrounds[i].description.substring(0,60) %></span>
                                             <% } %>
                                 </div>
                             </div>
