@@ -1,6 +1,7 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand ml-5 mr-5" href="/" id="logo">DSE00</a>
+        <img class="ml-4" width="50px" src="https://2.bp.blogspot.com/-2jtlhNddC7g/Wpy8735Y6vI/AAAAAAAAK0o/_8hrmXs0OQYnLZuRna4lVtxd_09qdzgGwCK4BGAYYCw/s640/output_lTomnU.gif" alt="">
+        <a class="navbar-brand ml-3 mr-4" href="/" id="logo">DSE00</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -13,8 +14,9 @@
 
             </div>
             <div class="navbar-nav ml-auto">
+                <a href="http://shop.dse00.com" target="_blank">👜 SHOP</a>
                 <% if (currentUser && currentUser.identity === 'admin') { %>
-                    <a href="/admins">❄️</a>
+                    <a href="/admins">❄️ Admin</a>
                     <% } %>
 
                         <% if(!currentUser) {%>

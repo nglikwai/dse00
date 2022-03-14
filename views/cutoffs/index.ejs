@@ -1,0 +1,72 @@
+<% layout('layouts/boilerplate')%>
+
+<style>
+    td{
+        border:1px #ddd solid;
+        width:auto;
+        padding:7px 14px;
+        text-align: center;
+        font-size: 13px;
+
+    }
+    .title{
+        background-color: #cc0000;
+        color: white;
+        font-weight: bold;
+        padding: 10px 0;
+        font-size: 20px;
+ 
+    }
+    .fullScore , .percentage{
+        font-size: 13px;
+    }
+    table{
+        margin: 20px 0;
+    }
+
+</style>
+
+
+<% for( let p = 0; p < cutoffs.length; p++ ) { %>
+
+
+
+
+<table>
+    <tr><td colspan="<%= cutoffs[p].years.length+1 %>" class="title"><%= cutoffs[p].title %> </td></tr>
+<tr>
+    <td>Grade</td>
+<% for( let i = cutoffs[p].years.length-1 ; i >=0; i-- ) { %>
+    <td> <%= cutoffs[p].years[i] %><br>
+     <span class="fullScore"><%= cutoffs[p].fullScore[i] %></span>   </td>
+ 
+<% } %>
+</tr>
+
+
+<% for( let j = 7; j >1; j-- ) { %>
+
+<tr>
+    <% if ( j == 7  ) { %>
+        <td>5** </td>
+    <%  } else if ( j ==6 ){ %>
+        <td>5* </td>
+        <% } else{ %> 
+    <td><%= j %> </td>
+    <% } %> 
+
+
+<% for( let i = cutoffs[p].years.length-1 ; i >=0; i-- ) { %>
+
+    <td><%= cutoffs[p][j][i]%> <span class="percentage">(<%= parseInt(cutoffs[p][j][i]/cutoffs[p].fullScore[i]*100)%>)</span></td>
+
+<% } %>
+</tr>
+<% } %>
+
+</table>
+
+<% } %>
+
+
+
