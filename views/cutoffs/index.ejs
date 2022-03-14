@@ -20,9 +20,9 @@
             font-size: 20px;
         }
         
-        .fullScore,
         .percentage {
             font-size: 13px;
+            color: #bbb;
         }
         
         table {
@@ -39,9 +39,16 @@
             font-size: 14px;
         }
         
+        .view {
+            display: none
+        }
+        
         @media only screen and (max-width: 800px) {
             .hide {
                 display: none
+            }
+            .view {
+                display: block
             }
         }
     </style>
@@ -52,7 +59,7 @@
         <a href="/cutoffs?category=文史" class="btn dse00btn">文史</a>
         <a href="/cutoffs?category=Others" class="btn dse00btn">地理及ICT</a></div>
 
-
+    <div class="muted mt-3 view">橫看觀看全部</div>
 
     <% for( let p = 0; p < cutoffs.length; p++ ) { %>
 
@@ -69,11 +76,11 @@
                     <% if (i==3||i==2||i==1||i==0) { %>
                         <td class="hide">
                             <b><%= cutoffs[p].years[i] %></b><br>
-                            <span class="fullScore"><%= cutoffs[p].fullScore[i] %></span> </td>
+                            <span class="fullScore"><%= cutoffs[p].fullScore[i] %> </span><span class="percentage"> (%)</span> </td>
                         <% continue} %>
                             <td>
                                 <b><%= cutoffs[p].years[i] %></b><br>
-                                <span class="fullScore"><%= cutoffs[p].fullScore[i] %></span> </td>
+                                <span class="fullScore"><%= cutoffs[p].fullScore[i] %></span><span class="percentage"> (%)</span> </td>
 
                             <% } %>
             </tr>
