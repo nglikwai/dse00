@@ -76,7 +76,11 @@ module.exports.checkIdEmailMatch = async(req, res) => {
         }
         await user.setPassword(req.body.password)
         user.save()
-        res.send(user)
+        req.login(user, err => {
+            if (err) return next(err);
+            req.flash('success', 'Password Changed');
+            res.redirect('/');
+        })
     } catch (e) {
         req.flash('error', e.message);
         res.redirect('/users/forget');
