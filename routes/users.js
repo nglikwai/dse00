@@ -14,6 +14,10 @@ router.route('/login')
     .get(users.renderLogin)
     .post(passport.authenticate('local', { failureFlash: true, failureRedirect: '/users/login' }), users.login)
 
+router.route('/forget')
+    .get(users.renderForget)
+    .put(users.checkIdEmailMatch)
+
 router.route('/user/:id')
     .get(catchAsync(users.loadUser))
 

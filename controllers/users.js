@@ -62,3 +62,23 @@ module.exports.updateUser = async(req, res, next) => {
     console.log(user)
     next();
 }
+
+module.exports.renderForget = (req, res) => {
+    res.render('users/forget');
+}
+
+module.exports.checkIdEmailMatch = async(req, res) => {
+    try {
+        const [user] = await User.find({ username: req.body.username })
+        if (req.body.email !== user.email) {
+            req.flash("error", "Username not match");
+            return res.redirect("/users/forget");
+        }
+        await user.setPassword(req.body.password)
+        user.save()
+        res.send(user)
+    } catch (e) {
+        req.flash('error', e.message);
+        res.redirect('/users/forget');
+    }
+}
