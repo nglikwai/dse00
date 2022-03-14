@@ -11,9 +11,8 @@ const { findById } = require('../models/user');
 
 router.get('/', async(req, res) => {
     const category = req.query.category || 'core';
-    console.log (category);
-    const cutoffs = await Cutoff.find({category})
-    res.render('cutoffs/index' , {cutoffs})
+    const cutoffs = await Cutoff.find({ category })
+    res.render('cutoffs/index', { cutoffs, category })
 })
 
 

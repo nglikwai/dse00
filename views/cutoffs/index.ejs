@@ -1,83 +1,111 @@
 <% layout('layouts/boilerplate')%>
-
-<style>
-    td{
-        border:1px #ddd solid;
-        width:auto;
-        padding:7px 14px;
-        text-align: center;
-        font-size: 13px;
-
-    }
-    .title{
-        background-color: #cc0000;
-        color: white;
-        font-weight: bold;
-        padding: 10px 0;
-        font-size: 20px;
- 
-    }
-    .fullScore , .percentage{
-        font-size: 13px;
-    }
-    table{
-        margin: 20px 0;
-    }
-    .buttons{
-        display:flex;
-        justify-content:space-around;
-    }
- 
-
-  
-
-</style>
-<div class="buttons">
-    <a href="/cutoffs" class="btn dse00btn">主科</a>
-    <a href="/cutoffs?category=science" class="btn dse00btn">Science</a>
-    <a href="/cutoffs?category=business" class="btn dse00btn">商科</a>
-    <a href="/cutoffs?category=文史" class="btn dse00btn">文史</a>
-    <a href="/cutoffs?category=Others" class="btn dse00btn">地理及ICT</a></div>
-
-
-<% for( let p = 0; p < cutoffs.length; p++ ) { %>
-
-
-<table>
-    <tr><td colspan="<%= cutoffs[p].years.length+1 %>" class="title"><%= cutoffs[p].title %> </td></tr>
-<tr>
-    <td>Grade</td>
-<% for( let i = cutoffs[p].years.length-1 ; i >=0; i-- ) { %>
-    <td> <%= cutoffs[p].years[i] %><br>
-     <span class="fullScore"><%= cutoffs[p].fullScore[i] %></span>   </td>
- 
-<% } %>
-</tr>
-
-
-<% for( let j = 7; j >1; j-- ) { %>
-
-<tr>
-    <% if ( j == 7  ) { %>
-        <td>5** </td>
-    <%  } else if ( j ==6 ){ %>
-        <td>5* </td>
-        <% } else{ %> 
-    <td><%= j %> </td>
-    <% } %> 
-
-
-<% for( let i = cutoffs[p].years.length-1 ; i >=0; i-- ) { %>
-
-    <td><%= cutoffs[p][j][i]%> <span class="percentage">(<%= parseInt(cutoffs[p][j][i]/cutoffs[p].fullScore[i]*100)%>)</span></td>
-
-<% } %>
-</tr>
-<% } %>
-
-</table>
-
-<% } %>
+    <script>
+        document.querySelector('title').innerText = 'Cut Off - <%= category.toUpperCase() %>';
+        const ff = document.querySelector('body').clientWidth;
+    </script>
+    <style>
+        td {
+            border: 1px #ddd solid;
+            width: auto;
+            padding: 10px 14px;
+            text-align: center;
+            font-size: 13px;
+        }
+        
+        .title {
+            background-color: #cc0000;
+            color: white;
+            font-weight: bold;
+            padding: 10px 0;
+            font-size: 20px;
+        }
+        
+        .fullScore,
+        .percentage {
+            font-size: 13px;
+        }
+        
+        table {
+            margin: 40px 0;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .buttons a {
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        
+        @media only screen and (max-width: 800px) {
+            .hide {
+                display: none
+            }
+        }
+    </style>
+    <div class="buttons">
+        <a href="/cutoffs" class="btn dse00btn">主科</a>
+        <a href="/cutoffs?category=science" class="btn dse00btn">Science</a>
+        <a href="/cutoffs?category=business" class="btn dse00btn">商科</a>
+        <a href="/cutoffs?category=文史" class="btn dse00btn">文史</a>
+        <a href="/cutoffs?category=Others" class="btn dse00btn">地理及ICT</a></div>
 
 
 
+    <% for( let p = 0; p < cutoffs.length; p++ ) { %>
+
+
+        <table>
+            <tr>
+                <td colspan="<%= cutoffs[p].years.length+1 %>" class="title">
+                    <%= cutoffs[p].title %>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Grade</b></td>
+                <% for( let i = cutoffs[p].years.length-1 ; i >=0; i-- ) { %>
+                    <% if (i==2||i==1||i==0) { %>
+                        <td class="hide">
+                            <b><%= cutoffs[p].years[i] %></b><br>
+                            <span class="fullScore"><%= cutoffs[p].fullScore[i] %></span> </td>
+                        <% continue} %>
+                            <td>
+                                <b><%= cutoffs[p].years[i] %></b><br>
+                                <span class="fullScore"><%= cutoffs[p].fullScore[i] %></span> </td>
+
+                            <% } %>
+            </tr>
+
+            <% for( let j = 7; j >1; j-- ) { %>
+                <tr>
+                    <% if ( j == 7  ) { %>
+                        <td><b>5**</b></td>
+                        <%  } else if ( j ==6 ){ %>
+                            <td><b>5*</b> </td>
+                            <% } else{ %>
+                                <td>
+                                    <b><%= j %></b>
+                                </td>
+                                <% } %>
+                                    <% for( let i = cutoffs[p].years.length-1 ; i >=0; i-- ) { %>
+                                        <% if (i==2||i==1||i==0) { %>
+                                            <td class="hide">
+                                                <%= cutoffs[p][j][i]%> <span class="percentage">(<%= parseInt(cutoffs[p][j][i]/cutoffs[p].fullScore[i]*100)%>)</span></td>
+
+                                            <% continue} %>
+                                                <td>
+                                                    <%= cutoffs[p][j][i]%> <span class="percentage">(<%= parseInt(cutoffs[p][j][i]/cutoffs[p].fullScore[i]*100)%>)</span></td>
+                                                <% } %>
+                </tr>
+                <% } %>
+
+        </table>
+
+
+
+        <% } %>
+            <div class="muted mb-5">Updated:
+                <%= cutoffs[0].createdAt.toLocaleString() %>
+            </div>
