@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const cutoffSchema = new Schema({
     title: String,
     years: [String],
+    category: String,
     fullScore:[Number],
     '7': [Number],
     '6': [Number],

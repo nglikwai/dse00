@@ -23,13 +23,24 @@
     table{
         margin: 20px 0;
     }
+    .buttons{
+        display:flex;
+        justify-content:space-around;
+    }
+ 
+
+  
 
 </style>
+<div class="buttons">
+    <a href="/cutoffs" class="btn dse00btn">主科</a>
+    <a href="/cutoffs?category=science" class="btn dse00btn">Science</a>
+    <a href="/cutoffs?category=business" class="btn dse00btn">商科</a>
+    <a href="/cutoffs?category=文史" class="btn dse00btn">文史</a>
+    <a href="/cutoffs?category=Others" class="btn dse00btn">地理及ICT</a></div>
 
 
 <% for( let p = 0; p < cutoffs.length; p++ ) { %>
-
-
 
 
 <table>
