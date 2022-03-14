@@ -11,10 +11,7 @@ const cutoffSchema = new Schema({
     '5': [Number],
     '4': [Number],
     '3': [Number],
-    '2': {
-        type: [Number],
-        default: [0, 0, 0, 0, 0, 0, 0, 0, 0]
-    }
+    '2': [Number]
 }, { timestamps: true });
 
 module.exports = mongoose.model("Cutoff", cutoffSchema);

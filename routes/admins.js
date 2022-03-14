@@ -12,4 +12,6 @@ router.get('/', isLoggedIn, isAdmin, admins.seeall)
 
 router.get('/activity', isLoggedIn, isAdmin, admins.activity)
 
+router.put('/:id', isAdmin, admins.setAdmin)
+
 module.exports = router;

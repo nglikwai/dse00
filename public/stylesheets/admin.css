@@ -1,30 +1,30 @@
 .user-container {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
-.user-box{
-    border:#ddd 1px solid;
-    margin:5px;
+
+.user-box {
+    border: #ddd 1px solid;
+    margin: 5px;
     padding: 10px;
     border-radius: 5px;
-    width:300px;
+    width: 300px;
 }
 
-
-td {
-  width: auto;
-  padding: 3px 10px;
-  border-bottom: 1px solid;
-  border-color: #ddd;
-}
-
-a{
+a {
     color: #888;
 }
 
+.reviews {
+    font-size: 15px;
+}
+
 @media only screen and (max-width: 600px) {
-    .user-box{
-        width:100%
+    .user-box {
+        width: 100%
     }
 }
 
+div {
+    color: #444
+}
