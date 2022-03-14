@@ -5,6 +5,13 @@
     <script>
         document.querySelector('title').innerText = '<%= campground.title %>';
     </script>
+
+    <style>
+        .good {
+            color: rgb(239, 184, 47);
+            font-weight: bold;
+        }
+    </style>
     <link rel="stylesheet" href="/stylesheets/show.css">
 
 
@@ -56,7 +63,7 @@
                             <b>
                                 <%= campground.author.username.toUpperCase()%>
                             </b>
-                            <span class="grade"> - Lv <%=campground.author.grade %></span>
+                            <span <%=campground.author.grade==='5**' ? 'class=good': 'class=grade' %>> - Lv <%=campground.author.grade %></span>
                         </a>
                     </li>
 
@@ -102,7 +109,7 @@
                                     <!-- <img src="https://devshift.biz/wp-content/uploads/2017/04/profile-icon-png-898.png"> -->
                                     <a class="review-title" href="/users/user/<%= review.author._id %> "></h6>
                                         <%= review.author.username.toUpperCase()%>
-                                            <span class="grade">- Lv <%= review.author.grade %></span>
+                                            <span <%=review.author.grade==='5**' ? 'class=good': 'class=grade' %> >- Lv <%= review.author.grade %></span>
                                             <span class="muted">
                                                 <%= review.createdAt.toLocaleString().substring(0,9) %>
                                             </span>
