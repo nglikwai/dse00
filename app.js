@@ -21,6 +21,7 @@ const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
 const cutoffRoutes = require('./routes/cutoffs');
+const apiRoutes = require('./routes/apis');
 
 const dayjs = require('dayjs');
 dayjs().format();
@@ -99,6 +100,7 @@ app.use((req, res, next) => {
 
 
 app.use('/admins', adminRoutes);
+app.use('/apis', apiRoutes);
 app.use('/cutoffs', cutoffRoutes);
 app.use('/users', userRoutes);
 app.use('/resources', pastpaperRoutes);
