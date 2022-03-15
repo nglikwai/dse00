@@ -5,6 +5,12 @@ body {
   width: 100%;
 }
 
+#yylamdiv{
+  color:#ccc;
+  font-size: 13px;
+  margin:20px;
+}
+
 .card {
   background-color: transparent;
   border: none;
