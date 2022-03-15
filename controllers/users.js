@@ -12,6 +12,9 @@ module.exports.register = async(req, res, next) => {
         req.login(registeredUser, err => {
             if (err) return next(err);
             req.flash('success', 'Welcome to DSE00!');
+            user.coin = 101 ;
+            user.grade = '4' ;
+            user.save()
             res.redirect('/');
         })
     } catch (e) {
