@@ -92,7 +92,7 @@
                 <div class="mb-5 mt-5">
                     <% if (replyReview)  { %>
 
-                        <textarea class="form-control muted" name="review[body]" id="body" cols="20" rows="4" required style="width:80%" autofocus> -　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　- ➼ Re : <%= replyReview.author.username %> - <%= replyReview.body %> </textarea>
+                        <textarea class="form-control muted" name="review[body]" id="body" cols="20" rows="4" required style="width:80%" autofocus> -　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　- 　-　-　- ➼ Re : <%= replyReview.author.username %> - <%= replyReview.body %> </textarea>
 
                         <button class="btn dse00btn2 mt-0 mb-5">回覆</button>
 
@@ -139,10 +139,11 @@
                                             </span>
                                         </a>
                                     </div>
-                                    <!-- <h6 class="card-subtitle mb-2 text-muted">By <%= review.author.username%></h6> -->
-                                    <p>
-                                        <%= review.body %>
-                                    </p>
+                                    <div class="index-loop">
+                                        <p>
+                                            <%= review.body %>
+                                        </p>
+                                    </div>
                                     <a href="/reply/<%= review._id %>?post=<%= campground._id %>" class="btn replybtn m-0">REPLY</a>
 
 
