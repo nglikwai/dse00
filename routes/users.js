@@ -21,14 +21,14 @@ router.route('/forget')
     .put(users.checkIdEmailMatch)
 
 router.route('/intro')
-    .get(isLoggedIn,users.renderIntro)
-    
+    .get(isLoggedIn, users.renderIntro)
+
 
 router.route('/user/:id')
-    .get(catchAsync(users.loadUser))
-    .put(isLoggedIn,catchAsync(users.intro))
-    .delete(isLoggedIn, isAdmin,catchAsync(admins.deleteUser))
-    
+    .get(users.updateUser, catchAsync(users.loadUser))
+    .put(isLoggedIn, catchAsync(users.intro))
+    .delete(isLoggedIn, isAdmin, catchAsync(admins.deleteUser))
+
 
 router.get('/logout', users.logout)
 

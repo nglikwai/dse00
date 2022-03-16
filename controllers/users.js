@@ -12,8 +12,8 @@ module.exports.register = async(req, res, next) => {
         req.login(registeredUser, err => {
             if (err) return next(err);
             req.flash('success', 'Welcome to DSE00!');
-            user.coin = 101 ;
-            user.grade = '4' ;
+            user.coin = 50;
+            user.grade = '3';
             user.save()
             res.redirect('/users/intro');
         })
@@ -56,7 +56,28 @@ module.exports.updateUser = async(req, res, next) => {
     }
     const user = req.user;
     const a = user.grade;
-    if (user.coin > 1200) { user.grade = '5**' } else if (user.coin > 500) { user.grade = '5*' } else if (user.coin > 250) { user.grade = 5 } else if (user.coin > 100) { user.grade = 4 } else if (user.coin > 36) { user.grade = 3 } else if (user.coin > 10) { user.grade = 2 } else if (user.coin > 0) { user.grade = 1 };
+    if (user.coin > 1200) {
+        user.grade = '5**';
+        user.level = 7
+    } else if (user.coin > 500) {
+        user.grade = '5*';
+        user.level = 6
+    } else if (user.coin > 250) {
+        user.grade = 5;
+        user.level = 5
+    } else if (user.coin > 100) {
+        user.grade = 4;
+        user.level = 4
+    } else if (user.coin > 36) {
+        user.grade = 3;
+        user.level = 3
+    } else if (user.coin > 10) {
+        user.grade = 2;
+        user.level = 2
+    } else if (user.coin > 0) {
+        user.grade = 1;
+        user.level = 1
+    };
     user.save();
     const b = user.grade;
     if (a !== b) {
@@ -71,16 +92,16 @@ module.exports.renderForget = (req, res) => {
 }
 
 module.exports.renderIntro = async(req, res) => {
-    const user = await User.findById(req.user._id) 
+    const user = await User.findById(req.user._id)
     console.log(user)
-    res.render('users/intro' , {user});
+    res.render('users/intro', { user });
 }
 
 module.exports.intro = async(req, res) => {
-    const {id} = req.params;
-    const user = await User.findByIdAndUpdate(id, {...req.body})
+    const { id } = req.params;
+    const user = await User.findByIdAndUpdate(id, {...req.body })
     console.log(user)
-    req.flash('success',`${req.body.intro}`)
+    req.flash('success', `${req.body.intro}`)
     res.redirect(`/`)
 }
 

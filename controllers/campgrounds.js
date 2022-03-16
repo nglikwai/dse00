@@ -4,7 +4,7 @@ const User = require("../models/user");
 const { cloudinary } = require("../cloudinary");
 
 module.exports.index = async(req, res) => {
-    const limit = req.query.limit || 100;
+    const limit = req.query.limit || 150;
     const page = req.query.page || 1;
     const options = {
         sort: { updatedAt: -1 },
