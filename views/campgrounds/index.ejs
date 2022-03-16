@@ -92,8 +92,14 @@
                                             <%= r+1 %> 💬
                                     </span>
                                     <% if (campgrounds[i].reviews[0]) { %>
-                                        <span style="font-size:14px; color:#bbb" class="night-text"> ➥ <%=
-                                                campgrounds[i].reviews[r].body.substring(0,40) %></span>
+                                        <span style="font-size:14px; color:#bbb" class="night-text">
+                                        <% if (campgrounds[i].reviews[r].reply[0]) { %>
+                                            ➥ <%=
+                                            campgrounds[i].reviews[r].reply[campgrounds[i].reviews[r].reply.length-1].substring(0,40) %>
+                                        <% }else{ %>
+                                        ➥ <%=
+                                                campgrounds[i].reviews[r].body.substring(0,40) %>
+                                                <% } %> </span>
                                         <% } else if(campgrounds[i].description !== '如題'){ %>
                                             <span style="font-size:14px; color:#bbb" class="night-text"> ↪ <%=
                                                 campgrounds[i].description.substring(0,60) %></span>
