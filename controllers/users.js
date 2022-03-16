@@ -15,7 +15,7 @@ module.exports.register = async(req, res, next) => {
             user.coin = 101 ;
             user.grade = '4' ;
             user.save()
-            res.redirect('/');
+            res.redirect('/users/intro');
         })
     } catch (e) {
         req.flash('error', e.message);
@@ -68,6 +68,20 @@ module.exports.updateUser = async(req, res, next) => {
 
 module.exports.renderForget = (req, res) => {
     res.render('users/forget');
+}
+
+module.exports.renderIntro = async(req, res) => {
+    const user = await User.findById(req.user._id) 
+    console.log(user)
+    res.render('users/intro' , {user});
+}
+
+module.exports.intro = async(req, res) => {
+    const {id} = req.params;
+    const user = await User.findByIdAndUpdate(id, {...req.body})
+    console.log(user)
+    req.flash('success',`${req.body.intro}`)
+    res.redirect(`/`)
 }
 
 module.exports.checkIdEmailMatch = async(req, res) => {

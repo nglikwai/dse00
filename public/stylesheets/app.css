@@ -12,6 +12,10 @@ body {
 
 }
 
+.fr{
+  float:right
+}
+
 .card {
   background-color: transparent;
   border: none;
@@ -258,9 +262,14 @@ nav a:hover {
 }
 
 .userpage {
+
   padding: 30px;
   border-radius: 5px;
   width: auto;
+}
+
+#reviews a{
+  color:#333
 }
 
 #usergrade {

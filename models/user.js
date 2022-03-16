@@ -16,6 +16,10 @@ const UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Campground'
     }],
+    intro: {
+        type: String,
+        default: '考到心儀嘅大學'
+    },
     coin: {
         type: Number,
         default: 1
