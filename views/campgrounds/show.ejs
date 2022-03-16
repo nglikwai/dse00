@@ -89,14 +89,25 @@
                 <input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating">
             </div> -->
 
-                <div class="mb-3">
-                    <label class="form-label mt-4 mb-4" for="body">留言文字</label>
-                    <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
+                <div class="mb-5 mt-5">
+                    <% if (replyReview)  { %>
+
+                        <textarea class="form-control muted" name="review[body]" id="body" cols="20" rows="4" required style="width:80%" autofocus> -　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　- ➼ Re : <%= replyReview.author.username %> - <%= replyReview.body %> </textarea>
+
+                        <button class="btn dse00btn2 mt-0 mb-5">回覆</button>
+
+
+                        <% } else{%>
+                            <label class="form-label  mb-4" for="body">留言文字</label>
+                            <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+
+                            <button class="btn dse00btn">提交</button>
+                            <% } %>
                 </div>
-                <button class="btn btn-success" style="float:right">提交</button>
             </form>
             <% if (campground.reviews.length==0) { %>
                 <h4 style="margin-top:60px">未有留言</h4>
@@ -134,20 +145,7 @@
                                     </p>
                                     <a href="/reply/<%= review._id %>?post=<%= campground._id %>" class="btn replybtn m-0">REPLY</a>
 
-                                    <% if (replyReview&&replyReview.equals(review._id))  { %>
-                                        <div id="replyReview">
-                                            <form action="/<%=campground._id%>/reviews" method="POST" class="mb-3 validated-form" novalidate>
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="body">Reply</label>
-                                                    <textarea class="form-control muted" name="review[body]" id="body" cols="20" rows="2" required style="width:80%" autofocus> -　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　- ➼ Re : <%= replyReview.author.username %> - <%= replyReview.body %> </textarea>
-                                                    <div class="valid-feedback">
-                                                        Looks good!
-                                                    </div>
-                                                </div>
-                                                <button class="btn dse00btn2 mt-0">提交</button>
-                                            </form>
-                                        </div>
-                                        <% } %>
+
 
 
                                 </div>
