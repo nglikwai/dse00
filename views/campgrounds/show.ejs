@@ -103,32 +103,56 @@
                 <% } else{%>
                     <h4 style="margin-top:60px">留言</h4>
                     <% for(let review of campground.reviews) { %>
-                        <div class="mb-3">
-                            <div class="card-body">
-                                <div>
-                                    <!-- <img src="https://devshift.biz/wp-content/uploads/2017/04/profile-icon-png-898.png"> -->
-                                    <a class="review-title" href="/users/user/<%= review.author._id %> "></h6>
-                                        <%= review.author.username.toUpperCase()%>
-                                            <span <%=review.author.grade==='5**' ? 'class=good': 'class=grade' %> >- Lv <%= review.author.grade %></span>
-                                            <span class="muted">
-                                                <%= review.createdAt.toLocaleString().substring(0,9) %>
-                                            </span>
-                                    </a>
-                                </div>
-                                <!-- <h6 class="card-subtitle mb-2 text-muted">By <%= review.author.username%></h6> -->
-                                <p>
-                                    <%= review.body %>
-                                </p>
+                        <div>
+                            <div id="delete">
                                 <% if(currentUser) {%>
                                     <% if (review.author.equals(currentUser._id) || currentUser.identity=='admin' ) { %>
                                         <div style="float: right">
                                             <form action="/<%=campground._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
-                                                <button class="btn dse00btn">刪除</button>
+                                                <button onclick="return confirm('Delete?')" class="btn dse00btn" style="border:none">X</button>
                                             </form>
                                         </div>
                                         <% } %>
                                             <% } %>
                             </div>
+                            <div class="mb-3">
+                                <div class="card-body">
+                                    <div>
+
+                                        <!-- <img src="https://devshift.biz/wp-content/uploads/2017/04/profile-icon-png-898.png"> -->
+                                        <a class="review-title" href="/users/user/<%= review.author._id %> "></h6>
+                                            <%= review.author.username.toUpperCase()%>
+                                                <span <%=review.author.grade==='5**' ? 'class=good': 'class=grade' %> >- Lv <%= review.author.grade %></span>
+                                                <span class="muted">
+                                                <%= review.createdAt.toLocaleString().substring(0,9) %>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <!-- <h6 class="card-subtitle mb-2 text-muted">By <%= review.author.username%></h6> -->
+                                    <p>
+                                        <%= review.body %>
+                                    </p>
+                                    <a href="/reply/<%= review._id %>?post=<%= campground._id %>" class="btn replybtn m-0">REPLY</a>
+
+                                    <% if (replyReview&&replyReview.equals(review._id))  { %>
+                                        <div id="replyReview">
+                                            <form action="/<%=campground._id%>/reviews" method="POST" class="mb-3 validated-form" novalidate>
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="body">Reply</label>
+                                                    <textarea class="form-control muted" name="review[body]" id="body" cols="20" rows="2" required style="width:80%" autofocus> -　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　-　- ➼ Re : <%= replyReview.author.username %> - <%= replyReview.body %> </textarea>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                </div>
+                                                <button class="btn dse00btn2 mt-0">提交</button>
+                                            </form>
+                                        </div>
+                                        <% } %>
+
+
+                                </div>
+                            </div>
+
                         </div>
                         <% } %>
 

@@ -84,8 +84,9 @@ a:hover {
     color: white;
     border: #cc0000 solid 1px;
     border-radius: 5px;
-    padding: 4px 16px;
+    padding: 3px 10px;
     margin: 10px 0px;
+    font-size: 12px;
 }
 
 .dse00btn2:hover {

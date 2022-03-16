@@ -7,6 +7,7 @@ const users = require('../controllers/users');
 const admins = require('../controllers/admins');
 const { findById } = require('../models/user');
 const { isLoggedIn, isAuthor, validateCampground, checkLogin, isAdmin } = require('../middleware');
+const campground = require('../models/campground');
 
 router.route('/register')
     .get(users.renderRegister)
@@ -22,7 +23,6 @@ router.route('/forget')
 
 router.route('/intro')
     .get(isLoggedIn, users.renderIntro)
-
 
 router.route('/user/:id')
     .get(users.updateUser, catchAsync(users.loadUser))

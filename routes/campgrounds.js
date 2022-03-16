@@ -9,11 +9,29 @@ const { storage } = require('../cloudinary');
 const upload = multer({ storage });
 
 const Campground = require('../models/campground');
+const Review = require('../models/review');
 
 router.route('/')
     .get(user.updateUser, catchAsync(campgrounds.index))
     .post(upload.array('image'), validateCampground, user.updateUser, checkLogin, catchAsync(campgrounds.createCampground))
 
+router.route('/reply/:id')
+    .get(async(req, res) => {
+        const { id } = req.params;
+        const campgroundid = req.query.post;
+        const replyReview = await Review.findById(id).populate('author');
+        const campground = await Campground.findById(campgroundid)
+            .populate({
+                path: "reviews",
+                populate: {
+                    path: "author",
+                },
+            })
+            .populate("author");
+
+        console.log(replyReview._id);
+        res.render("campgrounds/show", { campground, replyReview })
+    })
 
 router.route('/iframe')
     .get(catchAsync(campgrounds.iframe))

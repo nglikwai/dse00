@@ -21,11 +21,22 @@
     font-weight: 500;
 }
 
-.card-body{
+.card-body {
     border-bottom: solid #eee 1px;
     border-radius: 5px;
 }
 
-/* img{
-    width:30px;
-} */
+.replybtn {
+    background-color: transparent;
+    border-radius: 5px;
+    color: #cc0000;
+    padding: 0 5px;
+    margin: 10px 0px;
+    opacity: 0.7;
+    font-size: 13.5px;
+}
+
+.replybtn:hover {
+    color: #cc0000;
+    opacity: 1;
+}
