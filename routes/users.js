@@ -4,8 +4,9 @@ const passport = require('passport');
 const catchAsync = require('../utils/catchAsync');
 const User = require('../models/user');
 const users = require('../controllers/users');
+const admins = require('../controllers/admins');
 const { findById } = require('../models/user');
-const { isLoggedIn, isAuthor, validateCampground, checkLogin } = require('../middleware');
+const { isLoggedIn, isAuthor, validateCampground, checkLogin, isAdmin } = require('../middleware');
 
 router.route('/register')
     .get(users.renderRegister)
@@ -26,6 +27,7 @@ router.route('/intro')
 router.route('/user/:id')
     .get(catchAsync(users.loadUser))
     .put(isLoggedIn,catchAsync(users.intro))
+    .delete(isLoggedIn, isAdmin,catchAsync(admins.deleteUser))
     
 
 router.get('/logout', users.logout)
