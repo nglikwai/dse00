@@ -7,12 +7,14 @@ const reviewSchema = new Schema({
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        default:'622874ccc8ed254d82edf591'
+        default: '622874ccc8ed254d82edf591'
     },
     post: {
         type: Schema.Types.ObjectId,
         ref: 'Camground'
-    }
+    },
+    reply: [String],
+    replyAuthor: [String]
 }, { timestamps: true });
 
 module.exports = mongoose.model("Review", reviewSchema);

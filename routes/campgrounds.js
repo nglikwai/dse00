@@ -32,6 +32,20 @@ router.route('/reply/:id')
         console.log(replyReview._id);
         res.render("campgrounds/show", { campground, replyReview })
     })
+    .post(async(req, res) => {
+        const { id } = req.params;
+        const campgroundid = req.query.post;
+        const review = await Review.findById(id);
+        review.reply.push(req.body.review.reply)
+        if (!req.user) {
+            review.replyAuthor.push('DSEJJ')
+        } else {
+            review.replyAuthor.push(req.user.username)
+        }
+        await review.save();
+        console.log(review)
+        res.redirect(`/${campgroundid}`)
+    })
 
 router.route('/iframe')
     .get(catchAsync(campgrounds.iframe))
