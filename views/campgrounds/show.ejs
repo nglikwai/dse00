@@ -117,10 +117,10 @@
                             </div>
                             <div class="mb-3">
                                 <div class="card-body">
-                                    <div>
+                                    <div class="mb-1">
 
                                         <!-- <img src="https://devshift.biz/wp-content/uploads/2017/04/profile-icon-png-898.png"> -->
-                                        <a class="review-title" href="/users/user/<%= review.author._id %> "></h6>
+                                        <a class="review-title" href="/users/user/<%= review.author._id %> ">
                                             <%= review.author.username.toUpperCase()%>
                                                 <span <%=review.author.grade==='5**' ? 'class=good': 'class=grade' %> >- Lv <%= review.author.grade %></span>
                                                 <span class="muted">
