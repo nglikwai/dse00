@@ -3,24 +3,28 @@ const Review = require('./review')
 const Schema = mongoose.Schema;
 const mongoosePaginate = require('mongoose-paginate-v2')
 
-const imageSchema = new Schema({
+const ImageSchema = new Schema({
     url: String,
     filename: String
 })
 
-imageSchema.virtual('thumbnail').get(function() {
+ImageSchema.virtual('thumbnail').get(function () {
     return this.url.replace('/upload', '/upload/w_200');
-})
+});
 
 const opts = { toJSON: { virtuals: true } }
 
 const CampgroundSchema = new Schema({
     title: String,
-    images: [imageSchema],
+    images: [ImageSchema],
     price: Number,
     description: {
         type: String,
         default: '如題'
+    },
+    popular: {
+        type:Number,
+        default: 0
     },
     author: {
         type: Schema.Types.ObjectId,

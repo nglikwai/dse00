@@ -14,6 +14,7 @@ module.exports.createReview = async(req, res) => {
     }
     review.post = campground;
     campground.reviews.push(review);
+    campground.popular +=1 ;
     await review.save();
     await campground.save();
 
@@ -36,7 +37,7 @@ module.exports.createIframeReview = async(req, res) => {
     await review.save();
     await campground.save();
 
-    req.flash("success", "成功留言!");
+    req.flash("success", "🪙 + 3 ");
     res.redirect(`/iframe/${campground._id}`);
 };
 

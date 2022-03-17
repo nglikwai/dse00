@@ -16,36 +16,8 @@ router.route('/')
     .post(upload.array('image'), validateCampground, user.updateUser, checkLogin, catchAsync(campgrounds.createCampground))
 
 router.route('/reply/:id')
-    .get(async(req, res) => {
-        const { id } = req.params;
-        const campgroundid = req.query.post;
-        const replyReview = await Review.findById(id).populate('author');
-        const campground = await Campground.findById(campgroundid)
-            .populate({
-                path: "reviews",
-                populate: {
-                    path: "author",
-                },
-            })
-            .populate("author");
-
-        console.log(replyReview._id);
-        res.render("campgrounds/show", { campground, replyReview })
-    })
-    .post(async(req, res) => {
-        const { id } = req.params;
-        const campgroundid = req.query.post;
-        const review = await Review.findById(id);
-        review.reply.push(req.body.review.reply)
-        if (!req.user) {
-            review.replyAuthor.push('DSEJJ')
-        } else {
-            review.replyAuthor.push(req.user.username)
-        }
-        await review.save();
-        console.log(review)
-        res.redirect(`/${campgroundid}`)
-    })
+    .get(catchAsync(campgrounds.renderReply))
+    .post(checkLogin,catchAsync(campgrounds.reply))
 
 router.route('/iframe')
     .get(catchAsync(campgrounds.iframe))

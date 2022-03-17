@@ -46,7 +46,7 @@ module.exports.isAdmin = async(req, res, next) => {
 
 module.exports.checkLogin = async(req, res, next) => {
     if (!req.user) {
-        req.flash("success", "登入DSE00以保存積分");
+        req.flash("success", "登入DSE00以保存積分 ");
         return next()
     }
     next();

@@ -1,4 +1,5 @@
 const Campground = require("../models/campground");
+const Review = require("../models/review");
 const User = require("../models/user");
 
 const { cloudinary } = require("../cloudinary");
@@ -78,7 +79,7 @@ module.exports.createCampground = async(req, res, next) => {
     }
     await campground.save();
     console.log(campground);
-    req.flash("success", "成功建立POST，🪙 + 2 ");
+    req.flash("success", "成功POST，🪙 + 5 ");
     res.redirect(`/${campground._id}`);
 };
 
@@ -144,10 +145,11 @@ module.exports.renderEditForm = async(req, res) => {
 
 module.exports.updateCampground = async(req, res) => {
     const { id } = req.params;
+    console.log(req.body)
     const campground = await Campground.findByIdAndUpdate(id, {
-        ...req.body.campground,
+        ...req.body.campground
     });
-    const imgs = req.files.map((f) => ({ url: f.path, filename: f.filename }));
+    const imgs = req.files.map(f => ({ url: f.path, filename: f.filename }));
     campground.images.push(...imgs);
     await campground.save();
     if (req.body.deleteImages) {
@@ -201,3 +203,41 @@ module.exports.deleteIframeCampground = async(req, res) => {
     req.flash("success", "成功刪除");
     res.redirect("/iframe");
 };
+
+module.exports.reply = async(req, res) => {
+    const { id } = req.params;
+    const campgroundid = req.query.post;
+    const campground = await Campground.findById(campgroundid);
+    campground.popular +=1;
+    const review = await Review.findById(id);
+    review.reply.push(req.body.review.reply)
+    if (!req.user) {
+        review.replyAuthor.push('DSEJJ')
+    } else{
+        req.user.coin +=3;
+        await req.user.save();
+        review.replyAuthor.push(req.user.username)
+    }
+    
+    await review.save();
+    await campground.save();
+    req.flash('success' , ' 🪙 + 3');
+    res.redirect(`/${campgroundid}`)
+}
+
+module.exports.renderReply = async(req, res) => {
+    const { id } = req.params;
+    const campgroundid = req.query.post;
+    const replyReview = await Review.findById(id).populate('author');
+    const campground = await Campground.findById(campgroundid)
+        .populate({
+            path: "reviews",
+            populate: {
+                path: "author",
+            },
+        })
+        .populate("author");
+
+    console.log(replyReview._id);
+    res.render("campgrounds/show", { campground, replyReview })
+}
