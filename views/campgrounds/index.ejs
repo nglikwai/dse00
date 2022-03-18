@@ -28,25 +28,27 @@
 
                     <% } %>
                         <% if(currentUser) {%>
-                            <b>
-                                <div style="display:flex;">
+
+                            <div class="user-menu">
                                 <div>
                                     <a href="/users/user/<%= currentUser._id %> ">
                                         <%= currentUser.username.toUpperCase() %>
-                                    </a>
-                                </div>｜
+                                    </a>｜
+                                </div>
                                 <div class="level">Lv.
                                     <% if(currentUser) {%>
                                         <%= currentUser.grade %>
                                             <% } %>
-                                    </div>｜
-                                <a href="/users/dse00coin">
-                                    <div>🪙×
+                                </div>
+
+                                <div>｜
+                                    <a href="/users/dse00coin">🪙×
                                         <% if(currentUser) {%>
                                             <%= currentUser.coin %>
                                                 <% } %>
-                                        </div>
-                                </a></div></b>
+                                    </a>
+                                </div>
+                            </div>
                             <% } %>
             </div><br>
 
@@ -100,14 +102,16 @@
                                         <% if (campgrounds[i].reviews[0]) { %>
 
                                             <% if (campgrounds[i].reviews[r].reply[0]) { %>
-                                                ➥ <%=campgrounds[i].reviews[r].reply[campgrounds[i].reviews[r].reply.length-1].substring(0,40)  %>
+                                                ➥
+                                                <%=campgrounds[i].reviews[r].reply[campgrounds[i].reviews[r].reply.length-1].substring(0,40)
+                                                    %>
                                                     <% }else{ %>
                                                         ➥ <%=campgrounds[i].reviews[r].body.substring(0,40) %>
                                                             <% } %>
                                                                 <% } else if(campgrounds[i].description !=='如題' ){ %>
-                                                                    ↪ <%=campgrounds[i].description.substring(0,60) %>                                   
-                                    <% } %>
-                                </span>
+                                                                    ↪ <%=campgrounds[i].description.substring(0,60) %>
+                                                                        <% } %>
+                                    </span>
                                 </div>
                             </div>
                         </a>
