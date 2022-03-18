@@ -66,7 +66,7 @@
                             <b>
                                 <%= campground.author.username.toUpperCase()%>
                             </b>
-                            <span <%=campground.author.grade==='5**' ? 'class=good': 'class=grade' %>> - Lv <%=campground.author.grade %></span>
+                            <span <%=campground.author.level>4 ? 'class=gold': 'class=grade' %>> - Lv <%=campground.author.grade %></span>
                         </a>
                     </li>
 
@@ -136,7 +136,7 @@
                                                         <!-- <img src="https://devshift.biz/wp-content/uploads/2017/04/profile-icon-png-898.png"> -->
                                                         <a class="review-title" href="/users/user/<%= review.author._id %> ">
                                                             <%= review.author.username.toUpperCase()%>
-                                                                <span <%=review.author.grade==='5**' ? 'class=good': 'class=grade' %> >- Lv <%= review.author.grade %></span>
+                                                                <span <%=review.author.level>4 ? 'class=gold': 'class=grade' %> >- Lv <%= review.author.grade %></span>
                                                                 <span class="muted">
                                                 <%= review.createdAt.toLocaleString().substring(0,9) %>
                                             </span>
