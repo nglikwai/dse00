@@ -58,10 +58,14 @@ a:hover {
 .muted {
     font-size: 13px;
     color: #ccc;
-    float: right;
     margin-bottom: 10px;
 }
 
+.description{
+    font-size:13px; 
+    color:rgb(197, 197, 197);
+    line-height: 0;
+}
 .dse00btn {
     background-color: transparent;
     border: #cc0000 solid 1px;
