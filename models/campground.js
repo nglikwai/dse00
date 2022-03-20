@@ -8,7 +8,7 @@ const ImageSchema = new Schema({
     filename: String
 })
 
-ImageSchema.virtual('thumbnail').get(function () {
+ImageSchema.virtual('thumbnail').get(function() {
     return this.url.replace('/upload', '/upload/w_200');
 });
 
@@ -23,7 +23,7 @@ const CampgroundSchema = new Schema({
         default: '如題'
     },
     popular: {
-        type:Number,
+        type: Number,
         default: 0
     },
     author: {
