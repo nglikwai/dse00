@@ -35,14 +35,14 @@
                 <div>
                     <% if (users[i].createdAt) { %>
                         <div>注冊日期：
-                            <%= users[i].createdAt.toLocaleString() %>
+                            <%= users[i].createdAt.toString().substring(4,21)%>
                         </div>
                         <% } %>
                 </div>
                 <div>
                     <% if (users[i].updatedAt) { %>
                         <div>最後活動：
-                            <%= users[i].updatedAt.toLocaleString() %>
+                            <%= users[i].updatedAt.toString().substring(4,21) %>
                         </div>
                         <% } %>
                 </div>
@@ -69,4 +69,5 @@
 
             </div>
             <% } %>
+            <div class="user-box"><%= upgradeCoin%> </div>
     </div>

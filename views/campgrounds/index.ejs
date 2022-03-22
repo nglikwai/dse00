@@ -82,15 +82,17 @@
                         <a href="/<%=campgrounds[i]._id%>">
                             <div>
                                 <div class="card-body" style="padding-bottom: 10px;">
+                                    
                                     <h6 class="post-title">
-                                        <%= campgrounds[i].title %> <small class="text-muted"
+                                        <% if (campgrounds[i].category !=='吹水' ) { %>
+                                            <span class="category">
+                                                <%= campgrounds[i].category %>
+                                            </span>
+                                            <% } %>
+                                        <%= campgrounds[i].title.substring(0,40) %> <small class="text-muted"
                                                 style="font-size:14px; font-weight:200"> - <%=
                                                     campgrounds[i].author.username%></small>
-                                            <% if (campgrounds[i].category !=='吹水' ) { %>
-                                                <span class="category">
-                                                    <%= campgrounds[i].category %>
-                                                </span>
-                                                <% } %>
+                                  
                                     </h6>
                                     <!-- <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span> -->
                                     </h6>

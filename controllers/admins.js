@@ -1,24 +1,27 @@
 const User = require('../models/user');
+const users = require('./users');
+const upgradeCoin = users.updateUser;
 
-module.exports.seeall = async(req, res) => {
+
+module.exports.seeall = async (req, res) => {
     const users = await User.find({}).populate('posts').populate('reviews');
-    res.render('admins/seeall', { users });
+    res.render('admins/seeall', { users, upgradeCoin });
 }
 
-module.exports.activity = async(req, res) => {
+module.exports.activity = async (req, res) => {
     const users = await User.find({}).populate('posts').populate('reviews').sort({ updatedAt: 1 });
-    res.render('admins/seeall', { users });
+    res.render('admins/seeall', { users, upgradeCoin });
 }
 
-module.exports.setAdmin = async(req, res) => {
+module.exports.setAdmin = async (req, res) => {
     const { id } = req.params
-    const user = await User.findByIdAndUpdate(id, {...req.body })
+    const user = await User.findByIdAndUpdate(id, { ...req.body })
     user.save();
     req.flash('success', `successfully set ${req.body.identity.toUpperCase()} `)
     res.redirect(`/users/user/${id}`)
 }
 
-module.exports.deleteUser = async(req, res) => {
+module.exports.deleteUser = async (req, res) => {
     const { id } = req.params
     const user = await User.findById(id).populate('reviews').populate('posts');
     if (user.posts.length !== 0 || user.reviews.length !== 0) {
@@ -32,7 +35,7 @@ module.exports.deleteUser = async(req, res) => {
     res.redirect('/admins')
 }
 
-module.exports.refreshAll = async(req, res) => {
+module.exports.refreshAll = async (req, res) => {
     const users = await User.find();
     for (let user of users) {
         if (user.coin > 1200) {

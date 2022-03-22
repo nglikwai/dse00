@@ -4,7 +4,7 @@ module.exports.renderRegister = (req, res) => {
     res.render('users/register');
 }
 
-module.exports.register = async(req, res, next) => {
+module.exports.register = async (req, res, next) => {
     try {
         const { email, username, password } = req.body;
         const user = new User({ email, username });
@@ -40,7 +40,7 @@ module.exports.logout = (req, res) => {
     res.redirect('/');
 }
 
-module.exports.loadUser = async(req, res) => {
+module.exports.loadUser = async (req, res) => {
     const user = await User.findById(req.params.id).populate('reviews').populate('posts');
     if (!user) {
         req.flash('error', 'User not found');
@@ -50,19 +50,19 @@ module.exports.loadUser = async(req, res) => {
     res.render('users/user', { user });
 }
 
-module.exports.updateUser = async(req, res, next) => {
+module.exports.updateUser = async (req, res, next) => {
     if (!req.user) {
         return next()
     }
     const user = req.user;
     const a = user.grade;
-    if (user.coin > 1200) {
+    if (user.coin > 800) {
         user.grade = '5**';
         user.level = 7
-    } else if (user.coin > 500) {
+    } else if (user.coin > 400) {
         user.grade = '5*';
         user.level = 6
-    } else if (user.coin > 250) {
+    } else if (user.coin > 200) {
         user.grade = 5;
         user.level = 5
     } else if (user.coin > 100) {
@@ -91,21 +91,21 @@ module.exports.renderForget = (req, res) => {
     res.render('users/forget');
 }
 
-module.exports.renderIntro = async(req, res) => {
+module.exports.renderIntro = async (req, res) => {
     const user = await User.findById(req.user._id)
     console.log(user)
     res.render('users/intro', { user });
 }
 
-module.exports.intro = async(req, res) => {
+module.exports.intro = async (req, res) => {
     const { id } = req.params;
-    const user = await User.findByIdAndUpdate(id, {...req.body })
+    const user = await User.findByIdAndUpdate(id, { ...req.body })
     console.log(user)
     req.flash('success', `${req.body.intro}`)
     res.redirect(`/`)
 }
 
-module.exports.checkIdEmailMatch = async(req, res) => {
+module.exports.checkIdEmailMatch = async (req, res) => {
     try {
         const [user] = await User.find({ username: req.body.username })
         if (req.body.email !== user.email) {

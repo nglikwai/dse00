@@ -58,9 +58,15 @@
                             <b>
                                 <%= campground.author.username.toUpperCase()%>
                             </b>
+                            <% if (campground.author.level == 4) { %>
+                                <span class="silver"> - Lv
+                                    <%=campground.author.grade %>
+                                </span>
+                            <% }else{ %>
                             <span <%=campground.author.level>4 ? 'class=gold' : 'class=grade' %>> - Lv
                                 <%=campground.author.grade %>
                             </span>
+                            <% } %> 
                         </a>
                     </li>
 
@@ -140,9 +146,16 @@
                                                         <a class="review-title"
                                                             href="/users/user/<%= review.author._id %> ">
                                                             <%= review.author.username.toUpperCase()%>
+                                                            <% if (review.author.level == 4) { %>
+                                                                    <span class="silver"> - Lv
+                                                                        <%=review.author.grade %>
+                                                                    </span>
+                                                                <% }else{ %>
                                                                 <span <%=review.author.level>4 ? 'class=gold'
                                                                     : 'class=grade' %> >- Lv <%= review.author.grade %>
                                                                 </span>
+                                                                <%}%>
+                                                            
                                                                 <span class="muted">
                                                                     <%= review.createdAt.toLocaleString().substring(0,9)
                                                                         %>
