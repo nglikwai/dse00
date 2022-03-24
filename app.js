@@ -119,6 +119,9 @@ app.use("/apis", apiRoutes);
 app.use("/cutoffs", cutoffRoutes);
 app.use("/users", userRoutes);
 app.use("/resources", pastpaperRoutes);
+app.get('/ads.txt', (req, res) => {
+    res.sendFile(__dirname + '/ads.txt')
+})
 app.use("/", campgroundRoutes);
 app.use("/:id/reviews", reviewRoutes);
 
