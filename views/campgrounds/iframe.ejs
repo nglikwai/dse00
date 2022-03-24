@@ -37,7 +37,7 @@
         
         .post-title2 {
             font-size: 14px;
-            margin: 5px 15px 15px 15px;
+            margin: 5px 15px 15px 0px;
             color: #666;
             font-weight: normal;
         }
@@ -45,7 +45,6 @@
         .night-text {
             font-size: 14px;
             color: #bbb;
-            padding-left: 15px;
         }
         
         .card {
@@ -123,16 +122,16 @@
                                 <div>
                                     <span style="color:#bbb; position: absolute; right:0">
                                         <% const r=campgrounds[i].reviews.length-1 %>
-                                            <span> 💬 <%= r+1 %> </span>
+                                            <span> <span style="font-size:14px">💬</span> <%= r+1 %> </span>
                                     </span>
                                     <div class="post-title2">
                                         <p style="font-size:14px; font-weight:500; color:#a00000 ; margin-bottom: 4px;">
-                                            <%= campgrounds[i].author.username%>
+                                            <%= campgrounds[i].author.username.toUpperCase()%>
                                         </p>
                                         <%= campgrounds[i].title %>
                                             <% if (campgrounds[i].reviews[0]) { %>
                                                 <div class="night-text">➥
-                                                    <%= campgrounds[i].reviews[r].body %>
+                                                    <%= campgrounds[i].reviews[r].body.substring(0,40) %>
                                                 </div>
                                                 <% } %>
                                     </div>
