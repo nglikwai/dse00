@@ -50,6 +50,8 @@
                                 </div>
                             </div>
                             <% } %>
+
+
             </div><br>
 
 
@@ -71,6 +73,17 @@
 
                 </form>
             </div>
+            <div id="adsense">
+                <script async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6622218753379872"
+                    crossorigin="anonymous"></script>
+                <!-- dse00_sidebar-right_AdSense1_336x280_as -->
+                <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px"
+                    data-ad-client="ca-pub-6622218753379872" data-ad-slot="6023057108"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
         </div>
         <div class='index-loop order-two'>
             <a class="btn dse00btn" id="newpost" href="/new">新 POST</a>
@@ -82,17 +95,17 @@
                         <a href="/<%=campgrounds[i]._id%>">
                             <div>
                                 <div class="card-body" style="padding-bottom: 10px;">
-                                    
+
                                     <h6 class="post-title">
                                         <% if (campgrounds[i].category !=='吹水' ) { %>
                                             <span class="category">
                                                 <%= campgrounds[i].category %>
                                             </span>
                                             <% } %>
-                                        <%= campgrounds[i].title.substring(0,40) %> <small class="text-muted"
-                                                style="font-size:14px; font-weight:200"> - <%=
-                                                    campgrounds[i].author.username%></small>
-                                  
+                                                <%= campgrounds[i].title.substring(0,40) %> <small class="text-muted"
+                                                        style="font-size:14px; font-weight:200"> - <%=
+                                                            campgrounds[i].author.username%></small>
+
                                     </h6>
                                     <!-- <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span> -->
                                     </h6>
@@ -125,12 +138,12 @@
 
         <div class="category-list">
             <h4>我要傾</h4>
-            <a href="/" ><span class="category-list-icon">💦</span>  吹水</a>
-            <a href="/search?category=DSE"><span class="category-list-icon">📚</span>  DSE</a>
-            <a href="/search?category=大學" ><span class="category-list-icon">🏫 </span> 大學</a>
-            <a href="/search?category=消息" ><span class="category-list-icon">📜</span>  消息</a>
+            <a href="/"><span class="category-list-icon">💦</span> 吹水</a>
+            <a href="/search?category=DSE"><span class="category-list-icon">📚</span> DSE</a>
+            <a href="/search?category=大學"><span class="category-list-icon">🏫 </span> 大學</a>
+            <a href="/search?category=消息"><span class="category-list-icon">📜</span> 消息</a>
 
         </div>
-        
+
     </div>
     <script src="/javascripts/yylam.js"></script>
