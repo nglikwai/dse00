@@ -302,6 +302,9 @@ nav a:hover {
     .order-two{
         order:2;
     }
+    .hide-mobile{
+        display:none;
+    }
 }
 
 .grey {
