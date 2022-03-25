@@ -90,8 +90,8 @@
 
 
             <% for (let i=0 ; i<campgrounds.length ; i++){%>
-                <!-- <% if (i%8===0 && i!==0) { %>
-                    <div class="card pb-2 adsense mt-5 pt-5">
+                <% if (i%10===0 && i!==0) { %>
+                    <div class="card pb-2 adsense mt-5 pt-5 hide-mobile">
                         <script async
                             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6622218753379872"
                             crossorigin="anonymous"></script>
@@ -102,55 +102,56 @@
                             (adsbygoogle = window.adsbygoogle || []).push({});
                         </script>
                     </div>
-                    <% } %> -->
-                <div class="card pb-2">
-
-
-
-                    <div>
-                        <a href="/<%=campgrounds[i]._id%>">
+                    <% } %>
+                        <div class="card pb-2">
                             <div>
-                                <div class="card-body" style="padding-bottom: 10px;">
+                                <a href="/<%=campgrounds[i]._id%>">
+                                    <div>
+                                        <div class="card-body" style="padding-bottom: 10px;">
 
-                                    <h6 class="post-title">
-                                        <% if (campgrounds[i].category !=='吹水' ) { %>
-                                            <span class="category">
-                                                <%= campgrounds[i].category %>
+                                            <h6 class="post-title">
+                                                <% if (campgrounds[i].category !=='吹水' ) { %>
+                                                    <span class="category">
+                                                        <%= campgrounds[i].category %>
+                                                    </span>
+                                                    <% } %>
+                                                        <%= campgrounds[i].title.substring(0,40) %> <small
+                                                                class="text-muted"
+                                                                style="font-size:14px; font-weight:200"> - <%=
+                                                                    campgrounds[i].author.username%></small>
+
+                                            </h6>
+                                            <!-- <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span> -->
+                                            </h6>
+                                            <span
+                                                style="position: absolute; top:5px ; right:10px; font-size:13px;color:#bbb">
+                                                <% const r=campgrounds[i].reviews.length-1 %>
+                                                    <%= r+1 %><span style="font-size:10px"> 💬</span>
                                             </span>
-                                            <% } %>
-                                                <%= campgrounds[i].title.substring(0,40) %> <small class="text-muted"
-                                                        style="font-size:14px; font-weight:200"> - <%=
-                                                            campgrounds[i].author.username%></small>
+                                            <span class="description">
+                                                <% if (campgrounds[i].reviews[0]) { %>
 
-                                    </h6>
-                                    <!-- <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span> -->
-                                    </h6>
-                                    <span style="position: absolute; top:5px ; right:10px; font-size:13px;color:#bbb">
-                                        <% const r=campgrounds[i].reviews.length-1 %>
-                                            <%= r+1 %><span style="font-size:10px"> 💬</span>
-                                    </span>
-                                    <span class="description">
-                                        <% if (campgrounds[i].reviews[0]) { %>
-
-                                            <% if (campgrounds[i].reviews[r].reply[0]) { %>
-                                                ➥
-                                                <%=campgrounds[i].reviews[r].reply[campgrounds[i].reviews[r].reply.length-1].substring(0,40)
-                                                    %>
-                                                    <% }else{ %>
-                                                        ➥ <%=campgrounds[i].reviews[r].body.substring(0,40) %>
-                                                            <% } %>
-                                                                <% } else if(campgrounds[i].description !=='如題' ){ %>
-                                                                    ↪
-                                                                    <%=campgrounds[i].description.substring(0,60) %>
-                                                                        <% } %>
-                                    </span>
-                                </div>
+                                                    <% if (campgrounds[i].reviews[r].reply[0]) { %>
+                                                        ➥
+                                                        <%=campgrounds[i].reviews[r].reply[campgrounds[i].reviews[r].reply.length-1].substring(0,40)
+                                                            %>
+                                                            <% }else{ %>
+                                                                ➥ <%=campgrounds[i].reviews[r].body.substring(0,40) %>
+                                                                    <% } %>
+                                                                        <% } else if(campgrounds[i].description !=='如題'
+                                                                            ){ %>
+                                                                            ↪
+                                                                            <%=campgrounds[i].description.substring(0,60)
+                                                                                %>
+                                                                                <% } %>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                </div>
-                <% }%>
-                    <a class="btn dse00btn" href="/?page=2">下頁</a>
+                        </div>
+                        <% }%>
+                            <a class="btn dse00btn" href="/?page=2">下頁</a>
         </div>
 
         <div class="category-list">
