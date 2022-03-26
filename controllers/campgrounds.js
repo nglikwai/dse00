@@ -16,7 +16,7 @@ module.exports.index = async (req, res) => {
         populate: {
             path: "reviews",
         },
-    }).sort({ updatedAt: -1 });;
+    }).sort({ updatedAt: -1 });
     const limit = req.query.limit || 150;
     const page = req.query.page || 1;
     const options = {
@@ -31,6 +31,18 @@ module.exports.index = async (req, res) => {
 };
 
 module.exports.indexSearch = async (req, res) => {
+    const id = req.user ? req.user._id : '622874ccc8ed254d82edf591';
+    const user = await User.findById(id).populate("friendList").populate({
+        path: "friendList",
+        populate: {
+            path: "posts",
+        },
+    }).populate({
+        path: "friendList",
+        populate: {
+            path: "reviews",
+        },
+    }).sort({ updatedAt: -1 });
     const limit = req.query.limit || 50;
     const page = req.query.page || 1;
     const category = req.query.category;
@@ -42,7 +54,7 @@ module.exports.indexSearch = async (req, res) => {
     };
     const data = await Campground.paginate({ category }, options);
     const campgrounds = data.docs;
-    res.render("campgrounds/index", { campgrounds });
+    res.render("campgrounds/index", { campgrounds, user });
 };
 
 // module.exports.index = async(req, res) => {
