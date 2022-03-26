@@ -299,6 +299,10 @@ nav a:hover {
     .category-list h4{
         display: none;
     }
+    .category-list-icon{
+        margin-right: 5px;
+ 
+    }
     .order-two{
         order:2;
     }
