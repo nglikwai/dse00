@@ -77,27 +77,29 @@
 
 
                 <% for( let friend of user.friendList) { %>
-                    <% if (friend.posts.length!==0 || friend.reviews.length!==0) { %>
-                        <div class="friend-activity mb-3">
-                            <a href="/users/user/<%= friend._id %> ">
-                                <p class="mb-1 mt-1" style="color:#222; font-weight: bold;">
-                                    <%= friend.username.toUpperCase() %>
-                                </p>
-                            </a>
+                    <div class="friend-activity mb-3">
+                        <a href="/users/user/<%= friend._id %> ">
+                            <p class="mb-1 mt-1" style="color:#222; font-weight: bold;">
+                                <%= friend.username.toUpperCase() %>
+                            </p>
+                        </a>
+                        <% if (friend.posts.length!==0) { %>
                             <a class="hide-mobile" href="/<%=friend.posts[friend.posts.length-1]._id%> ">
                                 <p>
                                     <%= friend.posts[friend.posts.length-1].title %>
                                 </p>
                             </a>
-                            <a href="/<%=friend.reviews[friend.reviews.length-1].post%> ">
-                                <p style="font-size: 14px; color: #aaa;">
-                                    💬 <%= friend.reviews[friend.reviews.length-1].body.substring(0,40) %>
-                                </p>
-                            </a>
-                        </div>
-
-                        <% } %>
                             <% } %>
+                                <% if (friend.reviews.length!==0) { %>
+                                    <a href="/<%=friend.reviews[friend.reviews.length-1].post%> ">
+                                        <p style="font-size: 14px; color: #aaa;">
+                                            💬 <%= friend.reviews[friend.reviews.length-1].body.substring(0,40) %>
+                                        </p>
+                                    </a>
+                    </div>
+
+                    <% } %>
+                        <% } %>
 
 
             </div>
