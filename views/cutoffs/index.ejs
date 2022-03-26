@@ -11,7 +11,7 @@
             text-align: center;
             font-size: 13px;
         }
-        
+
         .title {
             background-color: #cc0000;
             color: white;
@@ -19,37 +19,39 @@
             padding: 10px 0;
             font-size: 20px;
         }
-        
+
         .percentage {
             font-size: 13px;
             color: #bbb;
         }
-        
+
         table {
             margin: 40px 0;
         }
-        
+
         .buttons {
             display: flex;
             justify-content: space-around;
         }
-        
+
         .buttons a {
             margin-right: 10px;
             font-size: 14px;
         }
-        
+
         .view {
             display: none
         }
-        
+
         @media only screen and (max-width: 800px) {
             .hide {
                 display: none
             }
+
             .view {
                 display: block
             }
+
             td {
                 padding: 10px 12px;
             }
@@ -60,11 +62,12 @@
         <a href="/cutoffs?category=理科" class="btn dse00btn">理科</a>
         <a href="/cutoffs?category=商科" class="btn dse00btn">商科</a>
         <a href="/cutoffs?category=文史" class="btn dse00btn">文史</a>
-        <a href="/cutoffs?category=地理及ICT" class="btn dse00btn">地理及ICT</a></div>
+        <a href="/cutoffs?category=地理及ICT" class="btn dse00btn">地理及ICT</a>
+    </div>
 
     <div class="muted mt-3 view">橫看觀看全部</div>
 
-    <% for( let p = 0; p < cutoffs.length; p++ ) { %>
+    <% for( let p=0; p < cutoffs.length; p++ ) { %>
 
 
         <table>
@@ -75,45 +78,72 @@
             </tr>
             <tr>
                 <td><b>Grade</b></td>
-                <% for( let i = cutoffs[p].years.length-1 ; i >=0; i-- ) { %>
+                <% for( let i=cutoffs[p].years.length-1 ; i>=0; i-- ) { %>
                     <% if (i==4||i==3||i==2||i==1||i==0) { %>
                         <td class="hide">
-                            <b><%= cutoffs[p].years[i] %></b><br>
-                            <span class="fullScore"><%= cutoffs[p].fullScore[i] %> </span><span class="percentage"> (%)</span> </td>
+                            <b>
+                                <%= cutoffs[p].years[i] %>
+                            </b><br>
+                            <span class="fullScore">
+                                <%= cutoffs[p].fullScore[i] %>
+                            </span><span class="percentage"> (%)</span>
+                        </td>
                         <% continue} %>
                             <td>
-                                <b><%= cutoffs[p].years[i] %></b><br>
-                                <span class="fullScore"><%= cutoffs[p].fullScore[i] %></span><span class="percentage"> (%)</span> </td>
+                                <b>
+                                    <%= cutoffs[p].years[i] %>
+                                </b><br>
+                                <span class="fullScore">
+                                    <%= cutoffs[p].fullScore[i] %>
+                                </span><span class="percentage"> (%)</span>
+                            </td>
 
                             <% } %>
             </tr>
 
-            <% for( let j = 7; j >1; j-- ) { %>
+            <% for( let j=7; j>1; j-- ) { %>
                 <tr>
-                    <% if ( j == 7  ) { %>
+                    <% if ( j==7 ) { %>
                         <td><b>5**</b></td>
-                        <%  } else if ( j ==6 ){ %>
+                        <% } else if ( j==6 ){ %>
                             <td><b>5*</b> </td>
                             <% } else{ %>
                                 <td>
-                                    <b><%= j %></b>
+                                    <b>
+                                        <%= j %>
+                                    </b>
                                 </td>
                                 <% } %>
-                                    <% for( let i = cutoffs[p].years.length-1 ; i >=0; i-- ) { %>
+                                    <% for( let i=cutoffs[p].years.length-1 ; i>=0; i-- ) { %>
                                         <% if (i==4||i==3||i==2||i==1||i==0) { %>
                                             <td class="hide">
-                                                <%= cutoffs[p][j][i]%> <span class="percentage">(<%= parseInt(cutoffs[p][j][i]/cutoffs[p].fullScore[i]*100)%>)</span></td>
+                                                <%= cutoffs[p][j][i]%> <span class="percentage">(<%=
+                                                            parseInt(cutoffs[p][j][i]/cutoffs[p].fullScore[i]*100)%>
+                                                            )</span>
+                                            </td>
 
                                             <% continue} %>
                                                 <td>
-                                                    <%= cutoffs[p][j][i]%> <span class="percentage">(<%= parseInt(cutoffs[p][j][i]/cutoffs[p].fullScore[i]*100)%>)</span></td>
+                                                    <%= cutoffs[p][j][i]%> <span class="percentage">(<%=
+                                                                parseInt(cutoffs[p][j][i]/cutoffs[p].fullScore[i]*100)%>
+                                                                )</span>
+                                                </td>
                                                 <% } %>
                 </tr>
                 <% } %>
 
         </table>
 
-
+        <div>
+            <script async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6622218753379872"
+                crossorigin="anonymous"></script>
+            <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gm-3+1f-3d+2z"
+                data-ad-client="ca-pub-6622218753379872" data-ad-slot="9203041759"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
 
         <% } %>
             <div class="muted mb-5">Updated:
