@@ -78,7 +78,7 @@
 
                 <% for( let friend of user.friendList) { %>
                     <% if (friend.posts.length!==0 || friend.reviews.length!==0) { %>
-                        <div class="friend-activity">
+                        <div class="friend-activity mb-3">
                             <a href="/users/user/<%= friend._id %> ">
                                 <p class="mb-1 mt-1" style="color:#222; font-weight: bold;">
                                     <%= friend.username.toUpperCase() %>
@@ -102,7 +102,7 @@
 
             </div>
 
-            <div id="adsense" class="hide-mobile mt-5 pt-5 pb-5 mb-5">
+            <div id="adsense" class="hide-mobile mt-5 pb-5 mb-5">
                 <script async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6622218753379872"
                     crossorigin="anonymous"></script>
