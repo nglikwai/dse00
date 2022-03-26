@@ -1,3 +1,4 @@
+const Campground = require('../models/campground');
 const User = require('../models/user');
 
 module.exports.renderRegister = (req, res) => {
@@ -41,7 +42,7 @@ module.exports.logout = (req, res) => {
 }
 
 module.exports.loadUser = async (req, res) => {
-    const user = await User.findById(req.params.id).populate('reviews').populate('posts');
+    const user = await User.findById(req.params.id).populate('reviews').populate('posts').populate('favour').populate('friendList');
     if (!user) {
         req.flash('error', 'User not found');
         return res.redirect('/');
@@ -123,4 +124,53 @@ module.exports.checkIdEmailMatch = async (req, res) => {
         req.flash('error', e.message);
         res.redirect('/users/forget');
     }
+}
+
+module.exports.addFavour = async (req, res) => {
+    const user = await User.findById(req.user._id);
+    const campground = await Campground.findById(req.params.id);
+    campground.favour += 1;
+    await campground.save();
+    user.favour.push(req.params.id)
+
+    await user.save();
+    req.flash('success', '成功收藏')
+    res.redirect(`/${req.params.id}`)
+}
+
+module.exports.removeFavour = async (req, res) => {
+    const campground = await Campground.findById(req.params.id);
+    campground.favour -= 1;
+    await campground.save();
+    const user = await User.findById(req.user._id);
+    const index = user.favour.indexOf(req.params.id)
+    user.favour.splice(index, 1)
+    await user.save();
+    req.flash('error', '已取消收藏')
+    res.redirect(`/${req.params.id}`)
+}
+
+module.exports.addFriend = async (req, res) => {
+    const user = await User.findById(req.user._id);
+    const counterUser = await User.findById(req.params.id);
+    counterUser.friendList.push(req.user._id);
+    await counterUser.save();
+    user.friendList.push(req.params.id)
+
+    await user.save();
+    req.flash('success', `${counterUser.username.toUpperCase()} 已成為DSE Partner`)
+    res.redirect(`/users/user/${req.params.id}`)
+}
+
+module.exports.removeFriend = async (req, res) => {
+    const user = await User.findById(req.user._id);
+    const index = user.friendList.indexOf(req.params.id)
+    user.friendList.splice(index, 1)
+    await user.save();
+    const counterUser = await User.findById(req.params.id);
+    const counterIndex = user.friendList.indexOf(req.user._id);
+    counterUser.friendList.splice(counterIndex, 1)
+    await counterUser.save();
+    req.flash('error', `已移除 ${counterUser.username.toUpperCase()}`)
+    res.redirect(`/users/user/${req.params.id}`)
 }

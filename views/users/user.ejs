@@ -1,7 +1,6 @@
 <% layout('layouts/boilerplate')%>
 
     <style>
-
         h3 {
             margin-bottom: 20px;
         }
@@ -10,6 +9,7 @@
             margin-top: 10px;
             font-size: 18px;
         }
+
         .user-info {
             margin: 20px 0 50px 0;
         }
@@ -21,101 +21,160 @@
         option {
             width: 100px;
         }
+
+        .friend-list {
+            width: 200px;
+        }
+
+        .upper-part {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
     </style>
 
-    <button onclick="history.back()" id="backButton" class="btn dse00btn mb-3">Back</button>
-    <h1 class="mt-3 mb-5">
-        <%= user.username.toUpperCase() %>
-    </h1>
 
-    <% if (currentUser && currentUser.identity=='admin' ) { %>
-        <form action="/admins/<%= user._id %>?_method=PUT" method="POST" class="mt-3">
-            <select class="form-select" name="identity" style="font-size:12px;">
-                <option value="admin" <%=user.identity==='admin' ? 'selected' : '' %>>Admin</option>
-                <option value="leader" <%=user.identity==='leader' ? 'selected' : '' %>>Leader</option>
-                <option value="member" <%=user.identity==='member' ? 'selected' : '' %> >Member</option>
-            </select> 🪙 : <input type="number" name="coin">
-            <button onclick="return confirm('Comfirm?')" class="btn dse00btn2 ml-3"
-                style="font-size:10px;">Confirm</button>
-        </form>
-        <% } %>
+    <div class="upper-part mb-5">
+        <button onclick="history.back()" id="backButton" class="btn dse00btn mb-3">Back</button>
+        <h1 class="mt-3 mb-5">
+            <%= user.username.toUpperCase() %>
+        </h1>
+
+        <div class="admin-form">
+            <% if (currentUser && currentUser.identity=='admin' ) { %>
+                <form action="/admins/<%= user._id %>?_method=PUT" method="POST" class="mt-3">
+                    <select class="form-select" name="identity" style="font-size:12px;">
+                        <option value="admin" <%=user.identity==='admin' ? 'selected' : '' %>>Admin</option>
+                        <option value="leader" <%=user.identity==='leader' ? 'selected' : '' %>>Leader</option>
+                        <option value="member" <%=user.identity==='member' ? 'selected' : '' %> >Member</option>
+                    </select> 🪙 : <input type="number" name="coin">
+                    <button onclick="return confirm('Comfirm?')" class="btn dse00btn2 ml-3"
+                        style="font-size:10px;">Confirm</button>
+                </form>
+                <% } %>
+        </div>
+
+        <div class="target mb-3">
+            💪🏻
+            <%= user.intro %>
+
+                <% if (currentUser && currentUser.username==user.username) { %>
+                    <a href="/users/intro" class="btn dse00btn fr">Edit</a>
+                    <% } %>
+        </div>
+
+        <div class="m-3">
+            <% if (currentUser && currentUser.friendList.includes(user._id)) { %>
+                <form action="/users/user/<%= user._id%>/friend?_method=DELETE" method="POST" style="display:inline;">
+                    <button class="p-2" style="border:none; border-radius: 5px; background-color: #eee;">
+                        👥 移除 DSE Partner</button>
+                </form>
+                <% }else{ %>
+                    <form action="/users/user/<%= user._id%>/friend?_method=PUT" method="POST" style="display:inline;">
+                        <button class="p-2" style="border:none; border-radius: 5px; background-color: #eee;">
+                            👥 加 DSE Partner</button>
+                    </form>
+                    <% } %>
+        </div>
+
+        <div class="mt-3">
+            <span style="font-size: 20px;" class="gold"> Grade : Lv.</span>
+            <span id="usergrade" class="gold">
+                <%= user.grade %>
+            </span>
+
+            <span class="ml-5" style="font-size:30px"> <a href="/users/dse00coin"> 🪙 : </a>
+                <span id="coin">
+                    <%= user.coin %>
+                </span>
+            </span>
+        </div>
 
 
+    </div>
+
+
+    <div class="lower-part mt-5 index-container">
+        <div class="inner-container">
+
+            <div style="width:200px"></div>
 
             <div class='index-loop'>
-
                 <div>
-                    <div class="">
-                        <p>
-                            💪🏻
-                            <%= user.intro %>
+                    <h4 class="mb-3">收藏</h4>
+                    <% for( let favour of user.favour) { %>
+                        <div class="card card-body pb-3 mt-1">
 
-                                <% if (currentUser && currentUser.username==user.username) { %>
-                                    <a href="/users/intro" class="btn dse00btn fr">Edit</a>
-                                    <% } %>
-                        </p>
-                        <div class="mb-5 mt-5">
-                            <span style="font-size: 20px;" class="gold" > Grade : Lv.</span>
-                            <span id="usergrade" class="gold">
-                                <%= user.grade %>
-                            </span><br><br>
 
-                            <h4> <a href="/users/dse00coin"> 🪙 : </a>
-                                <span id="coin">
-                                    <%= user.coin %>
-                                </span>
-                            </h4>
-                        </div>
-                        <hr>
+                            <h6 class="post-title">
 
-                        <div class="mt-5">
-                            <h4 class="mb-3">Posts</h4>
-                            <% for(let post of user.posts){ %>
-
-                                <a href="/<%=post._id %> ">
-                                    <div class="card card-body pb-3 mt-1">
-                                        <h6 class="post-title">
-                                            <%= post.title %> <span class="category">
-                                                    <%= post.category %>
-                                                </span>
-                                        </h6>
-                                        <span style="position: absolute; top:5px ; right:10px; font-size:12px;color:#bbb">
-                                            <% const r=post.reviews.length-1 %>
-                                                <%= r+1 %><span style="font-size:11px"> 💬</span>
-                                        </span>
-                                        <div class="muted">
-                                            <%= post.description.substring(0,40) %>
-                                        </div>
-                                    </div>
-
+                                <a href="/<%= favour._id %> " target="_blank">
+                                    <%= favour.title %>
                                 </a>
 
+                            </h6>
+
+                        </div>
+                        <% } %>
+                </div>
+                <div class="mt-5">
+                    <h4 class="mb-3">Posts</h4>
+                    <% for(let post of user.posts){ %>
+
+                        <a href="/<%=post._id %> ">
+                            <div class="card card-body pb-3 mt-1">
+                                <h6 class="post-title">
+                                    <%= post.title %> <span class="category">
+                                            <%= post.category %>
+                                        </span>
+                                </h6>
+                                <span style="position: absolute; top:5px ; right:10px; font-size:12px;color:#bbb">
+                                    <% const r=post.reviews.length-1 %>
+                                        <%= r+1 %><span style="font-size:11px"> 💬</span>
+                                </span>
+                                <div class="muted">
+                                    <%= post.description.substring(0,40) %>
+                                </div>
+                            </div>
+
+                        </a>
+
+
+                        <% } %>
+
+                            <br>
+
+                </div>
+
+                <div id="reviews">
+                    <% if (currentUser) { %>
+                        <% if (currentUser.username==user.username || currentUser.identity=='admin' ) { %>
+                            <h4>Reviews</h4>
+                            <div class="muted">only you can view it</div>
+                            <% for(let review of user.reviews){ %>
+                                <div class="card-body mt-1 ">
+                                    <a href="/<%= review.post %> ">
+                                        <div class="post-title">
+                                            - <%= review.body.substring(0,40) %>
+                                        </div>
+                                    </a>
+                                </div>
 
                                 <% } %>
+                                    <% } %>
+                                        <% } %>
 
-                                    <br>
-
-                        </div>
-
-                        <div id="reviews">
-                            <% if (currentUser) { %>
-                                <% if (currentUser.username==user.username || currentUser.identity=='admin' ) { %>
-                                    <h4>Reviews</h4>
-                                    <div class="muted">only you can view it</div>
-                                    <% for(let review of user.reviews){ %>
-                                            <div class="card-body mt-1 ">
-                                                <a href="/<%= review.post %> ">
-                                                    <div class="post-title">
-                                                      -  <%= review.body.substring(0,40) %>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                         
-                                                <% } %>
-                                                    <% } %>
-                                                        <% } %>
-
-                        </div>
-                    </div>
                 </div>
             </div>
+
+            <div class="friend-list mr-5">
+                <h5 style="text-shadow:1px 1px 3px rgb(179, 179, 179);">Partner List</h5>
+                <% for (let friend of user.friendList){ %>
+                    <div class="mt-3"><a href="/users/user/<%= friend._id %> ">👤 <%= friend.username.toUpperCase() %>
+                        </a></div>
+                    <% } %>
+
+            </div>
+
+        </div>
+    </div>

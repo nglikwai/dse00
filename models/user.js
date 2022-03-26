@@ -12,6 +12,14 @@ const UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Review'
     }],
+    favour: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Campground'
+    }],
+    friendList: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     posts: [{
         type: Schema.Types.ObjectId,
         ref: 'Campground'

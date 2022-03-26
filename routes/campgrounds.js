@@ -17,7 +17,7 @@ router.route('/')
 
 router.route('/reply/:id')
     .get(catchAsync(campgrounds.renderReply))
-    .post(checkLogin,catchAsync(campgrounds.reply))
+    .post(checkLogin, catchAsync(campgrounds.reply))
 
 router.route('/iframe')
     .get(catchAsync(campgrounds.iframe))
@@ -40,6 +40,11 @@ router.route('/:id')
     .delete(isLoggedIn, isAuthor, catchAsync(campgrounds.deleteCampground));
 
 router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(campgrounds.renderEditForm))
+
+router.route('/:id/favour')
+    .get((req, res) => res.redirect(`/${req.params.id}`))
+    .put(isLoggedIn, catchAsync(user.addFavour))
+    .delete(catchAsync(user.removeFavour))
 
 
 

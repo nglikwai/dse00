@@ -8,7 +8,7 @@ const ImageSchema = new Schema({
     filename: String
 })
 
-ImageSchema.virtual('thumbnail').get(function() {
+ImageSchema.virtual('thumbnail').get(function () {
     return this.url.replace('/upload', '/upload/w_200');
 });
 
@@ -21,6 +21,10 @@ const CampgroundSchema = new Schema({
     description: {
         type: String,
         default: '如題'
+    },
+    favour: {
+        type: Number,
+        default: 0
     },
     popular: {
         type: Number,
@@ -42,7 +46,7 @@ const CampgroundSchema = new Schema({
 }, { timestamps: true }, opts);
 
 
-CampgroundSchema.post('findOneAndDelete', async function(doc) {
+CampgroundSchema.post('findOneAndDelete', async function (doc) {
     if (doc) {
         await Review.deleteMany({
             _id: {

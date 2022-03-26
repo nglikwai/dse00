@@ -19,6 +19,7 @@
     <div class="inner-container">
 
         <div class="user-info">
+
             <div class="userbar" id="userbar">
                 <% if(!currentUser) {%>
                     <b><a href="/users/login" target="_blank">
@@ -50,10 +51,7 @@
                                 </div>
                             </div>
                             <% } %>
-
-
             </div><br>
-
 
             <div>
                 <form action="/" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
@@ -72,6 +70,38 @@
                     </div>
                 </form>
             </div>
+
+            <div class="partner-post mt-5 pt-3">
+                <h5 class="mb-4" style="text-shadow:1px 1px 3px rgb(179, 179, 179);">你的 DSE Partner</h5>
+
+
+
+                <% for( let friend of user.friendList) { %>
+                    <% if (friend.posts.length!==0 || friend.reviews.length!==0) { %>
+                        <div class="friend-activity">
+                            <a href="/users/user/<%= friend._id %> ">
+                                <p class="mb-1 mt-1" style="color:#222; font-weight: bold;">
+                                    <%= friend.username.toUpperCase() %>
+                                </p>
+                            </a>
+                            <a href="/<%=friend.posts[friend.posts.length-1]._id%> ">
+                                <p>
+                                    <%= friend.posts[friend.posts.length-1].title %>
+                                </p>
+                            </a>
+                            <a href="/<%=friend.reviews[friend.reviews.length-1].post%> ">
+                                <p style="font-size: 14px; color: #aaa;">
+                                    💬 <%= friend.reviews[friend.reviews.length-1].body.substring(0,40) %>
+                                </p>
+                            </a>
+                        </div>
+
+                        <% } %>
+                            <% } %>
+
+
+            </div>
+
             <div id="adsense" class="hide-mobile mt-5 pt-5 pb-5 mb-5">
                 <script async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6622218753379872"
@@ -83,6 +113,7 @@
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
             </div>
+
             <div id="adsense" class="hide-mobile mt-5 pt-5">
                 <script async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6622218753379872"
@@ -94,6 +125,8 @@
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
             </div>
+
+
         </div>
         <div class='index-loop order-two'>
             <a class="btn dse00btn" id="newpost" href="/new">新 POST</a>

@@ -29,6 +29,10 @@ router.route('/user/:id')
     .put(isLoggedIn, catchAsync(users.intro))
     .delete(isLoggedIn, isAdmin, catchAsync(admins.deleteUser))
 
+router.route('/user/:id/friend')
+    .get((req, res) => { res.redirect(`/users/user/${req.params.id}`) })
+    .put(isLoggedIn, catchAsync(users.addFriend))
+    .delete(isLoggedIn, catchAsync(users.removeFriend))
 
 router.get('/logout', users.logout)
 

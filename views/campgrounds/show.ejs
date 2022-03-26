@@ -14,26 +14,7 @@
         <div>
             <a href="/" class="btn dse00btn">Back</a>
 
-            <div id="campgroundCarousel" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <% campground.images.forEach((img, i)=> { %>
-                        <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
-                            <img src="<%= img.url%>" class="d-block w-100" alt="">
-                        </div>
-                        ƒ
-                        <% }) %>
-                </div>
-                <% if(campground.images.length> 1) {%>
-                    <a class="carousel-control-prev" href="#campgroundCarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">上</span>
-                    </a>
-                    <a class="carousel-control-next" href="#campgroundCarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">下</span>
-                    </a>
-                    <% } %>
-            </div>
+
             <div class="mb-3">
                 <div class="pt-4 pb-3">
                     <h5 class="card-title m-3">
@@ -43,13 +24,48 @@
                         <%= campground.description%>
                     </p>
                 </div>
-                <div>
+                <div id="campgroundCarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <% campground.images.forEach((img, i)=> { %>
+                            <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
+                                <img src="<%= img.url%>" class="d-block w-100" alt="">
+                            </div>
+                            ƒ
+                            <% }) %>
+                    </div>
+                    <% if(campground.images.length> 1) {%>
+                        <a class="carousel-control-prev" href="#campgroundCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">上</span>
+                        </a>
+                        <a class="carousel-control-next" href="#campgroundCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">下</span>
+                        </a>
+                        <% } %>
+                </div>
+                <div class="mt-1 mb-1">
                     <span class="muted">
                         <%= campground.createdAt.toLocaleString().substring(0,9) %>
                     </span>
-                    <a class="category2" href="/search?category=<%= campground.category %>">
-                        <%= campground.category %>
-                    </a>
+
+                    <% if (currentUser && currentUser.favour.includes(campground._id)) { %>
+                        <form action="/<%= campground._id%>/favour?_method=DELETE" method="POST"
+                            style="display:inline;">
+                            <button class="btn category2 ml-2" style="border:none">♥
+                                取消收藏(<%= campground.favour %>)</button>
+                        </form>
+                        <% } else{%>
+                            <form action="/<%= campground._id%>/favour?_method=PUT" method="POST"
+                                style="display:inline">
+                                <button class="btn category2 ml-2">♡ 收藏(<%= campground.favour %>)</button>
+                            </form>
+                            <% } %>
+
+                                <a class="category2 ml-2" href="/search?category=<%= campground.category %>">
+                                    <%= campground.category %>
+                                </a>
+
                 </div>
                 <ul class="list-group list-group-flush">
 

@@ -4,7 +4,19 @@ const User = require("../models/user");
 
 const { cloudinary } = require("../cloudinary");
 
-module.exports.index = async(req, res) => {
+module.exports.index = async (req, res) => {
+    const id = req.user ? req.user._id : '622874ccc8ed254d82edf591';
+    const user = await User.findById(id).populate("friendList").populate({
+        path: "friendList",
+        populate: {
+            path: "posts",
+        },
+    }).populate({
+        path: "friendList",
+        populate: {
+            path: "reviews",
+        },
+    }).sort({ updatedAt: -1 });;
     const limit = req.query.limit || 150;
     const page = req.query.page || 1;
     const options = {
@@ -15,10 +27,10 @@ module.exports.index = async(req, res) => {
     };
     const data = await Campground.paginate({}, options);
     const campgrounds = data.docs;
-    res.render("campgrounds/index", { campgrounds });
+    res.render("campgrounds/index", { campgrounds, user });
 };
 
-module.exports.indexSearch = async(req, res) => {
+module.exports.indexSearch = async (req, res) => {
     const limit = req.query.limit || 50;
     const page = req.query.page || 1;
     const category = req.query.category;
@@ -46,7 +58,7 @@ module.exports.indexSearch = async(req, res) => {
 //     res.render("campgrounds/index", { campgrounds });
 // };
 
-module.exports.iframe = async(req, res) => {
+module.exports.iframe = async (req, res) => {
     const limit = req.query.limit || 50;
     const page = req.query.page || 1;
     const options = {
@@ -64,7 +76,7 @@ module.exports.renderNewForm = (req, res) => {
     res.render("campgrounds/new");
 };
 
-module.exports.createCampground = async(req, res, next) => {
+module.exports.createCampground = async (req, res, next) => {
     const campground = new Campground(req.body.campground);
     campground.images = req.files.map((f) => ({
         url: f.path,
@@ -83,7 +95,7 @@ module.exports.createCampground = async(req, res, next) => {
     res.redirect(`/${campground._id}`);
 };
 
-module.exports.createCampgroundForIframe = async(req, res, next) => {
+module.exports.createCampgroundForIframe = async (req, res, next) => {
     const campground = new Campground(req.body.campground);
     campground.images = req.files.map((f) => ({
         url: f.path,
@@ -101,7 +113,7 @@ module.exports.createCampgroundForIframe = async(req, res, next) => {
     res.redirect(`/iframe`);
 };
 
-module.exports.showCampground = async(req, res) => {
+module.exports.showCampground = async (req, res) => {
     const campground = await Campground.findById(req.params.id)
         .populate({
             path: "reviews",
@@ -117,7 +129,7 @@ module.exports.showCampground = async(req, res) => {
     res.render("campgrounds/show", { campground });
 };
 
-module.exports.showIframeCampground = async(req, res) => {
+module.exports.showIframeCampground = async (req, res) => {
     const campground = await Campground.findById(req.params.id)
         .populate({
             path: "reviews",
@@ -133,7 +145,7 @@ module.exports.showIframeCampground = async(req, res) => {
     res.render("campgrounds/showIframe", { campground });
 };
 
-module.exports.renderEditForm = async(req, res) => {
+module.exports.renderEditForm = async (req, res) => {
     const { id } = req.params;
     const campground = await Campground.findById(id);
     if (!campground) {
@@ -143,7 +155,7 @@ module.exports.renderEditForm = async(req, res) => {
     res.render("campgrounds/edit", { campground });
 };
 
-module.exports.updateCampground = async(req, res) => {
+module.exports.updateCampground = async (req, res) => {
     const { id } = req.params;
     console.log(req.body)
     const campground = await Campground.findByIdAndUpdate(id, {
@@ -164,7 +176,7 @@ module.exports.updateCampground = async(req, res) => {
     res.redirect(`/${campground._id}`);
 };
 
-module.exports.updateIframeCampground = async(req, res) => {
+module.exports.updateIframeCampground = async (req, res) => {
     const { id } = req.params;
     const campground = await Campground.findByIdAndUpdate(id, {
         ...req.body.campground,
@@ -184,7 +196,7 @@ module.exports.updateIframeCampground = async(req, res) => {
     res.redirect(`/iframe/${campground._id}`);
 };
 
-module.exports.deleteCampground = async(req, res) => {
+module.exports.deleteCampground = async (req, res) => {
     const { id } = req.params;
     const user = await User.findById(req.user._id);
     user.coin -= 5;
@@ -194,7 +206,7 @@ module.exports.deleteCampground = async(req, res) => {
     res.redirect("/");
 };
 
-module.exports.deleteIframeCampground = async(req, res) => {
+module.exports.deleteIframeCampground = async (req, res) => {
     const { id } = req.params;
     const user = await User.findById(req.user._id);
     user.coin -= 5;
@@ -204,28 +216,28 @@ module.exports.deleteIframeCampground = async(req, res) => {
     res.redirect("/iframe");
 };
 
-module.exports.reply = async(req, res) => {
+module.exports.reply = async (req, res) => {
     const { id } = req.params;
     const campgroundid = req.query.post;
     const campground = await Campground.findById(campgroundid);
-    campground.popular +=1;
+    campground.popular += 1;
     const review = await Review.findById(id);
     review.reply.push(req.body.review.reply)
     if (!req.user) {
         review.replyAuthor.push('DSEJJ')
-    } else{
-        req.user.coin +=3;
+    } else {
+        req.user.coin += 3;
         await req.user.save();
         review.replyAuthor.push(req.user.username)
     }
-    
+
     await review.save();
     await campground.save();
-    req.flash('success' , ' 🪙 + 3');
+    req.flash('success', ' 🪙 + 3');
     res.redirect(`/${campgroundid}`)
 }
 
-module.exports.renderReply = async(req, res) => {
+module.exports.renderReply = async (req, res) => {
     const { id } = req.params;
     const campgroundid = req.query.post;
     const replyReview = await Review.findById(id).populate('author');

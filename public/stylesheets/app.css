@@ -257,6 +257,19 @@ nav a:hover {
     color: #fff;
 }
 
+.friend-activity{
+    background-color: #fff9e9;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 10px;
+    color: #777;
+    box-shadow:2px 2px 6px rgb(255, 234, 180);
+
+}
+
+.shadow{
+    text-shadow:1px 1px 3px rgb(179, 179, 179);
+}
 
 
 
