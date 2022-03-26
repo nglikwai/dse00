@@ -78,17 +78,21 @@
         </div>
 
         <div class="m-3">
-            <% if (currentUser && currentUser.friendList.includes(user._id)) { %>
-                <form action="/users/user/<%= user._id%>/friend?_method=DELETE" method="POST" style="display:inline;">
-                    <button class="p-2" style="border:none; border-radius: 5px; background-color: #eee;">
-                        👥 移除 DSE Partner</button>
-                </form>
-                <% }else{ %>
-                    <form action="/users/user/<%= user._id%>/friend?_method=PUT" method="POST" style="display:inline;">
+            <% if (currentUser && !currentUser._id.equals(user.id)) { %>
+                <% if (currentUser && currentUser.friendList.includes(user._id)) { %>
+                    <form action="/users/user/<%= user._id%>/friend?_method=DELETE" method="POST"
+                        style="display:inline;">
                         <button class="p-2" style="border:none; border-radius: 5px; background-color: #eee;">
-                            👥 Add DSE Partner</button>
+                            👥 移除 DSE Partner</button>
                     </form>
-                    <% } %>
+                    <% }else{ %>
+                        <form action="/users/user/<%= user._id%>/friend?_method=PUT" method="POST"
+                            style="display:inline;">
+                            <button class="p-2" style="border:none; border-radius: 5px; background-color: #eee;">
+                                👥 Add DSE Partner</button>
+                        </form>
+                        <% } %>
+                            <% } %>
         </div>
 
         <div class="mt-3">
