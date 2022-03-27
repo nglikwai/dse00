@@ -71,8 +71,8 @@
                 </form>
             </div>
 
-            <div class="partner-post mt-5 pt-3">
-                <h5 class="mb-4" style="text-shadow:1px 1px 3px rgb(179, 179, 179);">你的 DSE Partner</h5>
+            <div class="partner-post mt-5 pt-3 hide-mobile">
+                <h5 class="mb-4" style="text-shadow:1px 1px 3px rgb(179, 179, 179);">👥 Friends Activity</h5>
 
 
 
@@ -84,7 +84,7 @@
                             </p>
                         </a>
                         <% if (friend.posts.length!==0) { %>
-                            <a class="hide-mobile" href="/<%=friend.posts[friend.posts.length-1]._id%> ">
+                            <a href="/<%=friend.posts[friend.posts.length-1]._id%> ">
                                 <p>
                                     <%= friend.posts[friend.posts.length-1].title %>
                                 </p>
