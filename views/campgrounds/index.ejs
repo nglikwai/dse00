@@ -77,26 +77,33 @@
 
 
                 <% for( let friend of user.friendList) { %>
-                    <div class="friend-activity mb-3">
-                        <a href="/users/user/<%= friend._id %> ">
-                            <p class="mb-1 mt-1" style="color:#222; font-weight: bold;">
-                                <%= friend.username.toUpperCase() %>
-                            </p>
-                        </a>
+              
+                
                         <% if (friend.posts.length!==0) { %>
-                            <a href="/<%=friend.posts[friend.posts.length-1]._id%> ">
-                                <p>
-                                    <%= friend.posts[friend.posts.length-1].title %>
-                                </p>
+                        <div class="friend-activity">
+                        <a href="/<%=friend.posts[friend.posts.length-1]._id%> ">
+                            <span style="font-size: 14px; color: #aaa;">
+                                💬  <%= friend.posts[friend.posts.length-1].title %>
+                                </span>
+                            </a>  -  <a href="/users/user/<%= friend._id %> ">
+                                <span style="font-size: 11px; color: #ccc;">
+                                    <%= friend.username.toUpperCase() %>
+                                </span>
                             </a>
+                        </div>
                             <% } %>
                                 <% if (friend.reviews.length!==0) { %>
+                                    <div class="friend-activity">
                                     <a href="/<%=friend.reviews[friend.reviews.length-1].post%> ">
-                                        <p style="font-size: 14px; color: #aaa;">
+                                        <span style="font-size: 14px; color: #aaa;">
                                             💬 <%= friend.reviews[friend.reviews.length-1].body.substring(0,40) %>
-                                        </p>
-                                    </a>
-                    </div>
+                                        </span>
+                                    </a> -  <a href="/users/user/<%= friend._id %> ">
+                                        <span style="font-size: 11px; color: #ccc;">
+                                            <%= friend.username.toUpperCase() %>
+                                        </span>
+                                </div>
+                 
 
                     <% } %>
                         <% } %>
