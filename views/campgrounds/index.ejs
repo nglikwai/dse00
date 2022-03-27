@@ -82,8 +82,8 @@
                         <% if (friend.posts.length!==0) { %>
                         <div class="friend-activity">
                         <a href="/<%=friend.posts[friend.posts.length-1]._id%> ">
-                            <span style="font-size: 14px; color: #aaa;">
-                                💬  <%= friend.posts[friend.posts.length-1].title %>
+                            <span style="font-size: 13px; color: #aaa;">
+                                💬  <%= friend.posts[friend.posts.length-1].title.substring(0,32) %>
                                 </span>
                             </a>  -  <a href="/users/user/<%= friend._id %> ">
                                 <span style="font-size: 11px; color: #ccc;">
@@ -95,8 +95,8 @@
                                 <% if (friend.reviews.length!==0) { %>
                                     <div class="friend-activity">
                                     <a href="/<%=friend.reviews[friend.reviews.length-1].post%> ">
-                                        <span style="font-size: 14px; color: #aaa;">
-                                            💬 <%= friend.reviews[friend.reviews.length-1].body.substring(0,40) %>
+                                        <span style="font-size: 13px; color: #aaa;">
+                                            💬 <%= friend.reviews[friend.reviews.length-1].body.substring(0,32) %>
                                         </span>
                                     </a> -  <a href="/users/user/<%= friend._id %> ">
                                         <span style="font-size: 11px; color: #ccc;">
