@@ -85,9 +85,9 @@
                             <span style="font-size: 13px; color: #aaa;">
                                 💬  <%= friend.posts[friend.posts.length-1].title.substring(0,32) %>
                                 </span>
-                            </a>  -  <a href="/users/user/<%= friend._id %> ">
-                                <span style="font-size: 11px; color: #ccc;">
-                                    <%= friend.username.toUpperCase() %>
+                            </a>   <a href="/users/user/<%= friend._id %> ">
+                               <span style="font-size: 11px; color: #ccc;">
+                                    - <%= friend.username.toUpperCase() %>
                                 </span>
                             </a>
                         </div>
@@ -98,9 +98,9 @@
                                         <span style="font-size: 13px; color: #aaa;">
                                             💬 <%= friend.reviews[friend.reviews.length-1].body.substring(0,32) %>
                                         </span>
-                                    </a> -  <a href="/users/user/<%= friend._id %> ">
+                                    </a>   <a href="/users/user/<%= friend._id %> ">
                                         <span style="font-size: 11px; color: #ccc;">
-                                            <%= friend.username.toUpperCase() %>
+                                           - <%= friend.username.toUpperCase() %>
                                         </span>
                                 </div>
                  
