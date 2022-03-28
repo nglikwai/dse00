@@ -5,9 +5,9 @@ const User = require("../models/user");
 module.exports.createReview = async (req, res) => {
   const campground = await Campground.findById(req.params.id);
   const review = new Review(req.body.review);
-  const id = '622874ccc8ed254d82edf591';
+  let id = '622874ccc8ed254d82edf591';
   if (req.user) {
-      const id = req.user._id;
+    id = req.user._id;
   }
   const user = await User.findById(id);
   review.author = id;

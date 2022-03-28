@@ -17,6 +17,9 @@ module.exports.index = async (req, res) => {
             path: "reviews",
         },
     }).sort({ updatedAt: -1 });
+
+    const reviews = await Review.find({ "author": user.friendList }).sort({ updatedAt: -1 }).limit(7).populate("author");
+
     const limit = req.query.limit || 150;
     const page = req.query.page || 1;
     const options = {
@@ -27,7 +30,7 @@ module.exports.index = async (req, res) => {
     };
     const data = await Campground.paginate({}, options);
     const campgrounds = data.docs;
-    res.render("campgrounds/index", { campgrounds, user });
+    res.render("campgrounds/index", { campgrounds, user, reviews });
 };
 
 module.exports.indexSearch = async (req, res) => {

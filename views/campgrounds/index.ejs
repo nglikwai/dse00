@@ -73,42 +73,17 @@
 
             <div class="partner-post mt-5 pt-3 hide-mobile">
                 <h5 class="mb-4" style="text-shadow:1px 1px 3px rgb(179, 179, 179);">👥 Friends Activity</h5>
-
-
-
-                <% for( let friend of user.friendList) { %>
-              
-                
-                        <% if (friend.posts.length!==0) { %>
-                        <div class="friend-activity">
-                        <a href="/<%=friend.posts[friend.posts.length-1]._id%> ">
-                            <span style="font-size: 13px; color: #aaa;">
-                                💬  <%= friend.posts[friend.posts.length-1].title.substring(0,32) %>
-                                </span>
-                            </a>   <a href="/users/user/<%= friend._id %> ">
-                               <span style="font-size: 11px; color: #ccc;">
-                                    - <%= friend.username.toUpperCase() %>
-                                </span>
-                            </a>
-                        </div>
-                            <% } %>
-                                <% if (friend.reviews.length!==0) { %>
-                                    <div class="friend-activity">
-                                    <a href="/<%=friend.reviews[friend.reviews.length-1].post%> ">
-                                        <span style="font-size: 13px; color: #aaa;">
-                                            💬 <%= friend.reviews[friend.reviews.length-1].body.substring(0,32) %>
-                                        </span>
-                                    </a>   <a href="/users/user/<%= friend._id %> ">
-                                        <span style="font-size: 11px; color: #ccc;">
-                                           - <%= friend.username.toUpperCase() %>
-                                        </span>
-                                </div>
-                 
-
+                <% for (let review of reviews){ %>
+                    <div class="friend-activity">
+                        <a href="/<%= review.post._id%> "><span style="font-size: 13px; color: #aaa;">
+                                💬 <%= review.body.substring(0,32) %>
+                            </span></a> -
+                        <a href="/users/user/<%= review.author._id %> "> <span style=" font-size: 11px; color: #ccc;">
+                                <%= review.author.username.toUpperCase() %>
+                            </span>
+                        </a>
+                    </div>
                     <% } %>
-                        <% } %>
-
-
             </div>
 
             <div id="adsense" class="hide-mobile mt-5 pb-5 mb-5">
@@ -137,10 +112,11 @@
 
 
         </div>
+
         <div class='index-loop order-two'>
+
+
             <a class="btn dse00btn" id="newpost" href="/new">新 POST</a>
-
-
             <% for (let i=0 ; i<campgrounds.length ; i++){%>
                 <% if (i%6===0 && i!==0) { %>
                     <div class="card  adsense">
