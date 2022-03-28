@@ -134,7 +134,7 @@ module.exports.addFavour = async (req, res) => {
     user.favour.push(req.params.id)
 
     await user.save();
-    req.flash('success', '成功收藏')
+    req.flash('success', '♥ Liked')
     res.redirect(`/${req.params.id}`)
 }
 
@@ -146,19 +146,18 @@ module.exports.removeFavour = async (req, res) => {
     const index = user.favour.indexOf(req.params.id)
     user.favour.splice(index, 1)
     await user.save();
-    req.flash('error', '已取消收藏')
+    req.flash('error', '♡ Unliked')
     res.redirect(`/${req.params.id}`)
 }
 
 module.exports.addFriend = async (req, res) => {
     const user = await User.findById(req.user._id);
     const counterUser = await User.findById(req.params.id);
-    counterUser.friendList.push(req.user._id);
+    counterUser.friendList.unshift(req.user._id);
     await counterUser.save();
-    user.friendList.push(req.params.id)
-
+    user.friendList.unshift(req.params.id)
     await user.save();
-    req.flash('success', `${counterUser.username.toUpperCase()} 已成為DSE Partner`)
+    req.flash('success', `${counterUser.username.toUpperCase()} 已成為 Friend`)
     res.redirect(`/users/user/${req.params.id}`)
 }
 
@@ -168,7 +167,7 @@ module.exports.removeFriend = async (req, res) => {
     user.friendList.splice(index, 1)
     await user.save();
     const counterUser = await User.findById(req.params.id);
-    const counterIndex = user.friendList.indexOf(req.user._id);
+    const counterIndex = counterUser.friendList.indexOf(req.user._id);
     counterUser.friendList.splice(counterIndex, 1)
     await counterUser.save();
     req.flash('error', `已移除 ${counterUser.username.toUpperCase()}`)

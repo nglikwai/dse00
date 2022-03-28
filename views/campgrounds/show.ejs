@@ -53,12 +53,12 @@
                         <form action="/<%= campground._id%>/favour?_method=DELETE" method="POST"
                             style="display:inline;">
                             <button class="btn category2 ml-2" style="border:none">♥
-                                取消收藏(<%= campground.favour %>)</button>
+                                Like (<%= campground.favour %>)</button>
                         </form>
                         <% } else{%>
                             <form action="/<%= campground._id%>/favour?_method=PUT" method="POST"
                                 style="display:inline">
-                                <button class="btn category2 ml-2">♡ 收藏(<%= campground.favour %>)</button>
+                                <button class="btn category2 ml-2">♡ Like (<%= campground.favour %>)</button>
                             </form>
                             <% } %>
 
