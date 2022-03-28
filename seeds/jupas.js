@@ -1,54 +1,41 @@
 const mongoose = require("mongoose");
 const jupases = [
     {
+        title: 'Bachelor of Science in Computational Finance and Financial Technology',
         year: 2021,
         code: 1000,
-        cutoffs: {
-            Chinese: 4,
-            English: 4,
-            Maths: 5,
-            LS: 3,
-            E1: 6,
-            E2: 5,
-        },
+        cutoffs: [[4, 4, 5, 3, 6, 5, 4], [3, 4, 5, 4, 6, 5]]
     },
     {
-        year: 2021,
-        code: 1000,
-        cutoffs: {
-            Chinese: 3,
-            English: 4,
-            Maths: 5,
-            LS: 4,
-            E1: 6,
-            E2: 5,
-        },
-    },
-    {
+        title: 'Bachelor of Business Administration in Global Business',
         year: 2021,
         code: 1001,
-        cutoffs: {
-            Chinese: 4,
-            English: 4,
-            Maths: 5,
-            LS: 5,
-            E1: 5,
-            E2: 4,
-        },
+        cutoffs: [[4, 4, 5, 5, 5, 4, 4], [6, 3, 4, 4, 4, 4, 4]]
     },
+
     {
+        title: 'Bachelor of Business Administration in Accountancy',
         year: 2021,
-        code: 1001,
-        cutoffs: {
-            Chinese: 6,
-            English: 3,
-            Maths: 4,
-            LS: 4,
-            E1: 4,
-            E2: 4,
-        },
+        code: 1002,
+        cutoffs: [[3, 3, 5, 4, 5, 4, 3], [4, 3, 5, 3, 4, 4]]
+    },
+
+    {
+        title: 'Bachelor of Business Administration in Management',
+        year: 2021,
+        code: 1005,
+        cutoffs: [[4, 4, 4, 4, 4, 4, 3], [3, 4, 4, 4, 5, 4, 3]]
+    },
+
+    {
+        title: 'Bachelor of Business Administration in Marketing',
+        year: 2021,
+        code: 1007,
+        cutoffs: [[4, 4, 4, 4, 4, 4, 4], [5, 3, 3, 5, 4, 3]]
     },
 ];
+
+
 
 const Jupas = require("../models/jupas");
 

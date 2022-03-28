@@ -14,39 +14,33 @@
 
 
         <% for( let jupas of jupases) { %>
-            <table>
-                <tr>
-                    <th rowspan="2">JS <%= jupas.code %>
-                    </th>
-                    <td>中文</td>
-                    <td>English</td>
-                    <td>數學</td>
-                    <td>通識</td>
-                    <td>E1</td>
-                    <td>E2</td>
-                </tr>
-                <tr>
-                    <td>
-                        <%= jupas.cutoffs.Chinese %>
-                    </td>
-                    <td>
-                        <%= jupas.cutoffs.English %>
-                    </td>
-                    <td>
-                        <%= jupas.cutoffs.Maths %>
-                    </td>
-                    <td>
-                        <%= jupas.cutoffs.LS %>
-                    </td>
-                    <td>
-                        <%= jupas.cutoffs.E1 %>
-                    </td>
-                    <td>
-                        <%= jupas.cutoffs.E2 %>
-                    </td>
-                </tr>
-            </table>
-            <% } %>
+            <div class="mb-5">
+                <h6> JS <%= jupas.code %> - <%= jupas.title %>
+                </h6>
+                <table class="mb-5">
+                    <tr>
+                        <td>中文</td>
+                        <td>English</td>
+                        <td>數學</td>
+                        <td>通識</td>
+                        <td>E1</td>
+                        <td>E2</td>
+                        <td>E3</td>
+                    </tr>
+                    <tr>
+                        <% for( let cutoffs of jupas.cutoffs) { %>
+                    <tr>
+                        <% for( let cutoff of cutoffs) { %>
+                            <td>
+                                <%= cutoff %>
+                            </td>
+                            <% } %>
+                    </tr>
+                    <% } %>
+                        </tr>
+                </table>
+                <% } %>
+            </div>
     </div>
 
     <script>

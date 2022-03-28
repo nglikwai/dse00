@@ -8,6 +8,7 @@ const ImageSchema = new Schema({
 })
 
 const jupasSchema = new Schema({
+    title: String,
     year: {
         type: Number,
         min: 4
@@ -16,14 +17,7 @@ const jupasSchema = new Schema({
         type: Number,
         min: 4
     },
-    cutoffs: {
-        Chinese: Number,
-        English: Number,
-        Maths: Number,
-        LS: Number,
-        E1: Number,
-        E2: Number,
-    },
+    cutoffs: [[Number]],
     images: [ImageSchema]
 }, { timestamps: true });
 
