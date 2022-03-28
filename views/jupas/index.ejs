@@ -1,0 +1,59 @@
+<% layout('layouts/boilerplate')%>
+
+    <style>
+        td,
+        th {
+            width: 100px;
+        }
+    </style>
+    <h1 class="mt-5">JUPAS Code</h1>
+    <div class="mt-1">
+        <input class="form-control" type="text" id="code-search" placeholder=" 4 digit code">
+    </div>
+    <div class="mt-5">
+
+
+        <% for( let jupas of jupases) { %>
+            <table>
+                <tr>
+                    <th rowspan="2">JS <%= jupas.code %>
+                    </th>
+                    <td>中文</td>
+                    <td>English</td>
+                    <td>數學</td>
+                    <td>通識</td>
+                    <td>E1</td>
+                    <td>E2</td>
+                </tr>
+                <tr>
+                    <td>
+                        <%= jupas.cutoffs.Chinese %>
+                    </td>
+                    <td>
+                        <%= jupas.cutoffs.English %>
+                    </td>
+                    <td>
+                        <%= jupas.cutoffs.Maths %>
+                    </td>
+                    <td>
+                        <%= jupas.cutoffs.LS %>
+                    </td>
+                    <td>
+                        <%= jupas.cutoffs.E1 %>
+                    </td>
+                    <td>
+                        <%= jupas.cutoffs.E2 %>
+                    </td>
+                </tr>
+            </table>
+            <% } %>
+    </div>
+
+    <script>
+        document.querySelector('input').addEventListener('keydown', function (e) {
+            if (e.key == 'Enter') {
+                location.replace(`/jupas/code?code=${e.target.value}`)
+            }
+        })
+
+    </script>

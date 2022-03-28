@@ -22,6 +22,7 @@ const campgroundRoutes = require("./routes/campgrounds");
 const reviewRoutes = require("./routes/reviews");
 const cutoffRoutes = require("./routes/cutoffs");
 const apiRoutes = require("./routes/apis");
+const jupasRoutes = require("./routes/jupas");
 const cors = require("cors");
 const users = require('./controllers/users');
 
@@ -119,6 +120,7 @@ app.use("/apis", apiRoutes);
 app.use("/cutoffs", cutoffRoutes);
 app.use("/users", userRoutes);
 app.use("/resources", pastpaperRoutes);
+app.use("/jupas", jupasRoutes)
 app.get('/ads.txt', (req, res) => {
     res.sendFile(__dirname + '/ads.txt')
 })
