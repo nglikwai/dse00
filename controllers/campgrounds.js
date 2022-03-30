@@ -6,20 +6,6 @@ const { cloudinary } = require("../cloudinary");
 
 module.exports.index = async (req, res) => {
     const id = req.user ? req.user._id : '622874ccc8ed254d82edf591';
-    const user = await User.findById(id).populate("friendList").populate({
-        path: "friendList",
-        populate: {
-            path: "posts",
-        },
-    }).populate({
-        path: "friendList",
-        populate: {
-            path: "reviews",
-        },
-    }).sort({ updatedAt: -1 });
-
-    const reviews = await Review.find({ "author": user.friendList }).sort({ updatedAt: -1 }).limit(7).populate("author");
-
     const limit = req.query.limit || 150;
     const page = req.query.page || 1;
     const category = req.query.category || ['吹水', 'DSE', '大學', '消息'];
@@ -29,10 +15,60 @@ module.exports.index = async (req, res) => {
         limit,
         page,
     };
-    const data = await Campground.paginate({ category }, options);
+
+    const [user, data] = await Promise.all([
+        User.findById(id).populate("friendList").populate({
+            path: "friendList",
+            populate: {
+                path: "posts",
+            },
+        }).populate({
+            path: "friendList",
+            populate: {
+                path: "reviews",
+            },
+        }).sort({ updatedAt: -1 }),
+        Campground.paginate({ category }, options),
+
+    ])
+    const reviews = await Review.find({ "author": user.friendList }).sort({ updatedAt: -1 }).limit(7).populate("author");
+
     const campgrounds = data.docs;
     res.render("campgrounds/index", { campgrounds, user, reviews });
 };
+
+
+
+// module.exports.index = async (req, res) => {
+//     const id = req.user ? req.user._id : '622874ccc8ed254d82edf591';
+//     const user = await User.findById(id).populate("friendList").populate({
+//         path: "friendList",
+//         populate: {
+//             path: "posts",
+//         },
+//     }).populate({
+//         path: "friendList",
+//         populate: {
+//             path: "reviews",
+//         },
+//     }).sort({ updatedAt: -1 });
+
+//     const reviews = await Review.find({ "author": user.friendList }).sort({ updatedAt: -1 }).limit(7).populate("author");
+
+//     const limit = req.query.limit || 150;
+//     const page = req.query.page || 1;
+//     const category = req.query.category || ['吹水', 'DSE', '大學', '消息'];
+//     const options = {
+//         sort: { updatedAt: -1 },
+//         populate: ["author", "reviews"],
+//         limit,
+//         page,
+//     };
+//     const data = await Campground.paginate({ category }, options);
+//     const campgrounds = data.docs;
+//     res.render("campgrounds/index", { campgrounds, user, reviews });
+// };
+
 
 
 
