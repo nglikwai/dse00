@@ -5,12 +5,17 @@
         th {
             width: 100px;
         }
+
+        input {
+            width: 300px;
+        }
     </style>
-    <h1 class="mt-5">JUPAS Code</h1>
-    <div class="mt-1">
-        <input class="form-control" type="text" id="code-search" placeholder=" 4 digit code">
+    <h1 class="mt-5 pt-5">JUPAS Code</h1>
+    <div class="mt-5 mb-5 ">
+        <input class="mb-3 form-control" maxlength="4" size="40" type="text" id="code-search"
+            placeholder=" 4 digit code">
     </div>
-    <div class="mt-5">
+    <div class="mt-5 ">
 
 
         <% for( let jupas of jupases) { %>

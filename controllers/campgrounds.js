@@ -22,33 +22,7 @@ module.exports.index = async (req, res) => {
 
     const limit = req.query.limit || 150;
     const page = req.query.page || 1;
-    const options = {
-        sort: { updatedAt: -1 },
-        populate: ["author", "reviews"],
-        limit,
-        page,
-    };
-    const data = await Campground.paginate({}, options);
-    const campgrounds = data.docs;
-    res.render("campgrounds/index", { campgrounds, user, reviews });
-};
-
-module.exports.indexSearch = async (req, res) => {
-    const id = req.user ? req.user._id : '622874ccc8ed254d82edf591';
-    const user = await User.findById(id).populate("friendList").populate({
-        path: "friendList",
-        populate: {
-            path: "posts",
-        },
-    }).populate({
-        path: "friendList",
-        populate: {
-            path: "reviews",
-        },
-    }).sort({ updatedAt: -1 });
-    const limit = req.query.limit || 50;
-    const page = req.query.page || 1;
-    const category = req.query.category;
+    const category = req.query.category || ['吹水', 'DSE', '大學', '消息'];
     const options = {
         sort: { updatedAt: -1 },
         populate: ["author", "reviews"],
@@ -57,8 +31,10 @@ module.exports.indexSearch = async (req, res) => {
     };
     const data = await Campground.paginate({ category }, options);
     const campgrounds = data.docs;
-    res.render("campgrounds/index", { campgrounds, user });
+    res.render("campgrounds/index", { campgrounds, user, reviews });
 };
+
+
 
 // module.exports.index = async(req, res) => {
 //     const campgrounds = await Campground.find({})
@@ -105,7 +81,6 @@ module.exports.createCampground = async (req, res, next) => {
         await user.save();
     }
     await campground.save();
-    console.log(campground);
     req.flash("success", "成功POST，🪙 + 5 ");
     res.redirect(`/${campground._id}`);
 };
@@ -172,7 +147,6 @@ module.exports.renderEditForm = async (req, res) => {
 
 module.exports.updateCampground = async (req, res) => {
     const { id } = req.params;
-    console.log(req.body)
     const campground = await Campground.findByIdAndUpdate(id, {
         ...req.body.campground
     });
@@ -265,6 +239,5 @@ module.exports.renderReply = async (req, res) => {
         })
         .populate("author");
 
-    console.log(replyReview._id);
     res.render("campgrounds/show", { campground, replyReview })
 }

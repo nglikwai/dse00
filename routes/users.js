@@ -24,6 +24,10 @@ router.route('/forget')
 router.route('/intro')
     .get(isLoggedIn, users.renderIntro)
 
+router.route('/addfriend')
+    .get(isLoggedIn, users.renderAddFriend)
+    .put(isLoggedIn, users.addFriendFirst)
+
 router.route('/user/:id')
     .get(users.updateUser, catchAsync(users.loadUser))
     .put(isLoggedIn, catchAsync(users.intro))

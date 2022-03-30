@@ -24,7 +24,7 @@ router.route('/iframe')
     .post(upload.array('image'), validateCampground, user.updateUser, checkLogin, catchAsync(campgrounds.createCampgroundForIframe))
 
 router.route('/search')
-    .get(catchAsync(campgrounds.indexSearch))
+    .get(catchAsync(campgrounds.index))
     .post(upload.array('image'), validateCampground, user.updateUser, checkLogin, catchAsync(campgrounds.createCampground))
 
 router.route('/iframe/:id')

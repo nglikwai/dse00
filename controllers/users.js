@@ -47,7 +47,6 @@ module.exports.loadUser = async (req, res) => {
         req.flash('error', 'User not found');
         return res.redirect('/');
     }
-    console.log(user);
     res.render('users/user', { user });
 }
 
@@ -84,7 +83,6 @@ module.exports.updateUser = async (req, res, next) => {
     if (a !== b) {
         req.flash('success', `恭喜你，升到 Lv. ${b} 了！`)
     }
-    console.log(user)
     next();
 }
 
@@ -94,16 +92,14 @@ module.exports.renderForget = (req, res) => {
 
 module.exports.renderIntro = async (req, res) => {
     const user = await User.findById(req.user._id)
-    console.log(user)
     res.render('users/intro', { user });
 }
 
 module.exports.intro = async (req, res) => {
     const { id } = req.params;
     const user = await User.findByIdAndUpdate(id, { ...req.body })
-    console.log(user)
     req.flash('success', `${req.body.intro}`)
-    res.redirect(`/`)
+    res.redirect('/users/addfriend');
 }
 
 module.exports.checkIdEmailMatch = async (req, res) => {
@@ -173,3 +169,24 @@ module.exports.removeFriend = async (req, res) => {
     req.flash('error', `已移除 ${counterUser.username.toUpperCase()}`)
     res.redirect(`/users/user/${req.params.id}`)
 }
+
+module.exports.renderAddFriend = async (req, res) => {
+    const users = await User.find({});
+    res.render('users/addFriend', { users })
+}
+
+
+module.exports.addFriendFirst = async (req, res) => {
+    const user = await User.findById(req.user._id);
+    user.friendList.unshift(req.query.friend);
+    await user.save();
+    const counterUser = await User.findById(req.query.friend);
+    counterUser.friendList.unshift(req.user._id);
+    await counterUser.save();
+    console.log(user.username);
+    console.log(counterUser);
+    setTimeout(() => {
+        res.redirect('/users/addfriend')
+    }, 5000)
+}
+

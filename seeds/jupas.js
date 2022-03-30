@@ -379,6 +379,78 @@ const jupases = [
       [3, 4, 3, 4, 4, 4],
     ],
   },
+  {
+    title: 'Bachelor of Arts in Chinese and History',
+    year: 2021,
+    code: 1103,
+    cutoffs: [[3, 4, 5, 4, 4, 4], [3, 4, 4, 3, 5, 4]]
+  },
+  {
+    title: 'Bachelor of Arts in English',
+    year: 2021,
+    code: 1104,
+    cutoffs: [[5, 4, 2, 4, 4, 4], [4, 4, 5, 4, 3, 3]]
+  },
+  {
+    title: ' Department of Linguistics and Translation (options: BA Linguistics and Language Applications, BA Translation and Interpretation)',
+    year: 2021,
+    code: 1105,
+    cutoffs: [[4, 4, 4, 4, 4, 4], [3, 5, 5, 3, 4, 4]]
+  },
+  {
+    title: ' Department of Linguistics and Translation (options: BA Linguistics and Language Applications, BA Translation and Interpretation)',
+    year: 2021,
+    code: 1109,
+    cutoffs: [[4, 4, 4, 4, 4, 4], [3, 5, 5, 3, 4, 4]]
+  },
+  {
+    title: 'JS1106 Department of Media and Communication (options: BA Digital Television and Broadcasting, BA Media and Communication)',
+    year: 2021,
+    code: 1106,
+    cutoffs: [[4, 4, 4, 4, 4, 4], [3, 4, 3, 6, 4, 3]]
+  },
+  {
+    title: 'Bachelor of Social Sciences in Public Policy and Politics',
+    year: 2021,
+    code: 1108,
+    cutoffs: [[4, 4, 4, 3, 4, 4], [3, 3, 3, 5, 4, 4]]
+  },
+  {
+    title: 'Department of Social and Behavioural Sciences (options: BSocSc Criminology and Sociology, BSocSc Psychology, BSocSc Social Work)',
+    year: 2021,
+    code: 1110,
+    cutoffs: [[4, 4, 5, 4, 4, 4], [4, 4, 4, 5, 4, 3]]
+  },
+  {
+    title: 'Bachelor of Social Sciences in Criminology and Sociology',
+    year: 2021,
+    code: 1111,
+    cutoffs: [[4, 4, 4, 6, 3, 3], [4, 3, 4, 4, 5, 4]]
+  },
+  {
+    title: 'Bachelor of Social Sciences in Psychology',
+    year: 2021,
+    code: 1112,
+    cutoffs: [[5, 4, 4, 4, 4, 4], [4, 5, 4, 3, 5, 4]]
+  },
+  {
+    title: 'Bachelor of Social Sciences in Social Work',
+    year: 2021,
+    code: 1113,
+    cutoffs: [[4, 4, 4, 4, 5, 4], [4, 4, 4, 4, 5, 3]]
+  },
+  {
+    title: 'Global Research Enrichment and Technopreneurship (GREAT)',
+    year: 2021,
+    code: 1200,
+    cutoffs: [[3, 4, 4, 4, 5, 5], [4, 3, 5, 4, 4, 4]]
+  },
+  {
+    title: 'Department of Architecture and Civil Engineering (options: BEng Architectural Engineering, BEng Civil Engineering, BSc Surveying)',
+    year: 2021,
+    code: 1201,
+    cutoffs: [[3, 4, 4, 4, 4, 4], [3, 3, 4, 4, 4, 3]]
+  },
 ];
 
 const Jupas = require("../models/jupas");
