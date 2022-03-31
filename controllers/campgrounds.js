@@ -82,6 +82,7 @@ module.exports.index = async (req, res) => {
 // };
 
 module.exports.iframe = async (req, res) => {
+    console.time('main')
     const limit = req.query.limit || 50;
     const page = req.query.page || 1;
     const options = {
@@ -92,6 +93,7 @@ module.exports.iframe = async (req, res) => {
     };
     const data = await Campground.paginate({}, options);
     const campgrounds = data.docs;
+    console.timeEnd('main')
     res.render("campgrounds/iframe", { campgrounds });
 };
 

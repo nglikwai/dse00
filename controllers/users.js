@@ -178,6 +178,10 @@ module.exports.renderAddFriend = async (req, res) => {
 
 module.exports.addFriendFirst = async (req, res) => {
     const user = await User.findById(req.user._id);
+    if (user.friendList.includes(req.query.friend)) {
+        req.flash('success', '已加入好友')
+        return res.redirect('/users/addfriend');
+    }
     user.friendList.unshift(req.query.friend);
     await user.save();
     const counterUser = await User.findById(req.query.friend);
