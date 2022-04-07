@@ -3,6 +3,7 @@
         document.querySelector('title').innerText = 'Cut Off - <%= category.toUpperCase() %>';
         const ff = document.querySelector('body').clientWidth;
     </script>
+    <link rel="stylesheet" href="/stylesheets/pastpaper.css">
     <style>
         td {
             border: 1px #ddd solid;
@@ -57,7 +58,9 @@
             }
         }
     </style>
-    <div class="buttons">
+
+
+    <div class="buttons mt-5">
         <a href="/cutoffs" class="btn dse00btn">主科</a>
         <a href="/cutoffs?category=理科" class="btn dse00btn">理科</a>
         <a href="/cutoffs?category=商科" class="btn dse00btn">商科</a>
@@ -149,3 +152,8 @@
             <div class="muted mb-5">Updated:
                 <%= cutoffs[0].createdAt.toLocaleString() %>
             </div>
+            <p class="mt-1 mb-3 warning">如同學們曾經有一刻被DSE00感動 ，希望我們能把你的愛分享給後軰的 DSE
+                學生，他們日後亦一定十分感激。</p>
+            <a href="https://docs.google.com/forms/d/1Rt7RVUmaMHd1niJdlw0nnhsNJm4R4rPVXe1NVXUlzh8/" target="_blank">
+                <div class="onebox mb-5 pb-5 ">Upload +</div>
+            </a>
