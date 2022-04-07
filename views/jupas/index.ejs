@@ -41,18 +41,14 @@
             style="border:none; ">
     </div>
 
-    <p class="mt-5 pt-5 p-2" style="color:#999">由於 JUPAS CUTOFF 剛成立，資源較少。如同學們曾經有一刻被DSE00感動 ，希望我們能把你的愛分享給後軰的 DSE
-        學生，他們日後亦一定十分感激。</p>
-    <a href="https://docs.google.com/forms/d/1Rt7RVUmaMHd1niJdlw0nnhsNJm4R4rPVXe1NVXUlzh8/" target="_blank">
-        <div class="onebox mb-5 mt-3 ">Upload +</div>
-    </a>
+
     <div class="mt-5 ">
 
         <% if (jupases.length==1) { %>
             <% for( let jupas of jupases) { %>
                 <div class="mb-5 p-2">
-                    <h6> JS <%= jupas.code %> - <%= jupas.title %>
-                    </h6>
+                    <h5 class="mb-4"> JS <%= jupas.code %> - <%= jupas.title %>
+                    </h5>
                     <table class="mb-5">
                         <tr>
                             <td>中文</td>
@@ -75,11 +71,17 @@
                         <% } %>
                             </tr>
                     </table>
-                    <% } %>
-                        <% } %>
+
                 </div>
+                <% } %>
+                    <% } %>
 
     </div>
+    <p class="mt-5  p-2" style="color:#999">由於 JUPAS CUTOFF 剛成立，資源較少。如同學們曾經有一刻被DSE00感動 ，希望我們能把你的愛分享給後軰的 DSE
+        學生，他們日後亦一定十分感激。</p>
+    <a href="https://docs.google.com/forms/d/1Rt7RVUmaMHd1niJdlw0nnhsNJm4R4rPVXe1NVXUlzh8/" target="_blank">
+        <div class="onebox mb-5 mt-3 ">Upload +</div>
+    </a>
 
     <script>
         document.querySelector('input').addEventListener('keydown', function (e) {
