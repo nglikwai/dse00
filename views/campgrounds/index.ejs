@@ -15,6 +15,10 @@
         .card:active {
             background-color: #eee;
         }
+
+        td {
+            width: 17px;
+        }
     </style>
     <div class="inner-container">
 
@@ -151,11 +155,24 @@
                                             </h6>
                                             <!-- <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span> -->
                                             </h6>
-                                            <span
+                                            <table
                                                 style="position: absolute; top:5px ; right:10px; font-size:13px;color:#bbb">
                                                 <% const r=campgrounds[i].reviews.length-1 %>
-                                                    <%= r+1 %><span style="font-size:10px"> 💬</span>
-                                            </span>
+
+
+                                                    <td><span style="color:#ff8d8d">♥ </span></td>
+                                                    <td>
+                                                        <%= campgrounds[i].favour %>⠀
+                                                    </td>
+                                                    <td><span style="font-size:10px"> 💬</span></td>
+                                                    <td>
+                                                        <%= r+1 %>
+                                                    </td>
+                                            </table>
+
+
+
+                                            </table>
                                             <span class="description">
                                                 <% if (campgrounds[i].reviews[0]) { %>
 

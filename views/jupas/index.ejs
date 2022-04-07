@@ -1,4 +1,6 @@
 <% layout('layouts/boilerplate')%>
+    <link rel="stylesheet" href="/stylesheets/pastpaper.css">
+
 
     <style>
         td,
@@ -9,43 +11,74 @@
         input {
             width: 300px;
         }
+
+        .input-box {
+            background-color: white;
+            height: 60px;
+            width: 400px;
+            border: 1px #ccc solid;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        input::placeholder {
+            color: #bbb;
+        }
+
+        input:focus {
+            outline: none;
+        }
     </style>
-    <h1 class="mt-5 pt-5">JUPAS Code</h1>
-    <div class="mt-5 mb-5 ">
-        <input class="mb-3 form-control" maxlength="4" size="40" type="text" id="code-search"
-            placeholder=" 4 digit code">
+    <a href="/jupas">
+
+        <h1 class="mt-5 pt-5">JUPAS CUTOFF </h1>
+        <span class="fr">2021</span>
+    </a>
+    <div class="mt-5 mb-5 input-box">
+        <input maxlength="4" size="40" type="text" id="code-search" placeholder=" 輸入 4 位數字 code 搜尋"
+            style="border:none; ">
     </div>
+
+    <p class="mt-5 pt-5 p-2" style="color:#999">由於 JUPAS CUTOFF 剛成立，資源較少。如同學們曾經有一刻被DSE00感動 ，希望我們能把你的愛分享給後軰的 DSE
+        學生，他們日後亦一定十分感激。</p>
+    <a href="https://docs.google.com/forms/d/1Rt7RVUmaMHd1niJdlw0nnhsNJm4R4rPVXe1NVXUlzh8/" target="_blank">
+        <div class="onebox mb-5 mt-3 ">Upload +</div>
+    </a>
     <div class="mt-5 ">
 
-
-        <% for( let jupas of jupases) { %>
-            <div class="mb-5">
-                <h6> JS <%= jupas.code %> - <%= jupas.title %>
-                </h6>
-                <table class="mb-5">
-                    <tr>
-                        <td>中文</td>
-                        <td>English</td>
-                        <td>數學</td>
-                        <td>通識</td>
-                        <td>E1</td>
-                        <td>E2</td>
-                        <td>E3</td>
-                    </tr>
-                    <tr>
-                        <% for( let cutoffs of jupas.cutoffs) { %>
-                    <tr>
-                        <% for( let cutoff of cutoffs) { %>
-                            <td>
-                                <%= cutoff %>
-                            </td>
-                            <% } %>
-                    </tr>
-                    <% } %>
+        <% if (jupases.length==1) { %>
+            <% for( let jupas of jupases) { %>
+                <div class="mb-5 p-2">
+                    <h6> JS <%= jupas.code %> - <%= jupas.title %>
+                    </h6>
+                    <table class="mb-5">
+                        <tr>
+                            <td>中文</td>
+                            <td>English</td>
+                            <td>數學</td>
+                            <td>通識</td>
+                            <td>E1</td>
+                            <td>E2</td>
+                            <td>E3</td>
                         </tr>
-                </table>
-                <% } %>
-            </div>
+                        <tr>
+                            <% for( let cutoffs of jupas.cutoffs) { %>
+                        <tr>
+                            <% for( let cutoff of cutoffs) { %>
+                                <td>
+                                    <%= cutoff %>
+                                </td>
+                                <% } %>
+                        </tr>
+                        <% } %>
+                            </tr>
+                    </table>
+                    <% } %>
+                        <% } %>
+                </div>
+
     </div>
 
     <script>

@@ -1,21 +1,25 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <img class="ml-4" width="50px" src="https://2.bp.blogspot.com/-2jtlhNddC7g/Wpy8735Y6vI/AAAAAAAAK0o/_8hrmXs0OQYnLZuRna4lVtxd_09qdzgGwCK4BGAYYCw/s640/output_lTomnU.gif" alt="">
+        <img class="ml-4" width="50px"
+            src="https://2.bp.blogspot.com/-2jtlhNddC7g/Wpy8735Y6vI/AAAAAAAAK0o/_8hrmXs0OQYnLZuRna4lVtxd_09qdzgGwCK4BGAYYCw/s640/output_lTomnU.gif"
+            alt="">
         <a class="navbar-brand ml-3 mr-4" href="/" id="logo">DSE00</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a href="https://dse00.blogspot.com" target="_blank">DSE00 BLOG</a>
                 <a href="/resources">資源區</a>
-                <a href="/cutoffs">2021 Cut-off</a>
+                <a href="/cutoffs">2021 CutOff</a>
+                <a href="/jupas">JUPAS CutOff</a>
                 <a href="http://dse00.blogspot.com/search/label/Tips" target="_blank">Tips</a>
 
             </div>
             <div class="navbar-nav ml-auto">
                 <a href="http://shop.dse00.com" target="_blank">👜 SHOP</a>
-                <% if (currentUser && currentUser.identity === 'admin') { %>
+                <% if (currentUser && currentUser.identity==='admin' ) { %>
                     <a href="/admins">❄️ Admin</a>
                     <% } %>
 
@@ -24,13 +28,16 @@
                             <a href="/users/register">注冊</a>
                             <% } else {%>
                                 <a href="/users/dse00coin">
-                            🪙 <b><%=currentUser.coin  %></b>
-                       </a>
+                                    🪙 <b>
+                                        <%=currentUser.coin %>
+                                    </b>
+                                </a>
                                 <a href="#">
-                            Lv. <%=currentUser.grade  %>
-                        </a>
-                                <% if (currentUser.identity==='admin') { %>
-                                    <a href="/users/user/<%=currentUser._id  %> " style="background-color:rgb(116, 184, 116); padding:3px 10px; border-radius: 5px;">
+                                    Lv. <%=currentUser.grade %>
+                                </a>
+                                <% if (currentUser.identity==='admin' ) { %>
+                                    <a href="/users/user/<%=currentUser._id  %> "
+                                        style="background-color:rgb(116, 184, 116); padding:3px 10px; border-radius: 5px;">
                                         <%= currentUser.username.toUpperCase() %>
                                     </a>
                                     <% }else{ %>
