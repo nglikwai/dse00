@@ -1,6 +1,15 @@
 <% layout('layouts/boilerplate')%>
 
-    <!-- <link rel="stylesheet" href="/stylesheets/stars.css"> -->
+    <style>
+        .show-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .right-bar {
+            width: 50px;
+        }
+    </style>
 
     <script>
         document.querySelector('title').innerText = '<%= campground.title %>';
@@ -101,131 +110,136 @@
                             2 days ago
                         </div> -->
             </div>
-            <% if (replyReview) { %>
+            <div>
+                <% if (replyReview) { %>
 
-                <form action="/reply/<%= replyReview._id %>?post=<%=campground._id%>" method="POST"
-                    class="mb-3 validated-form" novalidate>
-                    <div class="mb-5 mt-5">
+                    <form action="/reply/<%= replyReview._id %>?post=<%=campground._id%>" method="POST"
+                        class="mb-3 validated-form" novalidate>
+                        <div class="mb-5 mt-5">
 
-                        <div class="quote"> ➼ Re :
-                            <%= replyReview.author.username %> -
-                                <%= replyReview.body %>
-                        </div>
+                            <div class="quote"> ➼ Re :
+                                <%= replyReview.author.username %> -
+                                    <%= replyReview.body %>
+                            </div>
 
-                        <textarea class="form-control muted" name="review[reply]" id="body" cols="20" rows="2" required
-                            style="width:80%" autofocus> </textarea>
+                            <textarea class="form-control muted" name="review[reply]" id="body" cols="20" rows="2"
+                                required style="width:80%" autofocus> </textarea>
 
-                        <button class="btn dse00btn2 mt-0 mb-5">回覆</button>
-                        <% } else{%>
-                            <form action="/<%=campground._id%>/reviews" method="POST" class="mb-3 validated-form"
-                                novalidate>
-                                <div class="mb-5 mt-5">
-                                    <label class="form-label  mb-4" for="body">留言文字</label>
-                                    <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"
-                                        required></textarea>
+                            <button class="btn dse00btn2 mt-0 mb-5">回覆</button>
+                            <% } else{%>
+                                <div>
+                                    <form action="/<%=campground._id%>/reviews" method="POST"
+                                        class="mb-3 validated-form" novalidate>
+                                        <div class="mb-5 mt-5">
+                                            <label class="form-label  mb-4" for="body">留言文字</label>
+                                            <textarea class="form-control" name="review[body]" id="body" cols="30"
+                                                rows="3" required></textarea>
 
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
 
-                                    <button class="btn dse00btn">提交</button>
-                                    <% } %>
+                                            <button class="btn dse00btn">提交</button>
+                                            <% } %>
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
-
-                            <% if (campground.reviews.length==0) { %>
-                                <h4 style="margin-top:60px">未有留言</h4>
-                                <% } else{%>
-                                    <h4 style="margin-top:60px">留言</h4>
-                                    <% let i=1 %>
-                                        <% for(let review of campground.reviews) { %>
-                                            <% i++ %>
-                                                <% if (i%5===0) { %>
-                                                    <div class="card pb-2 adsense">
-                                                        <script async
-                                                            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6622218753379872"
-                                                            crossorigin="anonymous"></script>
-                                                        <ins class="adsbygoogle" style="display:block"
-                                                            data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z"
-                                                            data-ad-client="ca-pub-6622218753379872"
-                                                            data-ad-slot="8821319250"></ins>
-                                                        <script>
-                                                            (adsbygoogle = window.adsbygoogle || []).push({});
-                                                        </script>
-                                                    </div>
-                                                    <% } %>
-
-                                                        <div>
-                                                            <div id="delete">
-                                                                <% if(currentUser) {%>
-                                                                    <% if (review.author.equals(currentUser._id) ||
-                                                                        currentUser.identity=='admin' ) { %>
-                                                                        <div style="float: right">
-                                                                            <form
-                                                                                action="/<%=campground._id%>/reviews/<%=review._id%>?_method=DELETE"
-                                                                                method="POST">
-                                                                                <button
-                                                                                    onclick="return confirm('Delete?')"
-                                                                                    class="btn dse00btn"
-                                                                                    style="border:none">X</button>
-                                                                            </form>
-                                                                        </div>
-                                                                        <% } %>
-                                                                            <% } %>
+                                <div>
+                                    <% if (campground.reviews.length==0) { %>
+                                        <h4 style="margin-top:60px">未有留言</h4>
+                                        <% } else{%>
+                                            <h4 style="margin-top:60px">留言</h4>
+                                            <% let i=1 %>
+                                                <% for(let review of campground.reviews) { %>
+                                                    <% i++ %>
+                                                        <% if (i%5===0) { %>
+                                                            <div class="card pb-2 adsense">
+                                                                <script async
+                                                                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6622218753379872"
+                                                                    crossorigin="anonymous"></script>
+                                                                <ins class="adsbygoogle" style="display:block"
+                                                                    data-ad-format="fluid"
+                                                                    data-ad-layout-key="-gw-3+1f-3d+2z"
+                                                                    data-ad-client="ca-pub-6622218753379872"
+                                                                    data-ad-slot="8821319250"></ins>
+                                                                <script>
+                                                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                                                </script>
                                                             </div>
-                                                            <div class="mb-3">
-                                                                <div class="card-body">
-                                                                    <div class="mb-1">
-
-                                                                        <a class="review-title"
-                                                                            href="/users/user/<%= review.author._id %> ">
-                                                                            <%= review.author.username.toUpperCase()%>
-                                                                                <% if (review.author.level==4) { %>
-                                                                                    <span class="silver"> - Lv
-                                                                                        <%=review.author.grade %>
-                                                                                    </span>
-                                                                                    <% }else{ %>
-                                                                                        <span <%=review.author.level>4 ?
-                                                                                            'class=gold'
-                                                                                            : 'class=grade' %> >- Lv <%=
-                                                                                                review.author.grade %>
-                                                                                        </span>
-                                                                                        <%}%>
-
-                                                                                            <span class="muted">
-                                                                                                <%= review.createdAt.toLocaleString().substring(0,9)
-                                                                                                    %>
-                                                                                            </span>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="index-loop">
-                                                                        <p>
-                                                                            <%= review.body %>
-                                                                        </p>
-                                                                    </div>
-                                                                    <div class="pl-3 pb-4">
-                                                                        <% if (review.reply) { %>
-                                                                            <% for( let i=0; i < review.reply.length;
-                                                                                i++ ) { %>
-                                                                                <p class="quote p-0 m-0">
-                                                                                    ➼
-                                                                                    <%= review.replyAuthor[i] %> ：
-                                                                                        <%= review.reply[i] %>
-                                                                                </p>
-                                                                                <% } %>
-                                                                    </div>
-                                                                    <% } %>
-                                                                        <a href="/reply/<%= review._id %>?post=<%= campground._id %>"
-                                                                            class="btn replybtn m-0">REPLY</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <% } %>
                                                             <% } %>
-                    </div>
+                                </div>
+                                <div>
+                                    <div id="delete">
+                                        <% if(currentUser) {%>
+                                            <% if (review.author.equals(currentUser._id) ||
+                                                currentUser.identity=='admin' ) { %>
+                                                <div style="float: right">
+                                                    <form
+                                                        action="/<%=campground._id%>/reviews/<%=review._id%>?_method=DELETE"
+                                                        method="POST">
+                                                        <button onclick="return confirm('Delete?')" class="btn dse00btn"
+                                                            style="border:none">X</button>
+                                                    </form>
+                                                </div>
+                                                <% } %>
+                                                    <% } %>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="card-body">
+                                            <div class="mb-1">
+
+                                                <a class="review-title" href="/users/user/<%= review.author._id %> ">
+                                                    <%= review.author.username.toUpperCase()%>
+                                                        <% if (review.author.level==4) { %>
+                                                            <span class="silver"> - Lv
+                                                                <%=review.author.grade %>
+                                                            </span>
+                                                            <% }else{ %>
+                                                                <span <%=review.author.level>4 ?
+                                                                    'class=gold'
+                                                                    : 'class=grade' %> >- Lv <%= review.author.grade %>
+                                                                </span>
+                                                                <%}%>
+
+                                                                    <span class="muted">
+                                                                        <%= review.createdAt.toLocaleString().substring(0,9)
+                                                                            %>
+                                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="index-loop">
+                                                <p>
+                                                    <%= review.body %>
+                                                </p>
+                                            </div>
+                                            <div class="pl-3 pb-4">
+                                                <% if (review.reply) { %>
+                                                    <% for( let i=0; i < review.reply.length; i++ ) { %>
+                                                        <p class="quote p-0 m-0">
+                                                            ➼
+                                                            <%= review.replyAuthor[i] %> ：
+                                                                <%= review.reply[i] %>
+                                                        </p>
+                                                        <% } %>
+                                            </div>
+                                            <% } %>
+                                                <a href="/reply/<%= review._id %>?post=<%= campground._id %>"
+                                                    class="btn replybtn m-0">REPLY</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                                    <% } %>
+                        </div>
+            </div>
+        </div>
+    </div>
 
 
-                    <script>
-                        const mapToken = '<%- process.env.MAPBOX_TOKEN%>';
-                        const campground = <% - JSON.stringify(campground) %>;
-                    </script>
+
+
+
+    <script>
+        const mapToken = '<%- process.env.MAPBOX_TOKEN%>';
+        const campground = <% - JSON.stringify(campground) %>;
+    </script>
