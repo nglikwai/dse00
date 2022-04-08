@@ -15,7 +15,7 @@ async function callyylam() {
 async function createFriendActivity() {
     try {
         const res = await axios.get('https://www.dse00.com/apis/friendlist');
-        console.log(res)
+        friendActivity.innerHTML = '';
         for (let review of res.data.reviews) {
             const act = document.createElement('div');
             act.setAttribute('class', 'friend-activity')
