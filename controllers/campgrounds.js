@@ -16,40 +16,18 @@ module.exports.index = async (req, res) => {
         limit,
         page,
     };
-    let friendList = ['622874ccc8ed254d82edf591', '62249a88f2e44a001678e0ef', '62246de9a1b279001669c648'];
-    if (req.user) { friendList = req.user.friendList; }
 
-
-    const [user, data, reviews] = await Promise.all([
-        User.findById(id).populate("friendList"),
-        Campground.paginate({ category }, options),
-        Review.find({ "author": friendList }).sort({ updatedAt: -1 }).limit(7).populate("author")
-    ])
+    const data = await Campground.paginate({ category }, options)
 
     const campgrounds = data.docs;
     console.timeEnd('main')
-    res.render("campgrounds/index", { campgrounds, user, reviews });
+    res.render("campgrounds/index", { campgrounds });
 };
-
 
 
 // module.exports.index = async (req, res) => {
 //     console.time('main')
 //     const id = req.user ? req.user._id : '622874ccc8ed254d82edf591';
-//     const user = await User.findById(id).populate("friendList").populate({
-//         path: "friendList",
-//         populate: {
-//             path: "posts",
-//         },
-//     }).populate({
-//         path: "friendList",
-//         populate: {
-//             path: "reviews",
-//         },
-//     }).sort({ updatedAt: -1 });
-
-//     const reviews = await Review.find({ "author": user.friendList }).sort({ updatedAt: -1 }).limit(7).populate("author");
-
 //     const limit = req.query.limit || 150;
 //     const page = req.query.page || 1;
 //     const category = req.query.category || ['吹水', 'DSE', '大學', '消息'];
@@ -59,7 +37,16 @@ module.exports.index = async (req, res) => {
 //         limit,
 //         page,
 //     };
-//     const data = await Campground.paginate({ category }, options);
+//     let friendList = ['622874ccc8ed254d82edf591', '62249a88f2e44a001678e0ef', '62246de9a1b279001669c648'];
+//     if (req.user) { friendList = req.user.friendList; }
+
+
+//     const [user, data, reviews] = await Promise.all([
+//         User.findById(id).populate("friendList"),
+//         Campground.paginate({ category }, options),
+//         Review.find({ "author": friendList }).sort({ updatedAt: -1 }).limit(7).populate("author")
+//     ])
+
 //     const campgrounds = data.docs;
 //     console.timeEnd('main')
 //     res.render("campgrounds/index", { campgrounds, user, reviews });

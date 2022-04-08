@@ -1,4 +1,7 @@
 <% layout('layouts/boilerplate')%>
+    <script>
+        document.querySelector('title').innerText = "<%= jupases[0]&&jupases[0].code != '1000' ? jupases[0].title : 'JUPAS'%> ";
+    </script>
     <link rel="stylesheet" href="/stylesheets/pastpaper.css">
 
 
