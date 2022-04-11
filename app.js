@@ -53,7 +53,7 @@ db.once("open", () => {
 const app = express();
 
 const corsOptions = {
-    origin: ["https://www.dse00.com", "http://localhost:3000"],
+    origin: ["https://www.dse00.com", "http://localhost:3000", "https://tutor.dse00.com/"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
     allowedHeaders: ["Content-Type", "Authorization"],
 };
