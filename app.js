@@ -22,9 +22,10 @@ const campgroundRoutes = require("./routes/campgrounds");
 const reviewRoutes = require("./routes/reviews");
 const cutoffRoutes = require("./routes/cutoffs");
 const apiRoutes = require("./routes/apis");
+const tutorRoutes = require("./routes/tutors");
 const jupasRoutes = require("./routes/jupas");
 const cors = require("cors");
-const users = require('./controllers/users');
+
 
 const dayjs = require("dayjs");
 dayjs().format();
@@ -117,6 +118,7 @@ app.use((req, res, next) => {
 
 app.use("/admins", adminRoutes);
 app.use("/apis", apiRoutes);
+app.use("/tutor", tutorRoutes);
 app.use("/cutoffs", cutoffRoutes);
 app.use("/users", userRoutes);
 app.use("/resources", pastpaperRoutes);
