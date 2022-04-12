@@ -6,6 +6,7 @@ const tutorSchema = new Schema({
     age: Number,
     gender: String,
     school: String,
+    popular: Number,
     location: [String],
     teachingSubjects: [String],
     teachingSubjectsPrice: [Number],
