@@ -10,7 +10,11 @@ const tutors = require('../controllers/tutors');
 router.route('/')
     .get(catchAsync(tutors.renderTutors))
 
+router.route('/search')
+    .get(catchAsync(tutors.searchTutors))
+
 router.route('/:id')
     .get(catchAsync(tutors.renderTutor))
+
 
 module.exports = router;
