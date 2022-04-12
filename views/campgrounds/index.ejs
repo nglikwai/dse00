@@ -19,6 +19,10 @@
         td {
             width: 17px;
         }
+
+        td .icon-td {
+            width: 100px;
+        }
     </style>
     <div class="inner-container">
 
@@ -29,7 +33,7 @@
                     <b><a href="/users/login" target="_blank">
                             <span class="level" style="margin:0 5px">login</span>｜<span id="level"
                                 style="margin:0 10px">Lv.<span class="level">-</span></span>｜
-                            <span> 🪙 × <span class="level">-</span> </span></a></b>
+                            <span> <i class="fa-solid fa-coins"></i> <span class="level">-</span> </span></a></b>
 
                     <% } %>
                         <% if(currentUser) {%>
@@ -47,7 +51,7 @@
                                 </div>
 
                                 <div>｜
-                                    <a href="/users/dse00coin">🪙×
+                                    <a href="/users/dse00coin"> <i class="fa-solid fa-coins"></i>
                                         <% if(currentUser) {%>
                                             <%= currentUser.coin %>
                                                 <% } %>
@@ -191,7 +195,12 @@
 
         <div class="category-list">
             <h4>我要傾</h4>
-            <a href="/"><span class="category-list-icon">💦</span> 吹水</a>
+            <a href="/">
+                <td class="icon-td"><span class="category-list-icon">
+                        <i class="fa-regular fa-comment"></i>
+                    </span></td> 吹水
+            </a>
+
             <a href="/search?category=DSE"><span class="category-list-icon">📚</span> DSE</a>
             <a href="/search?category=大學"><span class="category-list-icon">🏫 </span> 大學</a>
             <a href="/search?category=消息"><span class="category-list-icon">📜</span> 消息</a>
