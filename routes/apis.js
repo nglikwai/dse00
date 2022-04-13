@@ -44,6 +44,7 @@ router.get('/friendlist', async (req, res) => {
 
 
 router.get('/posts', async (req, res) => {
+    console.time('main')
     const limit = req.query.limit || 150;
     const page = req.query.page || 1;
     const category = req.query.category || ['吹水', 'DSE', '大學', '消息'];
@@ -56,6 +57,7 @@ router.get('/posts', async (req, res) => {
     const data = await Campground.paginate({ category }, options)
 
     const campgrounds = data.docs;
+    console.timeEnd('main')
     res.json(campgrounds);
 })
 
