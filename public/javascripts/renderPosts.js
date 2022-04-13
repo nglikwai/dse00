@@ -55,9 +55,14 @@ async function renderPost() {
     try {
 
         const searchTerm = window.location.search;
-        const firstRes = await axios.get(`https://www.dse00.com/apis/posts${searchTerm}&limit=6`);
+
+        let baseUrl = 'https://www.dse00.com/apis/posts?';
+        if (searchTerm !== '') {
+            baseUrl = `https://www.dse00.com/apis/posts${searchTerm}&`;
+        }
+        const firstRes = await axios.get(`${baseUrl}limit=6`);
         makePosts(firstRes.data, firstPostsBody, 0);
-        const res = await axios.get(`https://www.dse00.com/apis/posts${searchTerm}`);
+        const res = await axios.get(`${baseUrl + searchTerm}`);
         makePosts(res.data, postBody, 6);
 
 
