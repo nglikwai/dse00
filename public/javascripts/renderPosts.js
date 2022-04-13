@@ -4,7 +4,10 @@ const postBody = document.querySelector('#posts-body');
 
 async function renderPost() {
     try {
-        const res = await axios.get(`https://www.dse00.com/apis/posts?${window.location.search}`);
+
+        const searchTerm = window.location.search;
+        console.log(searchTerm);
+        const res = await axios.get(`https://www.dse00.com/apis/posts${searchTerm}`);
 
         console.log(res.data[149])
 
