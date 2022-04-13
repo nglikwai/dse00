@@ -4,11 +4,14 @@ const postBody = document.querySelector('#posts-body');
 
 const adsense = ` 
 <div class="card  adsense">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6622218753379872" crossorigin="anonymous"></script>
-        <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z"
-            data-ad-client="ca-pub-6622218753379872" data-ad-slot="8821319250"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+<script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6622218753379872"
+    crossorigin="anonymous"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z"
+    data-ad-client="ca-pub-6622218753379872" data-ad-slot="8821319250"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 </div>`
 
 
