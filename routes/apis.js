@@ -61,4 +61,9 @@ router.get('/posts', async (req, res) => {
     res.json(campgrounds);
 })
 
+router.get('/user', async (req, res) => {
+    const user = await User.find({ email: req.query.email });
+    res.json(user)
+})
+
 module.exports = router;
