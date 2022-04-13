@@ -4,7 +4,7 @@ const postBody = document.querySelector('#posts-body');
 
 async function renderPost() {
     try {
-        const res = await axios.get('http://localhost:4000/apis/posts');
+        const res = await axios.get('https://dse00.com/apis/posts');
 
         console.log(res.data[149])
 
