@@ -1,9 +1,9 @@
 const buttons = document.querySelectorAll('button');
 
 for (let button of buttons) {
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function () {
         button.classList.add('grey')
-        setTimeout(function() {
+        setTimeout(function () {
             button.classList.remove('grey')
         }, 1000);
     })
@@ -19,11 +19,3 @@ var currentTime = new Date().getHours();
 //     document.getElementsByTagName('head')[0].appendChild(lnk);
 // }
 
-const darkmode = document.querySelector('#darkmode');
-
-
-darkmode.addEventListener('click', function() {
-    document.querySelector('body').style.backgroundColor = '#fffcf8'
-    document.querySelector('body').style.backgroundImage = 'url()'
-    document.querySelector('nav').style.backgroundColor = '#cc0000'
-})
