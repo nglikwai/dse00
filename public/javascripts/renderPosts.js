@@ -3,18 +3,6 @@ const firstPostsBody = document.querySelector('#first-posts-body');
 const postBody = document.querySelector('#posts-body');
 
 
-const adsense = ` 
-<div class="card adsense">
-<script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6622218753379872"
-    crossorigin="anonymous"></script>
-<ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z"
-    data-ad-client="ca-pub-6622218753379872" data-ad-slot="8821319250"></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-</div>`
-
 
 const makePosts = (posts, insertArea, startIndex) => {
     insertArea.innerHTML = '';
@@ -22,8 +10,18 @@ const makePosts = (posts, insertArea, startIndex) => {
         const div = document.createElement('div');
         let r = posts[i].reviews.length - 1;
 
+        let lastReply = ''
+        if (posts[i].reviews[0]) {
+            if (posts[i].reviews[r].reply[0]) {
+                lastReply = `➥ ${posts[i].reviews[r].reply[posts[i].reviews[r].reply.length - 1].substring(0, 40)}`
+            } else {
+                lastReply = `➥ ${posts[i].reviews[r].body.substring(0, 40)}`
+            }
+        } else if (posts[i].description !== '如題') {
+            lastReply = `➥ ${posts[i].description.substring(0, 60)}`
+        }
+
         div.innerHTML = `
-        ${i === 6 ? adsense : ''}
         <div class='card pb-3'>
             <a href="/${posts[i]._id}">
                 <div>
@@ -41,7 +39,8 @@ const makePosts = (posts, insertArea, startIndex) => {
                             <td> ${r + 1}</td>
                         </table>
                         <span class="description">
-                            ${posts[i].reviews[0] ? `➥ ${posts[i].reviews[r].body.substring(0, 40)}` : ''}
+                        
+                            ${lastReply}
                         </span>
                     </div>
                 </div>
@@ -61,10 +60,10 @@ async function renderPost() {
         if (searchTerm !== '') {
             baseUrl = `https://www.dse00.com/apis/posts${searchTerm}&`;
         }
-        const firstRes = await axios.get(`${baseUrl}limit=6`);
+        const firstRes = await axios.get(`${baseUrl}limit=10`);
         makePosts(firstRes.data, firstPostsBody, 0);
         const res = await axios.get(`${baseUrl + searchTerm}`);
-        makePosts(res.data, postBody, 6);
+        makePosts(res.data, postBody, 10);
 
 
     } catch (error) {
