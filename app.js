@@ -59,7 +59,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
+app.use('/files', express.static('images'));
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));

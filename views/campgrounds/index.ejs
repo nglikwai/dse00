@@ -80,9 +80,10 @@
             </div>
 
             <div class="partner-post mt-5 pt-3 hide-mobile">
-                <h5 class="mb-4" style="text-shadow:1px 1px 3px rgb(179, 179, 179);"><i class="fa-solid fa-user-group"></i> Friends Activity</h5>
+                <h5 class="mb-4" style="text-shadow:1px 1px 3px rgb(179, 179, 179);"><i
+                        class="fa-solid fa-user-group"></i> Friends Activity</h5>
                 <div id="friend-activity">
-                    <span class="muted">Loading...</span>
+                    <img src="/files/gear.svg" />
                 </div>
             </div>
 
@@ -117,95 +118,29 @@
 
 
             <a class="btn dse00btn" id="newpost" href="/new">新 POST</a>
-            <% for (let i=0 ; i<campgrounds.length ; i++){%>
-                <% if (i%6===0 && i!==0) { %>
-                    <div class="card  adsense">
-                        <script async
-                            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6622218753379872"
-                            crossorigin="anonymous"></script>
-                        <ins class="adsbygoogle" style="display:block" data-ad-format="fluid"
-                            data-ad-layout-key="-gw-3+1f-3d+2z" data-ad-client="ca-pub-6622218753379872"
-                            data-ad-slot="8821319250"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                    </div>
-                    <% } %>
-                        <div class="card pb-3">
-                            <div>
-                                <a href="/<%=campgrounds[i]._id%>">
-                                    <div>
-                                        <div class="card-body" style="padding-bottom: 10px;">
-
-                                            <h6 class="post-title">
-                                                <% if (campgrounds[i].category !=='吹水' ) { %>
-                                                    <span class="category">
-                                                        <%= campgrounds[i].category %>
-                                                    </span>
-                                                    <% } %>
-                                                        <%= campgrounds[i].title.substring(0,40) %> <small
-                                                                class="text-muted"
-                                                                style="font-size:14px; font-weight:200"> - <%=
-                                                                    campgrounds[i].author.username%></small>
-
-                                            </h6>
-                                            <!-- <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span> -->
-                                            </h6>
-                                            <table
-                                                style="position: absolute; top:-2px ; right:10px; font-size:13px;color:#bbb">
-                                                <% const r=campgrounds[i].reviews.length-1 %>
-
-
-                                                    <td><span style="color:#ff8d8d">♥ </span></td>
-                                                    <td>
-                                                        <%= campgrounds[i].favour %>
-                                                    </td>
-                                                    <td></td>
-                                                    <td><span style="font-size:12px"> <i class="fa-regular fa-comment"></i></span></td>
-                                                    <td>
-                                                        <%= r+1 %>
-                                                    </td>
-                                            </table>
-
-                                            <span class="description">
-                                                <% if (campgrounds[i].reviews[0]) { %>
-
-                                                    <% if (campgrounds[i].reviews[r].reply[0]) { %>
-                                                        ➥
-                                                        <%=campgrounds[i].reviews[r].reply[campgrounds[i].reviews[r].reply.length-1].substring(0,40)
-                                                            %>
-                                                            <% }else{ %>
-                                                                ➥ <%=campgrounds[i].reviews[r].body.substring(0,40) %>
-                                                                    <% } %>
-                                                                        <% } else if(campgrounds[i].description !=='如題'
-                                                                            ){ %>
-                                                                            ↪
-                                                                            <%=campgrounds[i].description.substring(0,60)
-                                                                                %>
-                                                                                <% } %>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <% }%>
-                            <a class="btn dse00btn" href="/?page=2">下頁</a>
+            <div id="posts-body">
+                <img src="/files/gear.svg" />
+            </div>
+            <a class="btn dse00btn" href="/?page=2">下頁</a>
         </div>
 
         <div class="category-list">
             <h4>我要傾</h4>
             <a href="/">
                 <td class="icon-td"><span class="category-list-icon">
-                    <i class="fa-regular fa-comment-dots"></i>
+                        <i class="fa-regular fa-comment-dots"></i>
                     </span></td> 吹水
             </a>
 
-            <a href="/search?category=DSE"><span class="category-list-icon"><i class="fa-regular fa-comment"></i></span> DSE</a>
-            <a href="/search?category=大學"><span class="category-list-icon"><i class="fa-regular fa-comment"></i> </span> 大學</a>
-            <a href="/search?category=消息"><span class="category-list-icon"><i class="fa-regular fa-comment"></i></span> 消息</a>
+            <a href="/search?category=DSE"><span class="category-list-icon"><i class="fa-regular fa-comment"></i></span>
+                DSE</a>
+            <a href="/search?category=大學"><span class="category-list-icon"><i class="fa-regular fa-comment"></i> </span>
+                大學</a>
+            <a href="/search?category=消息"><span class="category-list-icon"><i class="fa-regular fa-comment"></i></span>
+                消息</a>
 
         </div>
 
     </div>
+    <script src="/javascripts/renderPosts.js"></script>
     <script src="/javascripts/yylam.js"></script>

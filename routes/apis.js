@@ -42,4 +42,23 @@ router.get('/friendlist', async (req, res) => {
     res.json({ campgrounds, user, reviews });
 })
 
+
+router.get('/posts', async (req, res) => {
+    const id = req.user ? req.user._id : '622874ccc8ed254d82edf591';
+    const limit = req.query.limit || 150;
+    const page = req.query.page || 1;
+    const category = req.query.category || ['吹水', 'DSE', '大學', '消息'];
+    const options = {
+        sort: { updatedAt: -1 },
+        populate: ["author", "reviews"],
+        limit,
+        page,
+    };
+
+    const data = await Campground.paginate({ category }, options)
+
+    const campgrounds = data.docs;
+    res.json(campgrounds);
+})
+
 module.exports = router;
