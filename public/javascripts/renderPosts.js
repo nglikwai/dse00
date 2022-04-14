@@ -1,12 +1,12 @@
 
-const firstPostsBody = document.querySelector('#first-posts-body');
 const postBody = document.querySelector('#posts-body');
+let page = 1;
 
 
 
-const makePosts = (posts, insertArea, startIndex) => {
-    insertArea.innerHTML = '';
-    for (let i = startIndex; i < posts.length; i++) {
+const makePosts = (posts, insertArea) => {
+
+    for (let i = 0; i < posts.length; i++) {
         const div = document.createElement('div');
         let r = posts[i].reviews.length - 1;
 
@@ -51,7 +51,7 @@ const makePosts = (posts, insertArea, startIndex) => {
 }
 
 
-async function renderPost() {
+async function renderPost(page) {
     try {
 
         const searchTerm = window.location.search;
@@ -60,16 +60,25 @@ async function renderPost() {
         if (searchTerm !== '') {
             baseUrl = `https://www.dse00.com/apis/posts${searchTerm}&`;
         }
-        const firstRes = await axios.get(`${baseUrl}limit=10`);
-        makePosts(firstRes.data, firstPostsBody, 0);
-        const res = await axios.get(`${baseUrl + searchTerm}`);
-        makePosts(res.data, postBody, 10);
+
+        const res = await axios.get(`${baseUrl}limit=10&page=${page}`);
+        makePosts(res.data, postBody);
 
 
     } catch (error) {
         console.error(error);
     }
 }
+const myDiv = document.documentElement;
 
-renderPost();
+renderPost(page);
+
+document.addEventListener('scroll', () => {
+    if (myDiv.offsetHeight + myDiv.scrollTop >= myDiv.scrollHeight) {
+        page += 1;
+        renderPost(page);
+    }
+})
+
+
 

@@ -66,6 +66,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
+
 app.use(
     mongoSanitize({
         replaceWith: "_",
@@ -123,9 +124,6 @@ app.use("/cutoffs", cutoffRoutes);
 app.use("/users", userRoutes);
 app.use("/resources", pastpaperRoutes);
 app.use("/jupas", jupasRoutes)
-app.get('/ads.txt', (req, res) => {
-    res.sendFile(__dirname + '/ads.txt')
-})
 app.use("/", campgroundRoutes);
 app.use("/:id/reviews", reviewRoutes);
 
