@@ -2,10 +2,36 @@
 const postBody = document.querySelector('#posts-body');
 let page = 1;
 
+const skeletonScreen = document.querySelector('#skeleton-screen')
 
+
+
+const skeleton = `
+    <div class='card pb-4'>
+        <div>
+            <div class="card-body" style="padding-bottom: 10px;">
+         
+                <table style="position: absolute; top:-2px ; right:10px; font-size:13px;color:#bbb">
+                    <td><span style="color:#ff8d8d">♥ </span></td>
+                    <td></td>
+                    <td></td>
+                    <td><span style="font-size:12px"> <i class="fa-regular fa-comment"></i></span></td>
+                    <td></td>
+                </table>
+                <span class="description">    
+                ➥         
+                </span>
+            </div>
+        </div>
+    </div>
+`
+
+const skeletons = skeleton+skeleton+skeleton+skeleton+skeleton+skeleton+skeleton+skeleton+skeleton+skeleton;
+
+skeletonScreen.innerHTML = skeletons;
 
 const makePosts = (posts, insertArea) => {
-
+    skeletonScreen.innerHTML='';
     for (let i = 0; i < posts.length; i++) {
         const div = document.createElement('div');
         let r = posts[i].reviews.length - 1;
