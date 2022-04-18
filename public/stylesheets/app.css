@@ -142,14 +142,14 @@ nav a:hover {
 }
 
 .inner-container {
-    width: 1050px;
+    width: 1250px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row-reverse;
 }
 
 .index-loop {
-    width: 500px;
+    width: 600px;
 }
 
 .grade {
