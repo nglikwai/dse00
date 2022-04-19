@@ -1,6 +1,46 @@
 <% layout('layouts/boilerplate')%>
 
     <style>
+        .index-loop {
+            width: 700px;
+        }
+
+
+
+        #post-page {
+            width: 100%
+        }
+
+        .card2 {
+            width: 500px;
+        }
+
+        .review-title {
+            font-weight: 500;
+        }
+
+        .card-body {
+            border-bottom: solid #eee 1px;
+            border-radius: 5px;
+            width: 500px;
+        }
+
+
+        .replybtn {
+            background-color: transparent;
+            border-radius: 5px;
+            color: #888;
+            padding: 0 5px;
+            margin: 10px 0px;
+            opacity: 0.7;
+            font-size: 13px;
+        }
+
+        .replybtn:hover {
+            color: #cc0000;
+            opacity: 1;
+        }
+
         .show-container {
             display: flex;
             flex-wrap: wrap;
@@ -9,6 +49,55 @@
         .right-bar {
             width: 50px;
         }
+
+        .profile-logo {
+            width: 80px;
+            height: 80px;
+            margin: 10px 10px 0 0;
+            opacity: 0.9;
+        }
+
+        .profile-logo:hover {
+            opacity: 1;
+        }
+
+
+        .comment {
+            display: flex;
+        }
+
+        .comment-body {
+            width: 550px;
+            margin-top: 10px;
+        }
+
+        .user-action-bar {
+            width: 120px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .user-action:hover {
+            opacity: 0.7;
+        }
+
+
+
+        @media only screen and (max-width: 650px) {
+            .index-loop {
+                width: 100%;
+                padding: 0 10px;
+            }
+
+            .comment-body {
+                width: 100%;
+            }
+
+            .comment-body {
+                width: 100%;
+            }
+
+        }
     </style>
 
     <script>
@@ -16,15 +105,13 @@
     </script>
 
 
-    <link rel="stylesheet" href="/stylesheets/show.css">
-
-
     <div class="index-loop mb-5 pb-5">
         <div>
-            <a onclick="history.back()" class="btn dse00btn">Back</a>
+            <a href="/" class="btn dse00btn">Back</a>
 
 
             <div class="mb-3">
+
                 <div class="pt-4 pb-3">
                     <h5 class="card-title m-3">
                         <%= campground.title%>
@@ -79,6 +166,10 @@
                 <ul class="list-group list-group-flush">
 
                     <li id="userbar">樓主 ：
+                        <a href="/users/user/<%= campground.author._id %> ">
+                            <img class='profile-logo' src="/files/profileLogo.png"
+                                style="width:30px; height:30px; margin:0 10px 0 0; opacity: 1;">
+                        </a>
                         <a href="/users/user/<%= campground.author._id %> ">
                             <b>
                                 <%= campground.author.username.toUpperCase()%>
@@ -153,18 +244,22 @@
                                                 <% for(let review of campground.reviews) { %>
                                                     <% i++ %>
                                                         <% if (i%5===0) { %>
-                                                            <div class="card pb-2 adsense">
-                                                                <script async
-                                                                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6622218753379872"
-                                                                    crossorigin="anonymous"></script>
-                                                                <ins class="adsbygoogle" style="display:block"
-                                                                    data-ad-format="fluid"
-                                                                    data-ad-layout-key="-gw-3+1f-3d+2z"
-                                                                    data-ad-client="ca-pub-6622218753379872"
-                                                                    data-ad-slot="8821319250"></ins>
-                                                                <script>
-                                                                    (adsbygoogle = window.adsbygoogle || []).push({});
-                                                                </script>
+                                                            <div class=" pb-2 adsense comment">
+                                                                <img src="/files/dse00-icon.png" alt=""
+                                                                    class="profile-logo">
+                                                                <div class="card-body">
+                                                                    <script async
+                                                                        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6622218753379872"
+                                                                        crossorigin="anonymous"></script>
+                                                                    <ins class="adsbygoogle" style="display:block"
+                                                                        data-ad-format="fluid"
+                                                                        data-ad-layout-key="-gw-3+1f-3d+2z"
+                                                                        data-ad-client="ca-pub-6622218753379872"
+                                                                        data-ad-slot="8821319250"></ins>
+                                                                    <script>
+                                                                        (adsbygoogle = window.adsbygoogle || []).push({});
+                                                                    </script>
+                                                                </div>
                                                             </div>
                                                             <% } %>
 
@@ -186,7 +281,11 @@
                                                                                 <% } %>
                                                                                     <% } %>
                                                                     </div>
-                                                                    <div class="mb-3">
+                                                                    <div class="mb-3 comment">
+                                                                        <a href="/users/user/<%= review.author._id %> ">
+                                                                            <img class='profile-logo'
+                                                                                src="/files/profileLogo.png" alt="">
+                                                                        </a>
                                                                         <div class="card-body">
                                                                             <div class="mb-1">
 
@@ -218,10 +317,10 @@
                                                                                                     </span>
                                                                                 </a>
                                                                             </div>
-                                                                            <div class="index-loop">
-                                                                                <p>
-                                                                                    <%= review.body %>
-                                                                                </p>
+                                                                            <div class="comment-body">
+
+                                                                                <%= review.body %>
+
                                                                             </div>
                                                                             <div class="pl-3 pb-4">
                                                                                 <% if (review.reply) { %>
@@ -236,8 +335,19 @@
                                                                                         <% } %>
                                                                             </div>
                                                                             <% } %>
-                                                                                <a href="/reply/<%= review._id %>?post=<%= campground._id %>"
-                                                                                    class="btn replybtn m-0">REPLY</a>
+                                                                                <div class="user-action-bar">
+                                                                                    <div class="thumbs-up">
+                                                                                        <i
+                                                                                            class="fa-regular fa-thumbs-up user-action"></i>
+                                                                                    </div>
+                                                                                    <div class="thumbs-down">
+                                                                                        <i
+                                                                                            class="fa-regular fa-thumbs-down user-action"></i>
+                                                                                    </div>
+                                                                                    <a href="/reply/<%= review._id %>?post=<%= campground._id %>"
+                                                                                        class="btn replybtn m-0 user-action">REPLY</a>
+
+                                                                                </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -254,4 +364,19 @@
 
         <script>
             const campground = <% - JSON.stringify(campground) %>;
+        </script>
+        <script>
+            const thumbsUps = document.querySelectorAll('.thumbs-up');
+            const thumbsDowns = document.querySelectorAll('.thumbs-down');
+
+            thumbsUps.forEach(thumbsUp => thumbsUp.addEventListener('click', () => {
+                thumbsUp.innerHTML = '<i class="fa-solid fa-thumbs-up"></i>';
+            }))
+
+            thumbsDowns.forEach(thumbsDown => thumbsDown.addEventListener('click', () => {
+                thumbsDown.innerHTML = '<i class="fa-solid fa-thumbs-down"></i>';
+            }))
+
+
+
         </script>
