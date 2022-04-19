@@ -23,7 +23,7 @@ async function createFriendActivity() {
             act.innerHTML = `
             <a href="/${review.post} ">
                 <span style="font-size: 13px; color: #aaa;">
-                    <i class="fa-regular fa-comment-dots"></i>  ${review.body.substring(0, 32)}
+                    <img src="/files/profileLogo.png" style="width:22px; height:24px ; margin:0;"/>  ${review.body.substring(0, 32)}
                 </span>
             </a> -
             <a href="/users/user/${review.author._id}"> 

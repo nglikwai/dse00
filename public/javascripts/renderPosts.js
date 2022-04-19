@@ -9,7 +9,7 @@ const skeletonScreen = document.querySelector('#skeleton-screen')
 const skeleton = `
     <div class='card pb-4'>
         <div>
-            <div class="card-body" style="padding-bottom: 10px;">
+            <div class="card-body" style="padding-bottom: 30px;">
          
                 <table style="position: absolute; top:-2px ; right:10px; font-size:13px;color:#bbb">
                     <td><span style="color:#ff8d8d">♥ </span></td>
@@ -26,12 +26,12 @@ const skeleton = `
     </div>
 `
 
-const skeletons = skeleton+skeleton+skeleton+skeleton+skeleton+skeleton+skeleton+skeleton+skeleton+skeleton;
+const skeletons = skeleton + skeleton + skeleton + skeleton + skeleton + skeleton + skeleton + skeleton + skeleton + skeleton;
 
 skeletonScreen.innerHTML = skeletons;
 
 const makePosts = (posts, insertArea) => {
-    skeletonScreen.innerHTML='';
+    skeletonScreen.innerHTML = '';
     for (let i = 0; i < posts.length; i++) {
         const div = document.createElement('div');
         let r = posts[i].reviews.length - 1;
