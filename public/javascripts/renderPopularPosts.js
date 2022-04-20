@@ -19,9 +19,9 @@ PopularRegion.innerHTML = insert + insert + insert + insert + insert + insert;
 
 async function renderPopularPost() {
     try {
-        PopularRegion.innerHTML = '';
+
         const res = await axios.get('https://www.dse00.com/apis/popularposts');
-        console.log(res);
+        PopularRegion.innerHTML = '';
 
         for (let post of res.data) {
             const div = document.createElement('div');
