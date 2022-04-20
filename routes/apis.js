@@ -49,7 +49,7 @@ router.get('/posts', async (req, res) => {
 
 router.get('/popularposts', async (req, res) => {
     const today = new Date();
-    const limit = req.query.limit || 5;
+    const limit = req.query.limit || 6;
     const page = req.query.page || 1;
     const options = {
         sort: { popular: -1 },
