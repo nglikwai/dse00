@@ -20,12 +20,13 @@ PopularRegion.innerHTML = insert + insert + insert + insert + insert + insert;
 async function renderPopularPost() {
     try {
         PopularRegion.innerHTML = '';
-        const res = await axios.get('http://localhost:4000/apis/popularposts');
+        const res = await axios.get('https://www.dse00.com/apis/popularposts');
         console.log(res);
 
         for (let post of res.data) {
             const div = document.createElement('div');
             div.innerHTML = `
+                <a href="/${post._id}">
                  <div class="popular-item">
                     <div class="popular-background"></div>
 
@@ -38,6 +39,7 @@ async function renderPopularPost() {
                     </div>
                     <div class="popular-title">${post.title}</div>
                 </div>
+                </a>
 
         `
             PopularRegion.appendChild(div);
