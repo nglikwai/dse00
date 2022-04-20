@@ -11,14 +11,11 @@ const skeleton = `
     <div class='card pb-4'>
         <div>
             <div class="card-body" style="padding-bottom: 30px;">
-         
-                <table style="position: absolute; top:-2px ; right:10px; font-size:13px;color:#bbb">
-                    <td><span style="color:#ff8d8d">♥ </span></td>
-                    <td></td>
-                    <td></td>
-                    <td><span style="font-size:12px"> <i class="fa-regular fa-comment"></i></span></td>
-                    <td></td>
-                </table>
+            <table style="position: absolute; top:-2px ; right:10px; font-size:13px;color:#bbb">  
+            <td><div class="heart"><i class="fa-solid fa-heart"></i> </div></td>                    
+            <td><div class="chat"><i class="fa-solid fa-comment"></i>  </div>
+            </td>
+        </table>
                 <span class="description">    
                 ➥         
                 </span>
@@ -52,18 +49,16 @@ const makePosts = (posts, insertArea) => {
         <div class='card pb-3'>
             <a href="/${posts[i]._id}">
                 <div>
-                    <div class="card-body" style="padding-bottom: 10px;">
+                    <div class="card-body pt-4" style="padding-bottom: 10px;">
                         <h6 class="post-title">                                    
                             ${posts[i].category !== '吹水' ? `<span class="category">${posts[i].category}</span>` : ''}
                                 ${posts[i].title.substring(0, 40)}
                                 <small class="text-muted" style="font-size:14px; font-weight:200"> - ${posts[i].author.username}</small>
                         </h6>
-                        <table style="position: absolute; top:-2px ; right:10px; font-size:13px;color:#bbb">
-                            <td><span style="color:#ff8d8d">♥ </span></td>
-                            <td>${posts[i].favour}</td>
-                            <td></td>
-                            <td><span style="font-size:12px"> <i class="fa-regular fa-comment"></i></span></td>
-                            <td> ${r + 1}</td>
+                        <table style="position: absolute; top:-2px ; right:10px; font-size:13px;color:#bbb">  
+                            <td><div class="heart"><i class="fa-solid fa-heart"></i> ${posts[i].favour}</div></td>                    
+                            <td><div class="chat"><i class="fa-solid fa-comment"></i> ${r + 1}</div>
+                            </td>
                         </table>
                         <span class="description">
                         
