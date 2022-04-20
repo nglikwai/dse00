@@ -323,32 +323,36 @@
                                                                                 <%= review.body %>
 
                                                                             </div>
-                                                                            <div class="pl-3 pb-4">
-                                                                                <% if (review.reply) { %>
+
+                                                                            <div class="user-action-bar mt-3">
+                                                                                <div class="thumbs-up">
+                                                                                    <i
+                                                                                        class="fa-regular fa-thumbs-up user-action"></i>
+                                                                                </div>
+                                                                                <div class="thumbs-down">
+                                                                                    <i
+                                                                                        class="fa-regular fa-thumbs-down user-action"></i>
+                                                                                </div>
+                                                                                <a href="/reply/<%= review._id %>?post=<%= campground._id %>"
+                                                                                    class="btn replybtn m-0 user-action">REPLY</a>
+
+                                                                            </div>
+
+                                                                            <% if (review.reply[0]) { %>
+                                                                                <div class="mt-3 mb-2">
                                                                                     <% for( let i=0; i <
                                                                                         review.reply.length; i++ ) { %>
-                                                                                        <p class="quote p-0 m-0">
-                                                                                            ➼
+                                                                                        <p class="quote m-0 mt-1">
+                                                                                            <i
+                                                                                                class="fa-solid fa-reply mr-1"></i>
                                                                                             <%= review.replyAuthor[i] %>
                                                                                                 ：
                                                                                                 <%= review.reply[i] %>
                                                                                         </p>
                                                                                         <% } %>
-                                                                            </div>
-                                                                            <% } %>
-                                                                                <div class="user-action-bar">
-                                                                                    <div class="thumbs-up">
-                                                                                        <i
-                                                                                            class="fa-regular fa-thumbs-up user-action"></i>
-                                                                                    </div>
-                                                                                    <div class="thumbs-down">
-                                                                                        <i
-                                                                                            class="fa-regular fa-thumbs-down user-action"></i>
-                                                                                    </div>
-                                                                                    <a href="/reply/<%= review._id %>?post=<%= campground._id %>"
-                                                                                        class="btn replybtn m-0 user-action">REPLY</a>
-
                                                                                 </div>
+                                                                                <% } %>
+
                                                                         </div>
                                                                     </div>
                                                                 </div>
