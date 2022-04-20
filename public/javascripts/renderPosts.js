@@ -96,6 +96,10 @@ async function renderPost(page) {
         console.error(error);
     }
 }
+
+
+
+
 const myDiv = document.documentElement;
 
 renderPost(page);

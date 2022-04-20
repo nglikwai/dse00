@@ -47,6 +47,21 @@ router.get('/posts', async (req, res) => {
     res.json(campgrounds);
 })
 
+router.get('/popularposts', async (req, res) => {
+    const today = new Date();
+    const limit = req.query.limit || 5;
+    const page = req.query.page || 1;
+    const options = {
+        sort: { popular: -1 },
+        populate: ["author", "reviews"],
+        limit,
+        page,
+    };
+    const data = await Campground.paginate({ updatedAt: { $lt: today } }, options)
+    const campgrounds = data.docs;
+    res.json(campgrounds);
+})
+
 router.get('/user', async (req, res) => {
     const user = await User.find({ email: req.query.email });
     res.json(user)

@@ -101,12 +101,92 @@
         }
     </style>
 
+    <style>
+        .popular {
+            width: 100%;
+            background-color: rgb(255, 248, 234);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+
+        .popular-container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 700px;
+        }
+
+        .popular-item {
+            color: #888;
+            border-radius: 10px;
+            width: 200px;
+            height: 150px;
+            margin: 10px;
+            background-color: rgb(252, 238, 212);
+            display: flex;
+
+        }
+
+        .upper-float {
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+            position: absolute;
+            margin: 20px 0;
+        }
+
+        .tag {
+            background-color: #fe6060;
+            color: white;
+            padding: 0 10px;
+            border-radius: 2px;
+        }
+
+        .chatbox {
+            margin: -5px -10px 0 0;
+        }
+
+        .chat {
+            color: rgb(121, 169, 197);
+            padding: 5px;
+            border-radius: 20%;
+            background-color: rgb(201, 228, 255);
+        }
+
+        .popular-name {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .popular-title {
+
+            color: #333;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 135%;
+            align-self: flex-end;
+            padding: 10px;
+            margin: 20px 0;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+
+
+        @media only screen and (max-width: 900px) {
+            .popular-container {
+                width: 100%;
+                padding: 0 10px;
+            }
+        }
+    </style>
     <script>
         document.querySelector('title').innerText = '<%= campground.title %>';
     </script>
 
 
-    <div class="index-loop mb-5 pb-5">
+    <div class="index-loop">
         <div>
             <a href="/" class="btn dse00btn">Back</a>
 
@@ -363,26 +443,33 @@
                         </div>
             </div>
         </div>
+        <div class="popular">
+            <h1 class="mb-4">Popular</h1>
+            <div class="popular-container"></div>
+        </div>
+    </div>
 
 
 
 
 
-        <script>
-            const campground = <% - JSON.stringify(campground) %>;
-        </script>
-        <script>
-            const thumbsUps = document.querySelectorAll('.thumbs-up');
-            const thumbsDowns = document.querySelectorAll('.thumbs-down');
+    <script>
+        const campground = <% - JSON.stringify(campground) %>;
+    </script>
+    <script>
+        const thumbsUps = document.querySelectorAll('.thumbs-up');
+        const thumbsDowns = document.querySelectorAll('.thumbs-down');
 
-            thumbsUps.forEach(thumbsUp => thumbsUp.addEventListener('click', () => {
-                thumbsUp.innerHTML = '<i class="fa-solid fa-thumbs-up"></i>';
-            }))
+        thumbsUps.forEach(thumbsUp => thumbsUp.addEventListener('click', () => {
+            thumbsUp.innerHTML = '<i class="fa-solid fa-thumbs-up"></i>';
+        }))
 
-            thumbsDowns.forEach(thumbsDown => thumbsDown.addEventListener('click', () => {
-                thumbsDown.innerHTML = '<i class="fa-solid fa-thumbs-down"></i>';
-            }))
+        thumbsDowns.forEach(thumbsDown => thumbsDown.addEventListener('click', () => {
+            thumbsDown.innerHTML = '<i class="fa-solid fa-thumbs-down"></i>';
+        }))
 
 
 
-        </script>
+    </script>
+
+    <script src="/javascripts/renderPopularPosts.js"></script>
