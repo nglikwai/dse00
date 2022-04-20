@@ -15,7 +15,7 @@ async function callyylam() {
 
 async function createFriendList() {
     try {
-        const res = await axios.get('http://localhost:4000/apis/getfriendlist');
+        const res = await axios.get('https://www.dse00.com/apis/getfriendlist');
         for (let friend of res.data.friendList) {
             let div = document.createElement('div')
             div.setAttribute('class', 'friend-name')
@@ -29,7 +29,7 @@ async function createFriendList() {
 
 async function createFriendActivity() {
     try {
-        const res = await axios.get('http://localhost:4000/apis/friendactivities');
+        const res = await axios.get('https://www.dse00.com/apis/friendactivities');
         // https://www.dse00.com/apis/friendactivities
 
         friendActivity.innerHTML = '';
