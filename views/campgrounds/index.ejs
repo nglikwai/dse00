@@ -28,19 +28,21 @@
 
         <div class="user-info">
 
-            <div class="user-menu" id="userbar">
+            <div id="userbar">
                 <% if(!currentUser) {%>
+                    <div class="user-menu">
+                        <a href="/users/login" target="_blank">
+                            <span style="margin:0 5px">2022 DSEr</span>
+                        </a>｜
+                        <span id="level" style="margin:0 10px">Lv.5**
+                        </span>｜
+                        <span> <i class="fa-solid fa-coins"></i>旗開得勝 </span>
 
-                    <a href="/users/login" target="_blank">
-                        <span style="margin:0 5px">2022 DSEr</span></a>｜<span id="level"
-                        style="margin:0 10px">Lv.5**</span>｜
-                    <span> <i class="fa-solid fa-coins"></i> 旗開得勝 </span>
-
-                    <!-- <b><a href="/users/login" target="_blank">
+                        <!-- <b><a href="/users/login" target="_blank">
                             <span class="level" style="margin:0 5px">login</span>｜<span id="level"
                                 style="margin:0 10px">Lv.<span class="level">-</span></span>｜
                             <span> <i class="fa-solid fa-coins"></i> <span class="level">-</span> </span></a></b> -->
-
+                    </div>
                     <% } %>
                         <% if(currentUser) {%>
 
@@ -48,15 +50,15 @@
                                 <div>
                                     <a href="/users/user/<%= currentUser._id %> ">
                                         <%= currentUser.username.toUpperCase() %>
-                                    </a>｜
-                                </div>
+                                    </a>
+                                </div>｜
                                 <div class="level">Lv.
                                     <% if(currentUser) {%>
                                         <%= currentUser.grade %>
                                             <% } %>
-                                </div>
+                                </div>｜
 
-                                <div>｜
+                                <div>
                                     <a href="/users/dse00coin"> <i class="fa-solid fa-coins"></i>
                                         <% if(currentUser) {%>
                                             <%= currentUser.coin %>

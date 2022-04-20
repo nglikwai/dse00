@@ -55,7 +55,7 @@ p {
 
 .user-menu{
     display:flex;
-    justify-content:space-around;
+    justify-content:space-evenly;
     font-weight: bold;
 }
 a:hover {
