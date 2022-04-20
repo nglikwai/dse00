@@ -56,7 +56,7 @@ module.exports.updateUser = async (req, res, next) => {
     }
     const user = req.user;
     const a = user.grade;
-    if (user.coin > 800) {
+    if (user.coin > 0) {
         user.grade = '5**';
         user.level = 7
     } else if (user.coin > 400) {
