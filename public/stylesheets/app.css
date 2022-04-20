@@ -180,7 +180,8 @@ nav a:hover {
 .category:hover {
     opacity: 1;
 }
-.category-list{
+
+#left-bar{
     margin:60px 10px 0px 0px;
     width:200px;
 }
@@ -268,6 +269,21 @@ nav a:hover {
 
 }
 
+#friends-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.friend-name{
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    margin:6px 30px 6px 0;
+    background-color: #fff9e9;
+    box-shadow:1px 1px 1px rgb(255, 239, 199);
+    display: flex;
+    align-items: center;
+}
+
 .shadow{
     text-shadow:1px 1px 3px rgb(179, 179, 179);
 }
@@ -299,7 +315,8 @@ nav a:hover {
     nav a {
         line-height: 2.5rem;
     }
-    .category-list {
+
+    #left-bar{
         width:100%;
         order:1;
         display: flex;

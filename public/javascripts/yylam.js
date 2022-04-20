@@ -1,5 +1,6 @@
 const yylamdiv = document.querySelector('#yylamdiv');
 const friendActivity = document.querySelector('#friend-activity');
+const friendList = document.querySelector('#friends-list');
 
 
 async function callyylam() {
@@ -12,12 +13,27 @@ async function callyylam() {
     }
 }
 
+async function createFriendList() {
+    try {
+        const res = await axios.get('http://localhost:4000/apis/getfriendlist');
+        for (let friend of res.data.friendList) {
+            let div = document.createElement('div')
+            div.setAttribute('class', 'friend-name')
+            div.innerHTML = `<span style="font-size:5px; margin-right:5px">🟢</span><a href="/users/user/${friend._id}"> ${friend.username.toUpperCase()}</a>`;
+            friendList.append(div)
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 async function createFriendActivity() {
     try {
-        const res = await axios.get('https://www.dse00.com/apis/friendlist');
+        const res = await axios.get('http://localhost:4000/apis/friendactivities');
+        // https://www.dse00.com/apis/friendactivities
 
         friendActivity.innerHTML = '';
-        for (let review of res.data.reviews) {
+        for (let review of res.data) {
             const act = document.createElement('div');
             act.setAttribute('class', 'friend-activity')
             act.innerHTML = `
@@ -38,4 +54,5 @@ async function createFriendActivity() {
 }
 
 callyylam();
+createFriendList()
 createFriendActivity();
