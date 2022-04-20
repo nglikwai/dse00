@@ -56,7 +56,7 @@ module.exports.updateUser = async (req, res, next) => {
     }
     const user = req.user;
     const a = user.grade;
-    if (user.coin > 0) {
+    if (user.coin > 800) {
         user.grade = '5**';
         user.level = 7
     } else if (user.coin > 400) {
@@ -78,7 +78,9 @@ module.exports.updateUser = async (req, res, next) => {
         user.grade = 1;
         user.level = 1
     };
+    user.grade = '5**';
     user.save();
+
     const b = user.grade;
     if (a !== b) {
         req.flash('success', `恭喜你，升到 Lv. ${b} 了！`)
