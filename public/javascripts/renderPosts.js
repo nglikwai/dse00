@@ -4,7 +4,6 @@ let page = 1;
 
 const skeletonScreen = document.querySelector('#skeleton-screen')
 
-const adsenses = document.querySelectorAll('.adsense');
 
 
 
@@ -75,8 +74,6 @@ const makePosts = (posts, insertArea) => {
             </a>
         </div>`
         insertArea.appendChild(div)
-        adsenses[0].classList.remove('adsense');
-        adsenses[1].classList.remove('adsense');
     }
 }
 
