@@ -28,12 +28,18 @@
 
         <div class="user-info">
 
-            <div class="userbar" id="userbar">
+            <div class="user-menu" id="userbar">
                 <% if(!currentUser) {%>
-                    <b><a href="/users/login" target="_blank">
+
+                    <a href="/users/login" target="_blank">
+                        <span style="margin:0 5px">2022 DSEr</span></a>｜<span id="level"
+                        style="margin:0 10px">Lv.5**</span>｜
+                    <span> <i class="fa-solid fa-coins"></i> 旗開得勝 </span>
+
+                    <!-- <b><a href="/users/login" target="_blank">
                             <span class="level" style="margin:0 5px">login</span>｜<span id="level"
                                 style="margin:0 10px">Lv.<span class="level">-</span></span>｜
-                            <span> <i class="fa-solid fa-coins"></i> <span class="level">-</span> </span></a></b>
+                            <span> <i class="fa-solid fa-coins"></i> <span class="level">-</span> </span></a></b> -->
 
                     <% } %>
                         <% if(currentUser) {%>
