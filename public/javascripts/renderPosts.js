@@ -24,6 +24,35 @@ const skeleton = `
     </div>
 `
 
+const pastpaperlover = `
+<div class='card'>
+<a href="https://hkdsepastpaperlover.com" target="_blank">
+    <div>
+        <div class="card-body" style="padding-bottom: 20px;">
+            <h6 class="post-title"> Pastpaper Lover </h6>
+            <table style="position: absolute; top:-2px ; right:10px; font-size:13px;color:#bbb">
+                <td>
+                    <div class="heart"><i class="fa-solid fa-heart"></i> 99</div>
+                </td>
+                <td>
+                    <div class="chat"><i class="fa-solid fa-comment"></i>99 </div>
+                </td>
+            </table>
+            <div style="display:flex">
+                <span class="description" style="font-size:13px; color:#aaa; line-height: 200%;">
+                    ➥ 如同學希望尋找更多不同的 Pastpaper 內容，歡迎瀏覽 <span
+                        style="color:#cc0000">hkdsepastpaperlover.com</span>
+                    本平台的資源仍在更新中，同時亦歡迎同學為我們提供試題，感謝。
+                </span>
+                <img src="https://lh3.googleusercontent.com/a-/AOh14GhZi-oz5wjNP2_1ZKaPVK7t4Of6Isn_xT1YgoVA=s128-p-k-no"
+                    style="height: 50px;width:50px;border-radius: 50%;opacity:0.65;" alt="" />
+            </div>
+        </div>
+    </div>
+</a>
+</div>
+`
+
 const skeletons = skeleton + skeleton + skeleton + skeleton + skeleton + skeleton + skeleton + skeleton + skeleton + skeleton;
 
 skeletonScreen.innerHTML = skeletons;
@@ -68,6 +97,10 @@ const makePosts = (posts, insertArea) => {
                 </div>
             </a>
         </div>`
+
+        if (i==3){
+            div.innerHTML += pastpaperlover;
+        }
         insertArea.appendChild(div)
     }
 }
