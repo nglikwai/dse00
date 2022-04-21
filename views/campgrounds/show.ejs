@@ -179,6 +179,11 @@
                 width: 100%;
                 padding: 0 10px;
             }
+
+            .adsense {
+                width: 100%;
+                overflow: hidden;
+            }
         }
     </style>
     <script>
@@ -325,10 +330,10 @@
                                                 <% for(let review of campground.reviews) { %>
                                                     <% i++ %>
                                                         <% if (i%5===0) { %>
-                                                            <div class=" pb-2 adsense comment">
+                                                            <div class=" pb-2 comment">
                                                                 <img src="/files/dse00-icon.png" alt=""
                                                                     class="profile-logo">
-                                                                <div class="card-body">
+                                                                <div class="card-body adsense">
                                                                     <script async
                                                                         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6622218753379872"
                                                                         crossorigin="anonymous"></script>
