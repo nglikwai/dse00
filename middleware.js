@@ -15,6 +15,9 @@ module.exports.isLoggedIn = (req, res, next) => {
 
 module.exports.validateCampground = (req, res, next) => {
     const { error } = campgroundSchema.validate(req.body);
+    if (req.body.campground.description.includes('profitnow')) {
+        return res.redirect('/users/login');
+    }
     if (error) {
         const msg = error.details.map(el => el.message).join(',')
         throw new ExpressError(msg, 400)
@@ -23,7 +26,7 @@ module.exports.validateCampground = (req, res, next) => {
     }
 }
 
-module.exports.isAuthor = async(req, res, next) => {
+module.exports.isAuthor = async (req, res, next) => {
     const { id } = req.params;
     const campground = await Campground.findById(id);
     if (!campground.author.equals(req.user._id)) {
@@ -36,7 +39,7 @@ module.exports.isAuthor = async(req, res, next) => {
     next();
 }
 
-module.exports.isAdmin = async(req, res, next) => {
+module.exports.isAdmin = async (req, res, next) => {
     if (req.user.identity !== 'admin') {
         req.flash('error', 'ADMIN ONLY')
         return res.redirect(`/`);
@@ -44,7 +47,7 @@ module.exports.isAdmin = async(req, res, next) => {
     next();
 }
 
-module.exports.checkLogin = async(req, res, next) => {
+module.exports.checkLogin = async (req, res, next) => {
     if (!req.user) {
         req.flash("success", "登入DSE00以保存積分 ");
         return next()
@@ -52,7 +55,7 @@ module.exports.checkLogin = async(req, res, next) => {
     next();
 }
 
-module.exports.isReviewAuthor = async(req, res, next) => {
+module.exports.isReviewAuthor = async (req, res, next) => {
     const { id, reviewId } = req.params;
     const review = await Review.findById(reviewId);
     if (!review.author.equals(req.user._id)) {
