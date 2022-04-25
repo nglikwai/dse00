@@ -15,7 +15,7 @@ module.exports.isLoggedIn = (req, res, next) => {
 
 module.exports.validateCampground = (req, res, next) => {
     const { error } = campgroundSchema.validate(req.body);
-    if (req.body.campground.description.includes('profitnow')) {
+    if (req.body.campground.description.includes('breweriana')) {
         return res.redirect('/users/login');
     }
     if (error) {
