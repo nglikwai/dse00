@@ -15,7 +15,7 @@ module.exports.isLoggedIn = (req, res, next) => {
 
 module.exports.validateCampground = (req, res, next) => {
     const { error } = campgroundSchema.validate(req.body);
-    if (req.body.campground.description.includes('http')) {
+    if (req.body.campground.description.includes('http', 'king ho') || req.body.campground.title.includes('king ho')) {
         return res.redirect('/users/login');
     }
     if (error) {
