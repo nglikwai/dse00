@@ -1,12 +1,9 @@
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.disappear-button');
 
 
 for (let button of buttons) {
     button.addEventListener('click', function () {
         button.classList.add('grey')
-        setTimeout(function () {
-            button.classList.remove('grey')
-        }, 1000);
     })
 }
 
