@@ -15,6 +15,9 @@ router.route('/search')
 router.route('/case')
     .get(catchAsync(tutors.renderCase))
 
+router.route('/case/:id')
+    .get(catchAsync(tutors.renderCaseUnit))
+
 router.route('/:id')
     .get(catchAsync(tutors.renderTutor))
 

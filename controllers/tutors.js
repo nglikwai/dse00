@@ -16,6 +16,12 @@ module.exports.renderCase = async (req, res) => {
     res.json(caseUnit)
 }
 
+
+module.exports.renderCaseUnit = async (req, res) => {
+    const caseUnit = await Case.findById(req.params.id);
+    res.json(caseUnit)
+}
+
 module.exports.searchTutors = async (req, res) => {
     const locations = ['中西區', '東區', '南區', '灣仔', '九龍城', '觀塘', '深水埗', '黃大仙', '油尖旺', '離島', '葵青', '北區', '西貢', '沙田', '大埔', '荃灣', '屯門', '元朗'];
     const subjects = ['中文', 'eng', 'math', 'ls', 'phy', 'chem', 'bio', 'econ', 'bafs', 'geo', 'history', '中國歷史']
