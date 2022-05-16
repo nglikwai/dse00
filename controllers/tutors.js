@@ -1,4 +1,5 @@
 const Tutor = require('../models/tutor');
+const Case = require('../models/case');
 
 module.exports.renderTutors = async (req, res) => {
     const tutors = await Tutor.find({});
@@ -8,6 +9,11 @@ module.exports.renderTutors = async (req, res) => {
 module.exports.renderTutor = async (req, res) => {
     const tutor = await Tutor.findById(req.params.id);
     res.json(tutor);
+}
+
+module.exports.renderCase = async (req, res) => {
+    const caseUnit = await Case.find({});
+    res.json(caseUnit)
 }
 
 module.exports.searchTutors = async (req, res) => {
