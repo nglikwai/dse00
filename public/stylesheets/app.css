@@ -52,11 +52,12 @@ p {
     color: #555;
 }
 
-.user-menu{
-    display:flex;
-    justify-content:space-evenly;
+.user-menu {
+    display: flex;
+    justify-content: space-evenly;
     font-weight: bold;
 }
+
 a:hover {
     color: black;
 }
@@ -67,11 +68,12 @@ a:hover {
     margin-bottom: 10px;
 }
 
-.description{
-    font-size:13px; 
-    color:rgb(197, 197, 197);
+.description {
+    font-size: 13px;
+    color: rgb(197, 197, 197);
     line-height: 0;
 }
+
 .dse00btn {
     background-color: transparent;
     border: #cc0000 solid 1px;
@@ -142,9 +144,17 @@ nav a:hover {
 
 .inner-container {
     width: 1250px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row-reverse;
+    vertical-align: top;
+}
+
+.wrapper {
+    display: inline-block;
+    vertical-align: top
+}
+
+.sticky {
+    position: sticky;
+    top: 80px;
 }
 
 .index-loop {
@@ -160,8 +170,10 @@ nav a:hover {
     width: 380px;
     padding: 30px;
     border-radius: 6px;
-    margin-left: 3%;
-    margin-top: 34px;
+
+    position: sticky;
+    top: 80px;
+    background-color: #fffcf8;
 }
 
 .category {
@@ -180,27 +192,29 @@ nav a:hover {
     opacity: 1;
 }
 
-#left-bar{
-    margin:60px 10px 0px 0px;
-    width:200px;
+#left-bar {
+    margin: 60px 10px 0px 0px;
+    width: 200px;
 }
 
-.category-list h4{
+.category-list h4 {
     color: #333;
-    padding-left:5px;
+    padding-left: 5px;
 }
-.category-list a{
+
+.category-list a {
     display: block;
-    width:150px;
-    margin-top:20px;
+
+    margin-top: 20px;
     padding: 0 40px 0 5px;
     color: #222;
 }
 
-.category-list a:hover{
+.category-list a:hover {
     background-color: #eee;
 }
-.category-list-icon{
+
+.category-list-icon {
     margin-right: 12px;
     font-size: 24px;
 }
@@ -258,88 +272,112 @@ nav a:hover {
     color: #fff;
 }
 
-.friend-activity{
+.friend-activity {
     background-color: #fff9e9;
     padding: 10px;
     margin-top: 15px;
     border-radius: 10px;
     color: #777;
-    box-shadow:1px 1px 1px rgb(255, 239, 199);
+    box-shadow: 1px 1px 1px rgb(255, 239, 199);
 
 }
 
-#friends-list{
+#friends-list {
     display: flex;
     flex-wrap: wrap;
 }
-.friend-name{
+
+.friend-name {
     font-size: 14px;
     padding: 10px;
     border-radius: 5px;
-    margin:6px 30px 6px 0;
+    margin: 6px 30px 6px 0;
     background-color: #fff9e9;
-    box-shadow:1px 1px 1px rgb(255, 239, 199);
+    box-shadow: 1px 1px 1px rgb(255, 239, 199);
     display: flex;
     align-items: center;
 }
 
-.shadow{
-    text-shadow:1px 1px 3px rgb(179, 179, 179);
+.shadow {
+    text-shadow: 1px 1px 3px rgb(179, 179, 179);
 }
 
 
 
 @media only screen and (max-width: 900px) {
     .inner-container {
-        width: auto;
+        width: 100%;
     }
+
     .index-loop {
         width: 100%;
-        max-width: 650px;
         min-width: 0;
         padding: 0 10px;
     }
+
     .card-body {
         width: 100%;
     }
+
     .user-info {
         width: 100%;
-        margin-top: 0;
-        margin-bottom: 0;
-        padding-bottom: 0;
+        margin: 0;
+        padding: 10px;
+        bottom: 0;
+        opacity: 0.8;
     }
+
+    .user-info:focus {
+        opacity: 1;
+    }
+
     #newpost {
         display: none;
     }
+
     nav a {
         line-height: 2.5rem;
     }
 
     .category-list {
         display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0;
     }
-    #left-bar{
-        width:100%;
-        order:1;
-        margin:10px 20px 20px 20px;
+
+    #left-bar {
+        width: 100%;
+        order: 1;
+        padding: 4px 10px 20px 10px;
+        margin: 0;
     }
-    .category-list a{
-        width:100%;
-        padding-right: 6px;
-        margin-top:0;
+
+    .category-list a {
+
+        padding: 0;
+        margin: 0;
     }
-    .category-list h4{
+
+    .category-list h4 {
         display: none;
     }
-    .category-list-icon{
+
+    .category-list-icon {
         margin-right: 5px;
- 
+
     }
-    .order-two{
-        order:2;
+
+    .order-two {
+        order: 2;
     }
-    .hide-mobile{
-        display:none;
+
+    .hide-mobile {
+        display: none;
+    }
+
+    #userbar {
+        display: none;
     }
 }
 
@@ -370,12 +408,11 @@ nav a:hover {
 .gold {
     color: rgb(255, 211, 101);
     font-weight: bold;
-    text-shadow:0px 0px 4px rgb(255, 239, 200);
+    text-shadow: 0px 0px 4px rgb(255, 239, 200);
 }
 
 .silver {
     color: rgb(232, 232, 232);
     font-weight: bold;
-    text-shadow:0px 0px 6px rgb(79, 79, 79);
+    text-shadow: 0px 0px 6px rgb(79, 79, 79);
 }
-
