@@ -312,7 +312,13 @@ nav a:hover {
     text-shadow: 1px 1px 3px rgb(179, 179, 179);
 }
 
+.navbar-toggler-icon {
+    color: white;
+}
 
+.navbar-toggler {
+    color: transparent
+}
 
 @media only screen and (max-width: 900px) {
     .inner-container {
