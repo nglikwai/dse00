@@ -56,6 +56,8 @@ p {
     display: flex;
     justify-content: space-evenly;
     font-weight: bold;
+
+    border-radius: 2rem;
 }
 
 a:hover {
@@ -77,7 +79,7 @@ a:hover {
 .dse00btn {
     background-color: transparent;
     border: #cc0000 solid 1px;
-    border-radius: 5px;
+    border-radius: 1rem;
     color: #cc0000;
     padding: 3px 10px;
     margin: 10px 0px;
@@ -169,7 +171,7 @@ nav a:hover {
 .user-info {
     width: 380px;
     padding: 30px;
-    border-radius: 6px;
+    border-radius: 2rem;
 
     position: sticky;
     top: 80px;
@@ -183,7 +185,7 @@ nav a:hover {
     margin-right: 7px;
     border: #d01717 1px solid;
     padding: 2px 2px 2px 5px;
-    border-radius: 3px;
+    border-radius: 2rem;
     opacity: 0.7;
     transition-duration: 0.5s;
 }
@@ -204,7 +206,7 @@ nav a:hover {
 
 .category-list a {
     display: block;
-
+    border-radius: 2rem;
     margin-top: 20px;
     padding: 0 40px 0 5px;
     color: #222;
@@ -254,18 +256,13 @@ nav a:hover {
     opacity: 1;
 }
 
-.userbar {
-    background-color: #cc0000;
-    color: #fff;
-    padding: 6px 10px;
-    border-radius: 5px;
-}
+
 
 #userbar {
     background-color: #cc0000;
     color: #fff;
     padding: 6px 10px;
-    border-radius: 5px;
+    border-radius: 1rem;
 }
 
 #userbar a {
@@ -273,12 +270,12 @@ nav a:hover {
 }
 
 .friend-activity {
-    background-color: #fff9e9;
+    background-color: #fffbef;
     padding: 10px;
     margin-top: 15px;
-    border-radius: 10px;
     color: #777;
     box-shadow: 1px 1px 1px rgb(255, 239, 199);
+    border-radius: 2rem;
 
 }
 
@@ -290,9 +287,9 @@ nav a:hover {
 .friend-name {
     font-size: 14px;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 2rem;
     margin: 6px 30px 6px 0;
-    background-color: #fff9e9;
+    background-color: #fffbef;
     box-shadow: 1px 1px 1px rgb(255, 239, 199);
     display: flex;
     align-items: center;

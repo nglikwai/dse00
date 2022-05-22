@@ -3,9 +3,10 @@
     <style>
         .card {
             background-color: transparent;
+            border-radius: 2rem;
             border: none;
-            border-bottom: #eaeaea solid 1px;
             transition-duration: 0.5s;
+            margin:12px 0;
         }
 
         .card:hover {
@@ -132,7 +133,7 @@
                 <form action="/" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
                     <div>
                         <label class="form-label" for="title"><b>QUICK TALK</b></label>
-                        <textarea style="height:60px;" class="form-control" type="text" id="title"
+                        <textarea style="height:60px; border-radius: 1rem;" class="form-control" type="text" id="title"
                             name="campground[title]" required></textarea>
                         <div class="valid-feedback">
                             Looks good!
