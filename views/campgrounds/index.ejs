@@ -3,54 +3,11 @@
     <style>
         .card {
             background-color: transparent;
-<<<<<<< HEAD
-            border: none;
-            border-bottom: #eaeaea solid 1px;
-            transition-duration: 0.5s;
-        }
-
-        .card:hover {
-            background-color: rgb(245, 245, 245);
-        }
-
-        .card:active {
-            background-color: #eee;
-        }
-
-        td {
-            width: 17px;
-        }
-
-        td .icon-td {
-            width: 100px;
-        }
-
-        .chat {
-            color: rgb(151, 199, 226);
-            padding: 3px 0 0 5px;
-            border-radius: 30%;
-            background-color: rgba(201, 228, 255, 0.3);
-            width: 40px;
-
-        }
-
-        .heart {
-            color: rgb(255, 183, 183);
-            padding: 3px 0 0 5px;
-            border-radius: 30%;
-            background-color: rgba(252, 201, 201, 0.3);
-            width: 40px;
-            margin: 5px 10px;
-
-        }
-    </style>
-=======
             border-radius: 2rem;
             border: none;
             transition-duration: 0.5s;
             margin: 12px 0;
         }
->>>>>>> 9f7fb0e515c7ec421625d4342f720303cf0beb1a
 
         .card:hover {
             background-color: rgb(245, 245, 245);
@@ -112,44 +69,11 @@
 </div>
     <div class="inner-container">
 
-<<<<<<< HEAD
-        <div id="left-bar" class="wrapper ">
-            <div class="category-list">
-                <h4>我要傾</h4>
-                <a href="/">
-                    <td class="icon-td"><span class="category-list-icon">
-                            <i class="fa-regular fa-comment-dots" style="color:#cd4e4e;"></i>
-                        </span></td> 吹水
-                </a>
-
-                <a href="/search?category=DSE"><span class="category-list-icon"><i class="fa-regular fa-comment"
-                            style="color:#cd4e4e;"></i></span>
-                    DSE</a>
-                <a href="/search?category=大學"><span class="category-list-icon"><i class="fa-regular fa-comment"
-                            style="color:#cd4e4e;"></i> </span>
-                    大學</a>
-                <a href="/search?category=消息"><span class="category-list-icon"><i class="fa-regular fa-comment"
-                            style="color:#cd4e4e;"></i></span>
-                    消息</a>
-
-            </div>
-            <div class="mt-5 hide-mobile">
-                <h6><i class="fa-solid fa-user-group" style="color:#cd4e4e;"></i> Online </h6>
-                <div id="friends-list"></div>
-            </div>
-        </div>
-=======
-
->>>>>>> 9f7fb0e515c7ec421625d4342f720303cf0beb1a
 
         <div class='index-loop wrapper sticky'>
 
 
-<<<<<<< HEAD
-            <a class="btn dse00btn disappear-button" id="newpost" href="/new">新 POST</a>
-=======
             <a class="btn dse00btn2 disappear-button" id="newpost" href="/new">新 POST</a>
->>>>>>> 9f7fb0e515c7ec421625d4342f720303cf0beb1a
             <div id="skeleton-screen"></div>
             <div id="posts-body">
             </div>
@@ -157,30 +81,6 @@
 
 
         </div>
-<<<<<<< HEAD
-
-
-        <div class="user-info wrapper">
-
-            <div id="userbar">
-                <% if(!currentUser) {%>
-                    <div class="user-menu">
-                        <a href="/users/login" target="_blank">
-                            <span style="margin:0 5px">2022 DSEr</span>
-                        </a>｜
-                        <span id="level" style="margin:0 10px" class="gold">Lv.5**
-                        </span>｜
-                        <span> <i class="fa-solid fa-coins"></i> 旗開得勝 </span>
-
-                        <!-- <b><a href="/users/login" target="_blank">
-                            <span class="level" style="margin:0 5px">login</span>｜<span id="level"
-                                style="margin:0 10px">Lv.<span class="level">-</span></span>｜
-                            <span> <i class="fa-solid fa-coins"></i> <span class="level">-</span> </span></a></b> -->
-                    </div>
-                    <% } %>
-                        <% if(currentUser) {%>
-
-=======
 
 
         <div class="user-info wrapper">
@@ -198,7 +98,6 @@
                     <% } %>
                         <% if(currentUser) {%>
 
->>>>>>> 9f7fb0e515c7ec421625d4342f720303cf0beb1a
                             <div class="user-menu">
                                 <div>
                                     <a href="/users/user/<%= currentUser._id %> ">
@@ -226,11 +125,7 @@
                 <form action="/" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
                     <div>
                         <label class="form-label" for="title"><b>QUICK TALK</b></label>
-<<<<<<< HEAD
-                        <textarea style="height:60px;" class="form-control" type="text" id="title"
-=======
                         <textarea style="height:60px; border-radius: 1rem;" class="form-control" type="text" id="title"
->>>>>>> 9f7fb0e515c7ec421625d4342f720303cf0beb1a
                             name="campground[title]" required></textarea>
                         <div class="valid-feedback">
                             Looks good!
@@ -247,14 +142,8 @@
             </div>
 
             <div class="partner-post mt-5 pt-3 hide-mobile">
-<<<<<<< HEAD
-                <h6 class="mb-4" style="color:#222; font-size:18px;"><i class="fa-solid fa-user-group"
-                        style="color:#cd4e4e;"></i>
-                    你的 DSE Partner</h6>
-=======
                 <span class='category-list-title mb-4' >
                     你的 DSE Partner</span>
->>>>>>> 9f7fb0e515c7ec421625d4342f720303cf0beb1a
                 <div id="friend-activity">
                     <div class="friend-activity" style="height:50px;">
                         <span style="font-size: 13px; color: #aaa;"><img src="/files/profileLogo.png"
