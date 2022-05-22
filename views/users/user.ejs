@@ -33,13 +33,14 @@
         }
 
         .inner-container {
+            display: flex;
             flex-direction: row;
         }
 
         .left-bar {
             width: 300px;
         }
-
+    
 
         @media only screen and (max-width: 900px) {
             .friend-list {
@@ -61,6 +62,11 @@
             .left-bar {
                 width: 100%;
             }
+
+        .inner-container {
+            display: block;
+    
+        }
         }
     </style>
 
@@ -208,6 +214,7 @@
 
         </div>
     </div>
+
     <div class="admin-form mt-5 pt-5">
         <% if (currentUser && currentUser.identity=='admin' ) { %>
             <form action="/admins/<%= user._id %>?_method=PUT" method="POST" class="mt-3">
