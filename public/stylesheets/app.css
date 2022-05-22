@@ -333,8 +333,13 @@ nav a:hover {
         width: 100%;
         margin: 0;
         padding: 10px;
-        bottom: 0;
+        bottom: 140px;
         opacity: 0.8;
+    }
+
+    .user-info.wrapper {
+        height: 0;
+        padding: 0 10px;
     }
 
     .user-info:focus {
