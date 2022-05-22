@@ -46,7 +46,46 @@
 
     <div class="inner-container">
 
-        <div class="user-info">
+        <div id="left-bar" class="wrapper ">
+            <div class="category-list">
+                <h4>我要傾</h4>
+                <a href="/">
+                    <td class="icon-td"><span class="category-list-icon">
+                            <i class="fa-regular fa-comment-dots" style="color:#cd4e4e;"></i>
+                        </span></td> 吹水
+                </a>
+
+                <a href="/search?category=DSE"><span class="category-list-icon"><i class="fa-regular fa-comment"
+                            style="color:#cd4e4e;"></i></span>
+                    DSE</a>
+                <a href="/search?category=大學"><span class="category-list-icon"><i class="fa-regular fa-comment"
+                            style="color:#cd4e4e;"></i> </span>
+                    大學</a>
+                <a href="/search?category=消息"><span class="category-list-icon"><i class="fa-regular fa-comment"
+                            style="color:#cd4e4e;"></i></span>
+                    消息</a>
+
+            </div>
+            <div class="mt-5 hide-mobile">
+                <h6><i class="fa-solid fa-user-group" style="color:#cd4e4e;"></i> Online </h6>
+                <div id="friends-list"></div>
+            </div>
+        </div>
+
+        <div class='index-loop wrapper sticky'>
+
+
+            <a class="btn dse00btn disappear-button" id="newpost" href="/new">新 POST</a>
+            <div id="skeleton-screen"></div>
+            <div id="posts-body">
+            </div>
+            <div style="display:flex; justify-content: center;"><img src="/files/gear.svg" /></div>
+
+
+        </div>
+
+
+        <div class="user-info wrapper">
 
             <div id="userbar">
                 <% if(!currentUser) {%>
@@ -98,7 +137,9 @@
                         <div class="valid-feedback">
                             Looks good!
                         </div>
-                        <button class="btn dse00btn disappear-button" id="sendbtn">送出</button>
+                        <button class="btn dse00btn disappear-button" id="sendbtn"
+                            style="background-color: #cc0000; border-radius: 50%; opacity: 1;"><i
+                                class="fa-solid fa-paper-plane" style="color: white;"></i></button>
                     </div>
                     <div style="opacity: 0; position: absolute; top:0">
                         <textarea type="text" style="height:25px;color:#bbb" id="description"
@@ -142,44 +183,6 @@
                     </div>
 
                 </div>
-            </div>
-        </div>
-
-        <div class='index-loop order-two'>
-
-
-            <a class="btn dse00btn disappear-button" id="newpost" href="/new">新 POST</a>
-            <div id="skeleton-screen"></div>
-            <div id="posts-body">
-            </div>
-            <div style="display:flex; justify-content: center;"><img src="/files/gear.svg" /></div>
-
-
-        </div>
-
-        <div id="left-bar">
-            <div class="category-list">
-                <h4>我要傾</h4>
-                <a href="/">
-                    <td class="icon-td"><span class="category-list-icon">
-                            <i class="fa-regular fa-comment-dots" style="color:#cd4e4e;"></i>
-                        </span></td> 吹水
-                </a>
-
-                <a href="/search?category=DSE"><span class="category-list-icon"><i class="fa-regular fa-comment"
-                            style="color:#cd4e4e;"></i></span>
-                    DSE</a>
-                <a href="/search?category=大學"><span class="category-list-icon"><i class="fa-regular fa-comment"
-                            style="color:#cd4e4e;"></i> </span>
-                    大學</a>
-                <a href="/search?category=消息"><span class="category-list-icon"><i class="fa-regular fa-comment"
-                            style="color:#cd4e4e;"></i></span>
-                    消息</a>
-
-            </div>
-            <div class="mt-5 hide-mobile">
-                <h6><i class="fa-solid fa-user-group" style="color:#cd4e4e;"></i> Online </h6>
-                <div id="friends-list"></div>
             </div>
         </div>
 
