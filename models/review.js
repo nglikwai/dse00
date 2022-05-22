@@ -6,12 +6,15 @@ const reviewSchema = new Schema({
     rating: Number,
     author: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        default: '622874ccc8ed254d82edf591'
     },
     post: {
         type: Schema.Types.ObjectId,
         ref: 'Camground'
-    }
+    },
+    reply: [String],
+    replyAuthor: [String]
 }, { timestamps: true });
 
 module.exports = mongoose.model("Review", reviewSchema);

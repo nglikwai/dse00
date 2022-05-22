@@ -1,0 +1,188 @@
+<% layout('layouts/boilerplate')%>
+
+    <style>
+        .navbar {
+            display: none;
+        }
+
+        .user-info {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            background-color: #fffcf8;
+            border-top: #ccc solid 1px;
+            padding: 10px 0 0 0;
+            opacity: 0.8;
+            transition-duration: 0.6s;
+        }
+
+        .chat {
+            color: rgb(151, 199, 226);
+            padding: 3px 0 0 5px;
+            border-radius: 30%;
+            background-color: rgba(201, 228, 255, 0.3);
+            width: 40px;
+            font-size: 12px;
+
+        }
+
+        .user-info:hover {
+            opacity: 1;
+        }
+
+        .dse00btn {
+            font-size: 10px;
+            padding: 2px 5px;
+            margin-top: 6px;
+        }
+
+        .index-loop {
+            padding: 0;
+        }
+
+        body {
+            padding: 0;
+        }
+
+        .post-title2 {
+            font-size: 14px;
+            margin: 5px 15px 15px 0px;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .night-text {
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        .card {
+            background-color: transparent;
+        }
+
+        .card {
+            border: none;
+            border-bottom: #ddd solid 1px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.0);
+            border-radius: 2px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .move {
+            transition-duration: 0.3s;
+        }
+
+        .move:hover {
+            background-color: #ddd;
+        }
+
+        .move:active {
+            background-color: #ddd;
+        }
+    </style>
+    <div class="inner-container">
+
+
+        <div class='index-loop'>
+            <!-- <div id="userbar">
+                <% if(!currentUser) {%>
+                    <b><a href="/login" target="_blank">
+                        <span style="margin:0 10px;">DSEJJ</span>｜<span id="level" style="margin:0 10px">Lv.1</span>｜ <span> 🪙 × 0 </span></a></b>
+
+                    <% } %>
+                        <% if(currentUser) {%>
+                            <b>
+                        <span>
+                            <a href="/user/<%= currentUser._id %> ">
+                                <%= currentUser.username.toUpperCase() %>
+                            </a>
+                        </span>｜
+                        <span id="level">Lv.
+                            <% if(currentUser) {%>
+                                <%= currentUser.grade %>
+                                    <% } %>
+                        </span>｜
+                        <a href="/dse00coin">
+                            <span>🪙×
+                                <% if(currentUser) {%>
+                                    <%= currentUser.coin %>
+                                        <% } %>
+                            </span>
+                        </a></b>
+                            <% } %>
+            </div><br> -->
+            <a class="btn dse00btn" id="newpost" href="/new">新 POST</a>
+            <% for (let i=0 ; i<campgrounds.length ; i++){%>
+                <div class="card mb-1">
+                    <div class="move">
+                        <a href="/iframe/<%=campgrounds[i]._id  %> ">
+                            <div>
+                                <div>
+                                    <div style="color:#bbb; position: absolute; right:0">
+                                        <% const r=campgrounds[i].reviews.length-1 %>
+                                            <div class="chatbox">
+                                                <div class="chat"><i class="fa-solid fa-comment"></i>
+                                                    <%= r+1 %>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="post-title2">
+                                        <p style="font-size:14px; font-weight:500; color:#be0000 ; margin-bottom: 4px;">
+                                            <%= campgrounds[i].author.username.toUpperCase()%>
+                                        </p>
+                                        <%= campgrounds[i].title %>
+                                            <% if (campgrounds[i].reviews[0]) { %>
+                                                <div class="night-text">➥
+                                                    <%= campgrounds[i].reviews[r].body.substring(0,40) %>
+                                                </div>
+                                                <% } %>
+                                    </div>
+                                    <!-- <span style="font-size:14px; font-weight:300; color:#999"><%= campgrounds[i].description.substring(0,40) %> </span> -->
+
+
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <% }%>
+        </div>
+
+        <div class="user-info">
+            <div>
+                <form action="/iframe" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                    <div>
+
+                        <textarea style="height:65px;" class="form-control" type="text" id="title"
+                            name="campground[title]" required> </textarea>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <button class="btn dse00btn disappear-button" id="sendbtn">send</button>
+                    </div>
+                    <div style="opacity: 0; position: absolute; top:0">
+                        <textarea type="text" style="height:25px;color:#bbb" id="description"
+                            name="campground[description]">如題</textarea>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
+
+
+    </div>

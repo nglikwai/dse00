@@ -1,8 +1,17 @@
-<% layout('layouts/boilerplate')%>
-    <div class="post-body">
+ <% layout('layouts/boilerplate')%>
+    <div class="index-loop">
         <h1 class="text-center">編輯 POST</h1>
-        <div class="col-md-6 offset-md-3">
-            <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+        <div>
+            <form action="/<%=campground._id%>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="category">類別</label>
+                    <select class="form-select" style="width:100px" selected="功課" name="campground[category]" id="category">
+                        <option value="吹水">吹水</option>
+                        <option value="DSE" <%= campground.category === 'DSE' ? 'selected' : ''%>> DSE</option>
+                        <option value="消息" <%= campground.category === '消息' ? 'selected' : ''%>>消息</option>
+                        <option value="大學" <%= campground.category === '大學' ? 'selected' : ''%>>大學</option>
+                      </select>
+                </div>
                 <div class="mb-3">
                     <label class="form-label" for="title">標題</label>
                     <input class="form-control" type="text" id="title" name="campground[title]" value="<%=campground.title %>" required>
@@ -42,7 +51,7 @@
                     <button class="btn btn-info">確認更新</button>
                 </div>
             </form>
-            <a class="btn" href="/campgrounds/<%= campground._id%>">返回</a>
+            <a class="btn" href="/<%= campground._id%>">返回</a>
 
         </div>
     </div>

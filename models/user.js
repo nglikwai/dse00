@@ -12,22 +12,43 @@ const UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Review'
     }],
+    favour: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Campground'
+    }],
+    friendList: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     posts: [{
         type: Schema.Types.ObjectId,
         ref: 'Campground'
     }],
+    intro: {
+        type: String,
+        default: '考到心儀嘅大學'
+    },
     coin: {
         type: Number,
         default: 1
     },
     grade: {
-        type: Number,
+        type: String,
         default: 1
+    },
+    level: {
+        type: Number,
+        default: 1,
     },
     identity: {
         type: String,
         default: 'member'
+    },
+    username: {
+        type: String,
+        default: 'DSEJJ'
     }
+
 
 }, { timestamps: true });
 
